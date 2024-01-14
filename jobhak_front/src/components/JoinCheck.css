@@ -1,0 +1,66 @@
+.form-group {
+  margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 5px;
+  margin-inline-start: 30px;
+}
+
+.checkbox-group label {
+  font-weight: bold;
+}
+
+.form-detail {
+  margin: 10px;
+  margin-left: 25px;
+  width: 1100px;
+  height: 100px;
+  border: 1px solid #ccc;
+  overflow: auto;
+}
+
+.next-button {
+  margin-left: 150px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 230px;
+  height: 30px;
+  background-color: #104085;
+  color: white;
+  border: 0px;
+  border-radius: 7px;
+}
+
+.cancel-button {
+  margin-left: 270px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 230px;
+  height: 30px;
+  background-color: #104085;
+  color: white;
+  border: 0px;
+  border-radius: 7px;
+  margin-top: 30px;
+}
+
+.joinservice-form {
+  margin-left: 350px;
+  font-size: larger;
+}
+
+.join-checkbox {
+  margin-bottom: 20px;
+  width: 1200px;
+  height: 540px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  padding-left: 40px;
+}
+
+.homelogo {
+  margin-left: 800px;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
