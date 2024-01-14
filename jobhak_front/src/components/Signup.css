@@ -1,0 +1,122 @@
+.Jobhak_logo {
+  margin-left: 650px;
+  margin-right: 20px;
+  margin-bottom: 40px;
+  vertical-align: middle;
+}
+
+.logo-container {
+  margin-top: 30px;
+}
+
+.title_lb {
+  font-size: 47px;
+  font-weight: bold;
+}
+
+.joincheck_lb {
+  margin-left: 800px;
+  margin-right: 70px;
+}
+
+.joinform {
+  text-align: left;
+}
+
+.joinform_lb {
+  font-size: 23px;
+  font-weight: bold;
+  margin-left: 300px;
+}
+
+.joinpw_lb {
+  font-size: 23px;
+  font-weight: bold;
+  margin-left: 280px;
+}
+
+.joinpwpw_lb {
+  font-size: 23px;
+  font-weight: bold;
+  margin-left: 216px;
+}
+
+.joinname_lb {
+  font-size: 23px;
+  font-weight: bold;
+  margin-left: 320px;
+}
+
+.joincode_lb {
+  font-size: 23px;
+  font-weight: bold;
+  margin-left: 280px;
+}
+
+.joinform_ip {
+  margin-bottom: 25px;
+  margin-left: 20px;
+  height: 45px;
+  width: 300px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-left: 10px;
+  background-color: #fcede8;
+  color: black;
+  border: 0px;
+  border-radius: 10px;
+  outline: none;
+}
+
+.joinform_btn {
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 50px;
+  width: 70px;
+  height: 25px;
+  background-color: #eff5ff;
+  color: black;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.joinform2_btn {
+  font-weight: bold;
+  margin-left: 20px;
+  width: 70px;
+  height: 25px;
+  background-color: #eff5ff;
+  color: black;
+  border: 0px;
+  border-radius: 5px;
+}
+
+.signup_btn {
+  margin-left: 365px;
+  margin-top: 10px;
+  background-color: #ffd3b6;
+  font-weight: bold;
+  font-size: larger;
+  border: 0px;
+  border-radius: 8px;
+  height: 38px;
+  width: 350px;
+}
+
+.vertical-line {
+  height: 800px;
+  width: 1px;
+  border-left: 1px solid #000;
+}
+
+.social_lb {
+  margin-left: 500px;
+  font-size: larger;
+  font-weight: bold;
+}
+
+.social_hr {
+  width: 500px;
+  margin-right: 300px;
+  border-style: dotted;
+}
