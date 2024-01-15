@@ -1,134 +1,145 @@
 .Jobhak_logo {
-  margin-left: 650px;
-  margin-right: 20px;
-  margin-bottom: 40px;
+  margin-left: 44rem;
+  margin-right: 1.5rem;
+  margin-bottom: 2.1rem;
   vertical-align: middle;
 }
 
 .logo-container {
-  margin-top: 30px;
+  margin-top: 2rem;
 }
 
 .title_lb {
-  font-size: 47px;
-  font-weight: bold;
+  font-size: 2.8rem;
+  font-weight: 800;
+  font-family: "NanumSquare";
 }
 
 .joincheck_lb {
-  margin-left: 800px;
-  margin-right: 70px;
-  font-weight: bold;
+  margin-left: 55rem;
+  margin-right: 3rem;
+  font-weight: 700;
 }
 
 .joinform {
   text-align: left;
-  margin-top: -630px;
+  margin-top: -40rem;
 }
 
 .social_div {
-  margin-top: 150px;
+  margin-top: 10rem;
 }
 
 .joinform_lb {
-  font-size: 23px;
-  font-weight: bold;
-  margin-left: 300px;
+  font-size: 1.4rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  margin-left: 18rem;
 }
 
 .joinpw_lb {
-  font-size: 23px;
-  font-weight: bold;
-  margin-left: 280px;
+  font-size: 1.4rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  margin-left: 16.75rem;
 }
 
 .joinpwpw_lb {
-  font-size: 23px;
-  font-weight: bold;
-  margin-left: 216px;
+  font-size: 1.4rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  margin-left: 12.55rem;
 }
 
 .joinname_lb {
-  font-size: 23px;
-  font-weight: bold;
-  margin-left: 320px;
+  font-size: 1.4rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  margin-left: 19.3rem;
 }
 
 .joincode_lb {
-  font-size: 23px;
-  font-weight: bold;
-  margin-left: 280px;
+  font-size: 1.4rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  margin-left: 16.75rem;
 }
 
 .joinform_ip {
-  margin-bottom: 25px;
-  margin-left: 20px;
-  height: 45px;
-  width: 300px;
-  font-size: 18px;
-  font-weight: bold;
-  padding-left: 10px;
+  margin-bottom: 1.3rem;
+  margin-left: 1.5rem;
+  height: 3rem;
+  width: 20.5rem;
+  font-size: 1.2rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  padding-left: 1rem;
   background-color: #fcede8;
   color: black;
-  border: 0px;
-  border-radius: 10px;
+  border: 0rem;
+  border-radius: 0.6rem;
   outline: none;
 }
 
 .joinform_btn {
-  font-weight: bold;
-  margin-left: 20px;
-  margin-top: 50px;
-  width: 70px;
-  height: 25px;
+  font-weight: 800;
+  font-family: "NanumSquare";
+  margin-left: 1.5rem;
+  margin-top: 3.5rem;
+  width: 5rem;
+  height: 2rem;
   background-color: #eff5ff;
   color: black;
-  border: 0px;
-  border-radius: 5px;
+  border: 0rem;
+  border-radius: 0.5rem;
 }
 
 .joinform2_btn {
-  font-weight: bold;
-  margin-left: 20px;
-  width: 70px;
-  height: 25px;
+  font-weight: 800;
+  font-family: "NanumSquare";
+  margin-left: 1.5rem;
+  width: 5rem;
+  height: 2rem;
   background-color: #eff5ff;
   color: black;
-  border: 0px;
-  border-radius: 5px;
+  border: 0rem;
+  border-radius: 0.5rem;
 }
 
 .signup_btn {
-  margin-left: 365px;
-  margin-top: 10px;
+  margin-left: 23.2rem;
+  margin-top: 0.7rem;
   background-color: #ffd3b6;
-  font-weight: bold;
-  font-size: larger;
-  border: 0px;
-  border-radius: 8px;
-  height: 38px;
-  width: 350px;
+  font-family: "NanumSquare";
+  font-weight: 800;
+  font-size: 1.3rem;
+  border: 0rem;
+  border-radius: 0.5rem;
+  height: 2.5rem;
+  width: 22rem;
 }
 
 .vertical-line {
-  height: 600px;
-  border-left: 1px solid #000;
-  margin-left: 910px;
-  margin-top: -300px;
+  height: 38rem;
+  border-left: 0.07rem solid #000;
+  margin-left: 62rem;
+  margin-top: -19rem;
 }
 
 .social_lb {
-  margin-left: 1200px;
-  font-size: larger;
-  font-weight: bold;
+  margin-left: 74.2rem;
+  font-size: 1.2rem;
+  font-family: "NanumSquare";
+  font-weight: 800;
 }
 
 .social_hr {
-  width: 430px;
-  margin-right: 340px;
-  margin-top: 20px;
+  width: 27rem;
+  margin-right: 21rem;
+  margin-top: 1.5rem;
 }
 
 .login_logo {
-  margin-left: 1200px;
-  margin-top: 10px;
+  margin-left: 76rem;
+  margin-top: 1rem;
 }

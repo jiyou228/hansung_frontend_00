@@ -1,10 +1,10 @@
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .checkbox-group input[type="checkbox"] {
-  margin-right: 5px;
-  margin-inline-start: 30px;
+  margin-right: 0.5rem;
+  margin-inline-start: 2rem;
 }
 
 .checkbox-group label {
@@ -12,55 +12,55 @@
 }
 
 .form-detail {
-  margin: 10px;
-  margin-left: 25px;
-  width: 1100px;
-  height: 100px;
-  border: 1px solid #ccc;
+  margin: 0.6rem;
+  margin-left: 2rem;
+  width: 70rem;
+  height: 6rem;
+  border: 0.1rem solid #ccc;
   overflow: auto;
 }
 
 .next-button {
-  margin-left: 150px;
-  font-size: 18px;
+  margin-left: 9rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  width: 230px;
-  height: 30px;
+  width: 15rem;
+  height: 2rem;
   background-color: #104085;
   color: white;
-  border: 0px;
-  border-radius: 7px;
+  border: 0rem;
+  border-radius: 0.5rem;
 }
 
 .cancel-button {
-  margin-left: 270px;
-  font-size: 18px;
+  margin-left: 20rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  width: 230px;
-  height: 30px;
+  width: 15rem;
+  height: 2rem;
   background-color: #104085;
   color: white;
-  border: 0px;
-  border-radius: 7px;
-  margin-top: 30px;
+  border: 0rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
 }
 
 .joinservice-form {
-  margin-left: 350px;
-  font-size: larger;
+  margin-left: 21rem;
+  font-size: 1.2rem;
 }
 
 .join-checkbox {
-  margin-bottom: 20px;
-  width: 1200px;
-  height: 540px;
-  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  width: 76rem;
+  height: 34rem;
+  border: 0.1rem solid #ccc;
   overflow: auto;
-  padding-left: 40px;
+  padding-left: 3rem;
 }
 
 .homelogo {
-  margin-left: 800px;
-  margin-bottom: 50px;
-  margin-top: 30px;
+  margin-left: 50rem;
+  margin-bottom: 3rem;
+  margin-top: 2.5rem;
 }
