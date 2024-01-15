@@ -104,7 +104,10 @@ const Login = () => {
         </button>
       </form>
       <ul style={{ marginTop: "1rem", fontSize: "1.2rem" }}>
-        <Link to="/signup" style={{ textDecoration: "none", color: "black" }}>
+        <Link
+          to="/joincheck"
+          style={{ textDecoration: "none", color: "black" }}
+        >
           <li style={{ display: "inline-block", paddingLeft: "-2rem" }}>
             회원가입
           </li>
