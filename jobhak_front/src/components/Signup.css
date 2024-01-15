@@ -17,10 +17,16 @@
 .joincheck_lb {
   margin-left: 800px;
   margin-right: 70px;
+  font-weight: bold;
 }
 
 .joinform {
   text-align: left;
+  margin-top: -630px;
+}
+
+.social_div {
+  margin-top: 150px;
 }
 
 .joinform_lb {
@@ -104,19 +110,25 @@
 }
 
 .vertical-line {
-  height: 800px;
-  width: 1px;
+  height: 600px;
   border-left: 1px solid #000;
+  margin-left: 910px;
+  margin-top: -300px;
 }
 
 .social_lb {
-  margin-left: 500px;
+  margin-left: 1200px;
   font-size: larger;
   font-weight: bold;
 }
 
 .social_hr {
-  width: 500px;
-  margin-right: 300px;
-  border-style: dotted;
+  width: 430px;
+  margin-right: 340px;
+  margin-top: 20px;
+}
+
+.login_logo {
+  margin-left: 1200px;
+  margin-top: 10px;
 }

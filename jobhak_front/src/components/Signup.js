@@ -140,8 +140,36 @@ function Signup() {
       </div>
       <br />
       <label className="joincheck_lb">이미 Job학다식 회원이신가요?</label>
-      <Link to="./login">로그인</Link>
+      <Link to="/">로그인</Link>
+      <br />
 
+      <div className="social_div">
+        <label className="social_lb">
+          소셜 로그인으로 간편하게 가입할 수 있습니다.
+        </label>
+        <hr className="social_hr" />
+        <Link to="/login/naver">
+          <div>
+            <img
+              className="login_logo"
+              src="img/naver.png"
+              width={320}
+              alt="naver_login"
+            />
+          </div>
+        </Link>
+        <Link to="/login/kakao">
+          <div>
+            <img
+              className="login_logo"
+              src="img/kakao.png"
+              width={320}
+              alt="kakao_login"
+            />
+          </div>
+        </Link>
+      </div>
+      <div className="vertical-line" />
       <div className="joinform">
         <br />
         <label className="joinform_lb">아이디</label>
@@ -164,11 +192,7 @@ function Signup() {
           placeholder="대소문자, 숫자, 특수문자 포함 10자 이상"
           onChange={HandleInputPW}
         />
-        <label className="social_lb">
-          소셜 로그인으로 간편하게 가입할 수 있습니다.
-        </label>
-        <hr className="social_hr" />
-
+        <br />
         <label className="joinpwpw_lb">비밀번호 재확인</label>
         <input
           className="joinform_ip"
