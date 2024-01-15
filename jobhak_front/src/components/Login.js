@@ -41,9 +41,9 @@ const Login = () => {
                 <button type = "submit" style={{fontWeight: '800', fontSize: '1.3rem',width: '30.5rem', height: '3rem', marginTop: '2.5rem', backgroundColor:'#FFD3B6', border: 'none', borderRadius: '1rem'}}>로그인</button>
             </form>
             <ul style={{marginTop: '1rem', fontSize: '1.2rem' }}>
-                <li style={{display: 'inline-block', paddingLeft:'1rem'}}>회원가입</li>
+                <li style={{display: 'inline-block', paddingLeft:'-2rem'}}>회원가입</li>
                 <Link to ="/find/id" style={{ textDecoration: 'none', color: 'black'}}>
-                <li style={{display: 'inline-block', paddingLeft: '9rem'}}>아이디 · </li>
+                <li style={{display: 'inline-block', paddingLeft: '12rem'}}>아이디 · </li>
                 </Link>
                 <Link to ="/find/pw" style={{textDecoration: 'none', color:'black'}}>
                 <li style={{paddingLeft: '0.5rem', display: 'inline-block'}}>비밀번호 찾기</li>
