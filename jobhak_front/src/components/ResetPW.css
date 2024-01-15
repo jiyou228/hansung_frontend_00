@@ -1,0 +1,57 @@
+.resetPW_app{
+    text-align: center;
+    font-family: 'NanumSquare';
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #252525;
+    height: 100vh;
+}
+.logo_full{
+    width: 25rem;
+}
+.resetPW_p{
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+.resetPW_form{
+    margin-top: 1rem;
+}
+.resetPW_input{
+    padding-left: 1rem;
+    background-color: #FCEDE8;
+    width: 29.5rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.resetPW_pw_container{
+    margin-top: 1.5rem;
+}
+.resetPW_submit{
+    font-weight: 800;
+    font-size: 1.3rem;
+    width: 30.5rem;
+    height: 3rem;
+    margin-top: 2.5rem;
+    background-color:#FFD3B6;
+    border: none;
+    border-radius: 1rem;
+}
+.finID_pw_container{
+    margin-top: 2.5rem;
+    font-size: 1.2rem;
+}
+.resetPW_link{
+    text-decoration: none;
+    color: #252525;
+}
+.resetPW_underline{
+    text-decoration: underline;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
-import Jobhak from "../assets/Jobhak.png";
+import Jobhak from "../assets/jobhak_full.png";
 
 function Signup() {
   const [loginid, setLoginID] = useState("");
@@ -15,7 +15,6 @@ function Signup() {
   const [usableid, setUsableID] = useState(false);
   const [confirmcode, setConfirmCode] = useState("");
   const [confrimemail, setConfirmEmail] = useState(null);
-
   const HandleInputID = (e) => {
     setLoginID(e.target.value);
   };
@@ -135,13 +134,17 @@ function Signup() {
   return (
     <div>
       <div className="logo-container">
-        <img src={Jobhak} className="Jobhak_logo" width="350" />
+        <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
         <label className="title_lb"> 회원가입</label>
       </div>
       <br />
       <label className="joincheck_lb">이미 Job학다식 회원이신가요?</label>
+<<<<<<< Updated upstream
       <Link to="/">로그인</Link>
       <br />
+=======
+      <Link to="/login">로그인</Link>
+>>>>>>> Stashed changes
 
       <div className="social_div">
         <label className="social_lb">

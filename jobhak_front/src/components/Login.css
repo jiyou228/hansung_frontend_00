@@ -1,0 +1,81 @@
+.login_app{
+    text-align: center;
+    font-family: 'NanumSquare';
+    font-weight: 800;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #252525;
+    height: 100vh;
+}
+.logo_full{
+    width: 25rem;
+}
+.login_form{
+    margin-top: 3rem;
+}
+.login_input{
+    padding-left: 1rem;
+    background-color: #FCEDE8;
+    width: 29.5rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.login_submit{
+    font-weight: 800;
+    font-size: 1.3rem;
+    width: 30.5rem;
+    height: 3rem;
+    margin-top: 2.5rem;
+    background-color:#FFD3B6;
+    border: none;
+    border-radius: 1rem;
+}
+.login_ul{
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+.login_link{
+    text-decoration: none;
+    color: #252525;
+}
+.login_app li{
+    display: inline-block;
+}
+.login_li_join{
+    margin-left: -2rem;
+}
+.login_li_id{
+    margin-left: 12rem;
+}
+.login_li_pw{
+    padding-left: 0.5rem;
+}
+.login_line{
+    margin-top: 0.7rem;
+    border-top: 0.1rem solid black;
+    width: 13rem;
+}
+.login_or{
+    margin: 0 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.login_naver_container{
+    margin-top: 2rem;
+}
+.login_naver{
+    width: 30rem;
+}
+.login_kakao_container{
+    margin-top: 0.5rem;
+}
+.login_kakao{
+    width: 30rem;
+}
+

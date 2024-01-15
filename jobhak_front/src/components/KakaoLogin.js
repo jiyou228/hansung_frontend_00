@@ -47,7 +47,7 @@ const KakaoLogin = () => {
     };
 
     displayToken();
-  }, [Kakao]);
+  }, [Kakao, navigate]);
 
 };
 

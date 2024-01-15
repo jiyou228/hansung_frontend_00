@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
+import full_logo from "../assets/jobhak_full.png";
+import '../components/FindPW.css';
 const FindPW = () => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -15,9 +16,16 @@ const FindPW = () => {
         name: name,
         email: email,
       });
+<<<<<<< Updated upstream
       if (response.data.success) {
         alert(`${email}로 비밀번호 재설정 링크를 전송했습니다.`);
       } else {
+=======
+      if(response.data.success){
+        alert(`${email}로 비밀번호 재설정 링크를 전송했습니다.`);
+      }
+      else{
+>>>>>>> Stashed changes
         alert("일치하는 회원 정보가 없습니다.");
       }
     } catch (error) {
@@ -28,6 +36,7 @@ const FindPW = () => {
   };
 
   return (
+<<<<<<< Updated upstream
     <div
       style={{
         textAlign: "center",
@@ -49,63 +58,43 @@ const FindPW = () => {
         비밀번호 찾기
       </p>
       <form onSubmit={findPWSubmit} style={{ marginTop: "1rem" }}>
+=======
+    <div className="findPW_app">
+        <img src = {full_logo} className="logo_full" alt='jobhak_full'/>
+        <p className="findPW_p">비밀번호 찾기</p>
+        <form onSubmit={findPWSubmit} className="findPW_form">
+>>>>>>> Stashed changes
         <div>
           <input
             type="text"
             required
-            style={{
-              paddingLeft: "1rem",
-              backgroundColor: "#FCEDE8",
-              width: "29.5rem",
-              height: "3.5rem",
-              border: "none",
-              borderRadius: "0.5rem",
-              fontSize: "1.2rem",
-              fontWeight: "700",
-            }}
+            className="findPW_input"
             value={id}
             placeholder="아이디"
             onChange={(e) => setId(e.target.value)}
           />
         </div>
-        <div style={{ marginTop: "1.5rem" }}>
+        <div className="findPW_input_container">
           <input
             type="text"
             required
-            style={{
-              paddingLeft: "1rem",
-              backgroundColor: "#FCEDE8",
-              width: "29.5rem",
-              height: "3.5rem",
-              border: "none",
-              borderRadius: "0.5rem",
-              fontSize: "1.2rem",
-              fontWeight: "700",
-            }}
+            className="findPW_input"
             value={name}
             placeholder="이름"
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div style={{ marginTop: "1.5rem" }}>
+        <div className="findPW_input_container">
           <input
             type="email"
             required
-            style={{
-              paddingLeft: "1rem",
-              backgroundColor: "#FCEDE8",
-              width: "29.5rem",
-              height: "3.5rem",
-              border: "none",
-              borderRadius: "0.5rem",
-              fontSize: "1.2rem",
-              fontWeight: "700",
-            }}
+            className="findPW_input"
             value={email}
             placeholder="이메일"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+<<<<<<< Updated upstream
         <button
           type="submit"
           style={{
@@ -132,6 +121,12 @@ const FindPW = () => {
         >
           로그인 바로가기
         </p>
+=======
+        <button type="submit" className="findPW_submit">확인</button>
+      </form>
+      <Link to ='/login' className="findPW_link">
+        <p className="findPW_login">로그인 바로가기</p>
+>>>>>>> Stashed changes
       </Link>
     </div>
   );

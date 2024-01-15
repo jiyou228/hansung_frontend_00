@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import full_logo from "../assets/jobhak_full.png";
+import '../components/ResetPW.css';
 
 const ResetPW = () => {
   const [password, setPassword] = useState('');
@@ -39,20 +41,20 @@ const ResetPW = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', fontFamily: 'NanumSquare', fontWeight: '800', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh' }}>
-        <img src = '../img/jobhak_full.png' style={{width: '25rem'}} alt='jobhak_full'/>
-     <p style={{fontWeight: '800', fontSize: '2rem', marginTop: '3rem'}}>비밀번호 재설정</p>
-      <form onSubmit={(e) => { e.preventDefault(); handleResetPassword(); }} style={{ marginTop: '2rem' }}>
+    <div className='resetPW_app'>
+        <img src = {full_logo} className='logo_full' alt='jobhak_full'/>
+     <p className='resetPW_p'>비밀번호 재설정</p>
+      <form onSubmit={(e) => { e.preventDefault(); handleResetPassword(); }} className='resetPW_form'>
         <div>
-          <input type="password" required style={{ paddingLeft: '1rem', backgroundColor: '#FCEDE8', width: '29.5rem', height: '3.5rem', border: 'none', borderRadius: '0.5rem', fontSize: '1.2rem', fontWeight: '700' }} value={password} placeholder="새로운 비밀번호" onChange={(e) => setPassword(e.target.value)} />
+          <input type="password" required className='resetPW_input' value={password} placeholder="새로운 비밀번호" onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <div style={{ marginTop: '1.5rem' }}>
-          <input type="password" required style={{ paddingLeft: '1rem', backgroundColor: '#FCEDE8', width: '29.5rem', height: '3.5rem', border: 'none', borderRadius: '0.5rem', fontSize: '1.2rem', fontWeight: '700' }} value={confirmPassword} placeholder="새로운 비밀번호 확인" onChange={(e) => setConfirmPassword(e.target.value)} />
+        <div className='resetPW_pw_container'>
+          <input type="password" required className='resetPW_input' value={confirmPassword} placeholder="새로운 비밀번호 확인" onChange={(e) => setConfirmPassword(e.target.value)} />
         </div>
-        <button type="submit" style={{ fontWeight: '800', fontSize: '1.3rem', width: '30.5rem', height: '3rem', marginTop: '2.5rem', backgroundColor: '#FFD3B6', border: 'none', borderRadius: '1rem' }}>재설정</button>
+        <button type="submit" className='resetPW_submit'>재설정</button>
       </form>
-      <Link to ='/login' style={{textDecoration: 'none', color: 'black'}}>
-        <p style={{textDecoration: 'underline', fontSize: '1.2rem', marginTop: '2rem'}}>로그인 바로가기</p>
+      <Link to ='/login' className='resetPW_link'>
+        <p className='resetPW_underline'>로그인 바로가기</p>
       </Link>
     </div>
   );
