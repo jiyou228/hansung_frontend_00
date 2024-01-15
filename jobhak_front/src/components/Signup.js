@@ -3,7 +3,8 @@ import { Link} from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
 import Jobhak from "../assets/jobhak_full.png";
-
+import naver_join from "../assets/naver_join.png";
+import kakao_join from "../assets/kakao_join.png";
 function Signup() {
   const [loginid, setLoginID] = useState("");
   const [loginpw, setLoginPW] = useState("");
@@ -139,12 +140,8 @@ function Signup() {
       </div>
       <br />
       <label className="joincheck_lb">이미 Job학다식 회원이신가요?</label>
-<<<<<<< Updated upstream
-      <Link to="/">로그인</Link>
-      <br />
-=======
       <Link to="/login">로그인</Link>
->>>>>>> Stashed changes
+      <br />
 
       <div className="social_div">
         <label className="social_lb">
@@ -155,8 +152,7 @@ function Signup() {
           <div>
             <img
               className="login_logo"
-              src="img/naver.png"
-              width={320}
+              src={naver_join}
               alt="naver_login"
             />
           </div>
@@ -165,8 +161,7 @@ function Signup() {
           <div>
             <img
               className="login_logo"
-              src="img/kakao.png"
-              width={320}
+              src={kakao_join}
               alt="kakao_login"
             />
           </div>

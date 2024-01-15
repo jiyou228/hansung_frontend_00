@@ -1,21 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Signup from "./components/Signup";
 import JoinCheck from "./components/JoinCheck";
-<<<<<<< Updated upstream
-import Login from "./components/Login";
-import FindID from "./components/FindID";
-import FindPW from "./components/FindPW";
-import ResetPW from "./components/ResetPW";
-import NaverLogin from "./components/NaverLogin";
-import KakaoLogin from "./components/KakaoLogin";
-=======
 import Login from './components/Login';
 import FindID from './components/FindID';
 import FindPW from './components/FindPW';
 import ResetPW from './components/ResetPW';
 import NaverLogin from './components/NaverLogin';
 import KakaoLogin from './components/KakaoLogin';
->>>>>>> Stashed changes
 
 function App() {
   return (
@@ -23,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/joincheck" element={<JoinCheck />} />
-        <Route path="/" element={<Login />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/login/naver" element={<NaverLogin />}></Route>
         <Route path="/login/kakao" element={<KakaoLogin />}></Route>
         <Route path="/find/id" element={<FindID />}></Route>
