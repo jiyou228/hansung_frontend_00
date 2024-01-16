@@ -7,13 +7,17 @@ import FindPW from './components/FindPW';
 import ResetPW from './components/ResetPW';
 import NaverLogin from './components/NaverLogin';
 import KakaoLogin from './components/KakaoLogin';
-import Nav from "./components/Nav";
+import BoardList from "./components/BoardList";
+import MyPage from "./components/MyPage";
+import Profile from "./components/Profile";
+import Resume from "./components/Resume";
+import Home from "./components/Home";
 function App() {
   return (
     <BrowserRouter>
-    <Nav/>
       <Routes>
-        <Route path="/signup" element={<Signup />} />
+        <Route path = "/" element={<Home/>}/>
+        <Route path="/join" element={<Signup />} />
         <Route path="/joincheck" element={<JoinCheck />} />
         <Route path="/login" element={<Login />}></Route>
         <Route path="/login/naver" element={<NaverLogin />}></Route>
@@ -21,6 +25,10 @@ function App() {
         <Route path="/find/id" element={<FindID />}></Route>
         <Route path="/find/pw" element={<FindPW />}></Route>
         <Route path="/reset/pw" element={<ResetPW />}></Route>
+        <Route path="/boardlist" element={<BoardList/>}></Route>
+        <Route path="/user/myInfo" element={<MyPage/>}></Route>
+        <Route path="/profile/female" element={<Profile/>}></Route>
+        <Route path="/resume" element={<Resume/>}></Route>
       </Routes>
     </BrowserRouter>
   );

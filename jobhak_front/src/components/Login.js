@@ -5,41 +5,57 @@ import { useNavigate } from 'react-router-dom';
 import full_logo from "../assets/jobhak_full.png";
 import naver from "../assets/naver.png";
 import kakao from "../assets/kakao.png";
+import view from "../assets/view_pw.png";
+import hide from "../assets/hide_pw.png";
 import '../components/Login.css';
 const Login = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
+    const [showPw, setShowPw] = useState(false);
     const navigate = useNavigate();
     const submitLogin = async(e) => {
         e.preventDefault();
         try{
             const response = await axios.post('http://localhost:3000/login', {
-                id: id,
-                pw: pw,
+                loginId: id,
+                password: pw,
             });
             if(response.data.success){
                 console.log("로그인 성공!");
                 navigate('/');
             } else{
                 alert("아이디와 비밀번호를 확인해주세요.");
-                window.location.reload();
+                //window.location.reload();
             }
-        } catch(error){
+        } catch (error) {
             console.error('로그인 에러 발생: ', error);
-            alert("로그인 중 에러가 발생했습니다. 다시 시도해주세요.");
-            window.location.reload();
+
+            if (error.response && error.response.status === 401) {
+                // 서버에서 401 Unauthorized 응답을 보낸 경우
+                alert("아이디와 비밀번호가 맞지 않습니다.");
+            } else {
+                // 그 외의 에러 처리
+                alert("로그인 중 에러가 발생했습니다. 다시 시도해주세요.");
+            }
         }
     };
     
+    const pwVisible = () => {
+        setShowPw(!showPw);
+    }
+    
     return (
         <div className='login_app'>
-        <img src = {full_logo} className='logo_full'/>
+        <img src = {full_logo} className='logo_full' alt='logo_full'/>
             <form onSubmit={submitLogin} className='login_form'>
                 <div>
                     <input type ='text' required className = "login_input" value = {id} placeholder="아이디" onChange={(e) => setId(e.target.value)} />
                 </div>
                 <div className='login_pw_container'>
-                    <input type ='password' required className = "login_input" value={pw} placeholder="비밀번호" onChange={(e) => setPw(e.target.value)}/>
+                    <input type={showPw ? 'text' : 'password'} required className = "login_input" value={pw} placeholder="비밀번호" onChange={(e) => setPw(e.target.value)}/>
+                    <div className='pw_visible' onClick={pwVisible}>
+                        <img src = {showPw ? hide : view} alt='보이기' className='pw_icon'/>
+                    </div>
                 </div>
                 <button type = "submit" className='login_submit'>로그인</button>
             </form>
