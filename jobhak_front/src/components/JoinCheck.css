@@ -1,5 +1,9 @@
 .form-group {
   margin-bottom: 1rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
 .checkbox-group input[type="checkbox"] {

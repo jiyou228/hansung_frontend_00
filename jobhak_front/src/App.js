@@ -7,10 +7,11 @@ import FindPW from './components/FindPW';
 import ResetPW from './components/ResetPW';
 import NaverLogin from './components/NaverLogin';
 import KakaoLogin from './components/KakaoLogin';
-
+import Nav from "./components/Nav";
 function App() {
   return (
     <BrowserRouter>
+    <Nav/>
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/joincheck" element={<JoinCheck />} />
