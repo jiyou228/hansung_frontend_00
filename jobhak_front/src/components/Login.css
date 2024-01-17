@@ -27,6 +27,7 @@
 }
 .login_pw_container{
     margin-top: 1.5rem;
+    position: relative;
 }
 .login_submit{
     font-weight: 800;
@@ -86,3 +87,12 @@
     width: 30rem;
 }
 
+.pw_icon{
+    width: 2rem;
+}
+.pw_visible{
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
