@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
 import Jobhak from "../assets/jobhak_full.png";
@@ -133,14 +133,17 @@ function Signup() {
     }
   };
   return (
-    <div>
+    <div className="join_div">
       <div className="logo-container">
         <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
         <label className="title_lb"> 회원가입</label>
       </div>
       <br />
-      <label className="joincheck_lb">이미 Job학다식 회원이신가요?</label>
-      <Link to="/login">로그인</Link>
+      <div className="joincheck_lb">
+        <label>이미 Job학다식 회원이신가요? </label>
+        <Link to="/login">로그인</Link>
+      </div>
+
       <br />
 
       <div className="social_div">
@@ -150,24 +153,16 @@ function Signup() {
         <hr className="social_hr" />
         <Link to="/login/naver">
           <div>
-            <img
-              className="login_logo"
-              src={naver_join}
-              alt="naver_login"
-            />
+            <img className="login_logo" src={naver_join} alt="naver_login" />
           </div>
         </Link>
         <Link to="/login/kakao">
           <div>
-            <img
-              className="login_logo"
-              src={kakao_join}
-              alt="kakao_login"
-            />
+            <img className="login_logo" src={kakao_join} alt="kakao_login" />
           </div>
         </Link>
       </div>
-      <div className="vertical-line" />
+
       <div className="joinform">
         <br />
         <label className="joinform_lb">아이디</label>
@@ -242,6 +237,7 @@ function Signup() {
           회원가입
         </button>
       </div>
+      <div className="vertical-line" />
     </div>
   );
 }

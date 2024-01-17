@@ -1,66 +1,76 @@
-.Jobhak_logo {
-  margin-left: 44rem;
-  margin-right: 1.5rem;
-  margin-bottom: 2.1rem;
-  vertical-align: middle;
+.join_div {
+  font-family: "NanumSquare";
 }
 
 .logo-container {
   margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title_lb {
   font-size: 2.8rem;
   font-weight: 800;
-  font-family: "NanumSquare";
+  margin-left: 1.5rem;
+  margin-top: 1rem;
 }
 
 .joincheck_lb {
-  margin-left: 55rem;
-  margin-right: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: 700;
 }
 
 .joinform {
   text-align: left;
-  margin-top: -40rem;
+  margin-top: -14%;
+  position: absolute;
+  left: 20%;
+  top: 85%;
+  transform: translate(-50%, -50%);
 }
 
-.social_div {
-  margin-top: 10rem;
+.vertical-line {
+  height: 38rem;
+  border-left: 0.07rem solid #000;
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  transform: translate(-50%, -50%);
 }
 
 .joinform_lb {
   font-size: 1.4rem;
-  font-family: "NanumSquare";
   font-weight: 800;
   margin-left: 18rem;
 }
 
 .joinpw_lb {
   font-size: 1.4rem;
-  font-family: "NanumSquare";
+
   font-weight: 800;
   margin-left: 16.75rem;
 }
 
 .joinpwpw_lb {
   font-size: 1.4rem;
-  font-family: "NanumSquare";
+
   font-weight: 800;
   margin-left: 12.55rem;
 }
 
 .joinname_lb {
   font-size: 1.4rem;
-  font-family: "NanumSquare";
+
   font-weight: 800;
   margin-left: 19.3rem;
 }
 
 .joincode_lb {
   font-size: 1.4rem;
-  font-family: "NanumSquare";
+
   font-weight: 800;
   margin-left: 16.75rem;
 }
@@ -69,9 +79,9 @@
   margin-bottom: 1.3rem;
   margin-left: 1.5rem;
   height: 3rem;
-  width: 20.5rem;
-  font-size: 1.2rem;
-  font-family: "NanumSquare";
+  width: 21rem;
+  font-size: 1.1rem;
+
   font-weight: 800;
   padding-left: 1rem;
   background-color: #fcede8;
@@ -83,7 +93,7 @@
 
 .joinform_btn {
   font-weight: 800;
-  font-family: "NanumSquare";
+
   margin-left: 1.5rem;
   margin-top: 3.5rem;
   width: 5rem;
@@ -96,7 +106,7 @@
 
 .joinform2_btn {
   font-weight: 800;
-  font-family: "NanumSquare";
+
   margin-left: 1.5rem;
   width: 5rem;
   height: 2rem;
@@ -110,7 +120,7 @@
   margin-left: 23.2rem;
   margin-top: 0.7rem;
   background-color: #ffd3b6;
-  font-family: "NanumSquare";
+
   font-weight: 800;
   font-size: 1.3rem;
   border: 0rem;
@@ -118,29 +128,29 @@
   height: 2.5rem;
   width: 22rem;
 }
-
-.vertical-line {
-  height: 38rem;
-  border-left: 0.07rem solid #000;
-  margin-left: 62rem;
-  margin-top: -19rem;
+.social_div {
+  margin-top: 7%;
+  position: absolute;
+  left: 40%;
+  top: 35%;
+  transform: translate(-50%, -50%);
 }
-
 .social_lb {
-  margin-left: 74.2rem;
+  margin-left: 72rem;
   font-size: 1.2rem;
-  font-family: "NanumSquare";
   font-weight: 800;
 }
 
 .social_hr {
   width: 27rem;
-  margin-right: 21rem;
-  margin-top: 1.5rem;
+  position: absolute;
+  left: 88%;
+  top: 13%;
+  transform: translate(-50%, -50%);
 }
 
 .login_logo {
-  margin-left: 76rem;
+  margin-left: 73rem;
   margin-top: 1rem;
   width: 22rem;
 }
