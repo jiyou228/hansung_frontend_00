@@ -1,31 +1,74 @@
-.form-group {
-  margin-bottom: 1rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
-
 .checkbox-group input[type="checkbox"] {
-  margin-right: 0.5rem;
-  margin-inline-start: 2rem;
+  margin-right: 1rem;
+  margin-inline-start: 1.1rem;
 }
 
-.checkbox-group label {
+.checkbox-group1 {
+  margin-right: 0.7rem;
+  margin-inline-start: 2.6rem;
+}
+
+.checkbox-group2 {
+  margin-right: 0.7rem;
+  margin-inline-start: 2.6rem;
+  margin-top: 10.5%;
+}
+
+.checkbox-group3 {
+  margin-right: 0.7rem;
+  margin-inline-start: 2.6rem;
+  margin-top: 10%;
+}
+
+.checkbox-group,
+.checkbox-group1,
+.checkbox-group2,
+.checkbox-group3 label {
   font-weight: bold;
 }
 
-.form-detail {
-  margin: 0.6rem;
-  margin-left: 2rem;
+.form-detail1 {
   width: 70rem;
   height: 6rem;
   border: 0.1rem solid #ccc;
   overflow: auto;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -50%);
+}
+
+.form-detail2 {
+  width: 70rem;
+  height: 6rem;
+  border: 0.1rem solid #ccc;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 56%;
+  transform: translate(-50%, -50%);
+}
+
+.form-detail3 {
+  width: 70rem;
+  height: 6rem;
+  border: 0.1rem solid #ccc;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  top: 82%;
+  transform: translate(-50%, -50%);
 }
 
 .next-button {
-  margin-left: 9rem;
   font-size: 1.2rem;
   font-weight: bold;
   width: 15rem;
@@ -34,10 +77,17 @@
   color: white;
   border: 0rem;
   border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 60%;
+  bottom: 10%;
+  transform: translate(-50%, -50%);
 }
 
 .cancel-button {
-  margin-left: 20rem;
   font-size: 1.2rem;
   font-weight: bold;
   width: 15rem;
@@ -46,25 +96,38 @@
   color: white;
   border: 0rem;
   border-radius: 0.5rem;
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 40%;
+  bottom: 10%;
+  transform: translate(-50%, -50%);
 }
 
 .joinservice-form {
-  margin-left: 21rem;
   font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .join-checkbox {
-  margin-bottom: 1rem;
-  width: 76rem;
+  width: 75rem;
   height: 34rem;
   border: 0.1rem solid #ccc;
   overflow: auto;
-  padding-left: 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .homelogo {
-  margin-left: 50rem;
-  margin-bottom: 3rem;
-  margin-top: 2.5rem;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -40%);
 }
