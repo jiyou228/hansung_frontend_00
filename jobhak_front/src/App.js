@@ -1,4 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import {LoginProvider} from './components/LoginContext';
 import Signup from "./components/Signup";
 import JoinCheck from "./components/JoinCheck";
 import Login from "./components/Login";
@@ -14,23 +16,25 @@ import Resume from "./components/Resume";
 import Home from "./components/Home";
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/join" element={<Signup />} />
-        <Route path="/joincheck" element={<JoinCheck />} />
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/login/naver" element={<NaverLogin />}></Route>
-        <Route path="/login/kakao" element={<KakaoLogin />}></Route>
-        <Route path="/find/id" element={<FindID />}></Route>
-        <Route path="/find/pw" element={<FindPW />}></Route>
-        <Route path="/reset/pw" element={<ResetPW />}></Route>
-        <Route path="/boardlist" element={<BoardList />}></Route>
-        <Route path="/user/myInfo" element={<MyPage />}></Route>
-        <Route path="/profile/female" element={<Profile />}></Route>
-        <Route path="/resume" element={<Resume />}></Route>
-      </Routes>
-    </BrowserRouter>
+    <LoginProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/join" element={<Signup />} />
+          <Route path="/joincheck" element={<JoinCheck />} />
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/login/naver" element={<NaverLogin />}></Route>
+          <Route path="/login/kakao" element={<KakaoLogin />}></Route>
+          <Route path="/find/id" element={<FindID />}></Route>
+          <Route path="/find/pw" element={<FindPW />}></Route>
+          <Route path="/reset/pw" element={<ResetPW />}></Route>
+          <Route path="/boardlist" element={<BoardList />}></Route>
+          <Route path="/user/myInfo" element={<MyPage />}></Route>
+          <Route path="/profile/female" element={<Profile />}></Route>
+          <Route path="/resume" element={<Resume />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </LoginProvider>
   );
 }
 

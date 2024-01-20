@@ -144,3 +144,13 @@
   margin-top: 1rem;
   width: 22rem;
 }
+.signup .navbar_app{
+  display: none;
+}
+@media(max-width: 768px){
+  .signup .navbar_app{
+      display: block;
+      position: absolute;
+      top:0;
+  }
+}

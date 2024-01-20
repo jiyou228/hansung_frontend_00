@@ -5,6 +5,7 @@ import "./Signup.css";
 import Jobhak from "../assets/jobhak_full.png";
 import naver_join from "../assets/naver_join.png";
 import kakao_join from "../assets/kakao_join.png";
+import Nav from "./Nav";
 function Signup() {
   const [loginid, setLoginID] = useState("");
   const [loginpw, setLoginPW] = useState("");
@@ -133,7 +134,8 @@ function Signup() {
     }
   };
   return (
-    <div>
+    <div className="signup">
+      <Nav/>
       <div className="logo-container">
         <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
         <label className="title_lb"> 회원가입</label>

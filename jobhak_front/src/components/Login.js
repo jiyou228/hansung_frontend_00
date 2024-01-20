@@ -8,12 +8,18 @@ import kakao from "../assets/kakao.png";
 import view from "../assets/view_pw.png";
 import hide from "../assets/hide_pw.png";
 import '../components/Login.css';
+import { useContext } from 'react';
+import { LoginContext } from './LoginContext';
+import Nav from './Nav';
 const Login = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
     const [showPw, setShowPw] = useState(false);
+    const {loggedIn} = useContext(LoginContext);
     const navigate = useNavigate();
+
     const submitLogin = async(e) => {
+        loggedIn();
         e.preventDefault();
         try{
             const response = await axios.post('http://localhost:3000/login', {
@@ -22,6 +28,7 @@ const Login = () => {
             });
             if(response.data.success){
                 console.log("로그인 성공!");
+                loggedIn();
                 navigate('/');
             } else{
                 alert("아이디와 비밀번호를 확인해주세요.");
@@ -45,6 +52,8 @@ const Login = () => {
     }
     
     return (
+        <div className='login'>
+        <Nav/>
         <div className='login_app'>
         <img src = {full_logo} className='logo_full' alt='logo_full'/>
             <form onSubmit={submitLogin} className='login_form'>
@@ -62,9 +71,9 @@ const Login = () => {
             <ul className='login_ul'>
                 <Link to ="/joincheck" className='login_link'>
                 <li className='login_li_join'>회원가입</li></Link>
-                <Link to ="/find/id" className='login_link'>
-                <li className='login_li_id'>아이디 · </li>
-                </Link>
+                
+                <li className='login_li_id'><Link to ="/find/id" className='login_link'>아이디</Link></li>
+                <li style={{paddingLeft: '1rem'}}>•</li>
                 <Link to ="/find/pw" className='login_link'>
                 <li className='login_li_pw'>비밀번호 찾기</li>
                 </Link>
@@ -84,6 +93,7 @@ const Login = () => {
             <img src = {kakao} className='login_kakao' alt='kakao_login'/>
             </div>
             </Link>
+    </div>
     </div>
   );
 };
