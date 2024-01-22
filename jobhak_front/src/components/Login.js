@@ -20,7 +20,11 @@ const Login = () => {
         loginId: id,
         password: pw,
       });
+<<<<<<< HEAD
       if (response.status === 200) {
+=======
+      if (response.data.success) {
+>>>>>>> 0b0efabea4c706d98921c5cdbee38e4f2fd3f131
         console.log("로그인 성공!");
         navigate("/");
       } else {

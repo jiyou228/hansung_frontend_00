@@ -116,8 +116,8 @@ function Signup() {
     } else {
       await axios
         .post(`http://localhost:3000/join`, {
-          loginId: loginid,
-          password: loginpw,
+          id: loginid,
+          pw: loginpw,
           name: username,
           nickname: usernickname,
           email: useremail,
