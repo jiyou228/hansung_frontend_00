@@ -10,7 +10,6 @@ import hide from "../assets/hide_pw.png";
 import '../components/Login.css';
 import { useContext } from 'react';
 import { LoginContext } from './LoginContext';
-import Nav from './Nav';
 const Login = () => {
     const [id, setId] = useState('');
     const [pw, setPw] = useState('');
@@ -19,29 +18,23 @@ const Login = () => {
     const navigate = useNavigate();
 
     const submitLogin = async(e) => {
-        loggedIn();
         e.preventDefault();
         try{
             const response = await axios.post('http://localhost:3000/login', {
                 loginId: id,
                 password: pw,
             });
-            if(response.data.success){
-                console.log("로그인 성공!");
+            if(response.status === 200){
+                alert("로그인 성공!");
                 loggedIn();
                 navigate('/');
-            } else{
-                alert("아이디와 비밀번호를 확인해주세요.");
-                //window.location.reload();
             }
         } catch (error) {
             console.error('로그인 에러 발생: ', error);
 
-            if (error.response && error.response.status === 401) {
-                // 서버에서 401 Unauthorized 응답을 보낸 경우
+            if (error.response && error.response.status === 400) {
                 alert("아이디와 비밀번호가 맞지 않습니다.");
             } else {
-                // 그 외의 에러 처리
                 alert("로그인 중 에러가 발생했습니다. 다시 시도해주세요.");
             }
         }
@@ -53,7 +46,6 @@ const Login = () => {
     
     return (
         <div className='login'>
-        <Nav/>
         <div className='login_app'>
         <img src = {full_logo} className='logo_full' alt='logo_full'/>
             <form onSubmit={submitLogin} className='login_form'>
