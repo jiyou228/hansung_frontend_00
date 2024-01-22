@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
-import "../components/FindID.css";
+import '../components/FindID.css'
 
 const FindID = () => {
     const [name, setName] = useState('');
@@ -16,8 +16,8 @@ const FindID = () => {
     const findIDSubmit = async() => {
       try{
         const response = await axios.post('http://localhost:3000/find/id', {
-          name,
-          email,
+          name: name,
+          email: email,
         });
         if (response.data.result) {
           alert(`아이디: ${response.data.result}`);
@@ -28,9 +28,6 @@ const FindID = () => {
         console.error("Error: ", error);
         alert('아이디 찾기 중 오류가 발생했습니다.');
       }
-    } catch (error) {
-      console.error("Error: ", error);
-      alert("아이디 찾기 중 오류가 발생했습니다.");
     }
     return (
         <div className="findID_app">
