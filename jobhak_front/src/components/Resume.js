@@ -1,3 +1,5 @@
+// import React, { useState } from "react";
+// import Nav from './Nav';
 // import '../components/Resume.css';
 // const Resume = () => {
 //     const [inputText, setInputText] = useState("");

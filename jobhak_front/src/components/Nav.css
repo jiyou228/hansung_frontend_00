@@ -1,41 +1,78 @@
 .navbar_app{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.navbar_container{
+    display: block;
+    float: left;
     background-color: #104085;
-    width: 78vw;
-    margin-top: 1vw;
-    margin-left: 0.5vw;
+    width: 100%;
     font-family: 'NanumSquare';
-    font-weight: 800;
+    font-weight: 700;
+    margin-top: 0.5vh;
+    color: white;
 }
 .navbar_link{
     text-decoration: none;
     color: white;
 }
 .logo_half{
-    width: 17vw;
+    width: 10vw;
+    margin-left: 2vw;
 }
-.navbar_container ul{
+.navbar_app .nav_mobile{
     list-style: none;
-    display: flex;
-    font-size: 1.5vw;
-    padding: 0;
-    line-height:0.5;
+    float: right;
+    display:flex;
+    font-size: 1.1vw;
+    margin-right: 2vw;
+    gap: 1.5vw;
 }
-.navbar_container li{
-    margin-left: 12vw;
-    display: inline-block;
-}
-.navbar_container li:hover{
-    background-color: #7FD1FF;
-    opacity: 0.7;
-    z-index: -100;
+.navbar_app li:hover{
+    background-color:white;
     color: #104085;
-    padding: 0.5vw;
+    text-decoration: underline;
+    font-weight: 800;
 }
+.navbar_app .navbar_login{
+    font-weight: 800;
+    color: #B9CFFF;
+    margin-left: 1vw;
+}
+.navbar_app .navbar_login:hover{
+    background-color:#B9CFFF;
+    color: #104085;
+    font-weight: 800;
+}
+.navbar_profile_name{
+    position: relative;
+}
+.navbar_profile{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+.navbar_profile.clicked{
+    display: block;
+    position: absolute;
+    color: #252525;
+    top: 2.5vw;
+    width: 6vw;
+    text-align: center;
+    left: -1vw;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+    padding: 1vh 0;
+}
+.navbar_profile.clicked li{
+    color: #252525;
+    font-size: 1.2vw;
+    padding: 1vh 0;
+    font-weight: 700;
+}
+.navbar_profile.clicked li:hover{
+    background-color: #c1c1c180;
+    text-decoration: none;
+    font-weight: 800;
+}
+
 .burger{
     visibility: hidden;
     width: 0;
@@ -45,39 +82,109 @@
     width: 0;
 }
 @media ( max-width: 768px ) {
-    .navbar_container{
+    .nav_mobile {
         visibility: hidden;
     }
-    .logo_half{
-        width: 40vw;
-        position: fixed;
-        left: 50%;
-        top:1vh;
-        transform: translateX(-50%);
-    }
-    .burger {
+    
+    .nav_mobile.open {
         visibility: visible;
-        width: 10vw;
-        position: fixed;
-        left: 2vw;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        list-style: none;
+        position: absolute;
+        background-color: #092958;
+        color: white;
+        width: 100vw;
+        top:5.5vw;
+        padding: 0;
+        font-size: 3.5vw;
+        width: 100vw;
+        text-align: center;
+        padding-top: 2vh;
         padding-bottom: 1vh;
+        font-weight: 800;
+    }
+    .navbar_app li{
+        padding: 2vh 0;
+    }
+    .navbar_app .navbar_mypage{
+        margin-bottom: 0;
+    }
+    .navbar_profile.clicked{
+        display: block;
+        position: relative;
+        color: white;
+        top: 0;
+        text-align: center;
+        left: 0;
+        border-radius: 0;
+        background-color: #092958;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 1vh;
+        width: 100vw;
+    }
+    .navbar_profile.clicked:hover{
+        background-color: white;
+    }
+    .navbar_profile.clicked li{
+        color: white;
+        font-size: 2.8vw;
+        padding: 1vh 0;
+        font-weight: 700;
+    }
+    .navbar_profile.clicked:hover li:hover{
+        background-color: #B9CFFF;
+        text-decoration: underline;
+        text-align: center;
+        font-weight: 800;
+    }
+    .navbar_app .navbar_login{
+        display: none;
+    }
+    .navbar_app li:hover{
+        width: 100vw;
+        text-align: center;
+        text-decoration: none;
+    }
+    .navbar_app li:hover ul{
+        background-color:white;
+        color: #104085;
+        text-decoration: none;
+        font-weight: 800;
+        text-align: center;
+    }
+    .navbar_app li:hover ul li{
+        color: #104085;
+    }
+    .burger{
+        visibility: visible;
+        width: 4vw;
+        left: 3vw;
+        position: absolute;
+        top:50%;
+        transform: translateY(-50%);
     }
     .mypage{
         visibility: visible;
-        width: 10vw;
-        margin-right: -8vw;
-        padding-bottom: 1vh;
+        width: 6vw;
+        position: absolute;
+        right: 3vw;
+        top:50%;
+        transform: translateY(-50%);
     }
-    ul{
-        height: 0;
-        visibility: hidden;
-        width: 0;
+    .logo_half{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        width: 22vw;
     }
-    
-    .navbar_app {
-        box-shadow: 0px 1vw 2vw 0 #0000000d;
-        margin-top: 1vh;
-        position: fixed;
-        width: 100%;
+    .navbar_app{
+        position: relative;
+        margin-top: 0;
+        height: 9vw;
     }
   }

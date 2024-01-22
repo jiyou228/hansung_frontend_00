@@ -85,7 +85,7 @@ function Signup() {
         if (response.status === 200) {
           alert("사용 가능한 아이디입니다.");
           setUsableID(true);
-        } else {
+        } else{
           alert("이미 사용중인 아이디입니다.");
           setLoginID("");
         }
