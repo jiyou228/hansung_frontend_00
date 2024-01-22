@@ -99,14 +99,11 @@
     top: 50%;
     transform: translateY(-50%);
 }
-.login .navbar_app{
-    display: none;
-}
 @media(max-width: 768px){
-    .login .navbar_app{
-        display: block;
-    }
     .login .login_app{
         margin-top: 1.5rem;
+    }
+    .login .logo_full{
+        width: 15rem;
     }
 }

@@ -79,13 +79,13 @@ function Signup() {
   const idValidation = () => {
     axios
       .post("http://localhost:3000/verify/id", {
-        id: loginid,
+        loginId: loginid,
       })
       .then((response) => {
-        if (response.data === false) {
+        if (response.status === 200) {
           alert("사용 가능한 아이디입니다.");
           setUsableID(true);
-        } else {
+        } else{
           alert("이미 사용중인 아이디입니다.");
           setLoginID("");
         }

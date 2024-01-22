@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
@@ -7,23 +7,21 @@ import '../components/FindID.css'
 const FindID = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [id, setId] = useState('');
-    useEffect(() => {
-        if(id){
-            alert(`아이디: ${id}`);
-        }
-    }, [id]);
 
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        findIDSubmit();
+      }
+    };
     const findIDSubmit = async() => {
       try{
         const response = await axios.post('http://localhost:3000/find/id', {
           name,
           email,
         });
-        const foundId = response.data.id;
-        if(foundId){
-          setId(foundId);
-        } else{
+        if (response.data.result) {
+          alert(`아이디: ${response.data.result}`);
+        } else {
           alert("해당 정보로 등록된 아이디가 없습니다.");
         }
       }catch(error){
@@ -40,7 +38,7 @@ const FindID = () => {
               <input type="text" required className='findID_input' value={name} placeholder="이름" onChange={(e) => setName(e.target.value)} />
             </div>
             <div className="findID_email_container">
-              <input type="email" required className="findID_input" placeholder="이메일" onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" required className="findID_input" placeholder="이메일" onChange={(e) => setEmail(e.target.value)} onKeyDown={(e) => handleKeyDown(e)}/>
             </div>
             <button type="submit" className="findID_submit">확인</button>
           </form>
