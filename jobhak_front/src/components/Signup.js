@@ -5,6 +5,7 @@ import "./Signup.css";
 import Jobhak from "../assets/jobhak_full.png";
 import naver_join from "../assets/naver_join.png";
 import kakao_join from "../assets/kakao_join.png";
+import Nav from "./Nav";
 function Signup() {
   const [loginid, setLoginID] = useState("");
   const [loginpw, setLoginPW] = useState("");
@@ -78,10 +79,10 @@ function Signup() {
   const idValidation = () => {
     axios
       .post("http://localhost:3000/verify/id", {
-        id: loginid,
+        loginId: loginid,
       })
       .then((response) => {
-        if (response.data === false) {
+        if (response.status === 200) {
           alert("사용 가능한 아이디입니다.");
           setUsableID(true);
         } else {
@@ -133,17 +134,14 @@ function Signup() {
     }
   };
   return (
-    <div className="join_div">
+    <div className="signup">
       <div className="logo-container">
         <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
         <label className="title_lb"> 회원가입</label>
       </div>
       <br />
-      <div className="joincheck_lb">
-        <label>이미 Job학다식 회원이신가요? </label>
-        <Link to="/login">로그인</Link>
-      </div>
-
+      <label className="joincheck_lb">이미 Job학다식 회원이신가요?</label>
+      <Link to="/login">로그인</Link>
       <br />
 
       <div className="social_div">
@@ -162,7 +160,7 @@ function Signup() {
           </div>
         </Link>
       </div>
-
+      <div className="vertical-line" />
       <div className="joinform">
         <br />
         <label className="joinform_lb">아이디</label>
@@ -237,7 +235,6 @@ function Signup() {
           회원가입
         </button>
       </div>
-      <div className="vertical-line" />
     </div>
   );
 }

@@ -53,7 +53,7 @@ function JoinCheck() {
       <form className="joinservice-form">
         <div className="join-checkbox">
           <div className="form-check-all">
-            <div className="checkbox-group">
+            <div className="checkbox-group0">
               <br />
               <input
                 type="checkbox"
@@ -69,7 +69,7 @@ function JoinCheck() {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group1">
             <div className="checkbox-group1">
               <br />
               <input
@@ -99,7 +99,7 @@ function JoinCheck() {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group2">
             <div className="checkbox-group2">
               <input
                 type="checkbox"
@@ -125,7 +125,7 @@ function JoinCheck() {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group3">
             <div className="checkbox-group3">
               <input
                 type="checkbox"
@@ -159,7 +159,7 @@ function JoinCheck() {
           className="next-button"
           disabled={isNextButtonDisabled}
           onClick={() => {
-            navigate("/signup");
+            navigate("/join");
           }}
         >
           다음

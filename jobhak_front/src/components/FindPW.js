@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
-import '../components/FindPW.css';
+import "../components/FindPW.css";
 const FindPW = () => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -12,14 +12,13 @@ const FindPW = () => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:3000/find/pw", {
-        id: id,
+        loginId: id,
         name: name,
         email: email,
       });
-      if(response.data.success){
+      if (response.status === 200) {
         alert(`${email}로 비밀번호 재설정 링크를 전송했습니다.`);
-      }
-      else{
+      } else {
         alert("일치하는 회원 정보가 없습니다.");
       }
     } catch (error) {
@@ -31,9 +30,9 @@ const FindPW = () => {
 
   return (
     <div className="findPW_app">
-        <img src = {full_logo} className="logo_full" alt='jobhak_full'/>
-        <p className="findPW_p">비밀번호 찾기</p>
-        <form onSubmit={findPWSubmit} className="findPW_form">
+      <img src={full_logo} className="logo_full" alt="jobhak_full" />
+      <p className="findPW_p">비밀번호 찾기</p>
+      <form onSubmit={findPWSubmit} className="findPW_form">
         <div>
           <input
             type="text"
@@ -64,9 +63,11 @@ const FindPW = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <button type="submit" className="findPW_submit">확인</button>
+        <button type="submit" className="findPW_submit">
+          확인
+        </button>
       </form>
-      <Link to ='/login' className="findPW_link">
+      <Link to="/login" className="findPW_link">
         <p className="findPW_login">로그인 바로가기</p>
       </Link>
     </div>

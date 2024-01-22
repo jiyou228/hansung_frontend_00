@@ -1,4 +1,4 @@
-.checkbox-group input[type="checkbox"] {
+.checkbox-group0 {
   margin-right: 1rem;
   margin-inline-start: 1.1rem;
 }
@@ -6,21 +6,22 @@
 .checkbox-group1 {
   margin-right: 0.7rem;
   margin-inline-start: 2.6rem;
+  position: relative;
 }
 
 .checkbox-group2 {
   margin-right: 0.7rem;
   margin-inline-start: 2.6rem;
-  margin-top: 10.5%;
+  position: relative;
 }
 
 .checkbox-group3 {
   margin-right: 0.7rem;
   margin-inline-start: 2.6rem;
-  margin-top: 10%;
+  position: relative;
 }
 
-.checkbox-group,
+.checkbox-group0,
 .checkbox-group1,
 .checkbox-group2,
 .checkbox-group3 label {
@@ -28,19 +29,19 @@
 }
 
 .form-detail1 {
-  width: 70rem;
-  height: 6rem;
+  width: 58vw;
+  height: 12vh;
   border: 0.1rem solid #ccc;
   overflow: auto;
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 28%;
   transform: translate(-50%, -50%);
 }
 
 .form-detail2 {
-  width: 70rem;
-  height: 6rem;
+  width: 58vw;
+  height: 12vh;
   border: 0.1rem solid #ccc;
   overflow: auto;
   display: flex;
@@ -54,8 +55,8 @@
 }
 
 .form-detail3 {
-  width: 70rem;
-  height: 6rem;
+  width: 58vw;
+  height: 12vh;
   border: 0.1rem solid #ccc;
   overflow: auto;
   display: flex;
@@ -64,15 +65,15 @@
   justify-content: center;
   position: absolute;
   left: 50%;
-  top: 82%;
+  top: 84%;
   transform: translate(-50%, -50%);
 }
 
 .next-button {
   font-size: 1.2rem;
   font-weight: bold;
-  width: 15rem;
-  height: 2rem;
+  width: 13vw;
+  height: 3.5vh;
   background-color: #104085;
   color: white;
   border: 0rem;
@@ -90,8 +91,8 @@
 .cancel-button {
   font-size: 1.2rem;
   font-weight: bold;
-  width: 15rem;
-  height: 2rem;
+  width: 13vw;
+  height: 3.5vh;
   background-color: #104085;
   color: white;
   border: 0rem;
@@ -116,8 +117,8 @@
 }
 
 .join-checkbox {
-  width: 75rem;
-  height: 34rem;
+  width: 67vw;
+  height: 65vh;
   border: 0.1rem solid #ccc;
   overflow: auto;
   position: relative;
