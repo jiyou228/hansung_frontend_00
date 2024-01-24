@@ -8,24 +8,25 @@ const FindPW = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const findPWSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3000/find/pw", {
+  const findPWSubmit = () => {
+    axios
+      .post("http://localhost:3000/find/pw", {
         loginId: id,
         name: name,
         email: email,
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          alert(`${email}로 비밀번호 재설정 링크를 전송했습니다.`);
+        } else {
+          alert("일치하는 회원 정보가 없습니다.");
+        }
+      })
+      .catch((err) => {
+        console.log("Error: ", err);
+        alert("비밀번호 찾기 중 서버 오류가 발생했습니다. 다시 시도해주세요.");
+        window.location.reload();
       });
-      if (response.status === 200) {
-        alert(`${email}로 비밀번호 재설정 링크를 전송했습니다.`);
-      } else {
-        alert("일치하는 회원 정보가 없습니다.");
-      }
-    } catch (error) {
-      console.error("Error: ", error);
-      alert("비밀번호 찾기 중 서버 오류가 발생했습니다. 다시 시도해주세요.");
-      window.location.reload();
-    }
   };
 
   return (
