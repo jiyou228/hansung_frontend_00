@@ -52,25 +52,23 @@ function JoinCheck() {
 
       <form className="joinservice-form">
         <div className="join-checkbox">
-          <div className="form-check-all">
-            <div className="checkbox-group0">
-              <br />
-              <input
-                type="checkbox"
-                id="checkAll"
-                name="checkAll"
-                checked={agreements.termsOfService && agreements.privacyPolicy}
-                onChange={handleCheckAllChange}
-              />
-              <label htmlFor="checkAll">
-                Job학다식 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신에
-                모두 동의합니다.
-              </label>
-            </div>
+          <div className="checkbox-group1">
+            <br />
+            <input
+              type="checkbox"
+              id="checkAll"
+              name="checkAll"
+              checked={agreements.termsOfService && agreements.privacyPolicy}
+              onChange={handleCheckAllChange}
+            />
+            <label htmlFor="checkAll">
+              Job학다식 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신에
+              모두 동의합니다.
+            </label>
           </div>
-
-          <div className="form-group1">
-            <div className="checkbox-group1">
+          <br />
+          <div className="form-group">
+            <div className="checkbox-group">
               <br />
               <input
                 type="checkbox"
@@ -86,7 +84,7 @@ function JoinCheck() {
                 이용약관 동의 (필수){" "}
               </label>
             </div>
-            <div className="form-detail1">
+            <div className="form-detail">
               <p style={{ marginLeft: "18px", marginRight: "18px" }}>
                 Job학다식에 오신 여러분을 환영합니다. Job학다식 서비스 및
                 제품(이하 ‘서비스’)을 이용해 주셔서 감사합니다. 본 약관은 다양한
@@ -98,9 +96,9 @@ function JoinCheck() {
               </p>
             </div>
           </div>
-
-          <div className="form-group2">
-            <div className="checkbox-group2">
+          <br />
+          <div className="form-group">
+            <div className="checkbox-group">
               <input
                 type="checkbox"
                 id="privacyPolicy"
@@ -114,7 +112,7 @@ function JoinCheck() {
                 개인정보 수집 및 이용 동의 (필수)
               </label>
             </div>
-            <div className="form-detail2">
+            <div className="form-detail">
               <p style={{ marginLeft: "18px", marginRight: "18px" }}>
                 Job학다식 개인정보보호법에 따라 회원가입 신청하시는 분께
                 수집하는 개인정보의 항목, 개인정보의 수집 및 이용목적,
@@ -124,9 +122,9 @@ function JoinCheck() {
               </p>
             </div>
           </div>
-
-          <div className="form-group3">
-            <div className="checkbox-group3">
+          <br />
+          <div className="form-group">
+            <div className="checkbox-group">
               <input
                 type="checkbox"
                 id="allowPromotions"
@@ -140,7 +138,7 @@ function JoinCheck() {
                 프로모션 정보 수신 동의 (선택){" "}
               </label>
             </div>
-            <div className="form-detail3">
+            <div className="form-detail">
               <p style={{ marginLeft: "18px", marginRight: "18px" }}>
                 제공하는 이벤트 등 다양한 정보를 이메일로 받아보실 수 있습니다.
                 일부 서비스(별도 회원 체계로 운영하거나 가입 이후 추가 가입하여
