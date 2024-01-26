@@ -7,6 +7,16 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'NanumSquare';
+}
+
+button{
+  font-family: 'NanumSquare';
+}
+textarea{
+  font-family: 'NanumSquare';
+  font-size: 1.15rem;
+}
+input{
+  font-family: 'NanumSquare';
 }
