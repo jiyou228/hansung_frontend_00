@@ -1,12 +1,37 @@
 body {
   margin: 0;
-  color:#252525;
-  font-family: 'NanumSquare';
+  color: #252525;
+  font-family: "NanumSquare";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+@font-face {
+  font-family: "GSans_1";
+  src: url("./fonts/GmarketSansTTFLight.ttf");
+}
+
+@font-face {
+  font-family: "GSans_2";
+  src: url("./fonts/GmarketSansTTFMedium.ttf");
+}
+
+@font-face {
+  font-family: "kotra";
+  src: url("./fonts/KOTRA\ HOPE.ttf");
+}
+
+@font-face {
+  font-family: "cafe24";
+  src: url("./fonts/Cafe24Ohsquare-v2.0.ttf");
+}
+
+@font-face {
+  font-family: "binggrae";
+  src: url("./fonts/Binggrae2.ttf");
 }
