@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
-import {LoginProvider} from './components/LoginContext';
+import { LoginProvider } from "./components/LoginContext";
 import Signup from "./components/Signup";
 import JoinCheck from "./components/JoinCheck";
 import Login from "./components/Login";
@@ -14,6 +14,9 @@ import MyPage from "./components/MyPage";
 import Profile from "./components/Profile";
 import Resume from "./components/Resume";
 import Home from "./components/Home";
+import Guide from "./components/Guide";
+import CountChar from "./components/CountChar";
+
 function App() {
   return (
     <LoginProvider>
@@ -32,6 +35,8 @@ function App() {
           <Route path="/user/myInfo" element={<MyPage />}></Route>
           <Route path="/profile/female" element={<Profile />}></Route>
           <Route path="/resume" element={<Resume />}></Route>
+          <Route path="/guide" element={<Guide />} />
+          <Route path="/countchar" element={<CountChar />} />
         </Routes>
       </BrowserRouter>
     </LoginProvider>
