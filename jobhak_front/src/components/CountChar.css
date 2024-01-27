@@ -1,0 +1,24 @@
+.count_ip {
+  width: 60vw;
+  height: 40vh;
+  font-size: 20px;
+  outline: none;
+  justify-content: center;
+}
+
+.count_title {
+  text-align: center;
+  font-size: 30px;
+}
+
+.count_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.count_lb {
+  font-size: 20px;
+  font-weight: 600;
+}
