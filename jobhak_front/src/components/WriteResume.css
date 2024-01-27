@@ -80,6 +80,11 @@
 .toggle_container{
     display: inline-block;
 }
+.toggle_container label{
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    padding-right: 1rem;
+}
 .toggle_button {
     display: inline-block;
     border-radius: 2rem;
@@ -189,4 +194,50 @@
     border-radius: 1rem;
     font-weight: 700;
     font-size: 1.5rem;
+    margin-top: 1rem;
 }
+.write_career_container input{
+    margin-left: 1rem;
+}
+.write_career_container label{
+    margin-left: 1rem;
+}
+.write_career_container label:first-child{
+    margin-left: 0;
+}
+#write_career button{
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #104085;
+    color: white;
+    padding: 0.2rem 1rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+}
+#write_career{
+    margin-top: 1rem;
+}
+.write_experience_container input{
+    margin-left: 1rem;
+}
+.write_experience_container label{
+    margin-left: 1rem;
+}
+.write_experience_container label:first-child{
+    margin-left: 0;
+}
+#write_experience button{
+    font-weight: 700;
+    font-size: 1.2rem;
+    border: none;
+    background-color: #104085;
+    color: white;
+    padding: 0.2rem 1rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+}
+#write_experience{
+    margin-top: 1rem;
+}
+
