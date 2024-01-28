@@ -19,6 +19,7 @@ function CountChar() {
   return (
     <div>
       <Nav />
+      <br />
       <h2 className="count_title">글자 수 세기</h2>
       <div className="count_div">
         <textarea

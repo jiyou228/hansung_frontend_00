@@ -16,6 +16,7 @@ import Resume from "./components/Resume";
 import Home from "./components/Home";
 import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
+import Sidebar from "./components/Side_bar";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/resume" element={<Resume />}></Route>
           <Route path="/guide" element={<Guide />} />
           <Route path="/countchar" element={<CountChar />} />
+          <Route path="/sidebar" element={<Sidebar />} />
         </Routes>
       </BrowserRouter>
     </LoginProvider>

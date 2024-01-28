@@ -4,11 +4,16 @@
   font-size: 20px;
   outline: none;
   justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-family: "GSans_2";
 }
 
 .count_title {
   text-align: center;
   font-size: 30px;
+  font-weight: 800;
+  margin-top: 8rem;
 }
 
 .count_div {
