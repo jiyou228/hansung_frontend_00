@@ -1,0 +1,10 @@
+#png{
+    width: 30vw;
+    border-radius: 10px;
+    border: 1px solid #0000001a;
+    box-shadow: 0px 0px 2px 2px #0000001a;
+    margin-bottom: 2vh;
+}
+.swiper{
+    margin-top: 2vh;
+}
