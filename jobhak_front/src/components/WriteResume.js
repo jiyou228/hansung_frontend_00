@@ -4,6 +4,9 @@ import Nav from "./Nav.js";
 import { Link } from "react-router-dom";
 
 const WriteResume = () => {
+  const [sendValue, getSendValue] = useState({
+    
+  })
   const [clipboardValue, setClipboardValue] = useState("");
   const [isTextMode, setIsTextMode] = useState(false);
 

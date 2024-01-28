@@ -1,9 +1,20 @@
-.home .swiper{
-    display: none;
+.home .swiper #png{
+    width: 15vw;
 }
-
+.home{
+    position: relative;
+}
+.home .swiper{
+    width: 70vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 @media(max-width: 768px){
+    .home .swiper #png{
+        width: 30vw;
+    }
     .home .swiper{
-        display: block;
+        width: 96vw;
     }
 }
