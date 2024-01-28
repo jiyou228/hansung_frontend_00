@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./MyPage.css";
+import Sidebar from "./Side_bar";
 
 function MyPage() {
   const navigate = useNavigate();
@@ -97,80 +98,83 @@ function MyPage() {
   return (
     <div>
       <Nav />
+      <br />
+      <Sidebar />
+      <div className="main_container">
+        <div className="privacy_div">
+          <label className="privacy_lb">아이디</label>
+          <input
+            className="privacy_ip"
+            disabled={true}
+            type="text"
+            value={userid}
+            onChange={IDHandler}
+          />
+          <br />
+          <label className="privacy_lb">비밀번호</label>
+          <input
+            className="privacy_ip"
+            type="password"
+            value={userpw}
+            onChange={PWHandler}
+          />
+          <br />
+          <label className="privacy_lb">비밀번호 재확인</label>
+          <input
+            className="privacy_ip"
+            type="password"
+            value={checkpw}
+            onChange={CheckPWHandler}
+          />
+          <br />
+          <label className="privacy_lb">닉네임</label>
+          <input
+            className="privacy_ip"
+            type="text"
+            value={usernickname}
+            onChange={NickNameHandler}
+          />
+          <br />
+          <label className="privacy_lb">이름</label>
+          <input
+            className="privacy_ip"
+            disabled={true}
+            type="text"
+            value={username}
+            onChange={NameHandler}
+          />
+          <br />
+          <label className="privacy_lb">이메일</label>
+          <input
+            className="privacy_ip"
+            disabled={true}
+            type="email"
+            value={useremail}
+            onChange={EmailHandler}
+          />
+          <br />
+          <button className="privacy_btn" onClick={onSaveHandler}>
+            수정하기
+          </button>
+        </div>
 
-      <div className="privacy_div">
-        <label className="privacy_lb">아이디</label>
-        <input
-          className="privacy_ip"
-          disabled={true}
-          type="text"
-          value={userid}
-          onChange={IDHandler}
-        />
-        <br />
-        <label className="privacy_lb">비밀번호</label>
-        <input
-          className="privacy_ip"
-          type="password"
-          value={userpw}
-          onChange={PWHandler}
-        />
-        <br />
-        <label className="privacy_lb">비밀번호 재확인</label>
-        <input
-          className="privacy_ip"
-          type="password"
-          value={checkpw}
-          onChange={CheckPWHandler}
-        />
-        <br />
-        <label className="privacy_lb">닉네임</label>
-        <input
-          className="privacy_ip"
-          type="text"
-          value={usernickname}
-          onChange={NickNameHandler}
-        />
-        <br />
-        <label className="privacy_lb">이름</label>
-        <input
-          className="privacy_ip"
-          disabled={true}
-          type="text"
-          value={username}
-          onChange={NameHandler}
-        />
-        <br />
-        <label className="privacy_lb">이메일</label>
-        <input
-          className="privacy_ip"
-          disabled={true}
-          type="email"
-          value={useremail}
-          onChange={EmailHandler}
-        />
-        <br />
-        <button className="privacy_btn" onClick={onSaveHandler}>
-          수정하기
-        </button>
-      </div>
-
-      <div className="profile_div">
-        <br />
-        <div className="example_div"></div>
-        <button className="profile_btn1">삭제</button>
-        <button className="profile_btn2">업로드</button>
-        <br />
-        <label className="profile_name">{usernickname} 님</label>
-        <br />
-        <label className="profile_count">글 수 :</label>
-        <br />
-        <label className="profile_count">댓글 수 :</label>
-        <br />
-        <label className="profile_count">북마크 수 :</label>
-        {/* 글, 댓글, 북마크 업데이트 */}
-        <br />
-        <button className="delete_btn">탈퇴하기</button>
+        <div className="profile_div">
+          <br />
+          <div className="example_div"></div>
+          <button className="profile_btn1">삭제</button>
+          <button className="profile_btn2">업로드</button>
+          <br />
+          <label className="profile_name">{usernickname} 님</label>
+          <br />
+          <label className="profile_count">글 수 :</label>
+          <br />
+          <label className="profile_count">댓글 수 :</label>
+          <br />
+          <label className="profile_count">북마크 수 :</label>
+          {/* 글, 댓글, 북마크 업데이트 */}
+          <br />
+          <button className="delete_btn">탈퇴하기</button>
+        </div>
       </div>
     </div>
   );
