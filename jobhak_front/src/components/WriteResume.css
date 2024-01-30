@@ -172,8 +172,8 @@
     border: none;
     border-radius: 0.8rem;
     padding: 0.5rem 3rem;
-    margin-left: 2vw;
     cursor: pointer;
+    margin-left: 1vw;
 }
 .write_button_reset {
     color: #104085;
@@ -181,7 +181,9 @@
     font-weight: 700;
     border: none;
     border-radius: 0.8rem;
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 2rem;
+    margin-right: 1vw;
+    border: 0.5px solid #0000001a;
 }
 
 .write_add{

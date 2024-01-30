@@ -8,7 +8,8 @@ const FindPW = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const findPWSubmit = () => {
+  const findPWSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("http://localhost:3000/find/pw", {
         loginId: id,
@@ -17,9 +18,10 @@ const FindPW = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          alert(`${email}로 비밀번호 재설정 링크를 전송했습니다.`);
+          alert(`비밀번호: ${res.data.result}`);
+
         } else {
-          alert("일치하는 회원 정보가 없습니다.");
+          alert("비밀번호를 찾을 수 없습니다. ");
         }
       })
       .catch((err) => {

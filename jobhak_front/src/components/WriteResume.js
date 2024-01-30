@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./WriteResume.css";
 import Nav from "./Nav.js";
 import { Link } from "react-router-dom";
+import ModalAlert from "./Modal_Alert.js";
 
 const WriteResume = () => {
-  const [sendValue, getSendValue] = useState({
+  // const [sendValue, getSendValue] = useState({
     
-  })
+  // })
   const [clipboardValue, setClipboardValue] = useState("");
   const [isTextMode, setIsTextMode] = useState(false);
+  const [isAlert, setIsAlert] = useState(false);
 
   const pasteClipboard = async () => {
     try {
@@ -27,11 +29,16 @@ const WriteResume = () => {
 
   const onReset = (e) => {
     e.preventDefault();
-    alert(
-      '\n입력한 내용이 모두 삭제됩니다. 정말로 초기화하시겠습니까? \n\n"확인"을 누르시면 초기화됩니다. '
-    );
-    window.location.reload();
+    setIsAlert(true);
   };
+  
+  const handleCancel = () => {
+    setIsAlert(false);
+    return;
+  }
+  const handleConfirm = () => {
+    window.location.reload();
+  }
 
   const addWriteCareer = () => {
     const newCareerDiv = document.getElementById("write_career").cloneNode(true);
@@ -151,6 +158,13 @@ const WriteResume = () => {
           </button>
         </div>
       </form>
+      {isAlert && (
+      <ModalAlert 
+      message = {`작성된 내용이 모두 초기화됩니다.\n 정말로 삭제하시겠습니까?`} 
+      onCancel = {handleCancel} onConfirm = {handleConfirm}
+      open = {true}
+      />
+      )}
     </>
   );
 };

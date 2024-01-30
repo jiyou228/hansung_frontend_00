@@ -5,7 +5,7 @@
     position: relative;
 }
 .home .swiper{
-    width: 70vw;
+    width: 50vw;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);

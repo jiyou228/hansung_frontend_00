@@ -5,11 +5,8 @@ import logo from '../assets/white_logo.png';
 import burger from '../assets/햄버거.png';
 import close from '../assets/close.png';
 import login from '../assets/login_icon.png';
-import logout from '../assets/logout_icon.png';
-import { LoginContext } from "./LoginContext.js";
 
 const Nav = () => {
-    const { isLogin } = useContext(LoginContext);
     const [isNavOpen, setNavOpen] = useState(false);
     const [isProfile, setIsProfile] = useState(false);
     const profileRef = useRef(null);
@@ -73,15 +70,15 @@ const Nav = () => {
                         마이페이지
                     </li>
                 </Link>
-                <Link to ={isLogin ? '/logout' : '/login'} className="navbar_link">
-                    <li className="navbar_login">
-                        {isLogin ? '로그아웃' : '로그인'}
+                <Link to = '/logout' className="navbar_link">
+                    <li className="navbar_logout">
+                        로그아웃
                     </li>
                 </Link>
             </ul>
             <img src={isNavOpen ? close : burger} alt="메뉴버튼" className="burger" onClick={openNav}/>
             <Link to ='/user/myInfo'>
-                <img src={isLogin ? login : logout} alt="마이페이지버튼" className="mypage" title="마이페이지"/>
+                <img src= {login} alt="마이페이지버튼" className="mypage" title="마이페이지"/>
             </Link>
         </header>
     );

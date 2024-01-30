@@ -13,14 +13,15 @@ const FindID = () => {
       findIDSubmit();
     }
   };
-  const findIDSubmit = () => {
+  const findIDSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("http://localhost:3000/find/id", {
         name: name,
         email: email,
       })
       .then((res) => {
-        if (res.data.result) {
+        if (res) {
           alert(`아이디: ${res.data.result}`);
         } else {
           alert("해당 정보로 등록된 아이디가 없습니다.");
@@ -57,7 +58,7 @@ const FindID = () => {
             onKeyDown={(e) => handleKeyDown(e)}
           />
         </div>
-        <button type="submit" className="findID_submit">
+        <button type="submit" className="findID_submit" onClick={findIDSubmit}>
           확인
         </button>
       </form>

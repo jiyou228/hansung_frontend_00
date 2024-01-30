@@ -63,13 +63,15 @@ export default Resume; */
 import React, { useState } from "react";
 import Nav from './Nav';
 import './ReviseResume.css';
+import ModalAlert from "./Modal_Alert";
 import { Link } from "react-router-dom";
 
 const Resume = () => {
     const [inputText, setInputText] = useState("");
     const [inputCount, setInputCount] = useState(0);
     const [outputText, setOutputText] = useState("하단의 분석 버튼을 누르면 피드백 내용이 보입니다.");
-    
+    const [isAlert, setIsAlert] = useState(false);
+
     const onChangeInput = (e) => {
         const text = e.target.value;
         setInputText(text);
@@ -81,15 +83,21 @@ const Resume = () => {
 
     const onReset = (e) => {
         e.preventDefault();
-        alert('\n입력한 내용이 모두 삭제됩니다. 정말로 초기화하시겠습니까? \n\n"확인"을 누르시면 초기화됩니다. ');
-        setInputText("");
-        setInputCount(0);
+        setIsAlert(true);
     };
 
     const submitResume = (e) => {
         e.preventDefault();
         setOutputText("bye");
     };
+
+    const handleCancel = () => {
+        setIsAlert(false);
+        return;
+      }
+      const handleConfirm = () => {
+        window.location.reload();
+      }
 
     return (
         <>
@@ -133,6 +141,13 @@ const Resume = () => {
                         <button type="submit" className="revise_button_next">분석</button>
                     </div>
                 </form>
+                {isAlert && (
+                    <ModalAlert 
+                    message = {`작성된 내용이 모두 초기화됩니다.\n 정말로 삭제하시겠습니까?`} 
+                    onCancel = {handleCancel} onConfirm = {handleConfirm}
+                    open = {true}
+                    />
+                    )}
         </>
     );
 };
