@@ -1,0 +1,128 @@
+.revise_list {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    font-size: 1.5rem;
+    line-height: 3rem; 
+    margin-bottom:0;
+}
+.revise_list li {
+    padding: 0 1rem;
+    height: 3rem;
+}
+
+.revise_link {
+    text-decoration: none;
+    color: #252525;
+    font-weight: 500;
+}
+
+.revise_link_active {
+    border-bottom: 5px solid #4C8EED;
+    text-decoration: none;
+    color: #252525;
+    font-weight: 700;
+}
+.revise_container {
+    width: 72vw;
+    margin: auto;
+}
+.revise_title{
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.8rem;
+    padding-bottom: 1vh;
+}
+.revise_hr {
+    position: relative;
+    top: -0.7rem;
+    border: 1px solid gray;
+    z-index: -100;
+    opacity: 20%;
+}
+
+.revise_form {
+    margin-top: 1.5rem;
+    margin: auto;
+    display: block;
+    max-width: 73vw;
+}
+
+.revise_content {
+    width: 70vw;
+    text-align: center;
+    font-family: NanumSquare;
+    display: flex;
+    padding: 0;
+    margin-top: 0;
+}
+.revise_content h3{
+    margin-top:0;
+    margin-bottom:  1rem ;
+}
+.revise_count{
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.revise_inputarea{
+    flex: auto;
+}
+.revise_input{
+    display: inline-block;
+    overflow: auto;
+    height: 58vh;
+    width: 32vw;
+    word-break: break-all;
+    white-space: normal;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    resize: none;
+    overflow-y: scroll;
+}
+.revise_outputarea{
+    flex: none;
+}
+.revise_output{
+    display: inline-block;
+    color: #104085;
+    background-color: #DAE8FF;
+    display: inline-block;
+    overflow: auto;
+    height: 58vh;
+    width: 32vw;
+    word-break: break-all;
+    white-space: normal;
+    padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    resize: none;
+    overflow-y: scroll;
+}
+.revise_button_container{
+    text-align: center;
+    justify-content: center;
+    margin-top: 2vh;
+    padding-bottom: 2vh;
+}
+.revise_button_next {
+    background-color: #104085;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.8rem;
+    margin-left: 1vw;
+    padding: 0.3rem 0;
+    width: 10rem;
+    cursor: pointer;
+}
+.revise_button_reset {
+    color: #104085;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.8rem;
+    width: 10rem;
+    padding: 0.3rem 0;
+    margin-right: 1vw;
+}

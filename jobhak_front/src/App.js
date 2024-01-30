@@ -12,8 +12,9 @@ import KakaoLogin from "./components/KakaoLogin";
 import BoardList from "./components/BoardList";
 import MyPage from "./components/MyPage";
 import Profile from "./components/Profile";
-import Resume from "./components/Resume";
+import WriteResume from "./components/WriteResume";
 import Home from "./components/Home";
+import ReviseResume from "./components/ReviseResume";
 function App() {
   return (
     <LoginProvider>
@@ -31,7 +32,8 @@ function App() {
           <Route path="/boardlist" element={<BoardList />}></Route>
           <Route path="/user/myInfo" element={<MyPage />}></Route>
           <Route path="/profile/female" element={<Profile />}></Route>
-          <Route path="/resume" element={<Resume />}></Route>
+          <Route path="/resume/write" element={<WriteResume />}></Route>
+          <Route path="/resume/revise" element={<ReviseResume />}></Route>
         </Routes>
       </BrowserRouter>
     </LoginProvider>

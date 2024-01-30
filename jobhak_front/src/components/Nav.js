@@ -58,7 +58,7 @@ const Nav = () => {
                     </ul>
                 </li>
 
-                <Link to ='/resume' className="navbar_link">
+                <Link to ='/resume/write' className="navbar_link">
                     <li>
                         자기소개서
                     </li>
