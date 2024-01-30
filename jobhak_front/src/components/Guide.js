@@ -10,6 +10,8 @@ function Guide() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    arrows: true,
   };
   return (
     <div className="slide_div">
