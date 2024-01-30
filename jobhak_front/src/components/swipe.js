@@ -17,13 +17,13 @@ const Swipe = () => {
     return (
         <>
           <Swiper
-          slidesPerView={'2'}
+          slidesPerView={'3'}
             scrollbar
-            // autoplay = {
-            //     {
-            //         delay: 3000,
-            //     }
-            // }
+            autoplay = {
+                {
+                    delay: 3000,
+                }
+            }
             loop = {true}
             spaceBetween={30}
             centeredSlides={true}
