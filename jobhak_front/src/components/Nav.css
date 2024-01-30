@@ -1,6 +1,5 @@
 .navbar_app{
     display: block;
-    float: left;
     background-color: #104085;
     width: 100%;
     font-family: 'NanumSquare';
@@ -27,7 +26,6 @@
 .navbar_app li:hover{
     background-color:white;
     color: #104085;
-    text-decoration: underline;
     font-weight: 800;
 }
 .navbar_app .navbar_login{
