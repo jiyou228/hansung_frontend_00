@@ -24,6 +24,7 @@ const Swipe = () => {
                     delay: 3000,
                 }
             }
+            navigation
             loop = {true}
             spaceBetween={30}
             centeredSlides={true}
