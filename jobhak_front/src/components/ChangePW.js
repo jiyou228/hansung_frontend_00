@@ -2,85 +2,86 @@ import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./MyPage.css";
+import "./ChangePW.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function MyPage() {
+function ChangePW() {
   const navigate = useNavigate();
-  const [userid, setUserID] = useState("");
   const [userpw, setUserPW] = useState("");
   const [checkpw, setCheckPW] = useState("");
+  const [recheckpw, setRecheckPW] = useState("");
   const [usernickname, setUserNickname] = useState("");
-  const [username, setUserName] = useState("");
-  const [useremail, setUserEmail] = useState("");
 
-  const IDHandler = (e) => {
-    setUserID(e.target.value);
+  const PWHandler = (e) => {
+    setUserPW(e.target.value);
   };
 
-  const NickNameHandler = (e) => {
-    setUserNickname(e.target.value);
+  const CheckPWHandler = (e) => {
+    setCheckPW(e.target.value);
   };
 
-  const NameHandler = (e) => {
-    setUserName(e.target.value);
+  const ReCheckPWHandler = (e) => {
+    setRecheckPW(e.target.value);
   };
 
-  const EmailHandler = (e) => {
-    setUserEmail(e.target.value);
-  };
-
-  const onSaveHandler = () => {
-    axios
-      .patch(`http://localhost:3000/user/edit`, {
-        password: userpw,
-        nickname: usernickname,
-      })
-      .then((res) => {
-        console.log("데이터 수정 성공:", res);
-        Swal.fire({
-          icon: "success",
-          title: "성공",
-          text: "닉네임 수정 완료!",
-          showCancelButton: false,
-          confirmButtonText: "확인",
-          width: 800,
-          height: 100,
-        });
-      })
-      .catch((err) => {
-        console.error("데이터 수정 실패:", err);
-        Swal.fire({
-          icon: "warning",
-          title: "실패",
-          text: "닉네임을 수정하지 못했습니다. 다시 시도해주세요.",
-          showCancelButton: false,
-          confirmButtonText: "확인",
-          width: 800,
-          height: 100,
-        });
+  const SavePWHandler = () => {
+    // 기존 비밀번호 확인하는 로직 필요
+    const DoubleCheckPW =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,}$/;
+    if (checkpw !== recheckpw) {
+      alert("변경할 비밀번호가 맞지 않습니다.");
+    } else if (!DoubleCheckPW.test(checkpw)) {
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "대소문자, 숫자, 특수문자 포함 10자 이상입니다. 다시 입력해주세요.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
       });
-  };
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3000/user/myInfo`)
-      .then((res) => {
-        console.log(JSON.stringify(res.data));
-        //개인정보 데이터 넘겨주면 각각 저장함.
-        const userData = res.data;
-        setUserID(userData.id);
-        setUserPW(userData.pw);
-        setUserNickname(userData.nickname);
-        setUserName(userData.name);
-        setUserEmail(userData.email);
-      })
-
-      .catch((err) => {
-        console.log(err + "::err");
+    } else if (userpw === "" || checkpw === "" || recheckpw === "") {
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "빈칸을 모두 채워주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
       });
-  }, [userid]);
+    } else {
+      axios
+        .patch(`http://localhost:3000/user/edit/pw`, {
+          password: userpw,
+        })
+        .then((res) => {
+          console.log("데이터 수정 성공:", res);
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "비밀번호를 수정하였습니다!",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
+        })
+        .catch((err) => {
+          console.error("데이터 수정 실패:", err);
+          Swal.fire({
+            icon: "warning",
+            title: "실패",
+            text: "비밀번호를 수정하지 못했습니다. 다시 시도해주세요.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
+        });
+    }
+  };
 
   return (
     <>
@@ -181,45 +182,36 @@ function MyPage() {
           </div>
         </div>
 
-        <div className="privacy_div">
-          <div className="privacy_move">
-            <label className="privacy_lb">아이디</label>
+        <div className="changepw_div">
+          <div className="changepw_move">
+            <label className="changepw_lb">기존 비밀번호</label>
             <input
-              className="privacy_ip"
-              disabled={true}
+              placeholder="기존 비밀번호를 입력해주세요."
+              className="changepw_ip"
               type="text"
-              value={userid}
-              onChange={IDHandler}
+              value={userpw}
+              onChange={PWHandler}
             />
 
             <br />
-            <label className="privacy_lb">닉네임</label>
+            <label className="changepw_lb">변경 비밀번호</label>
             <input
-              className="privacy_ip"
+              placeholder="변경할 비밀번호를 입력해주세요."
+              className="changepw_ip"
               type="text"
-              value={usernickname}
-              onChange={NickNameHandler}
+              value={checkpw}
+              onChange={CheckPWHandler}
             />
             <br />
-            <label className="privacy_lb">이름</label>
+            <label className="changepw_lb">비밀번호 재입력</label>
             <input
-              className="privacy_ip"
-              disabled={true}
+              placeholder="변경할 비밀번호를 확인해주세요."
+              className="changepw_ip"
               type="text"
-              value={username}
-              onChange={NameHandler}
+              value={recheckpw}
+              onChange={ReCheckPWHandler}
             />
-            <br />
-            <label className="privacy_lb">이메일</label>
-            <input
-              className="privacy_ip"
-              disabled={true}
-              type="email"
-              value={useremail}
-              onChange={EmailHandler}
-            />
-            <br />
-            <button className="privacy_btn" onClick={onSaveHandler}>
+            <button className="changepw_btn" onClick={SavePWHandler}>
               수정하기
             </button>
           </div>
@@ -228,4 +220,4 @@ function MyPage() {
     </>
   );
 }
-export default MyPage;
+export default ChangePW;

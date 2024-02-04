@@ -59,7 +59,7 @@
   margin-bottom: 5px;
 }
 
-.privacy_div {
+.delete_div {
   width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
@@ -68,20 +68,20 @@
   box-sizing: border-box;
 }
 
-.privacy_move {
-  margin-left: 20%;
-  margin-top: 10%;
+.delete_move {
+  margin-left: 18%;
+  margin-top: 30%;
 }
 
-.privacy_lb {
+.delete_lb {
   margin-top: 10px;
   display: block;
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-.privacy_ip {
-  width: 70%;
+.delete_ip {
+  width: 75%;
   height: 2rem;
   padding: 8px;
   margin-top: 5px;
@@ -91,27 +91,28 @@
   border-radius: 0.5rem;
 }
 
-.privacy_btn {
-  background-color: #104085;
+.delete_btn {
+  background-color: rgb(255, 63, 63);
   color: white;
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  height: 3rem;
-  width: 10rem;
+  height: 2.8rem;
+  width: 8rem;
   margin-top: 1rem;
   font-size: 1.3rem;
   font-weight: 800;
-  margin-left: 47%;
+  margin-left: 59%;
 }
 
+/* Responsive Design */
 @media only screen and (max-width: 768px) {
   .main_container {
     flex-direction: column;
   }
 
   .profile_div,
-  .privacy_div {
+  .delete_div {
     width: 100%;
     margin-bottom: 20px;
   }

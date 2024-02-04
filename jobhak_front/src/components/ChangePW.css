@@ -59,7 +59,7 @@
   margin-bottom: 5px;
 }
 
-.privacy_div {
+.changepw_div {
   width: 100%;
   padding: 20px;
   border: 1px solid #ccc;
@@ -68,30 +68,30 @@
   box-sizing: border-box;
 }
 
-.privacy_move {
+.changepw_move {
   margin-left: 20%;
-  margin-top: 10%;
+  margin-top: 18%;
 }
 
-.privacy_lb {
-  margin-top: 10px;
+.changepw_lb {
+  margin-top: 1.5rem;
   display: block;
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-.privacy_ip {
+.changepw_ip {
   width: 70%;
   height: 2rem;
   padding: 8px;
-  margin-top: 5px;
+  margin-top: 0.5rem;
   margin-bottom: 15px;
   outline: none;
   font-size: 1.2rem;
   border-radius: 0.5rem;
 }
 
-.privacy_btn {
+.changepw_btn {
   background-color: #104085;
   color: white;
   cursor: pointer;
@@ -105,6 +105,7 @@
   margin-left: 47%;
 }
 
+/* Responsive Design */
 @media only screen and (max-width: 768px) {
   .main_container {
     flex-direction: column;

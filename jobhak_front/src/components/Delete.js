@@ -2,85 +2,62 @@ import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./MyPage.css";
+import "./Delete.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 
-function MyPage() {
+function Delete() {
   const navigate = useNavigate();
-  const [userid, setUserID] = useState("");
   const [userpw, setUserPW] = useState("");
-  const [checkpw, setCheckPW] = useState("");
-  const [usernickname, setUserNickname] = useState("");
-  const [username, setUserName] = useState("");
-  const [useremail, setUserEmail] = useState("");
 
-  const IDHandler = (e) => {
-    setUserID(e.target.value);
+  const PWHandler = (e) => {
+    setUserPW(e.target.value);
   };
 
-  const NickNameHandler = (e) => {
-    setUserNickname(e.target.value);
+  const userDeleteHandler = () => {
+    //비밀번호 check 후 탈퇴 -> 쿠키에 담아놓은 비번으로 확인?
+    Swal.fire({
+      title: "정말 탈퇴하시겠습니까?",
+      text: "탈퇴하시면 계정을 복구할 수 없습니다.",
+      icon: "warning",
+
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "확인",
+      cancelButtonText: "취소",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/user/delete`)
+          .then((res) => {
+            console.log("회원 탈퇴 성공:", res);
+            Swal.fire({
+              icon: "success",
+              title: "탈퇴 성공",
+              text: "잡학다식 회원 탈퇴에 성공하였습니다.",
+              showCancelButton: false,
+              confirmButtonText: "확인",
+              width: 800,
+              height: 100,
+            });
+            navigate("/");
+          })
+          .catch((err) => {
+            console.error("회원 탈퇴 실패:", err);
+            Swal.fire({
+              icon: "warning",
+              title: "탈퇴 실패",
+              text: "잡학다식 회원 탈퇴에 실패하였습니다.",
+              showCancelButton: false,
+              confirmButtonText: "확인",
+              width: 800,
+              height: 100,
+            });
+          });
+      }
+    });
   };
-
-  const NameHandler = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const EmailHandler = (e) => {
-    setUserEmail(e.target.value);
-  };
-
-  const onSaveHandler = () => {
-    axios
-      .patch(`http://localhost:3000/user/edit`, {
-        password: userpw,
-        nickname: usernickname,
-      })
-      .then((res) => {
-        console.log("데이터 수정 성공:", res);
-        Swal.fire({
-          icon: "success",
-          title: "성공",
-          text: "닉네임 수정 완료!",
-          showCancelButton: false,
-          confirmButtonText: "확인",
-          width: 800,
-          height: 100,
-        });
-      })
-      .catch((err) => {
-        console.error("데이터 수정 실패:", err);
-        Swal.fire({
-          icon: "warning",
-          title: "실패",
-          text: "닉네임을 수정하지 못했습니다. 다시 시도해주세요.",
-          showCancelButton: false,
-          confirmButtonText: "확인",
-          width: 800,
-          height: 100,
-        });
-      });
-  };
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3000/user/myInfo`)
-      .then((res) => {
-        console.log(JSON.stringify(res.data));
-        //개인정보 데이터 넘겨주면 각각 저장함.
-        const userData = res.data;
-        setUserID(userData.id);
-        setUserPW(userData.pw);
-        setUserNickname(userData.nickname);
-        setUserName(userData.name);
-        setUserEmail(userData.email);
-      })
-
-      .catch((err) => {
-        console.log(err + "::err");
-      });
-  }, [userid]);
 
   return (
     <>
@@ -181,46 +158,20 @@ function MyPage() {
           </div>
         </div>
 
-        <div className="privacy_div">
-          <div className="privacy_move">
-            <label className="privacy_lb">아이디</label>
+        <div className="delete_div">
+          <div className="delete_move">
+            <label className="delete_lb">현재 비밀번호</label>
             <input
-              className="privacy_ip"
-              disabled={true}
+              placeholder="계정을 삭제하려면 현재 사용하시는 비밀번호를 입력하세요."
+              className="delete_ip"
               type="text"
-              value={userid}
-              onChange={IDHandler}
+              value={userpw}
+              onChange={PWHandler}
             />
 
             <br />
-            <label className="privacy_lb">닉네임</label>
-            <input
-              className="privacy_ip"
-              type="text"
-              value={usernickname}
-              onChange={NickNameHandler}
-            />
-            <br />
-            <label className="privacy_lb">이름</label>
-            <input
-              className="privacy_ip"
-              disabled={true}
-              type="text"
-              value={username}
-              onChange={NameHandler}
-            />
-            <br />
-            <label className="privacy_lb">이메일</label>
-            <input
-              className="privacy_ip"
-              disabled={true}
-              type="email"
-              value={useremail}
-              onChange={EmailHandler}
-            />
-            <br />
-            <button className="privacy_btn" onClick={onSaveHandler}>
-              수정하기
+            <button className="delete_btn" onClick={userDeleteHandler}>
+              탈퇴하기
             </button>
           </div>
         </div>
@@ -228,4 +179,4 @@ function MyPage() {
     </>
   );
 }
-export default MyPage;
+export default Delete;
