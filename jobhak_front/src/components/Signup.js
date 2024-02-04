@@ -5,7 +5,8 @@ import "./Signup.css";
 import Jobhak from "../assets/jobhak_full.png";
 import naver_join from "../assets/naver_join.png";
 import kakao_join from "../assets/kakao_join.png";
-import Nav from "./Nav";
+import Swal from "sweetalert2";
+
 function Signup() {
   const [loginid, setLoginID] = useState("");
   const [loginpw, setLoginPW] = useState("");
@@ -70,9 +71,25 @@ function Signup() {
     const inputCode = document.getElementById("authCode").value; // 인증코드 입력값 가져오기
     //console.log(confrimemail);
     if (inputCode === confrimemail) {
-      alert("이메일이 인증되었습니다.");
+      Swal.fire({
+        icon: "success",
+        title: "성공",
+        text: "이메일 인증이 완료되었습니다.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else {
-      alert("이메일이 인증되지 않았습니다. 다시 시도해주세요.");
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "이메일이 인증되지 않았습니다.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     }
   };
 
@@ -83,10 +100,26 @@ function Signup() {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert("사용 가능한 아이디입니다.");
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "아이디를 사용할 수 있습니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
           setUsableID(true);
-        } else{
-          alert("이미 사용중인 아이디입니다.");
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "경고",
+            text: "이미 사용 중인 아이디 입니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
           setLoginID("");
         }
       })
@@ -99,11 +132,25 @@ function Signup() {
     const DoubleCheckPW =
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,}$/;
     if (loginpw !== checkpw) {
-      alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요!");
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "비밀번호가 일치하지 않습니다. 다시 입력해주세요.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else if (!DoubleCheckPW.test(loginpw)) {
-      alert(
-        "대소문자, 숫자, 특수문자 포함 10자 이상입니다. 다시 입력해주세요."
-      );
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "대소문자, 숫자, 특수문자 포함 10자 이상입니다. 다시 입력해주세요.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else if (
       loginid === "" ||
       loginpw === "" ||
@@ -112,7 +159,15 @@ function Signup() {
       useremail === "" ||
       confirmcode === ""
     ) {
-      alert("빈칸을 모두 채워주세요!");
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "빈칸을 모두 채워주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else {
       await axios
         .post(`http://localhost:3000/join`, {
@@ -124,12 +179,28 @@ function Signup() {
         })
         .then((response) => {
           console.log(response);
-          alert("회원가입 완료!");
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "회원가입 성공",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
           document.location.href = "./login";
         })
         .catch((error) => {
           console.log(error);
-          alert("실패했습니다.");
+          Swal.fire({
+            icon: "warning",
+            title: "경고",
+            text: "회원가입 실패",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
         });
     }
   };
@@ -140,8 +211,10 @@ function Signup() {
         <label className="title_lb"> 회원가입</label>
       </div>
       <br />
-      <label className="joincheck_lb">이미 Job학다식 회원이신가요?</label>
-      <Link to="/login">로그인</Link>
+      <label className="joincheck_lb">
+        이미 Job학다식 회원이신가요?
+        <Link to="/login">로그인</Link>
+      </label>
       <br />
 
       <div className="social_div">

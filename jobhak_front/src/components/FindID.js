@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/FindID.css";
+import Swal from "sweetalert2";
 
 const FindID = () => {
   const [name, setName] = useState("");
@@ -13,22 +14,36 @@ const FindID = () => {
       findIDSubmit();
     }
   };
-  const findIDSubmit = () => {
+  const findIDSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("http://localhost:3000/find/id", {
         name: name,
         email: email,
       })
       .then((res) => {
-        if (res.data.result) {
-          alert(`아이디: ${res.data.result}`);
-        } else {
-          alert("해당 정보로 등록된 아이디가 없습니다.");
-        }
+        Swal.fire({
+          icon: "success",
+          title: "아이디 찾기 성공",
+          text: `아이디: ${res.data.result}`,
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
       })
       .catch((err) => {
         console.log("Error: ", err);
-        alert("아이디 찾기 중 오류가 발생했습니다.");
+
+        Swal.fire({
+          icon: "warning",
+          title: "경고",
+          text: "아이디 찾기 중 오류가 발생했습니다.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
       });
   };
 
