@@ -25,10 +25,10 @@ function App() {
     <LoginProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/join" element={<Signup />} />
           <Route path="/joincheck" element={<JoinCheck />} />
-          <Route path="/login" element={<Login />}></Route>
+          <Route path="/" element={<Login />}></Route>
           <Route path="/login/naver" element={<NaverLogin />}></Route>
           <Route path="/login/kakao" element={<KakaoLogin />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>

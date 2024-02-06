@@ -38,7 +38,7 @@ const Login = () => {
             height: 100,
           });
           loggedIn();
-          document.location.href = "./";
+          document.location.href = "./home";
         }
       })
 
