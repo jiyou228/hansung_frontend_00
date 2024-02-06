@@ -9,8 +9,6 @@ import kakao from "../assets/kakao.png";
 import view from "../assets/view_pw.png";
 import hide from "../assets/hide_pw.png";
 import "../components/Login.css";
-import { useContext } from "react";
-import { LoginContext } from "./LoginContext";
 import Swal from "sweetalert2";
 
 const Login = () => {

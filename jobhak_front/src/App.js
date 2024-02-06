@@ -26,7 +26,7 @@ function App() {
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/homehome" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/join" element={<Signup />} />
           <Route path="/joincheck" element={<JoinCheck />} />
