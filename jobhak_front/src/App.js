@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
-import {CookiesProvider } from "react-cookie";
+import { CookiesProvider } from "react-cookie";
 import Signup from "./components/Signup";
 import JoinCheck from "./components/JoinCheck";
 import Login from "./components/Login";
@@ -18,14 +18,16 @@ import Logout from "./components/Logout";
 import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
 import Ex from "./components/ex";
+import ChangePW from "./components/ChangePW";
+import Delete from "./components/Delete";
 
 function App() {
   return (
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/logout" element={<Logout/>}/>
+          <Route path="/homehome" element={<Home />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/join" element={<Signup />} />
           <Route path="/joincheck" element={<JoinCheck />} />
           <Route path="/" element={<Login />}></Route>
@@ -40,7 +42,9 @@ function App() {
           <Route path="/resume/revise" element={<ReviseResume />}></Route>
           <Route path="/guide" element={<Guide />} />
           <Route path="/countchar" element={<CountChar />} />
-          <Route path="/ex" element={<Ex/>}/>
+          <Route path="/user/edit/pw" element={<ChangePW />} />
+          <Route path="/user/delete" element={<Delete />} />
+          <Route path="/ex" element={<Ex />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

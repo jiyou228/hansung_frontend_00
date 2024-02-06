@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/FindPW.css";
+import Swal from "sweetalert2";
+
 const FindPW = () => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const findPWSubmit = (e) => {
+    e.preventDefault();
   const findPWSubmit = (e) => {
     e.preventDefault();
     axios
@@ -17,16 +21,28 @@ const FindPW = () => {
         email: email,
       })
       .then((res) => {
-        if (res.status === 200) {
-          alert(`비밀번호: ${res.data.result}`);
-
-        } else {
-          alert("비밀번호를 찾을 수 없습니다. ");
-        }
+        Swal.fire({
+          icon: "success",
+          title: "비밀번호 찾기 성공",
+          text: `비밀번호: ${res.data.result}`,
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
       })
       .catch((err) => {
         console.log("Error: ", err);
-        alert("비밀번호 찾기 중 서버 오류가 발생했습니다. 다시 시도해주세요.");
+
+        Swal.fire({
+          icon: "warning",
+          title: "경고",
+          text: "비밀번호 찾기 중 오류가 발생했습니다.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
         window.location.reload();
       });
   };

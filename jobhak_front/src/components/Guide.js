@@ -2,8 +2,28 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import leftArrow from "../assets/left-arrow.png";
+import rightArrow from "../assets/right-arrow.png";
 
 function Guide() {
+  const NextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div className="arrow next" onClick={onClick}>
+        <img src={rightArrow} alt="Next" width={50} />
+      </div>
+    );
+  };
+
+  const PrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div className="arrow prev" onClick={onClick}>
+        <img src={leftArrow} alt="Prev" width={50} />
+      </div>
+    );
+  };
+
   const settings = {
     dots: true,
     infinite: true,
@@ -12,10 +32,12 @@ function Guide() {
     slidesToScroll: 1,
     autoplay: true,
     arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
+
   return (
     <div className="slide_div">
-      <h2 className="guide_h2"> 이미지 가이드</h2>
       <Slider {...settings}>
         <div>
           <h3 className="guide_h3">

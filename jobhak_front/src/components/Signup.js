@@ -4,8 +4,8 @@ import axios from "axios";
 import Jobhak from "../assets/jobhak_full.png";
 import naver_join from "../assets/naver_join.png";
 import kakao_join from "../assets/kakao_join.png";
-import Nav from "./Nav";
-import './Signup.css';
+import Swal from "sweetalert2";
+
 function Signup() {
   const [loginid, setLoginID] = useState("");
   const [loginpw, setLoginPW] = useState("");
@@ -70,9 +70,25 @@ function Signup() {
     const inputCode = document.getElementById("authCode").value; // 인증코드 입력값 가져오기
     //console.log(confrimemail);
     if (inputCode === confrimemail) {
-      alert("이메일이 인증되었습니다.");
+      Swal.fire({
+        icon: "success",
+        title: "성공",
+        text: "이메일 인증이 완료되었습니다.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else {
-      alert("이메일이 인증되지 않았습니다. 다시 시도해주세요.");
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "이메일이 인증되지 않았습니다.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     }
   };
 
@@ -83,10 +99,26 @@ function Signup() {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert("사용 가능한 아이디입니다.");
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "아이디를 사용할 수 있습니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
           setUsableID(true);
-        } else{
-          alert("이미 사용중인 아이디입니다.");
+        } else {
+          Swal.fire({
+            icon: "warning",
+            title: "경고",
+            text: "이미 사용 중인 아이디 입니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
           setLoginID("");
         }
       })
@@ -99,11 +131,25 @@ function Signup() {
     const DoubleCheckPW =
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,}$/;
     if (loginpw !== checkpw) {
-      alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요!");
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "비밀번호가 일치하지 않습니다. 다시 입력해주세요.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else if (!DoubleCheckPW.test(loginpw)) {
-      alert(
-        "대소문자, 숫자, 특수문자 포함 10자 이상입니다. 다시 입력해주세요."
-      );
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "대소문자, 숫자, 특수문자 포함 10자 이상입니다. 다시 입력해주세요.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else if (
       loginid === "" ||
       loginpw === "" ||
@@ -112,7 +158,15 @@ function Signup() {
       useremail === "" ||
       confirmcode === ""
     ) {
-      alert("빈칸을 모두 채워주세요!");
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "빈칸을 모두 채워주세요!",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     } else {
       await axios
         .post(`http://localhost:3000/join`, {
@@ -124,121 +178,172 @@ function Signup() {
         })
         .then((response) => {
           console.log(response);
-          alert("회원가입 완료!");
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "회원가입 성공",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
           document.location.href = "./login";
         })
         .catch((error) => {
           console.log(error);
-          alert("실패했습니다.");
+          Swal.fire({
+            icon: "warning",
+            title: "경고",
+            text: "회원가입 실패",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
         });
     }
   };
   return (
     <div className="signup">
-      <div className="logo-container"  style={{textAlign: 'center'}}>
+      <div className="logo-container" style={{ textAlign: "center" }}>
         <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
         <div className="title_lb"> 회원가입</div>
-        <div className="joincheck_lb">이미 Job학다식 회원이신가요?<Link to="/login">로그인</Link></div>
+        <div className="joincheck_lb">
+          이미 Job학다식 회원이신가요?<Link to="/login">로그인</Link>
+        </div>
       </div>
       <br />
-      
+      <label className="joincheck_lb">
+        이미 Job학다식 회원이신가요?
+        <Link to="/login">로그인</Link>
+      </label>
       <br />
-      <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', position: 'relative'}}>
-      <div className="joinform" style={{marginLeft: '20vw'}}>
-        <br />
-        <label className="joinform_lb">아이디</label>
-        <input
-          className="joinform_ip"
-          type="text"
-          value={loginid}
-          onChange={HandleInputID}
-          style={{marginLeft: '3vw'}}
-        />
-        <button className="joinform_btn" onClick={idValidation}>
-          중복 확인
-        </button>
-        <br />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          position: "relative",
+        }}
+      >
+        <div className="joinform" style={{ marginLeft: "20vw" }}>
+          <br />
+          <label className="joinform_lb">아이디</label>
+          <input
+            className="joinform_ip"
+            type="text"
+            value={loginid}
+            onChange={HandleInputID}
+            style={{ marginLeft: "3vw" }}
+          />
+          <button className="joinform_btn" onClick={idValidation}>
+            중복 확인
+          </button>
+          <br />
 
-        <label className="joinpw_lb">비밀번호</label>
-        <input
-          className="joinform_ip"
-          type="password"
-          value={loginpw}
-          placeholder="대소문자, 숫자, 특수문자 포함 10자 이상"
-          onChange={HandleInputPW}
-          style={{marginLeft: '1.9vw'}}
+          <label className="joinpw_lb">비밀번호</label>
+          <input
+            className="joinform_ip"
+            type="password"
+            value={loginpw}
+            placeholder="대소문자, 숫자, 특수문자 포함 10자 이상"
+            onChange={HandleInputPW}
+            style={{ marginLeft: "1.9vw" }}
+          />
+          <br />
+          <label className="joinpwpw_lb">비밀번호 재확인</label>
+          <input
+            className="joinform_ip"
+            type="password"
+            value={checkpw}
+            onChange={HandleCheckPW}
+          />
+          <br />
+          <label className="joinname_lb">이름</label>
+          <input
+            className="joinform_ip"
+            type="text"
+            value={username}
+            onChange={HandleInputName}
+          />
+          <br />
+          <label className="joinform_lb">닉네임</label>
+          <input
+            type="text"
+            value={usernickname}
+            className="joinform_ip"
+            onChange={HandleInputNickname}
+          />
+          <br />
+          <label className="joinform_lb">이메일</label>
+          <input
+            className="joinform_ip"
+            type="email"
+            placeholder="ex) abcd@gmail.com"
+            value={useremail}
+            onChange={HandleInputEmail}
+          />
+          <button className="joinform2_btn" onClick={EmailConfirm}>
+            인증 요청
+          </button>
+          <br />
+          <label className="joincode_lb">인증코드</label>
+          <input
+            className="joinform_ip"
+            type="code"
+            value={confirmcode}
+            onChange={HandleConfirmCode}
+          />
+          <button className="joinform2_btn" onClick={CodeConfirm}>
+            코드 요청
+          </button>
+          <br />
+          <button className="signup_btn" onClick={SignUpContinue}>
+            회원가입
+          </button>
+        </div>
+        <div
+          className="vertical-line"
+          style={{
+            borderLeft: "2px solid black",
+            width: "2px",
+            padding: "0",
+            position: "absolute",
+            left: "50%",
+            transform: "translateX(-50%)",
+            height: "70vh",
+          }}
+        />
 
-        />
-        <br />
-        <label className="joinpwpw_lb">비밀번호 재확인</label>
-        <input
-          className="joinform_ip"
-          type="password"
-          value={checkpw}
-          onChange={HandleCheckPW}
-        />
-        <br />
-        <label className="joinname_lb">이름</label>
-        <input
-          className="joinform_ip"
-          type="text"
-          value={username}
-          onChange={HandleInputName}
-        />
-        <br />
-        <label className="joinform_lb">닉네임</label>
-        <input
-          type="text"
-          value={usernickname}
-          className="joinform_ip"
-          onChange={HandleInputNickname}
-        />
-        <br />
-        <label className="joinform_lb">이메일</label>
-        <input
-          className="joinform_ip"
-          type="email"
-          placeholder="ex) abcd@gmail.com"
-          value={useremail}
-          onChange={HandleInputEmail}
-        />
-        <button className="joinform2_btn" onClick={EmailConfirm}>
-          인증 요청
-        </button>
-        <br />
-        <label className="joincode_lb">인증코드</label>
-        <input
-          className="joinform_ip"
-          type="code"
-          value={confirmcode}
-          onChange={HandleConfirmCode}
-        />
-        <button className="joinform2_btn" onClick={CodeConfirm}>
-          코드 요청
-        </button>
-        <br />
-        <button className="signup_btn" onClick={SignUpContinue}>
-          회원가입
-        </button>
-      </div>
-      <div className="vertical-line" style={{borderLeft: '2px solid black', width: '2px', padding: '0', position: 'absolute', left: '50%', transform: 'translateX(-50%)', height: '70vh'}}  />
-
-      <div className="social_div" style={{textAlign: 'center', marginRight: '20vw'}}>
-        <label className="social_lb">
-          소셜 로그인으로 간편하게 가입할 수 있습니다.
-        </label>
-        <hr className="social_hr" style={{borderStyle: 'dashed'}}/>
-        <Link to="/login/naver">
-          <div>
-            <img className="login_logo" src={naver_join} width={400} alt="naver_login" />
-          </div>
-        </Link>
-        <Link to="/login/kakao">
-          <div>
-            <img className="login_logo" src={kakao_join} width={400} alt="kakao_login" />
-          </div>
-        </Link>
-      </div>
+        <div
+          className="social_div"
+          style={{ textAlign: "center", marginRight: "20vw" }}
+        >
+          <label className="social_lb">
+            소셜 로그인으로 간편하게 가입할 수 있습니다.
+          </label>
+          <hr className="social_hr" style={{ borderStyle: "dashed" }} />
+          <Link to="/login/naver">
+            <div>
+              <img
+                className="login_logo"
+                src={naver_join}
+                width={400}
+                alt="naver_login"
+              />
+            </div>
+          </Link>
+          <Link to="/login/kakao">
+            <div>
+              <img
+                className="login_logo"
+                src={kakao_join}
+                width={400}
+                alt="kakao_login"
+              />
+            </div>
+          </Link>
+        </div>
       </div>
     </div>
   );

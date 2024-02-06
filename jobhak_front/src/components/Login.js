@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {useCookies} from "react-cookie";
+import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -9,12 +9,17 @@ import kakao from "../assets/kakao.png";
 import view from "../assets/view_pw.png";
 import hide from "../assets/hide_pw.png";
 import "../components/Login.css";
+import { useContext } from "react";
+import { LoginContext } from "./LoginContext";
+import Swal from "sweetalert2";
+
 const Login = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [showPw, setShowPw] = useState(false);
-  const [cookie, setCookie]  = useCookies();
+  const [cookie, setCookie] = useCookies();
   const navigate = useNavigate();
+
   const submitLogin = (e) => {
     e.preventDefault();
     axios
@@ -24,19 +29,32 @@ const Login = () => {
       })
       .then((res) => {
         if (res) {
-          setCookie('loggedIn', true);
-          navigate('/home');
-      }
+          Swal.fire({
+            icon: "success",
+            title: "성공",
+            text: "로그인을 성공하였습니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
+
+          setCookie("loggedIn", true);
+          navigate("/home");
+        }
       })
 
       .catch((err) => {
         console.log("로그인 에러 발생: ", err);
-
-        if (err.response && err.response.status === 400) {
-          alert("아이디와 비밀번호가 맞지 않습니다.");
-        } else {
-          alert("로그인 중 에러가 발생했습니다. 다시 시도해주세요.");
-        }
+        Swal.fire({
+          icon: "warning",
+          title: "실패",
+          text: "아이디와 비밀번호가 맞지 않습니다.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
       });
   };
 
@@ -44,11 +62,11 @@ const Login = () => {
     setShowPw(!showPw);
   };
 
-useEffect(() => {
-  if(cookie.loggedIn === true){
-    navigate('/home');
-  }
-})
+  useEffect(() => {
+    if (cookie.loggedIn === true) {
+      navigate("/home");
+    }
+  });
 
   return (
     <div className="login">

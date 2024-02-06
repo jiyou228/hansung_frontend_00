@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./JoinCheck.css";
 import homelogo from "../assets/Homelogo.png";
+import Swal from "sweetalert2";
 
 function JoinCheck() {
   const [agreements, setAgreements] = useState({
@@ -32,13 +33,21 @@ function JoinCheck() {
   };
 
   const handleCancel = () => {
-    if (
-      window.confirm(
-        "회원가입을 취소하고 Job학다식 로그인으로 돌아가시겠습니까?"
-      )
-    ) {
-      navigate("/");
-    }
+    Swal.fire({
+      title: "로그인 창으로 이동",
+      text: "회원가입을 취소하고 Job학다식 로그인으로 돌아가시겠습니까?",
+      icon: "warning",
+
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "확인",
+      cancelButtonText: "취소",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/");
+      }
+    });
   };
 
   return (

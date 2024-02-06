@@ -1,17 +1,17 @@
 // import Swiper core and required modules
-import {Autoplay, Scrollbar } from 'swiper/modules';
-import { Link } from 'react-router-dom';
+import { Autoplay, Scrollbar } from "swiper/modules";
+import { Link } from "react-router-dom";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import no1 from '../assets/카드뉴스_취업사진.png';
-import no2 from '../assets/카드뉴스_작성.png';
-import no3 from '../assets/카드뉴스_자소서.png';
+import { Swiper, SwiperSlide } from "swiper/react";
+import no1 from "../assets/카드뉴스_취업사진.png";
+import no2 from "../assets/카드뉴스_작성.png";
+import no3 from "../assets/카드뉴스_자소서.png";
 
-import './swipe.css';
+import "./swipe.css";
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/autoplay';
-import 'swiper/css/scrollbar';
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/scrollbar";
 
 const Swipe = () => {
     return (
@@ -24,6 +24,7 @@ const Swipe = () => {
                     delay: 3000,
                 }
             }
+            navigation
             loop = {true}
             spaceBetween={10}
             centeredSlides={true}
