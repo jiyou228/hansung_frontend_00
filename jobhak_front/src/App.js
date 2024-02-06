@@ -17,6 +17,7 @@ import ReviseResume from "./components/ReviseResume";
 import Logout from "./components/Logout";
 import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
+import Ex from "./components/ex";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/resume/revise" element={<ReviseResume />}></Route>
           <Route path="/guide" element={<Guide />} />
           <Route path="/countchar" element={<CountChar />} />
+          <Route path="/ex" element={<Ex/>}/>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

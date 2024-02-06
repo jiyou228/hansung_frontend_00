@@ -25,7 +25,6 @@ const Login = () => {
       .then((res) => {
         if (res) {
           setCookie('loggedIn', true);
-          setCookie('loginId', id);
           navigate('/home');
       }
       })
@@ -50,8 +49,6 @@ useEffect(() => {
     navigate('/home');
   }
 })
-
-  
 
   return (
     <div className="login">

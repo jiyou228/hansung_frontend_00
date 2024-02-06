@@ -5,6 +5,7 @@ import Jobhak from "../assets/jobhak_full.png";
 import naver_join from "../assets/naver_join.png";
 import kakao_join from "../assets/kakao_join.png";
 import Nav from "./Nav";
+import './Signup.css';
 function Signup() {
   const [loginid, setLoginID] = useState("");
   const [loginpw, setLoginPW] = useState("");
@@ -151,6 +152,7 @@ function Signup() {
           type="text"
           value={loginid}
           onChange={HandleInputID}
+          style={{marginLeft: '3vw'}}
         />
         <button className="joinform_btn" onClick={idValidation}>
           중복 확인
@@ -164,6 +166,8 @@ function Signup() {
           value={loginpw}
           placeholder="대소문자, 숫자, 특수문자 포함 10자 이상"
           onChange={HandleInputPW}
+          style={{marginLeft: '1.9vw'}}
+
         />
         <br />
         <label className="joinpwpw_lb">비밀번호 재확인</label>
