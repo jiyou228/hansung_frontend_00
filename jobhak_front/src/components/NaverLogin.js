@@ -28,7 +28,7 @@ const NaverLogin = () => {
         const image = naverLogin.user.getProfileImage();
         
         alert(`이름: ${name}, 닉네임: ${nickname}\n아이디: ${id}\n이메일: ${email}\n프로필사진URL: ${image}`);
-        navigate('/login');
+        navigate('/');
       }
       else {
         naverLogin.authorize();

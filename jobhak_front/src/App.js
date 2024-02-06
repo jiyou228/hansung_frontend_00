@@ -1,12 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react";
-import { LoginProvider } from "./components/LoginContext";
+import { CookiesProvider } from "react-cookie";
 import Signup from "./components/Signup";
 import JoinCheck from "./components/JoinCheck";
 import Login from "./components/Login";
 import FindID from "./components/FindID";
 import FindPW from "./components/FindPW";
-import ResetPW from "./components/ResetPW";
 import NaverLogin from "./components/NaverLogin";
 import KakaoLogin from "./components/KakaoLogin";
 import BoardList from "./components/BoardList";
@@ -15,17 +14,20 @@ import Profile from "./components/Profile";
 import WriteResume from "./components/WriteResume";
 import Home from "./components/Home";
 import ReviseResume from "./components/ReviseResume";
+import Logout from "./components/Logout";
 import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
+import Ex from "./components/ex";
 import ChangePW from "./components/ChangePW";
 import Delete from "./components/Delete";
 
 function App() {
   return (
-    <LoginProvider>
+    <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/homehome" element={<Home />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/join" element={<Signup />} />
           <Route path="/joincheck" element={<JoinCheck />} />
           <Route path="/" element={<Login />}></Route>
@@ -33,7 +35,6 @@ function App() {
           <Route path="/login/kakao" element={<KakaoLogin />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
-          <Route path="/reset/pw" element={<ResetPW />}></Route>
           <Route path="/boardlist" element={<BoardList />}></Route>
           <Route path="/user/myInfo" element={<MyPage />}></Route>
           <Route path="/profile/female" element={<Profile />}></Route>
@@ -43,9 +44,10 @@ function App() {
           <Route path="/countchar" element={<CountChar />} />
           <Route path="/user/edit/pw" element={<ChangePW />} />
           <Route path="/user/delete" element={<Delete />} />
+          <Route path="/ex" element={<Ex />} />
         </Routes>
       </BrowserRouter>
-    </LoginProvider>
+    </CookiesProvider>
   );
 }
 

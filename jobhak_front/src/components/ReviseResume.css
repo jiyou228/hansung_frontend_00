@@ -111,10 +111,9 @@
     font-weight: 700;
     border: none;
     border-radius: 0.8rem;
-    margin-left: 1vw;
-    padding: 0.3rem 0;
-    width: 10rem;
+    padding: 0.5rem 3rem;
     cursor: pointer;
+    margin-left: 1vw;
 }
 .revise_button_reset {
     color: #104085;
@@ -122,7 +121,7 @@
     font-weight: 700;
     border: none;
     border-radius: 0.8rem;
-    width: 10rem;
-    padding: 0.3rem 0;
+    padding: 0.5rem 2rem;
     margin-right: 1vw;
+    border: 0.5px solid #0000001a;
 }

@@ -12,6 +12,7 @@ code {
 
 button {
   font-family: "NanumSquare";
+  cursor: pointer;
 }
 textarea {
   font-family: "NanumSquare";
@@ -20,8 +21,9 @@ textarea {
 input {
   font-family: "NanumSquare";
   font-size: 1rem;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+}
+html{
+  font-family: 'NanumSquare';
 }
 
 @font-face {

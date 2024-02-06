@@ -1,0 +1,95 @@
+
+.alert_container{
+    position: fixed;
+    width: 30vw;
+    background-color: white;
+    border-radius: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    box-shadow: 0px 0px 10px 0px #0000001a;
+}
+.alert_image{
+    text-align: center;
+    margin-top: 2vh;
+}
+.alert_image img{
+    width: 5vw;
+}
+.alert_title{
+    font-size: 2vw;
+    font-weight: 800;
+    text-align: center;
+    margin-top: 1vh;
+}
+.alert_message{
+    font-size: 1.25vw;
+    margin-top: 1.5vh;
+    font-weight: 700;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.alert_button{
+    text-align: center;
+    margin-top: 2vh;
+    padding-bottom: 4vh;
+}
+.alert_button .ok{
+    font-size: 1.2vw;
+    margin-right: 0.5vw;
+    padding: 1vh 1.5vw;
+    color: white;
+    background-color: #FF6174;
+    border: none;
+    border-radius: 0.5vw;
+
+}
+.alert_button .cancel{
+    font-size: 1.2vw;
+    font-weight: 700;
+    margin-left: 0.5vw;
+    padding: 1vh 1.5vw;
+    border: 0.5px solid #0000001a;
+    border-radius: 0.5vw;
+}
+@media(max-width: 768px) {
+    .alert_container{
+        width: 70vw;
+    }
+    .alert_image img{
+        width: 12vw;
+    }
+    .alert_title{
+        font-size: 1.7rem;
+        margin-top: 2vh;
+    }
+    .alert_message{
+        margin-top: 2vh;
+        font-size: 1rem;
+    }
+    .alert_button{
+        text-align: center;
+        margin-top: 2vh;
+        padding-bottom: 4vh;
+    }
+    .alert_button .ok{
+        font-size: 1rem;
+        font-weight: 700;
+        margin-right: 2vw;
+        padding: 1vh 4vw;
+        color: white;
+        background-color: #FF6174;
+        border: none;
+        border-radius: 0.5rem;
+    }
+    .alert_button .cancel{
+        font-size: 1rem;
+        font-weight: 700;
+        margin-left: 2vw;
+        padding: 1vh 4vw;
+        border: 0.5px solid #0000001a;
+        border-radius: 0.5rem;
+    }
+}

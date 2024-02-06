@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -16,13 +17,13 @@ const Login = () => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [showPw, setShowPw] = useState(false);
-  const { loggedIn } = useContext(LoginContext);
+  const [cookie, setCookie] = useCookies();
   const navigate = useNavigate();
 
   const submitLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/login", {
+      .post("http://localhost:3000/", {
         loginId: id,
         password: pw,
       })
@@ -37,8 +38,9 @@ const Login = () => {
             width: 800,
             height: 100,
           });
-          loggedIn();
-          document.location.href = "./home";
+
+          setCookie("loggedIn", true);
+          navigate("/home");
         }
       })
 
@@ -59,6 +61,12 @@ const Login = () => {
   const pwVisible = () => {
     setShowPw(!showPw);
   };
+
+  useEffect(() => {
+    if (cookie.loggedIn === true) {
+      navigate("/home");
+    }
+  });
 
   return (
     <div className="login">

@@ -24,7 +24,7 @@ const Swipe = () => {
         }}
         navigation
         loop={true}
-        spaceBetween={30}
+        spaceBetween={10}
         centeredSlides={true}
         modules={[Scrollbar, Autoplay]}
         className="mySwiper"
