@@ -8,12 +8,6 @@ const FindID = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      findIDSubmit();
-    }
-  };
-  
   const findIDSubmit = (e) => {
     e.preventDefault();
     axios
@@ -56,10 +50,9 @@ const FindID = () => {
             className="findID_input"
             placeholder="이메일"
             onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={(e) => handleKeyDown(e)}
           />
         </div>
-        <button type="submit" className="findID_submit" onClick={findIDSubmit}>
+        <button type="submit" className="findID_submit">
           확인
         </button>
       </form>
