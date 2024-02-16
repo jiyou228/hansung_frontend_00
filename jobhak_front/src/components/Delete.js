@@ -9,13 +9,13 @@ import Swal from "sweetalert2";
 function Delete() {
   const navigate = useNavigate();
   const [userpw, setUserPW] = useState("");
+  const [usernickname, setUserNickname] = useState("");
 
   const PWHandler = (e) => {
     setUserPW(e.target.value);
   };
 
   const userDeleteHandler = () => {
-    //비밀번호 check 후 탈퇴 -> 쿠키에 담아놓은 비번으로 확인?
     Swal.fire({
       title: "정말 탈퇴하시겠습니까?",
       text: "탈퇴하시면 계정을 복구할 수 없습니다.",
@@ -29,7 +29,9 @@ function Delete() {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/user/delete`)
+          .delete(`http://localhost:3000/user/delete`, {
+            password: userpw,
+          })
           .then((res) => {
             console.log("회원 탈퇴 성공:", res);
             Swal.fire({
@@ -65,9 +67,7 @@ function Delete() {
       <br />
       <div className="main_container">
         <div className="profile_div">
-          <label className="profile_name">닉네임님</label>
-          <label className="logout">로그아웃</label>
-
+          <label className="profile_name">{usernickname}님</label>
           <br />
           <div className="example_div"></div>
 

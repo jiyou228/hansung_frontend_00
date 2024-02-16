@@ -89,8 +89,7 @@ function ChangePW() {
       <br />
       <div className="main_container">
         <div className="profile_div">
-          <label className="profile_name">닉네임님</label>
-          <label className="logout">로그아웃</label>
+          <label className="profile_name">{usernickname}님</label>
 
           <br />
           <div className="example_div"></div>
