@@ -4,7 +4,10 @@ import axios from "axios";
 import Jobhak from "../assets/jobhak_full.png";
 import naver_join from "../assets/naver_join.png";
 import kakao_join from "../assets/kakao_join.png";
+import kakao_circle from "../assets/kakao_circle.png";
+import naver_circle from "../assets/naver_circle.png";
 import Swal from "sweetalert2";
+import "./Signup.css";
 
 function Signup() {
   const [loginid, setLoginID] = useState("");
@@ -205,28 +208,39 @@ function Signup() {
   };
   return (
     <div className="signup">
-      <div className="logo-container" style={{ textAlign: "center" }}>
+      <div className="logo-container">
         <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
-        <div className="title_lb"> 회원가입</div>
-        <div className="joincheck_lb">
-          이미 Job학다식 회원이신가요?<Link to="/login">로그인</Link>
-        </div>
+        {/* <div className="title_lb"> Sign Up!</div> */}
       </div>
       <br />
       <label className="joincheck_lb">
         이미 Job학다식 회원이신가요?
-        <Link to="/login">로그인</Link>
+        <Link to="/">로그인</Link>
       </label>
       <br />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          position: "relative",
-        }}
-      >
-        <div className="joinform" style={{ marginLeft: "20vw" }}>
+      <label className="login_logo_lb">SNS 계정으로 회원가입하기</label>
+
+      <div className="login_logo">
+        <Link to="/login/naver">
+          <img
+            className="login_Nlogo"
+            src={naver_circle}
+            width={50}
+            alt="naver_login"
+          />
+        </Link>
+        <Link to="/login/kakao">
+          <img
+            className="login_Klogo"
+            src={kakao_circle}
+            width={50}
+            alt="kakao_login"
+          />
+        </Link>
+      </div>
+      <hr className="joinform_hr" />
+      <div>
+        <div className="joinform">
           <br />
           <label className="joinform_lb">아이디</label>
           <input
@@ -234,24 +248,22 @@ function Signup() {
             type="text"
             value={loginid}
             onChange={HandleInputID}
-            style={{ marginLeft: "3vw" }}
           />
           <button className="joinform_btn" onClick={idValidation}>
             중복 확인
           </button>
           <br />
 
-          <label className="joinpw_lb">비밀번호</label>
+          <label className="joinform_lb">비밀번호</label>
           <input
             className="joinform_ip"
             type="password"
             value={loginpw}
             placeholder="대소문자, 숫자, 특수문자 포함 10자 이상"
             onChange={HandleInputPW}
-            style={{ marginLeft: "1.9vw" }}
           />
           <br />
-          <label className="joinpwpw_lb">비밀번호 재확인</label>
+          <label className="joinform_lb">비밀번호 재확인</label>
           <input
             className="joinform_ip"
             type="password"
@@ -259,7 +271,7 @@ function Signup() {
             onChange={HandleCheckPW}
           />
           <br />
-          <label className="joinname_lb">이름</label>
+          <label className="joinform_lb">이름</label>
           <input
             className="joinform_ip"
             type="text"
@@ -287,7 +299,7 @@ function Signup() {
             인증 요청
           </button>
           <br />
-          <label className="joincode_lb">인증코드</label>
+          <label className="joinform_lb">인증코드</label>
           <input
             className="joinform_ip"
             type="code"
@@ -301,48 +313,6 @@ function Signup() {
           <button className="signup_btn" onClick={SignUpContinue}>
             회원가입
           </button>
-        </div>
-        <div
-          className="vertical-line"
-          style={{
-            borderLeft: "2px solid black",
-            width: "2px",
-            padding: "0",
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
-            height: "70vh",
-          }}
-        />
-
-        <div
-          className="social_div"
-          style={{ textAlign: "center", marginRight: "20vw" }}
-        >
-          <label className="social_lb">
-            소셜 로그인으로 간편하게 가입할 수 있습니다.
-          </label>
-          <hr className="social_hr" style={{ borderStyle: "dashed" }} />
-          <Link to="/login/naver">
-            <div>
-              <img
-                className="login_logo"
-                src={naver_join}
-                width={400}
-                alt="naver_login"
-              />
-            </div>
-          </Link>
-          <Link to="/login/kakao">
-            <div>
-              <img
-                className="login_logo"
-                src={kakao_join}
-                width={400}
-                alt="kakao_login"
-              />
-            </div>
-          </Link>
         </div>
       </div>
     </div>

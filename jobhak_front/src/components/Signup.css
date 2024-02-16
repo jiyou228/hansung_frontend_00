@@ -1,82 +1,71 @@
-/* .join_div {
-  font-family: "NanumSquare";
+.signup {
+  padding: 20px;
 }
 
 .logo-container {
-  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.Jobhak_logo {
+  width: 17rem;
+  height: auto;
+}
+
 .title_lb {
-  font-size: 2.8rem;
-  font-weight: 800;
-  margin-left: 1.5rem;
+  font-family: "cafe24";
+  font-size: 2.5rem;
+  margin-left: 1rem;
   margin-top: 1rem;
 }
 
 .joincheck_lb {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 0.7rem;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+}
+.login_logo_lb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+.login_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.3rem;
+}
+.login_Nlogo {
+  margin-right: 1.5rem;
 }
 
+.joinform_hr {
+  width: 40rem;
+}
 .joinform {
-  text-align: left;
-  margin-top: -14%;
+  width: 50rem;
   position: absolute;
-  left: 20%;
-  top: 85%;
-  transform: translate(-50%, -50%);
-}
-
-.vertical-line {
-  height: 38rem;
-  border-left: 0.07rem solid #000;
-  position: absolute;
-  left: 50%;
-  top: 56%;
+  left: 53.5%;
+  top: 63%;
   transform: translate(-50%, -50%);
 }
 
 .joinform_lb {
-  font-size: 1.4rem;
   font-weight: 800;
-  margin-left: 18rem;
-}
-
-.joinpw_lb {
-  font-size: 1.4rem;
-
-  font-weight: 800;
-  margin-left: 16.75rem;
-}
-
-.joinpwpw_lb {
-  font-size: 1.4rem;
-
-  font-weight: 800;
-  margin-left: 12.55rem;
-}
-
-.joinname_lb {
-  font-size: 1.4rem;
-
-  font-weight: 800;
-  margin-left: 19.3rem;
-}
-
-.joincode_lb {
-  font-size: 1.4rem;
-
-  font-weight: 800;
-  margin-left: 16.75rem;
+  font-size: 1.3rem;
+  display: inline-block;
+  text-align: center;
+  width: 10rem;
 }
 
 .joinform_ip {
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.2rem;
   margin-left: 1.5rem;
   height: 3rem;
   width: 21rem;
@@ -95,7 +84,7 @@
   font-weight: 800;
 
   margin-left: 1.5rem;
-  margin-top: 3.5rem;
+  margin-top: 2rem;
   width: 5rem;
   height: 2rem;
   background-color: #eff5ff;
@@ -115,9 +104,8 @@
   border: 0rem;
   border-radius: 0.5rem;
 }
-
 .signup_btn {
-  margin-left: 23.2rem;
+  margin-left: 11.5rem;
   margin-top: 0.7rem;
   background-color: #ffd3b6;
 
@@ -128,39 +116,24 @@
   height: 2.5rem;
   width: 22rem;
 }
-.social_div {
-  margin-top: 7%;
-  position: absolute;
-  left: 40%;
-  top: 35%;
-  transform: translate(-50%, -50%);
+.joinform_btn:hover,
+.joinform2_btn:hover,
+.signup_btn:hover {
+  background-color: #cddfff;
 }
-.social_lb {
-  margin-left: 72rem;
-  font-size: 1.2rem;
-  font-weight: 800;
+.signup_btn:hover {
+  background-color: #f9be96;
 }
-
-.social_hr {
-  width: 27rem;
-  position: absolute;
-  left: 88%;
-  top: 13%;
-  transform: translate(-50%, -50%);
-}
-
 .login_logo {
-  margin-left: 73rem;
-  margin-top: 1rem;
-  width: 22rem;
+  margin-top: 10px;
 }
-.signup .navbar_app{
-  display: none;
-}
-@media(max-width: 768px){
-  .signup .navbar_app{
-      display: block;
-      position: absolute;
-      top:0;
+
+@media only screen and (max-width: 768px) {
+  .joinform {
+    width: 50rem;
+    position: absolute;
+    left: 58%;
+    top: 63%;
+    transform: translate(-50%, -50%);
   }
-} */
+}
