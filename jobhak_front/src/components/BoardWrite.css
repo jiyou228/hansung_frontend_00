@@ -1,0 +1,97 @@
+.container {
+  height: 100%;
+  width: 60vw;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.boardlist_drop {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 1.2rem;
+}
+
+.Board_title {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.Board_content {
+  width: 100%;
+  height: 50vh;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-sizing: border-box;
+  resize: vertical;
+  font-size: 1.2rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-input-label {
+  display: inline-block;
+  background-color: #104085;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.Bcancel_btn,
+.Bsave_btn {
+  font-size: 1.2rem;
+  background-color: #104085;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 8rem;
+  height: 4vh;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Bcancel_btn {
+  margin-left: 79rem;
+  margin-top: 2rem;
+}
+
+.Bcancel_btn:hover,
+.Bsave_btn:hover {
+  background-color: #104085;
+}
+
+.date-label {
+  display: block;
+  margin-top: 0.7rem;
+  margin-left: 0.8rem;
+  color: #525151;
+}
+
+@media only screen and (max-width: 768px) {
+  .Bcancel_btn {
+    margin-left: 13rem;
+    margin-top: 2rem;
+  }
+}
