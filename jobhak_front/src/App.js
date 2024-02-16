@@ -20,13 +20,16 @@ import CountChar from "./components/CountChar";
 import Ex from "./components/ex";
 import ChangePW from "./components/ChangePW";
 import Delete from "./components/Delete";
+import BoardWrite from "./components/BoardWrite";
+import Mypicture from "./components/Mypicture";
+import Bookmark from "./components/Bookmark";
 
 function App() {
   return (
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/homehome" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/join" element={<Signup />} />
           <Route path="/joincheck" element={<JoinCheck />} />
@@ -45,6 +48,9 @@ function App() {
           <Route path="/user/edit/pw" element={<ChangePW />} />
           <Route path="/user/delete" element={<Delete />} />
           <Route path="/ex" element={<Ex />} />
+          <Route path="/boardlist/write" element={<BoardWrite />} />
+          <Route path="user/picture" element={<Mypicture />} />
+          <Route path="user/bookmark" element={<Bookmark />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
