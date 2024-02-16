@@ -54,7 +54,7 @@ function ChangePW() {
     } else {
       axios
         .patch(`http://localhost:3000/user/edit/pw`, {
-          password: userpw,
+          password: checkpw,
         })
         .then((res) => {
           console.log("데이터 수정 성공:", res);

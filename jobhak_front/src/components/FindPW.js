@@ -12,8 +12,6 @@ const FindPW = () => {
 
   const findPWSubmit = (e) => {
     e.preventDefault();
-  const findPWSubmit = (e) => {
-    e.preventDefault();
     axios
       .post("http://localhost:3000/find/pw", {
         loginId: id,
