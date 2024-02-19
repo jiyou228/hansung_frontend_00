@@ -17,9 +17,9 @@ import ReviseResume from "./components/ReviseResume";
 import Logout from "./components/Logout";
 import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
-import Ex from "./components/ex";
 import ChangePW from "./components/ChangePW";
 import Delete from "./components/Delete";
+import Grammar from "./components/Grammar";
 
 function App() {
   return (
@@ -44,7 +44,7 @@ function App() {
           <Route path="/countchar" element={<CountChar />} />
           <Route path="/user/edit/pw" element={<ChangePW />} />
           <Route path="/user/delete" element={<Delete />} />
-          <Route path="/ex" element={<Ex />} />
+          <Route path="/grammar" element={<Grammar/>}/>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

@@ -35,7 +35,7 @@ const Nav = () => {
 
     return (
         <header className="navbar_app">
-            <Link to ="/" className="navbar_link">
+            <Link to ="/home" className="navbar_link">
                 <img src ={logo} alt="jobhakdasik_logo" className="logo_half"/>
             </Link>
             <ul className={`nav_mobile ${isNavOpen ? 'open' : ''}`}>

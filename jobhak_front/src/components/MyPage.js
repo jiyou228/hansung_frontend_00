@@ -69,8 +69,8 @@ function MyPage() {
       .then((res) => {
         console.log(JSON.stringify(res.data));
         //개인정보 데이터 넘겨주면 각각 저장함.
-        const userData = res.data;
-        setUserID(userData.id);
+        const userData = res.data.result;
+        setUserID(userData.loginId);
         setUserPW(userData.pw);
         setUserNickname(userData.nickname);
         setUserName(userData.name);
@@ -88,7 +88,7 @@ function MyPage() {
       <br />
       <div className="main_container">
         <div className="profile_div">
-          <label className="profile_name">닉네임님</label>
+          <label className="profile_name">{usernickname} 님</label>
           <label className="logout">로그아웃</label>
 
           <br />
