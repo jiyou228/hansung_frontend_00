@@ -5,12 +5,15 @@ import { useNavigate } from "react-router-dom";
 import "./MyPage.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Cookies } from "react-cookie";
 
 function MyPage() {
   const navigate = useNavigate();
   const [userid, setUserID] = useState("");
   const [userpw, setUserPW] = useState("");
-
+  const cookie = new Cookies();
+  const encodedNickname = cookie.get("nickname");
+  cookie.get("nickname", decodeURIComponent(encodedNickname));
   const [usernickname, setUserNickname] = useState("");
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
@@ -57,7 +60,9 @@ function MyPage() {
         console.log(JSON.stringify(res.data));
         //개인정보 데이터 넘겨주면 각각 저장함.
         const userData = res.data.result;
+        cookie.set("nickname", encodeURIComponent(userData.nickname));
         setUserID(userData.loginId);
+        cookie.set("id", userid);
         setUserPW(userData.password);
         setUserNickname(userData.nickname);
         setUserName(userData.name);
@@ -75,7 +80,9 @@ function MyPage() {
       <br />
       <div className="main_container">
         <div className="profile_div">
-          <label className="profile_name">{usernickname}님</label>
+          <label className="profile_name">
+            {decodeURIComponent(encodedNickname)}님
+          </label>
           <br />
           <div className="example_div"></div>
 
@@ -90,13 +97,6 @@ function MyPage() {
               textAlign: "left",
             }}
           >
-            <label className="profile_count">글 수 :</label>
-            <br />
-            <label className="profile_count">댓글 수 :</label>
-            <br />
-            <label className="profile_count">북마크 수 :</label>
-            {/* 닉네임, 글, 댓글, 북마크 업데이트 */}
-
             <hr />
             <div className="navbar">
               <ul className="navbar_ul">

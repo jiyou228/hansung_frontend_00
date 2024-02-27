@@ -5,13 +5,16 @@ import { useNavigate } from "react-router-dom";
 import "./ChangePW.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Cookies } from "react-cookie";
 
 function ChangePW() {
   const navigate = useNavigate();
   const [userpw, setUserPW] = useState("");
   const [checkpw, setCheckPW] = useState("");
   const [recheckpw, setRecheckPW] = useState("");
-  const [usernickname, setUserNickname] = useState("");
+  const cookie = new Cookies();
+  const encodedNickname = cookie.get("nickname");
+  cookie.get("nickname", decodeURIComponent(encodedNickname));
 
   const PWHandler = (e) => {
     setUserPW(e.target.value);
@@ -89,7 +92,9 @@ function ChangePW() {
       <br />
       <div className="main_container">
         <div className="profile_div">
-          <label className="profile_name">{usernickname}님</label>
+          <label className="profile_name">
+            {decodeURIComponent(encodedNickname)}님
+          </label>
 
           <br />
           <div className="example_div"></div>
@@ -105,13 +110,6 @@ function ChangePW() {
               textAlign: "left",
             }}
           >
-            <label className="profile_count">글 수 :</label>
-            <br />
-            <label className="profile_count">댓글 수 :</label>
-            <br />
-            <label className="profile_count">북마크 수 :</label>
-            {/* 닉네임, 글, 댓글, 북마크 업데이트 */}
-
             <hr />
             <div className="navbar">
               <ul className="navbar_ul">

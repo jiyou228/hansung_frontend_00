@@ -64,6 +64,7 @@ function JoinCheck() {
           <div className="checkbox-group1">
             <br />
             <input
+              style={{ zoom: "1.5" }}
               type="checkbox"
               id="checkAll"
               name="checkAll"
@@ -80,6 +81,7 @@ function JoinCheck() {
             <div className="checkbox-group">
               <br />
               <input
+                style={{ zoom: "1.4" }}
                 type="checkbox"
                 id="termsOfService"
                 name="agreement"
@@ -109,6 +111,7 @@ function JoinCheck() {
           <div className="form-group">
             <div className="checkbox-group">
               <input
+                style={{ zoom: "1.4" }}
                 type="checkbox"
                 id="privacyPolicy"
                 name="agreement"
@@ -135,6 +138,7 @@ function JoinCheck() {
           <div className="form-group">
             <div className="checkbox-group">
               <input
+                style={{ zoom: "1.4" }}
                 type="checkbox"
                 id="allowPromotions"
                 name="agreement"
