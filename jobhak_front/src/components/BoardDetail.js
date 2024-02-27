@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./BoardDetail.css";
 import profile from "../assets/profile.png";
 import post_comment from "../assets/post_comment.png";
@@ -13,7 +13,7 @@ import { Cookies } from "react-cookie";
 import { Link } from "react-router-dom";
 
 function BoardDetail() {
-  const [postId, setPostId] = useState("");
+  const {postId} = useParams();
   const [userpic, setUserPic] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -140,6 +140,7 @@ function BoardDetail() {
         console.log(err + ":: detail err");
       });
   }, [user_id]);
+  
 
   return (
     <div>
@@ -157,7 +158,7 @@ function BoardDetail() {
       </div>
       <div className="board_div">
         <img className="profile_img" src={profile} alt="프사" width={60} />
-        <label className="posttitle_lb">잡학다식 족보 팝니다{title}</label>
+        <label className="posttitle_lb">{title}</label>
 
         <img
           className="dropdown"
@@ -190,11 +191,11 @@ function BoardDetail() {
         <label className="post_nickname">
           {decodeURIComponent(encodedNickname)}
         </label>
-        <label className="category_lb">[정보교환] {category}</label>
+        <label className="category_lb">{category}</label>
         <label>{formattedDate}</label>
         {/* 날짜는 받아오는대로 바꾸기 */}
         <div className="content_div">
-          <label>제가 돈주고 산 족보인데 반 값으로 다시 팝니다.{content}</label>
+          <label dangerouslySetInnerHTML={{__html: content}}/>
         </div>
         <img src={post_comment} alt="comment" width={35} />
         <label className="post_lb"> 10 {commentcount}</label>

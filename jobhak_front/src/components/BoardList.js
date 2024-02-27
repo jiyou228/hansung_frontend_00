@@ -2,9 +2,9 @@ import Nav from "./Nav";
 import comment from "../assets/comment.png";
 import off_bookmark from "../assets/off_bookmark.png";
 import on_bookmark from "../assets/on_bookmark.png";
-import sorting from "../assets/sorting.png";
-import category from "../assets/categories.png";
+import filter_off from '../assets/filter_off.png';
 import filter from "../assets/filter.png";
+import listcategory from '../assets/listCategory.png';
 import search from "../assets/search.png";
 import prev from "../assets/previous.png";
 import profile from "../assets/profile.png";
@@ -16,6 +16,7 @@ import axios from "axios";
 
 const BoardList = () => {
   const [isfilter, setisFilter] = useState(false);
+  const [isCategory, setisCategory] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
   //   const [boardList, setBoardList] = useState([
   //   { postId: 1, title: '게시물 1', content: '게시물 내용 1', replies: 100},
@@ -42,10 +43,15 @@ const BoardList = () => {
   const [sortOption, setSortOption] = useState("latest");
   const [searchTitle, setSearchTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [category, setCategory] = useState('전체');
 
   const openFilter = () => {
     setisFilter(!isfilter);
   };
+
+  const openCategory = () => {
+    setisCategory(!isCategory);
+  }
   const submitSearch = () => {
     axios
       .get(`/boardlist/search/${searchTitle}`)
@@ -64,13 +70,28 @@ const BoardList = () => {
     const tag = /(<([^>]+)>)/gi;
     return html.replace(tag, "");
   };
+  const handleSortClick = (sort) => {
+    setSortOption(sort);
+  }
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    if(category == 'resume'){
+      setCategory('이력서');}
+    else if(category == 'interview'){
+      setCategory('면접');
+    }
+    else if(category == 'share'){
+      setCategory('정보교환');
+    }
+    else{
+      setCategory('전체');
+    }
+  }
   useEffect(() => {
     axios
       .all([
         axios.get(
-          `/boardlist?page=${
-            page - 1
-          }&sort=${sortOption}&category=${selectedCategory}`
+          `/boardlist?page=${page - 1}&sort=${sortOption}&category=${selectedCategory}`
         ),
         axios.get("/boardlist/best"),
         axios.get("/user/bookmark"),
@@ -87,7 +108,6 @@ const BoardList = () => {
         console.error("에러 발생: ", err);
       });
   }, [page, sortOption, selectedCategory]);
-
   return (
     <>
       <Nav />
@@ -108,50 +128,41 @@ const BoardList = () => {
             <ul>
               {bestPosts.map((post) => (
                 <li key={post.postId}>
-                  <Link to={`/board/${post.postId}`}>{post.title}</Link>
+                  <Link to={`/boardlist/${post.postId}`}>{post.title}</Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <div className="boardlist_filter">
-          <img onClick={openFilter} src={filter} alt="필터" />
-          <Link to="/boardlist/write">
-            <button>게시글 작성</button>
-          </Link>
+        <div className="boardlist_select">
+            <div className={`open_category ${isCategory? 'active' : ''}`} onClick={openCategory}>
+              {category}
+              <img src = {listcategory} alt="목록"/>
+            </div>
+            <div className="boardlist_filter">
+                {isfilter && (
+                <div className="boardlist_sort">
+                    <ul>
+                        <li onClick={()=> handleSortClick("latest")} style={{ fontWeight: sortOption === "latest" ? 800 : "normal" }}>최신순</li>
+                        <li onClick={()=> handleSortClick("popular")} style={{ fontWeight: sortOption === "popular" ? 800 : "normal" }}>인기순</li>
+                    </ul>
+                </div>
+                )}
+                <img onClick={openFilter} src={isfilter ? filter_off : filter} alt="필터" />
+                <Link to="/boardlist/write">
+                <button>게시글 작성</button>
+                </Link>
+            </div>
         </div>
-        {isfilter && (
-          <div className="modal_filter">
-            <div>
-              <h4>정렬</h4>
-              <div className="modal_sort">
-                <img src={sorting} alt="정렬" />
-                <select
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                >
-                  <option value="latest">최신순</option>
-                  <option value="popular">인기순</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <h4>게시판 카테고리</h4>
-              <div className="modal_category">
-                <img src={category} alt="분류" />
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  <option value="all">전체</option>
-                  <option value="resume">이력서</option>
-                  <option value="interview">면접</option>
-                  <option value="share">정보 교환</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        )}
+        {isCategory && (
+            <div className="boardlist_category">
+                <ul>
+                    <li onClick={()=> handleCategoryClick("all")} style={{ fontWeight: selectedCategory === "all" ? 800 : "normal" }}>전체</li>
+                    <li onClick={()=> handleCategoryClick("resume")} style={{ fontWeight: selectedCategory === "resume" ? 800 : "normal" }}>이력서</li>
+                    <li onClick={()=> handleCategoryClick("interview")} style={{ fontWeight: selectedCategory === "interview" ? 800 : "normal" }}>면접</li>
+                    <li onClick={()=> handleCategoryClick("share")} style={{ fontWeight: selectedCategory === "share" ? 800 : "normal" }}>정보교환</li>
+                </ul>
+            </div>)}
         {boardList.length > 0 && (
           <div className="boardlist_list">
             {boardList.map((board) => (

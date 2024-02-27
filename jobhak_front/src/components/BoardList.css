@@ -27,7 +27,7 @@
 }
 .boardlist_profileDetail{
     text-align: center;
-    padding-bottom: 5vh;
+    padding-bottom: 2vh;
 }
 
 .boardlist_best{
@@ -56,7 +56,7 @@ a{
     color: inherit;
 }
 .boardlist_list{
-    margin-top: 10vh;
+    margin-top: 3vh;
 }
 .boardlist_list ul{
     list-style: none;
@@ -98,10 +98,11 @@ a{
     margin-left: 0.5vw;
 }
 .boardlist_filter{
-    float: right;
     display: flex;
     align-items: center;
     position: relative;
+    float: right;
+    transition: all 1s;
 }
 .boardlist_filter img{
     width: 3vw;
@@ -116,42 +117,55 @@ a{
     font-weight: 800;
     font-size: 1.2vw;
 }
-.modal_filter img{
-    width: 2vw;
+.boardlist_sort ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2vw;
+    font-size: larger;
+    margin-right: 2vw;
 }
-.modal_filter h4{
-    border-bottom: 1px  solid #252525;
-    text-align: center;
+.boardlist_sort li{
+    cursor: pointer;
+}
+.boardlist_select{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    position: relative;
+}
+.open_category{
+    cursor: pointer;
+    font-size: x-large;
+    font-weight: 700;
+    margin-left: 1vw;
+    border-bottom: 3px solid #333333;
+    margin-top: 1vh;
     padding-bottom: 1vh;
+    width: 8vw;
 }
-.modal_sort{
-    display: flex;
-    align-items: center;
-}
-.modal_sort img{
-    margin-right: 0.5vw;
-}
-.modal_category{
-    display: flex;
-    align-items: center;
-    padding-bottom: 5vh;
-}
-.modal_category img{
-    margin-right: 0.5vw;
-}
-.modal_filter{
-    border-radius: 1rem;
-    width: fit-content;
-    box-shadow: 0px 0px 5px 1px #0000002a;
-    padding:  0 1vw;
-    padding-top: 1vh;
+.open_category img{
     position: absolute;
-    right: 16vw;
-    z-index: 100;
-    background-color: white;
+    top: 50%;
+    left: 7vw;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+    height: 2vh;
 }
-.modal_filter select{
-    padding: 1vh 0;
+.open_category.active img{
+    transform: translateY(-50%) rotate(180deg);
+}
+.boardlist_category ul{
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 2vw;
+    font-size: larger;
+    position: relative;
+    left: 0;
+}
+.boardlist_category li{
+    cursor: pointer;
 }
 .boardlist_search{
     position: relative;
