@@ -173,8 +173,8 @@ function Signup() {
     } else {
       await axios
         .post(`http://localhost:3000/join`, {
-          id: loginid,
-          pw: loginpw,
+          loginId: loginid,
+          password: loginpw,
           name: username,
           nickname: usernickname,
           email: useremail,
@@ -190,7 +190,7 @@ function Signup() {
             width: 800,
             height: 100,
           });
-          document.location.href = "./login";
+          document.location.href = "./";
         })
         .catch((error) => {
           console.log(error);
@@ -201,7 +201,6 @@ function Signup() {
             showCancelButton: false,
             confirmButtonText: "확인",
             width: 800,
-            height: 100,
           });
         });
     }
@@ -307,7 +306,7 @@ function Signup() {
             onChange={HandleConfirmCode}
           />
           <button className="joinform2_btn" onClick={CodeConfirm}>
-            코드 요청
+            코드 확인
           </button>
           <br />
           <button className="signup_btn" onClick={SignUpContinue}>
