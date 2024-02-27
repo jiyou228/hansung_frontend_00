@@ -53,6 +53,7 @@ function BoardWrite() {
         title: title,
         content: content,
         file: file,
+        category: category,
       })
       .then((res) => {
         console.log("게시물 등록 성공" + res);
@@ -91,13 +92,14 @@ function BoardWrite() {
           type="dropbox"
           className="boardlist_drop"
           onChange={onBoardCategory}
+          required
         >
-          <option value="" className="select_box">
+          <option value="" hidden className="select_box">
             카테고리 선택
           </option>
-          <option value="0">이력서</option>
-          <option value="1">면접</option>
-          <option value="2">정보교환</option>
+          <option value="resume">이력서</option>
+          <option value="interview">면접</option>
+          <option value="share">정보교환</option>
         </select>
         <br />
         <input

@@ -8,7 +8,7 @@ const Logout = () => {
     useEffect(() => {
         const handleLogout = async() =>{
             removeCookie("loggedIn");
-            removeCookie('loginModal');
+            removeCookie("loginModal");
             console.log("쿠키 삭제 성공!");
             try{
                 axios.get("http://localhost:3000/logout");

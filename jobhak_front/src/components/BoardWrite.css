@@ -32,7 +32,6 @@
 
 .Board_content {
   width: 100%;
-  height: 50vh;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
@@ -41,6 +40,9 @@
   box-sizing: border-box;
   resize: vertical;
   font-size: 1.2rem;
+}
+.ql-container.ql-snow{
+  max-height: 560px;
 }
 
 input[type="file"] {

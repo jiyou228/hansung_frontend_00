@@ -48,7 +48,6 @@ function App() {
           <Route path="/user/edit/pw" element={<ChangePW />} />
           <Route path="/user/delete" element={<Delete />} />
           <Route path="/grammar" element={<Grammar />} />
-          <Route path="/ex" element={<Ex />} />
           <Route path="/boardlist/write" element={<BoardWrite />} />
           <Route path="user/picture" element={<Mypicture />} />
           <Route path="user/bookmark" element={<Bookmark />} />
