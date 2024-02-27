@@ -201,7 +201,6 @@ function Signup() {
             showCancelButton: false,
             confirmButtonText: "확인",
             width: 800,
-            height: 100,
           });
         });
     }

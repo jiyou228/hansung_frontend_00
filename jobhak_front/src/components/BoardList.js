@@ -17,74 +17,75 @@ import axios from "axios";
 const BoardList = () => {
   const [isfilter, setisFilter] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
-  // const [boardList, setBoardList] = useState([
-  //   { postId: 1, title: "게시물 1", content: "게시물 내용 1", replies: 100 },
-  //   { postId: 2, title: "게시물 2", content: "게시물 내용 2", replies: 100 },
-  //   { postId: 3, title: "게시물 3", content: "게시물 내용 3", replies: 100 },
-  //   { postId: 4, title: "게시물 4", content: "게시물 내용 4", replies: 100 },
-  //   { postId: 5, title: "게시물 5", content: "게시물 내용 5", replies: 100 },
-  //   { postId: 6, title: "게시물 6", content: "게시물 내용 6", replies: 100 },
-  //   { postId: 7, title: "게시물 7", content: "게시물 내용 7", replies: 100 },
-  //   { postId: 8, title: "게시물 8", content: "게시물 내용 8", replies: 100 },
-  //   { postId: 9, title: "게시물 9", content: "게시물 내용 9", replies: 100 },
-  //   { postId: 10, title: "게시물 10", content: "게시물 내용 10", replies: 100 },
+  //   const [boardList, setBoardList] = useState([
+  //   { postId: 1, title: '게시물 1', content: '게시물 내용 1', replies: 100},
+  //   { postId: 2, title: '게시물 2', content: '게시물 내용 2', replies: 100 },
+  //   { postId: 3, title: '게시물 3', content: '게시물 내용 3', replies: 100 },
+  //   { postId: 4, title: '게시물 4', content: '게시물 내용 4', replies: 100 },
+  //   { postId: 5, title: '게시물 5', content: '게시물 내용 5', replies: 100 },
+  //   { postId: 6, title: '게시물 6', content: '게시물 내용 6', replies: 100 },
+  //   { postId: 7, title: '게시물 7', content: '게시물 내용 7', replies: 100 },
+  //   { postId: 8, title: '게시물 8', content: '게시물 내용 8', replies: 100 },
+  //   { postId: 9, title: '게시물 9', content: '게시물 내용 9', replies: 100 },
+  //   { postId: 10, title: '게시물 10', content: '게시물 내용 10', replies: 100 },
   // ]);
   // const [bestPosts, setBestPosts] = useState([
-  //   { id: 1, title: "인기글 1" },
-  //   { id: 2, title: "인기글 2" },
-  //   { id: 3, title: "인기글 3" },
-  //   { id: 4, title: "인기글 4" },
-  //   { id: 5, title: "인기글 5" },
+  //   {id: 1, title: '인기글 1'},
+  //   {id: 2, title: '인기글 2'},
+  //   {id: 3, title: '인기글 3'},
+  //   {id: 4, title: '인기글 4'},
+  //   {id: 5, title: '인기글 5'},
   // ]);
   const [bestPosts, setBestPosts] = useState([]);
   const [boardList, setBoardList] = useState([]);
   const [page, setPage] = useState(1);
   const [sortOption, setSortOption] = useState("latest");
   const [searchTitle, setSearchTitle] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("전체");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const openFilter = () => {
     setisFilter(!isfilter);
   };
   const submitSearch = () => {
     axios
-      .get(`/boardlist/search/title=${searchTitle}`)
+      .get(`/boardlist/search/${searchTitle}`)
       .then((res) => {
-        setBoardList(res.data);
+        if (res.data.result === null) {
+          setBoardList([]);
+        } else {
+          setBoardList([res.data.result]);
+        }
       })
       .catch((error) => {
         console.error("에러 발생: ", error);
       });
   };
+  const removeHTML = (html) => {
+    const tag = /(<([^>]+)>)/gi;
+    return html.replace(tag, "");
+  };
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:3000/boardlist?size=10&page=${page}&sort=${sortOption}&category=${selectedCategory}`
+      .all([
+        axios.get(
+          `/boardlist?page=${
+            page - 1
+          }&sort=${sortOption}&category=${selectedCategory}`
+        ),
+        axios.get("/boardlist/best"),
+        axios.get("/user/bookmark"),
+      ])
+      .then(
+        axios.spread((res1, res2, res3) => {
+          res1 = setBoardList(res1.data.result);
+          res2 = setBestPosts(res2.data.result);
+          const postIds = res3.data.result.map((item) => item.post.postId);
+          setBookmarks(postIds);
+        })
       )
-      .then((res) => {
-        setBoardList(res.data.result);
-      })
       .catch((err) => {
         console.error("에러 발생: ", err);
       });
-
-    axios
-      .get("/boardlist/best")
-      .then((res) => {
-        setBestPosts(res.data.result);
-      })
-      .catch((err) => {
-        console.error("에러 발생: ", err);
-      });
-    axios
-      .get("/user/bookmark")
-      .then((res) => {
-        setBookmarks(res.data);
-      })
-      .catch((err) => {
-        console.error("에러 발생: ", err);
-      });
-    setBookmarks([1, 3, 5]);
   }, [page, sortOption, selectedCategory]);
 
   return (
@@ -129,9 +130,7 @@ const BoardList = () => {
                   value={sortOption}
                   onChange={(e) => setSortOption(e.target.value)}
                 >
-                  <option selected value="latest">
-                    최신순
-                  </option>
+                  <option value="latest">최신순</option>
                   <option value="popular">인기순</option>
                 </select>
               </div>
@@ -144,7 +143,7 @@ const BoardList = () => {
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                 >
-                  <option selected>전체</option>
+                  <option value="all">전체</option>
                   <option value="resume">이력서</option>
                   <option value="interview">면접</option>
                   <option value="share">정보 교환</option>
@@ -153,29 +152,31 @@ const BoardList = () => {
             </div>
           </div>
         )}
-        <div className="boardlist_list">
-          {boardList.map((board) => (
-            <div key={board.postId} className="boardlist_post">
-              <div className="boardlist_title">
-                <Link to={`/boardlist/detail/${board.postId}`}>
-                  {board.title}
-                </Link>
-                {bookmarks.includes(board.postId) ? (
-                  <img src={on_bookmark} alt="북마크" />
-                ) : (
-                  <img src={off_bookmark} alt="북마크" />
-                )}
-              </div>
-              <div className="boardlist_content">
-                {board.content.substring(0, 40)}
-                <div className="boardlist_comment">
-                  <img src={comment} alt="댓글" />
-                  <label>{board.replies}</label>
+        {boardList.length > 0 && (
+          <div className="boardlist_list">
+            {boardList.map((board) => (
+              <div key={board.postId} className="boardlist_post">
+                <div className="boardlist_title">
+                  <Link to={`/boardlist/detail/${board.postId}`}>
+                    {board.title}
+                  </Link>
+                  {bookmarks.includes(board.postId) ? (
+                    <img src={on_bookmark} alt="북마크됨" />
+                  ) : (
+                    <img src={off_bookmark} alt="북마크안됨" />
+                  )}
+                </div>
+                <div className="boardlist_content">
+                  {removeHTML(board.content.substring(0, 40))}
+                  <div className="boardlist_comment">
+                    <img src={comment} alt="댓글" />
+                    <label>{board.replies ? board.replies : 0}</label>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
         <div className="boardlist_page">
           <img
             src={prev}

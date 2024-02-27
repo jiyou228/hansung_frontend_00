@@ -42,6 +42,8 @@
     text-align: left;
     width: 43vw;
     border-radius: 1rem;
+    font-size: 1.2rem;
+    min-height: 32vh;
 }
 .boardlist_best h2{
     font-weight: 800;
@@ -82,7 +84,7 @@ a{
     width: fit-content;
 }
 .boardlist_content{
-    padding-top: 1vh;
+    padding-top: 3vh;
     font-size: 1rem;
     display: flex;
     justify-content: space-between;
@@ -92,7 +94,7 @@ a{
     align-items: center;
 }
 .boardlist_comment label{
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin-left: 0.5vw;
 }
 .boardlist_filter{
@@ -156,7 +158,7 @@ a{
     display: flex;
     align-items: center;
     width: fit-content;
-    margin: 5vh auto;
+    margin: 1vh auto;
 }
 .boardlist_search input{
     width: 40vw;
@@ -179,11 +181,11 @@ a{
     margin-top: 3vh;
 }
 .boardlist_page img{
-    width: 1.5rem;
+    width: 1.8rem;
     cursor: pointer;
 }
 .boardlist_page p{
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 800;
     padding: 0 1vw;
 }

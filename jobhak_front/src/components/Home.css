@@ -191,7 +191,7 @@
         margin-left: 0.8vw;
     }
     .home{
-        overflow-y: hidden;
+        overflow-y: scroll;
     }
     .home_profile{
         display: none;
