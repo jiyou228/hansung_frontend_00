@@ -23,6 +23,7 @@ import Grammar from "./components/Grammar";
 import BoardWrite from "./components/BoardWrite";
 import Mypicture from "./components/Mypicture";
 import Bookmark from "./components/Bookmark";
+import BoardDetail from "./components/BoardDetail";
 
 function App() {
   return (
@@ -48,10 +49,10 @@ function App() {
           <Route path="/user/edit/pw" element={<ChangePW />} />
           <Route path="/user/delete" element={<Delete />} />
           <Route path="/grammar" element={<Grammar />} />
-          <Route path="/ex" element={<Ex />} />
           <Route path="/boardlist/write" element={<BoardWrite />} />
-          <Route path="user/picture" element={<Mypicture />} />
-          <Route path="user/bookmark" element={<Bookmark />} />
+          <Route path="/user/picture" element={<Mypicture />} />
+          <Route path="/user/bookmark" element={<Bookmark />} />
+          <Route path="/boardlist/detail/:postId" element={<BoardDetail />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
