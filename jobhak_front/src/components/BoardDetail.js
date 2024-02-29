@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BoardDetail.css";
@@ -8,11 +8,14 @@ import post_comment from "../assets/post_comment.png";
 import off_bookmark from "../assets/off_bookmark.png";
 import on_bookmark from "../assets/on_bookmark.png";
 import dropdot from "../assets/dropdot.png";
+import reply_arrow from '../assets/reply.png';
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import { Link } from "react-router-dom";
 
 function BoardDetail() {
+  const [replyContent, setReplyContent] = useState('');
+  const [reReplyContent, setreReplyContent] = useState('');
   const {postId} = useParams();
   const [userpic, setUserPic] = useState("");
   const [title, setTitle] = useState("");
@@ -30,15 +33,27 @@ function BoardDetail() {
   cookie.get("nickname", decodeURIComponent(encodedNickname));
   const user_id = cookie.get("id");
   cookie.get("id", user_id);
+  const [replyList, setReplyList] = useState([]);
+  const [nickname, setNickname] = useState('');
+  // const today = new Date();
+  const [isreReply, setisRereply] = useState(null);
+  const [openDelReply, setOpenDelReply] = useState(false);
+  const isOutsideClick = useRef(false);
 
-  const today = new Date();
-  const formattedDate = ` ${today.getFullYear()}. ${
-    today.getMonth() + 1
-  }. ${today.getDate()}`;
+  // const formattedDate = ` ${today.getFullYear()}. ${
+  //   today.getMonth() + 1
+  // }. ${today.getDate()}`;
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const delOpenReply = (replyId) => {
+    setOpenDelReply((del) => ({
+      ...del,
+      [replyId]: !del[replyId],
+    }));
+  }
 
   const handleBookmarkClick = () => {
     setIsBookmarked(!isBookmarked);
@@ -86,7 +101,7 @@ function BoardDetail() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          navigate(`./boardlist/edit/${postId}`);
+          navigate(`/boardlist/edit/${postId}`);
         }
       })
       .catch((err) => {
@@ -94,7 +109,7 @@ function BoardDetail() {
       });
   };
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (option) => {
     Swal.fire({
       icon: "warning",
       title: "게시물 삭제",
@@ -109,12 +124,28 @@ function BoardDetail() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:3000/boardlist/delete/${postId}`, {
+          if(!option) {
+            axios.delete(`http://localhost:3000/boardlist/delete/${postId}`, {
             data: {
               post_id: postId,
             },
           });
-          navigate("./boardlist");
+          navigate('../boardlist');
+          }
+          else if(option) {
+            axios.delete(`/boardlist/${postId}/reply/delete/${option}`, {
+            data: {
+              postId: postId,
+              replyId: option
+            },
+          })
+          .then(() => {
+            getData(); // 삭제 성공 시에만 getData 호출
+          })
+          .catch((err) => {
+            console.log(err + "게시물 삭제 error ");
+          });
+          }
         }
       })
       .catch((err) => {
@@ -122,28 +153,99 @@ function BoardDetail() {
       });
   };
 
+  const addreReply = (parentReplyId) => {
+    setisRereply((add) => add === parentReplyId ? null : parentReplyId);
+  };
+
   useEffect(() => {
+    getData();
+    
+    const handleClickOutside = (event) => {
+      if (openDelReply && isOutsideClick.current) {
+        setOpenDelReply(false);
+      }
+      isOutsideClick.current = true; // 외부 클릭 감지
+    };
+  
+    document.addEventListener('click', handleClickOutside);
+  
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      isOutsideClick.current = false; // cleanup 함수에서 외부 클릭 감지 해제
+    };
+  }, [user_id, openDelReply]);
+  
+  
+  const getData = () => {
     axios
       .get(`http://localhost:3000/boardlist/detail/${postId}`)
       .then((res) => {
-        console.log(JSON.stringify(res.data));
+        // console.log(JSON.stringify(res.data));
         const userData = res.data.result;
+        if(userData.category){
+          if(userData.category === 'resume'){
+            setCategory('이력서');}
+          else if(userData.category === 'interview'){
+            setCategory('면접');
+          }
+          else if(userData.category === 'share'){
+            setCategory('정보교환');
+          }
+          else{
+            setCategory('전체');
+          }
+        }
         setTitle(userData.title);
         setContent(userData.content);
-        setCategory(userData.category);
         setUserPic(userData.picture);
         setCommentCount(userData.commentcount);
         setBookmarkCount(userData.bookmarkcount);
+        setReplyList(userData.replies);
+        setPostDate(userData.date);
+        setNickname(userData.nickname);
       })
-
       .catch((err) => {
         console.log(err + ":: detail err");
       });
-  }, [user_id]);
-  
+  }
+  const handleReply = () => {
+    axios
+    .post(`/boardlist/detail/${postId}/reply`, {
+      postId: postId,
+      replyContent: replyContent
+    })
+    .then(res => {
+      if(res){
+        console.log('댓글 작성 완료');
+        getData();
+      }
+    })
+    .catch(err => {
+      console.error('에러 발생', err);
+    })
+    setReplyContent('');
+  }
 
+  const handlereReply = (parentReplyId) => {
+    axios
+    .post(`/boardlist/detail/${postId}/reply`, {
+      postId: postId,
+      replyContent: reReplyContent,
+      parentReplyId: parentReplyId,
+    })
+    .then(res => {
+      if(res){
+        console.log('답글 작성 완료');
+        getData();
+      }
+    })
+    .catch(err => {
+      console.error('에러 발생', err);
+    })
+    setreReplyContent('');
+  }
   return (
-    <div>
+    <div className="boardDetail_app">
       <Nav />
       <div className="button_container">
         <Link to="/boardlist/detail/${postId}">
@@ -189,11 +291,12 @@ function BoardDetail() {
               ID는 DB에 저장되어 있는 유저의 고유 번호이다. */}
         <br />
         <label className="post_nickname">
-          {decodeURIComponent(encodedNickname)}
+          {/* {decodeURIComponent(encodedNickname)} */}
+          {nickname}
         </label>
         <label className="category_lb">{category}</label>
-        <label>{formattedDate}</label>
-        {/* 날짜는 받아오는대로 바꾸기 */}
+        {/* <label>{formattedDate}</label> */}
+        <label>{postdate}</label>
         <div className="content_div">
           <label dangerouslySetInnerHTML={{__html: content}}/>
         </div>
@@ -202,6 +305,80 @@ function BoardDetail() {
         <img src={off_bookmark} alt="bookmark" width={30} />
         <label className="post_lb"> 30 {bookmarkcount}</label>
       </div>
+      <div className="boardlist_replies">
+        <div className="reply_box">
+          <textarea
+          onChange={(e) => setReplyContent(e.target.value)}
+          rows="5" 
+          maxLength="500" 
+          placeholder="댓글을 작성해보세요." />
+          <button onClick={handleReply}>등록</button>
+        </div>
+      </div>
+      {/* 댓글 및 대댓글 출력 */}
+      {replyList.map((reply) => (
+          <div key={reply.replyId} className="replies_container">
+              {!reply.parentReplyId && ( // 부모 댓글만 출력
+                  <div className="reply_reply">
+                      <div className="reply_profile">
+                          <img src={profile} alt="프사" />
+                      </div>
+                      <div className="reply_content">
+                          <label>{reply.nickname}</label>
+                          <div>{reply.replyContent}</div>
+                          <div className="reply_delete">
+                              <img src={dropdot} alt="delete" onClick={() => delOpenReply(reply.replyId)} />
+                              {openDelReply[reply.replyId] && (
+                                  <button onClick={() => handleDeleteClick(reply.replyId)}>삭제</button>
+                              )}
+                          </div>
+                          <div className="reply_rere">
+                              <div>{reply.date}</div>
+                              <div className="rereply_add" onClick={() => addreReply(reply.replyId)}>
+                                  <img src={post_comment} alt="comment" /><b>답글 달기</b>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              )}
+              {/* 대댓글 입력 창 */}
+              {isreReply === reply.replyId && (
+                  <div className="rereply_addcontainer">
+                      <img src={reply_arrow} alt="답글" />
+                      <div className="rereply_addbox">
+                          <textarea
+                              onChange={(e) => setreReplyContent(e.target.value)}
+                              rows="3"
+                              maxLength="300"
+                              placeholder="답글을 작성해보세요."
+                          />
+                          <button onClick={() => handlereReply(reply.replyId)}>등록</button>
+                      </div>
+                  </div>
+              )}
+              {/* 대댓글 출력 */}
+              {replyList.filter(subReply => subReply.parentReplyId === reply.replyId).map((subReply) => (
+                  <div key={subReply.replyId} className="rereply_container">
+                      <img src={reply_arrow} alt="답글" />
+                      <div className="rereply_box">
+                          <div className="rereply_profile">
+                              <img src={profile} alt="프사" />
+                          </div>
+                          <div className="rereply_content">
+                              <label>{subReply.nickname}</label>
+                              <div>{subReply.replyContent}</div>
+                          </div>
+                          <div className="rereply_delete">
+                              <img src={dropdot} alt="delete" onClick={() => delOpenReply(subReply.replyId)} />
+                              {openDelReply[subReply.replyId] && (
+                                  <button onClick={() => handleDeleteClick(subReply.replyId)}>삭제</button>
+                              )}
+                          </div>
+                      </div>
+                  </div>
+              ))}
+          </div>
+      ))}
     </div>
   );
 }
