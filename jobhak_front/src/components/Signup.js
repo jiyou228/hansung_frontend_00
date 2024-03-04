@@ -16,7 +16,7 @@ function Signup() {
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
   const [usernickname, setUserNickName] = useState("");
-
+  const [inputcode, setInputCode] = useState("");
   const [usableid, setUsableID] = useState(false);
   const [confirmcode, setConfirmCode] = useState("");
   const [confrimemail, setConfirmEmail] = useState(null);
@@ -58,19 +58,15 @@ function Signup() {
       .then((response) => {
         console.log(response);
         alert("인증 코드가 이메일로 전송되었습니다.");
-        setConfirmCode(response.authNumber);
+        setInputCode(response.data.authNumber.toString());
       })
       .catch((error) => {
         console.log("email error", error);
       });
   };
 
-  const CodeConfirm = (res) => {
-    //console.log(JSON.stringify(data));
-    console.log(res);
-    const inputCode = res.authNumber; // 인증코드 입력값 가져오기
-
-    if (inputCode === confirmcode) {
+  const CodeConfirm = () => {
+    if (inputcode === confirmcode) {
       Swal.fire({
         icon: "success",
         title: "성공",
