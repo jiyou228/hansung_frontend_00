@@ -38,6 +38,7 @@ const Login = () => {
           });
 
           setCookie("loggedIn", true);
+          setCookie("loginId", id);
           navigate("/home");
         }
       })

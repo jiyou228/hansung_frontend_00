@@ -1,3 +1,7 @@
+.boardDetail_app{
+  position: relative;
+  padding-bottom: 5vh;
+}
 .profile_img {
   border-radius: 50px;
   margin-left: 1rem;
@@ -60,7 +64,6 @@
 
 .dropdown-menu {
   position: absolute;
-  top: 23%;
   left: 71%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -97,7 +100,245 @@
   font-weight: 600;
   margin-right: 2.1rem;
 }
+.boardlist_replies{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2.5px solid #666666;
+  width: fit-content;
+  margin: auto;
+  margin-top: 5vh;
+  border-radius: 1vh;
+  padding-bottom: 0.2vh;
+}
+.boardlist_replies textarea{
+  border: none;
+  outline: none;
+  resize: none;
+  width: 53vw;
+  border-radius: 1vh;
+  font-size: large;
+  padding: 0.5vh 0.5vw;
+}
+.boardlist_replies button{
+  margin-right: 0.2vw;
+  border: none;
+  background-color: #104085;
+  color: white;
+  font-size: x-large;
+  font-weight: 700;
+  padding: 0.5vh 1.6vw;
+  border-radius: 1vh;
+}
+.boardlist_replies button:active{
+  font-size: larger;
+  border-radius: 0.7vh;
+}
+.reply_delete{
+  position: absolute;
+  right: 0;
+  top: 1vh;
+}
+.reply_delete img{
+  padding: 0;
+  height: 3vh;
+  cursor: pointer;
+}
+.reply_delete button{
+  position: absolute;
+  white-space: nowrap;
+  padding: 1vh 2vw;
+  top:3vh;
+  left: -5vw;
+  z-index: 10;
+  border: none;
+  background-color: white;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+  font-size: larger;
+  font-weight: 700;
+}
+.reply_delete button:hover{
+  background-color: #d9d9d9;
+}
+.reply_reply{
+  display: flex;
+  border: 2.5px solid #666666;
+  width: 59.5vw;
+  margin: auto;
+  margin-top: 5vh;
+  align-items: center;
+  position: relative;
+  border-radius: 1vh;
+  padding: 2vh 0;
+}
+.reply_profile{
+  width: 6vh;
+  height: 6vh;
+  border-radius: 70%;
+  overflow: hidden;
+  background-color: #eff0f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.5vw;
+}
+.reply_profile img{
+  width: 100%;
+  object-fit: cover;
+}
+.replies_container{
+  position: relative;
+  width: fit-content;
+  margin: auto;
+}
+.reply_rere{
+  position: absolute;
+  right: 0.5vw;
+  bottom: 0.5vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap:0.5vw;
+}
+.rereply_add{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.rereply_add b{
+  padding-left: 0.5vw;
+}
+.reply_content{
+  padding-left: 2vw;
+  display: flex;
+  gap: 1vh;
+  flex-direction: column;
+}
+.reply_content label{
+  font-weight: 700;
+  font-size: larger;
+}
+.rereply_add img{
+  height: 3vh;
+}
+.rereply_addcontainer{
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1vw;
+}
+.rereply_addcontainer img{
+  height: 5vh;
+}
+.rereply_addbox{
+  align-items: flex-end;
+  border: 2.5px solid #666666;
+  width: fit-content;
+  margin-top: 5vh;
+  border-radius: 1vh;
+  padding-bottom: 0.2vh;
+  margin-left: 1vw;
+  display: flex;
+}
+.rereply_addbox textarea{
+  border: none;
+  outline: none;
+  resize: none;
+  width: 48vw;
+  border-radius: 1vh;
+  font-size: large;
+  padding: 0.5vh 0.5vw;
+}
+.rereply_addbox button{
+  margin-right: 0.2vw;
+  border: none;
+  background-color: #104085;
+  color: white;
+  font-size: large;
+  font-weight: 700;
+  padding: 0.5vh 1.6vw;
+  border-radius: 1vh;
+  white-space: nowrap;
+}
 
+.rereply_container{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-left: 1vw;
+}
+.rereply_container img{
+  height: 5vh;
+}
+.rereply_profile{
+  width: 6vh;
+  height: 6vh;
+  border-radius: 70%;
+  overflow: hidden;
+  background-color: #eff0f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1vw;
+}
+.rereply_profile img{
+  width: 100%;
+  object-fit: cover;
+  height: fit-content;
+}
+.rereply_box{
+  align-items: center;
+  width: 55vw;
+  border: 2.5px solid #666666;
+  margin-top: 5vh;
+  border-radius: 1vh;
+  padding-bottom: 0.2vh;
+  margin-left: 1vw;
+  display: flex;
+  position: relative;
+}
+.rereply_content{
+  padding: 2vh 0;
+  margin-left: 2vw;
+  display: flex;
+  gap: 1vh;
+  flex-direction: column;
+}
+.rereply_content label{
+  font-weight: 700;
+  font-size: larger;
+}
+.rereply_delete{
+  position: absolute;
+  right: 0vw;
+  top:1vh;
+}
+.rereply_delete img{
+  height: 3vh;
+}
+.rereply_delete button{
+  position: absolute;
+  white-space: nowrap;
+  padding: 1vh 2vw;
+  top:3vh;
+  left: -5vw;
+  z-index: 10;
+  border: none;
+  background-color: white;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+  font-size: larger;
+  font-weight: 700;
+}
+.rereply_delete button:hover{
+  background-color: #d9d9d9;
+}
+.rereply_date{
+  position: absolute;
+  right: 0.5vw;
+  bottom: 1vh;
+}
 @media only screen and (max-width: 768px) {
   .dropdown-menu {
     position: absolute;

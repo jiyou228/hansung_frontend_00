@@ -2,54 +2,90 @@ import Nav from "./Nav";
 import comment from "../assets/comment.png";
 import off_bookmark from "../assets/off_bookmark.png";
 import on_bookmark from "../assets/on_bookmark.png";
-import sorting from "../assets/sorting.png";
-import category from "../assets/categories.png";
+import filter_off from "../assets/filter_off.png";
 import filter from "../assets/filter.png";
+import listcategory from "../assets/listCategory.png";
 import search from "../assets/search.png";
 import prev from "../assets/previous.png";
 import profile from "../assets/profile.png";
 import next from "../assets/next.png";
+import erase from "../assets/delete.png";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./BoardList.css";
 import axios from "axios";
-import { Cookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 
 const BoardList = () => {
   const [isfilter, setisFilter] = useState(false);
+  const [isCategory, setisCategory] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
+  const [nickname, setNickname] = useState("");
   const [bestPosts, setBestPosts] = useState([]);
   const [boardList, setBoardList] = useState([]);
   const [page, setPage] = useState(1);
   const [sortOption, setSortOption] = useState("latest");
   const [searchTitle, setSearchTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
-  const cookie = new Cookies();
-  const encodedNickname = cookie.get("nickname");
-  cookie.get("nickname", decodeURIComponent(encodedNickname));
+  const [category, setCategory] = useState("전체");
+  const [isSearch, setisSearch] = useState("");
+  const [cookie, setCookie] = useCookies();
 
   const openFilter = () => {
     setisFilter(!isfilter);
   };
+
+  const openCategory = () => {
+    setisCategory(!isCategory);
+  };
   const submitSearch = () => {
-    axios
-      .get(`/boardlist/search/${searchTitle}`)
-      .then((res) => {
-        if (res.data.result === null) {
-          setBoardList([]);
-        } else {
-          setBoardList([res.data.result]);
-        }
-      })
-      .catch((error) => {
-        console.error("에러 발생: ", error);
-      });
+    if (searchTitle) {
+      axios
+        .get(`/boardlist/search/${searchTitle}`)
+        .then((res) => {
+          if (res.data.result === null) {
+            setisSearch(`${searchTitle}로 검색된 결과가 없습니다.`);
+            setBoardList([]);
+          } else {
+            setBoardList([res.data.result]);
+          }
+        })
+        .catch((error) => {
+          console.error("에러 발생: ", error);
+          setisSearch(
+            `${searchTitle} 검색 중 에러가 발생했습니다. 새로고침 해주세요.`
+          );
+        });
+    } else {
+      return;
+    }
   };
   const removeHTML = (html) => {
     const tag = /(<([^>]+)>)/gi;
     return html.replace(tag, "");
   };
+  const handleSortClick = (sort) => {
+    setSortOption(sort);
+  };
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+    if (category === "resume") {
+      setCategory("이력서");
+    } else if (category === "interview") {
+      setCategory("면접");
+    } else if (category === "share") {
+      setCategory("정보교환");
+    } else {
+      setCategory("전체");
+    }
+  };
+  const refresh = () => {
+    setisSearch("");
+    setSearchTitle("");
+    window.location.reload();
+  };
   useEffect(() => {
+    setNickname(cookie.nickname);
     axios
       .all([
         axios.get(
@@ -63,8 +99,8 @@ const BoardList = () => {
       .then(
         axios.spread((res1, res2, res3) => {
           res1 = setBoardList(res1.data.result);
-          res2 = setBestPosts(res2.data.result);
-          const postIds = res3.data.result.map((item) => item.post.postId);
+          res2 = setBestPosts(res2.data.result.slice(0, 5));
+          const postIds = res3.data.result.map((item) => item.postId);
           setBookmarks(postIds);
         })
       )
@@ -72,7 +108,6 @@ const BoardList = () => {
         console.error("에러 발생: ", err);
       });
   }, [page, sortOption, selectedCategory]);
-
   return (
     <>
       <Nav />
@@ -82,13 +117,16 @@ const BoardList = () => {
             <img src={profile} alt="프사" />
             <div className="boardlist_profileDetail">
               <p>
-                <b> {decodeURIComponent(encodedNickname)}님</b>
+                <b>{nickname}</b>님
               </p>
               <strong>글 수: </strong>100
               <strong style={{ paddingLeft: "1vw" }}>댓글 수:</strong>200
             </div>
           </div>
-          <div className="boardlist_best">
+          <div
+            className="boardlist_best"
+            title="가장 많은 댓글과 북마크를 받은 인기글 5개"
+          >
             <h2>Best 인기글🔥</h2>
             <ul>
               {bestPosts.map((post) => (
@@ -101,44 +139,88 @@ const BoardList = () => {
             </ul>
           </div>
         </div>
-        <div className="boardlist_filter">
-          <img onClick={openFilter} src={filter} alt="필터" />
-          <Link to="/boardlist/write">
-            <button>게시글 작성</button>
-          </Link>
+        <div className="boardlist_select">
+          <div
+            title="카테고리 선택"
+            className={`open_category ${isCategory ? "active" : ""}`}
+            onClick={openCategory}
+          >
+            <div className="list_category">{category}</div>
+            <img src={listcategory} alt="목록" />
+          </div>
+          <div className="boardlist_filter">
+            {isfilter && (
+              <div className="boardlist_sort" title="정렬 선택">
+                <ul>
+                  <li
+                    onClick={() => handleSortClick("latest")}
+                    style={{
+                      fontWeight: sortOption === "latest" ? 800 : "normal",
+                    }}
+                  >
+                    최신순
+                  </li>
+                  <li
+                    onClick={() => handleSortClick("popular")}
+                    style={{
+                      fontWeight: sortOption === "popular" ? 800 : "normal",
+                    }}
+                  >
+                    인기순
+                  </li>
+                </ul>
+              </div>
+            )}
+            <img
+              title="정렬 선택"
+              onClick={openFilter}
+              src={isfilter ? filter_off : filter}
+              alt="필터"
+            />
+            <Link to="/boardlist/write">
+              <button>게시글 작성</button>
+            </Link>
+          </div>
         </div>
-        {isfilter && (
-          <div className="modal_filter">
-            <div>
-              <h4>정렬</h4>
-              <div className="modal_sort">
-                <img src={sorting} alt="정렬" />
-                <select
-                  value={sortOption}
-                  onChange={(e) => setSortOption(e.target.value)}
-                >
-                  <option value="latest">최신순</option>
-                  <option value="popular">인기순</option>
-                </select>
-              </div>
-            </div>
-            <div>
-              <h4>게시판 카테고리</h4>
-              <div className="modal_category">
-                <img src={category} alt="분류" />
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  <option value="all">전체</option>
-                  <option value="resume">이력서</option>
-                  <option value="interview">면접</option>
-                  <option value="share">정보 교환</option>
-                </select>
-              </div>
-            </div>
+        {isCategory && (
+          <div className="boardlist_category">
+            <ul className={isCategory ? "show" : ""}>
+              <li
+                onClick={() => handleCategoryClick("all")}
+                style={{
+                  fontWeight: selectedCategory === "all" ? 800 : "normal",
+                }}
+              >
+                전체
+              </li>
+              <li
+                onClick={() => handleCategoryClick("resume")}
+                style={{
+                  fontWeight: selectedCategory === "resume" ? 800 : "normal",
+                }}
+              >
+                이력서
+              </li>
+              <li
+                onClick={() => handleCategoryClick("interview")}
+                style={{
+                  fontWeight: selectedCategory === "interview" ? 800 : "normal",
+                }}
+              >
+                면접
+              </li>
+              <li
+                onClick={() => handleCategoryClick("share")}
+                style={{
+                  fontWeight: selectedCategory === "share" ? 800 : "normal",
+                }}
+              >
+                정보교환
+              </li>
+            </ul>
           </div>
         )}
+        <div className="boardlist_searchResult">{isSearch}</div>
         {boardList.length > 0 && (
           <div className="boardlist_list">
             {boardList.map((board) => (
@@ -157,7 +239,9 @@ const BoardList = () => {
                   {removeHTML(board.content.substring(0, 40))}
                   <div className="boardlist_comment">
                     <img src={comment} alt="댓글" />
-                    <label>{board.replies ? board.replies : 0}</label>
+                    <label>
+                      {board.replies.length > 0 ? board.replies.length : 0}
+                    </label>
                   </div>
                 </div>
               </div>
@@ -183,7 +267,22 @@ const BoardList = () => {
             placeholder="글 제목을 검색해보세요."
             onChange={(e) => setSearchTitle(e.target.value)}
           />
-          <img src={search} onClick={submitSearch} alt="검색" />
+          <div className="img">
+            {searchTitle.length > 0 && (
+              <img
+                src={erase}
+                onClick={refresh}
+                className="erase"
+                alt="지우기"
+              />
+            )}
+            <img
+              src={search}
+              onClick={submitSearch}
+              className="search"
+              alt="검색"
+            />
+          </div>
         </div>
       </div>
     </>

@@ -54,6 +54,9 @@ function Signup() {
       .post("http://localhost:3000/confirm/email", {
         email: useremail,
       })
+      .post("http://localhost:3000/confirm/email", {
+        email: useremail,
+      })
 
       .then((response) => {
         console.log(response);
