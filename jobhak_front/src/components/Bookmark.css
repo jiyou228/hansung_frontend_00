@@ -1,0 +1,20 @@
+.bookmark_box {
+  display: block;
+  box-sizing: border-box;
+  border: 2px solid;
+  border-radius: 0.5rem;
+  border-color: #104085;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.delete_icon {
+  margin-bottom: 1.2rem;
+}
+
+.bookmark_content {
+  display: flex;
+}

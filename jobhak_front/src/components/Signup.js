@@ -51,28 +51,26 @@ function Signup() {
   const EmailConfirm = () => {
     //이메일 인증 요청을 누르면 code가 감
     axios
-      .post(
-        "http://localhost:3000/confirm/email",
-        {},
-        {
-          params: { email: useremail },
-        }
-      )
+      .post("http://localhost:3000/confirm/email", {
+        email: useremail,
+      })
 
       .then((response) => {
         console.log(response);
         alert("인증 코드가 이메일로 전송되었습니다.");
-        setConfirmEmail(response.data);
+        setConfirmCode(response.authNumber);
       })
       .catch((error) => {
         console.log("email error", error);
       });
   };
 
-  const CodeConfirm = () => {
-    const inputCode = document.getElementById("authCode").value; // 인증코드 입력값 가져오기
-    //console.log(confrimemail);
-    if (inputCode === confrimemail) {
+  const CodeConfirm = (res) => {
+    //console.log(JSON.stringify(data));
+    console.log(res);
+    const inputCode = res.authNumber; // 인증코드 입력값 가져오기
+
+    if (inputCode === confirmcode) {
       Swal.fire({
         icon: "success",
         title: "성공",
@@ -214,7 +212,9 @@ function Signup() {
       <br />
       <label className="joincheck_lb">
         이미 Job학다식 회원이신가요?
-        <Link to="/">로그인</Link>
+        <Link to="/" style={{ color: "#ff6619", marginLeft: ".7rem" }}>
+          로그인
+        </Link>
       </label>
       <br />
       <label className="login_logo_lb">SNS 계정으로 회원가입하기</label>

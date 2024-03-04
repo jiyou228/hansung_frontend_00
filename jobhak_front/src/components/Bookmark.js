@@ -6,12 +6,51 @@ import "./Bookmark.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import delete_icon from "../assets/delete_icon.png";
 
 function Bookmark() {
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
   cookie.get("nickname", decodeURIComponent(encodedNickname));
+  const user_id = cookie.get("id");
+  cookie.get("id", user_id);
   const navigate = useNavigate();
+  const [bookmark_arr, setBookMark_arr] = useState([]);
+  const [bookmark_id, setBookMark_id] = useState("");
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/user/bookmark`)
+      .then((res) => {
+        console.log(JSON.stringify(res.data));
+        const bookmark_arr = res.data.result || [];
+        setBookMark_arr(bookmark_arr);
+        setBookMark_id(res.data.result.bookmarkId);
+      })
+
+      .catch((err) => {
+        console.log(err + "::err");
+      });
+  }, [user_id]);
+
+  const DeleteBookmark = () => {
+    axios
+      .delete(`http://localhost:3000/user/bookmark/delete`, {
+        data: {
+          bookmarkId: bookmark_id,
+        },
+      })
+      .then((res) => {
+        console.log(res + "북마크 삭제 완");
+      })
+      .catch((error) => {
+        console.error(error + "북마크 삭제 실패");
+      });
+  };
+
+  const bookmark_detail = (postId) => {
+    navigate(`/boardlist/detail/${postId}`);
+  };
 
   return (
     <>
@@ -106,7 +145,32 @@ function Bookmark() {
           </div>
         </div>
 
-        <div className="changepw_div"></div>
+        <div className="changepw_div">
+          {bookmark_arr.map((bookmark, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                bookmark_detail(bookmark.postId);
+              }}
+            >
+              <div className="bookmark_content">
+                <label className="bookmark_box" style={{ flex: "1" }}>
+                  {bookmark.title}
+                </label>
+                <img
+                  className="delete_icon"
+                  src={delete_icon}
+                  alt="delete_icon.png"
+                  width="40"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    DeleteBookmark(bookmark.bookmarkId);
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </>
   );

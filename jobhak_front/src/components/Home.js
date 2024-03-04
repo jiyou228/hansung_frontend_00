@@ -21,13 +21,13 @@ const Home = () => {
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
 
-  const checkCookie = () => {
-    if (cookie.loginModal) {
-      setModalVisible(false);
-    } else {
-      setCookie("loginModal", true);
-    }
-  };
+  // const checkCookie = () => {
+  //   if (cookie.loginModal) {
+  //     setModalVisible(false);
+  //   } else {
+  //     setCookie("loginModal", true);
+  //   }
+  // };
 
   // useEffect(() => {
   //   checkCookie();
@@ -43,7 +43,7 @@ const Home = () => {
   }, [index]);
 
   useEffect(() => {
-    checkCookie();
+    //checkCookie();
     const getUserInfo = async () => {
       try {
         const res = await axios.get("http://localhost:3000/home");
@@ -54,19 +54,22 @@ const Home = () => {
       }
     };
     getUserInfo();
-    axios.get('	https://oapi.saramin.co.kr/job-search?access-key=pEyjyJB3XnowAZP5ImZUuNbcGwGGDbUGQXQfdDZqhSFgPkBXKWq&keywords=웹+퍼블리셔',
-    {
-      headers: {
-        Accept: 'application/json'
-      },
-      withCredentials: true
-    })
-    .then(res => {
-      console.log(res.data.result);
-    })
-    .catch(err => {
-      console.error(err);
-    })
+    axios
+      .get(
+        "	https://oapi.saramin.co.kr/job-search?access-key=pEyjyJB3XnowAZP5ImZUuNbcGwGGDbUGQXQfdDZqhSFgPkBXKWq&keywords=웹+퍼블리셔",
+        {
+          headers: {
+            Accept: "application/json",
+          },
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res.data.result);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }, []);
 
   const goBottom = () => {

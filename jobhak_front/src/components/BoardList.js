@@ -13,35 +13,20 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./BoardList.css";
 import axios from "axios";
+import { Cookies } from "react-cookie";
 
 const BoardList = () => {
   const [isfilter, setisFilter] = useState(false);
   const [bookmarks, setBookmarks] = useState([]);
-  //   const [boardList, setBoardList] = useState([
-  //   { postId: 1, title: '게시물 1', content: '게시물 내용 1', replies: 100},
-  //   { postId: 2, title: '게시물 2', content: '게시물 내용 2', replies: 100 },
-  //   { postId: 3, title: '게시물 3', content: '게시물 내용 3', replies: 100 },
-  //   { postId: 4, title: '게시물 4', content: '게시물 내용 4', replies: 100 },
-  //   { postId: 5, title: '게시물 5', content: '게시물 내용 5', replies: 100 },
-  //   { postId: 6, title: '게시물 6', content: '게시물 내용 6', replies: 100 },
-  //   { postId: 7, title: '게시물 7', content: '게시물 내용 7', replies: 100 },
-  //   { postId: 8, title: '게시물 8', content: '게시물 내용 8', replies: 100 },
-  //   { postId: 9, title: '게시물 9', content: '게시물 내용 9', replies: 100 },
-  //   { postId: 10, title: '게시물 10', content: '게시물 내용 10', replies: 100 },
-  // ]);
-  // const [bestPosts, setBestPosts] = useState([
-  //   {id: 1, title: '인기글 1'},
-  //   {id: 2, title: '인기글 2'},
-  //   {id: 3, title: '인기글 3'},
-  //   {id: 4, title: '인기글 4'},
-  //   {id: 5, title: '인기글 5'},
-  // ]);
   const [bestPosts, setBestPosts] = useState([]);
   const [boardList, setBoardList] = useState([]);
   const [page, setPage] = useState(1);
   const [sortOption, setSortOption] = useState("latest");
   const [searchTitle, setSearchTitle] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const cookie = new Cookies();
+  const encodedNickname = cookie.get("nickname");
+  cookie.get("nickname", decodeURIComponent(encodedNickname));
 
   const openFilter = () => {
     setisFilter(!isfilter);
@@ -97,7 +82,7 @@ const BoardList = () => {
             <img src={profile} alt="프사" />
             <div className="boardlist_profileDetail">
               <p>
-                <b>잡학이</b>님
+                <b> {decodeURIComponent(encodedNickname)}님</b>
               </p>
               <strong>글 수: </strong>100
               <strong style={{ paddingLeft: "1vw" }}>댓글 수:</strong>200
@@ -108,7 +93,9 @@ const BoardList = () => {
             <ul>
               {bestPosts.map((post) => (
                 <li key={post.postId}>
-                  <Link to={`/board/${post.postId}`}>{post.title}</Link>
+                  <Link to={`/boardlist/detail/${post.postId}`}>
+                    {post.title}
+                  </Link>
                 </li>
               ))}
             </ul>

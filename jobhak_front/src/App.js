@@ -24,6 +24,7 @@ import BoardWrite from "./components/BoardWrite";
 import Mypicture from "./components/Mypicture";
 import Bookmark from "./components/Bookmark";
 import BoardDetail from "./components/BoardDetail";
+import BoardEdit from "./components/BoardEdit";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/user/picture" element={<Mypicture />} />
           <Route path="/user/bookmark" element={<Bookmark />} />
           <Route path="/boardlist/detail/:postId" element={<BoardDetail />} />
+          <Route path="/boardlist/edit/:postId" element={<BoardEdit />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
