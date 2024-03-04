@@ -29,20 +29,14 @@ function BoardDetail() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const navigate = useNavigate();
   const cookie = new Cookies();
-  const encodedNickname = cookie.get("nickname");
-  cookie.get("nickname", decodeURIComponent(encodedNickname));
   const user_id = cookie.get("id");
   cookie.get("id", user_id);
   const [replyList, setReplyList] = useState([]);
   const [nickname, setNickname] = useState('');
-  // const today = new Date();
+  const [userId, setUserId] = useState('');
   const [isreReply, setisRereply] = useState(null);
   const [openDelReply, setOpenDelReply] = useState(false);
   const isOutsideClick = useRef(false);
-
-  // const formattedDate = ` ${today.getFullYear()}. ${
-  //   today.getMonth() + 1
-  // }. ${today.getDate()}`;
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -86,6 +80,39 @@ function BoardDetail() {
   //       });
   //   };
 
+  const handleReplyEditClick = (replyId, parentReplyId) => {
+    Swal.fire({
+      icon: "question",
+      title: "게시물 수정",
+      text: "게시물을 수정하시겠습니까?",
+      width: 800,
+      height: 100,
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "확인",
+      cancelButtonText: "취소",
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          if(!parentReplyId){
+            axios
+            .patch(`http://localhost:3000/boardlist/edit/${postId}`, {
+            post_id: postId,
+            title: title,
+            content: content,
+            user_id: user_id,
+            parentReplyId: parentReplyId,
+            replyId: replyId
+            })
+          }
+        }
+      })
+      .catch((err) => {
+        console.log(err + "게시물 수정 error ");
+      });
+  };
+  
   const handleEditClick = () => {
     Swal.fire({
       icon: "question",
@@ -101,7 +128,13 @@ function BoardDetail() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          navigate(`/boardlist/edit/${postId}`);
+          axios
+            .patch(`http://localhost:3000/boardlist/edit/${postId}`, {
+            post_id: postId,
+            title: title,
+            content: content,
+            user_id: user_id,
+            })
         }
       })
       .catch((err) => {
@@ -202,6 +235,7 @@ function BoardDetail() {
         setBookmarkCount(userData.bookmarkcount);
         setReplyList(userData.replies);
         setPostDate(userData.date);
+        setUserId(userData.userId);
         setNickname(userData.nickname);
       })
       .catch((err) => {
@@ -261,13 +295,13 @@ function BoardDetail() {
       <div className="board_div">
         <img className="profile_img" src={profile} alt="프사" width={60} />
         <label className="posttitle_lb">{title}</label>
-
-        <img
+        {userId === user_id && (
+          <img
           className="dropdown"
           src={dropdot}
           alt="dropbox"
-          onClick={toggleDropdown}
-        />
+          onClick={toggleDropdown}/>
+        )}
         {isDropdownOpen && (
           <div className="dropdown-menu">
             <button onClick={handleEditClick} className="postedit_btn">
@@ -315,10 +349,10 @@ function BoardDetail() {
           <button onClick={handleReply}>등록</button>
         </div>
       </div>
-      {/* 댓글 및 대댓글 출력 */}
+      {/* 댓글 목록*/}
       {replyList.map((reply) => (
           <div key={reply.replyId} className="replies_container">
-              {!reply.parentReplyId && ( // 부모 댓글만 출력
+              {!reply.parentReplyId && ( //댓글만 출력
                   <div className="reply_reply">
                       <div className="reply_profile">
                           <img src={profile} alt="프사" />
@@ -326,12 +360,14 @@ function BoardDetail() {
                       <div className="reply_content">
                           <label>{reply.nickname}</label>
                           <div>{reply.replyContent}</div>
-                          <div className="reply_delete">
+                          {reply.userId === user_id && (
+                            <div className="reply_delete">
                               <img src={dropdot} alt="delete" onClick={() => delOpenReply(reply.replyId)} />
                               {openDelReply[reply.replyId] && (
                                   <button onClick={() => handleDeleteClick(reply.replyId)}>삭제</button>
                               )}
                           </div>
+                          )}
                           <div className="reply_rere">
                               <div>{reply.date}</div>
                               <div className="rereply_add" onClick={() => addreReply(reply.replyId)}>
@@ -341,7 +377,7 @@ function BoardDetail() {
                       </div>
                   </div>
               )}
-              {/* 대댓글 입력 창 */}
+              {/* 답글 등록*/}
               {isreReply === reply.replyId && (
                   <div className="rereply_addcontainer">
                       <img src={reply_arrow} alt="답글" />
@@ -356,7 +392,7 @@ function BoardDetail() {
                       </div>
                   </div>
               )}
-              {/* 대댓글 출력 */}
+              {/* 답글 보이기*/}
               {replyList.filter(subReply => subReply.parentReplyId === reply.replyId).map((subReply) => (
                   <div key={subReply.replyId} className="rereply_container">
                       <img src={reply_arrow} alt="답글" />
@@ -368,12 +404,15 @@ function BoardDetail() {
                               <label>{subReply.nickname}</label>
                               <div>{subReply.replyContent}</div>
                           </div>
-                          <div className="rereply_delete">
-                              <img src={dropdot} alt="delete" onClick={() => delOpenReply(subReply.replyId)} />
-                              {openDelReply[subReply.replyId] && (
-                                  <button onClick={() => handleDeleteClick(subReply.replyId)}>삭제</button>
-                              )}
-                          </div>
+                          <div className="rereply_date">{subReply.date}</div>
+                            {subReply.userId === user_id &&(
+                            <div className="rereply_delete">
+                            <img src={dropdot} alt="delete" onClick={() => delOpenReply(subReply.replyId)} />
+                            {openDelReply[subReply.replyId] && (
+                                <button onClick={() => handleDeleteClick(subReply.replyId)}>삭제</button>
+                            )}
+                        </div>
+                          )}
                       </div>
                   </div>
               ))}

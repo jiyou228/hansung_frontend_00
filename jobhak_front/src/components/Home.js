@@ -48,25 +48,13 @@ const Home = () => {
       try {
         const res = await axios.get("http://localhost:3000/home");
         setUserProfile(res.data);
+        setCookie("nickname", userProfile);
       } catch (err) {
         console.error("프로필을 가져오는 도중 에러 발생:", err);
         //window.location.reload();
       }
     };
     getUserInfo();
-    axios.get('	https://oapi.saramin.co.kr/job-search?access-key=pEyjyJB3XnowAZP5ImZUuNbcGwGGDbUGQXQfdDZqhSFgPkBXKWq&keywords=웹+퍼블리셔',
-    {
-      headers: {
-        Accept: 'application/json'
-      },
-      withCredentials: true
-    })
-    .then(res => {
-      console.log(res.data.result);
-    })
-    .catch(err => {
-      console.error(err);
-    })
   }, []);
 
   const goBottom = () => {

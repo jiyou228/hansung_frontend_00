@@ -105,7 +105,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid #666666;
+  border: 2.5px solid #666666;
   width: fit-content;
   margin: auto;
   margin-top: 5vh;
@@ -163,8 +163,8 @@
 }
 .reply_reply{
   display: flex;
-  border: 3px solid #666666;
-  width: 60vw;
+  border: 2.5px solid #666666;
+  width: 59.5vw;
   margin: auto;
   margin-top: 5vh;
   align-items: center;
@@ -189,7 +189,7 @@
 }
 .replies_container{
   position: relative;
-  width: 60vw;
+  width: fit-content;
   margin: auto;
 }
 .reply_rere{
@@ -204,6 +204,7 @@
 .rereply_add{
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .rereply_add b{
   padding-left: 0.5vw;
@@ -232,8 +233,8 @@
   height: 5vh;
 }
 .rereply_addbox{
-  align-items: end;
-  border: 3px solid #666666;
+  align-items: flex-end;
+  border: 2.5px solid #666666;
   width: fit-content;
   margin-top: 5vh;
   border-radius: 1vh;
@@ -290,7 +291,7 @@
 .rereply_box{
   align-items: center;
   width: 55vw;
-  border: 3px solid #666666;
+  border: 2.5px solid #666666;
   margin-top: 5vh;
   border-radius: 1vh;
   padding-bottom: 0.2vh;
@@ -332,6 +333,11 @@
 }
 .rereply_delete button:hover{
   background-color: #d9d9d9;
+}
+.rereply_date{
+  position: absolute;
+  right: 0.5vw;
+  bottom: 1vh;
 }
 @media only screen and (max-width: 768px) {
   .dropdown-menu {
