@@ -54,14 +54,10 @@ function Signup() {
       .post("http://localhost:3000/confirm/email", {
         email: useremail,
       })
-      .post("http://localhost:3000/confirm/email", {
-        email: useremail,
-      })
-
       .then((response) => {
         console.log(response);
-        alert("인증 코드가 이메일로 전송되었습니다.");
         setInputCode(response.data.authNumber.toString());
+        alert("인증 코드가 이메일로 전송되었습니다.");
       })
       .catch((error) => {
         console.log("email error", error);

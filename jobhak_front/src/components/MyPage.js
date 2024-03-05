@@ -6,6 +6,7 @@ import "./MyPage.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import instance from "../axiosConfig";
 
 function MyPage() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function MyPage() {
   };
 
   const onSaveHandler = () => {
-    axios
+    instance
       .patch(`http://localhost:3000/user/edit`, {
         nickname: usernickname,
       })
@@ -51,7 +52,7 @@ function MyPage() {
   };
 
   useEffect(() => {
-    axios
+    instance
       .get(`http://localhost:3000/user/myInfo`)
       .then((res) => {
         console.log(JSON.stringify(res.data));

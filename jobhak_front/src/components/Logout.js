@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import {useCookies } from "react-cookie";
 import {useNavigate } from "react-router-dom";
+import instance from "../axiosConfig";
 const Logout = () => {
     const [, , removeCookie] = useCookies();
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Logout = () => {
             removeCookie("nickname");
             console.log("쿠키 삭제 성공!");
             try{
-                axios.get("http://localhost:3000/logout");
+                instance.get("http://localhost:3000/logout");
                 alert('로그아웃이 완료되었습니다.');
                 console.log("로그아웃 완료");
             }

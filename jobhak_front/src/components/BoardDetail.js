@@ -295,8 +295,7 @@ function BoardDetail() {
               ID는 DB에 저장되어 있는 유저의 고유 번호이다. */}
         <br />
         <label className="post_nickname">
-          {decodeURIComponent(encodedNickname)}
-          {/* {nickname} */}
+          {nickname}
         </label>
         <label className="category_lb">
           {" "}

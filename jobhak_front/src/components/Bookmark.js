@@ -6,6 +6,7 @@ import "./Bookmark.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import instance from "../axiosConfig";
 import delete_icon from "../assets/delete_icon.png";
 
 function Bookmark() {
@@ -19,7 +20,7 @@ function Bookmark() {
   const [bookmark_id, setBookMark_id] = useState("");
 
   useEffect(() => {
-    axios
+    instance
       .get(`http://localhost:3000/user/bookmark`)
       .then((res) => {
         console.log(JSON.stringify(res.data));
@@ -34,7 +35,7 @@ function Bookmark() {
   }, [user_id]);
 
   const DeleteBookmark = () => {
-    axios
+    instance
       .delete(`http://localhost:3000/user/bookmark/delete`, {
         data: {
           bookmarkId: bookmark_id,

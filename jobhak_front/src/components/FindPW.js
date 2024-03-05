@@ -4,7 +4,7 @@ import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/FindPW.css";
 import Swal from "sweetalert2";
-
+import instance from "../axiosConfig";
 const FindPW = () => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ const FindPW = () => {
 
   const findPWSubmit = (e) => {
     e.preventDefault();
-    axios
+    instance
       .post("http://localhost:3000/find/pw", {
         loginId: id,
         name: name,

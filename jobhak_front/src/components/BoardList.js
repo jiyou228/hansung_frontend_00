@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import "./BoardList.css";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-
+import instance from "../axiosConfig";
 const BoardList = () => {
   const [isfilter, setisFilter] = useState(false);
   const [isCategory, setisCategory] = useState(false);
@@ -38,6 +38,7 @@ const BoardList = () => {
   const openCategory = () => {
     setisCategory(!isCategory);
   };
+  
   const submitSearch = () => {
     if (searchTitle) {
       axios
@@ -90,14 +91,14 @@ const BoardList = () => {
     setNickname(cookie.nickname);
     axios
       .all([
-        axios.get(
+        instance.get(
           `/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
-        axios.get("/boardlist/best"),
-        axios.get("/user/bookmark"),
-        axios.get('/boardlist/user', {
+        instance.get("/boardlist/best"),
+        instance.get("/user/bookmark"),
+        instance.get('/boardlist/user', {
           params: {
             loginId: cookie.user_id
           }
@@ -116,7 +117,7 @@ const BoardList = () => {
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
           setBookmarks(bookmarksData);
-          setUserCount([userPostCount, userReplyCount]);
+          // setUserCount([userPostCount, userReplyCount]);
         })
       )
       .catch((err) => {
