@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useEffect } from "react";
+import axios from "axios";
 import { CookiesProvider } from "react-cookie";
 import Signup from "./components/Signup";
 import JoinCheck from "./components/JoinCheck";
@@ -77,6 +78,7 @@ function AppContent() {
       <Route path="/user/picture" element={<Mypicture />} />
       <Route path="/user/bookmark" element={<Bookmark />} />
       <Route path="/boardlist/detail/:postId" element={<BoardDetail />} />
+      <Route path="/boardlist/edit/:postId" element={<BoardEdit />} />
     </Routes>
   );
 }

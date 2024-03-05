@@ -2,7 +2,6 @@ import Nav from "./Nav";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useNavigate, useParams } from "react-router-dom";
 import "./BoardDetail.css";
 import profile from "../assets/profile.png";
 import post_comment from "../assets/post_comment.png";
@@ -32,6 +31,8 @@ function BoardDetail() {
   const cookie = new Cookies();
   const user_id = cookie.get("id");
   cookie.get("id", user_id);
+  const encodedNickname = cookie.get("nickname");
+  cookie.get("nickname", decodeURIComponent(encodedNickname));
   const [replyList, setReplyList] = useState([]);
   const [nickname, setNickname] = useState("");
   const [userId, setUserId] = useState("");
@@ -64,22 +65,6 @@ function BoardDetail() {
         console.log(err + "북마크 추가 오류");
       });
   };
-
-  //   const handleEditClick = () => {
-  //     axios
-  //       .patch(`http://localhost:3000/boardlist/edit/${postId}`, {
-  //         post_id: postId,
-  //         title: title,
-  //         content: content,
-  //         user_id: user_id,
-  //       })
-  //       .then((res) => {
-  //         console.log(res + "게시물 수정 res");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err + "게시물 수정 error ");
-  //       });
-  //   };
 
   const handleReplyEditClick = (replyId, parentReplyId) => {
     Swal.fire({
@@ -219,17 +204,6 @@ function BoardDetail() {
       .then((res) => {
         // console.log(JSON.stringify(res.data));
         const userData = res.data.result;
-        if (userData.category) {
-          if (userData.category === "resume") {
-            setCategory("이력서");
-          } else if (userData.category === "interview") {
-            setCategory("면접");
-          } else if (userData.category === "share") {
-            setCategory("정보교환");
-          } else {
-            setCategory("전체");
-          }
-        }
         setTitle(userData.title);
         setContent(userData.content);
         setUserPic(userData.picture);
@@ -239,6 +213,7 @@ function BoardDetail() {
         setPostDate(userData.date);
         setUserId(userData.userId);
         setNickname(userData.nickname);
+        setCategory(userData.category);
       })
       .catch((err) => {
         console.log(err + ":: detail err");
@@ -297,14 +272,14 @@ function BoardDetail() {
       <div className="board_div">
         <img className="profile_img" src={profile} alt="프사" width={60} />
         <label className="posttitle_lb">{title}</label>
-        {userId === user_id && (
-          <img
-            className="dropdown"
-            src={dropdot}
-            alt="dropbox"
-            onClick={toggleDropdown}
-          />
-        )}
+
+        <img
+          className="dropdown"
+          src={dropdot}
+          alt="dropbox"
+          onClick={toggleDropdown}
+        />
+
         {isDropdownOpen && (
           <div className="dropdown-menu">
             <button onClick={handleEditClick} className="postedit_btn">
@@ -328,8 +303,8 @@ function BoardDetail() {
               ID는 DB에 저장되어 있는 유저의 고유 번호이다. */}
         <br />
         <label className="post_nickname">
-          {/* {decodeURIComponent(encodedNickname)} */}
-          {nickname}
+          {decodeURIComponent(encodedNickname)}
+          {/* {nickname} */}
         </label>
         <label className="category_lb">
           {" "}

@@ -6,17 +6,18 @@ import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../node_modules/react-quill/dist/quill.snow.css";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 function BoardEdit() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { postId } = useParams();
   const [user_id, setUser_Id] = useState(location.state?.user_id);
   const [title, setTitle] = useState(location.state?.title);
   const [content, setContent] = useState(location.state?.content);
   const [category, setCategory] = useState(location.state?.category);
   const [file, setFile] = useState(location.state?.file);
-  const postId = useState(location.state?.postId);
+  //const postId = useState(location.state?.postId);
 
   const onBoardTitle = (e) => {
     setTitle(e.target.value);
@@ -51,9 +52,12 @@ function BoardEdit() {
         title: title,
         content: content,
         user_id: user_id,
+        category: category,
+        file: file,
       })
       .then((res) => {
         console.log(res + "게시물 수정 res");
+        navigate("/boardlist");
       })
       .catch((err) => {
         console.log(err + "게시물 수정 error ");
