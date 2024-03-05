@@ -2,7 +2,6 @@ import Nav from "./Nav";
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useNavigate, useParams } from "react-router-dom";
 import "./BoardDetail.css";
 import profile from "../assets/profile.png";
 import post_comment from "../assets/post_comment.png";
@@ -30,8 +29,7 @@ function BoardDetail() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const navigate = useNavigate();
   const cookie = new Cookies();
-  const user_id = cookie.get("id");
-  cookie.get("id", user_id);
+  const user_id = cookie.get("user_id");
   const [replyList, setReplyList] = useState([]);
   const [nickname, setNickname] = useState("");
   const [userId, setUserId] = useState("");
@@ -65,23 +63,7 @@ function BoardDetail() {
       });
   };
 
-  //   const handleEditClick = () => {
-  //     axios
-  //       .patch(`http://localhost:3000/boardlist/edit/${postId}`, {
-  //         post_id: postId,
-  //         title: title,
-  //         content: content,
-  //         user_id: user_id,
-  //       })
-  //       .then((res) => {
-  //         console.log(res + "게시물 수정 res");
-  //       })
-  //       .catch((err) => {
-  //         console.log(err + "게시물 수정 error ");
-  //       });
-  //   };
-
-  const handleReplyEditClick = (replyId, parentReplyId) => {
+  const handleEditClick = (replyId, parentReplyId) => {
     Swal.fire({
       icon: "question",
       title: "게시물 수정",
@@ -96,48 +78,33 @@ function BoardDetail() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          if (!parentReplyId) {
-            axios.patch(`http://localhost:3000/boardlist/edit/${postId}`, {
-              post_id: postId,
-              title: title,
-              content: content,
-              user_id: user_id,
-              parentReplyId: parentReplyId,
-              replyId: replyId,
+          if(replyId === undefined && parentReplyId === undefined){
+            navigate(`/boardlist/edit/${postId}`, {
+              state: {
+                user_id: user_id,
+                title: title,
+                content: content,
+                file: file,
+                category: category,
+                post_id: postId,
+              },
             });
           }
-        }
-      })
-      .catch((err) => {
-        console.log(err + "게시물 수정 error ");
-      });
-  };
-
-  const handleEditClick = () => {
-    Swal.fire({
-      icon: "question",
-      title: "게시물 수정",
-      text: "게시물을 수정하시겠습니까?",
-      width: 800,
-      height: 100,
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "확인",
-      cancelButtonText: "취소",
-    })
-      .then((result) => {
-        if (result.isConfirmed) {
-          navigate(`/boardlist/edit/${postId}`, {
-            state: {
-              user_id: user_id,
-              title: title,
-              content: content,
-              file: file,
-              category: category,
-              post_id: postId,
-            },
-          });
+          else if(replyId !== undefined && parentReplyId === undefined){
+            axios.patch(`/boardlist/detail/${postId}/reply`, {
+              postId: postId,
+              replyId: replyId,
+              replyContent: replyContent
+            });
+          }
+          else{
+            axios.patch(`/boardlist/detail/${postId}/reply`, {
+              postId: postId,
+              replyId: replyId,
+              parentReplyId: parentReplyId,
+              replyContent: reReplyContent
+            });
+          }
         }
       })
       .catch((err) => {
@@ -215,35 +182,35 @@ function BoardDetail() {
 
   const getData = () => {
     axios
-      .get(`http://localhost:3000/boardlist/detail/${postId}`)
-      .then((res) => {
-        // console.log(JSON.stringify(res.data));
-        const userData = res.data.result;
-        if (userData.category) {
-          if (userData.category === "resume") {
-            setCategory("이력서");
-          } else if (userData.category === "interview") {
-            setCategory("면접");
-          } else if (userData.category === "share") {
-            setCategory("정보교환");
-          } else {
-            setCategory("전체");
+    .all([axios.get('/user/bookmark'), axios.get(`http://localhost:3000/boardlist/detail/${postId}`)])
+    .then(
+      axios.spread((detail, bookmark) => {
+        if(detail.data.result){
+          const userData = detail.data.result;
+          setCategory(userData.category);
+          setTitle(userData.title);
+          setContent(userData.content);
+          setUserPic(userData.picture);
+          setCommentCount(userData.commentcount);
+          setBookmarkCount(userData.bookmarkcount);
+          setReplyList(userData.replies);
+          setPostDate(userData.date);
+          setUserId(userData.userId);
+          setNickname(userData.nickname);
+        }
+        if(bookmark.data.result){
+          const bookmarkIds = bookmark.data.result.map((item) => item.postId);
+          if(bookmarkIds.includes(postId)){
+            setIsBookmarked(true);
           }
         }
-        setTitle(userData.title);
-        setContent(userData.content);
-        setUserPic(userData.picture);
-        setCommentCount(userData.commentcount);
-        setBookmarkCount(userData.bookmarkcount);
-        setReplyList(userData.replies);
-        setPostDate(userData.date);
-        setUserId(userData.userId);
-        setNickname(userData.nickname);
       })
-      .catch((err) => {
-        console.log(err + ":: detail err");
-      });
+    )
+    .catch((err) => {
+      console.log(err + ":: detail err");
+    });
   };
+
   const handleReply = () => {
     axios
       .post(`/boardlist/detail/${postId}/reply`, {
@@ -284,10 +251,10 @@ function BoardDetail() {
     <div className="boardDetail_app">
       <Nav />
       <div className="button_container">
-        <Link to="/boardlist/detail/${postId}">
+        <Link to= {`/boardlist/detail/${postId - 1}`}>
           <button className="prev_btn"> ▲ 이전글</button>
         </Link>
-        <Link to="/boardlist/detail/${postId}">
+        <Link to={`/boardlist/detail/${postId + 1}`}>
           <button className="next_btn"> ▼ 다음글</button>
         </Link>
         <Link to="/boardlist">
@@ -383,6 +350,11 @@ function BoardDetail() {
                       onClick={() => delOpenReply(reply.replyId)}
                     />
                     {openDelReply[reply.replyId] && (
+                      <button onClick={() => handleEditClick(reply.replyId, )}>
+                        수정
+                      </button>
+                    )}
+                    {openDelReply[reply.replyId] && (
                       <button onClick={() => handleDeleteClick(reply.replyId)}>
                         삭제
                       </button>
@@ -441,6 +413,12 @@ function BoardDetail() {
                         alt="delete"
                         onClick={() => delOpenReply(subReply.replyId)}
                       />
+                      {openDelReply[subReply.replyId] && (
+                        <button
+                          onClick={() => handleEditClick(reply.replyId, subReply.replyId)}>
+                        수정
+                        </button>
+                      )}
                       {openDelReply[subReply.replyId] && (
                         <button
                           onClick={() => handleDeleteClick(subReply.replyId)}

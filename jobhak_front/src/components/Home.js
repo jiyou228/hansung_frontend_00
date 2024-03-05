@@ -1,7 +1,6 @@
 import Nav from "./Nav";
 import "./Home.css";
 import Swipe from "./swipe";
-import ModalSuccess from "./Modal_Success";
 import profile from "../assets/profile.png";
 import { useCookies } from "react-cookie";
 import logo from "../assets/black_jobhak_full.svg";
@@ -13,25 +12,14 @@ import svg from "../assets/black_jobhak_full.svg";
 import no1 from "../assets/카드뉴스_취업사진.svg";
 import no2 from "../assets/카드뉴스_작성.svg";
 import no3 from "../assets/카드뉴스_자소서.svg";
+import instance from "../axiosConfig";
 
 const Home = () => {
-  const [cookie, setCookie] = useCookies();
-  const [modalVisible, setModalVisible] = useState(true);
+  const [setCookie] = useCookies();
   const [userProfile, setUserProfile] = useState("");
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
 
-  // const checkCookie = () => {
-  //   if (cookie.loginModal) {
-  //     setModalVisible(false);
-  //   } else {
-  //     setCookie("loginModal", true);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkCookie();
-  // },[]);
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -43,12 +31,12 @@ const Home = () => {
   }, [index]);
 
   useEffect(() => {
-    //checkCookie();
     const getUserInfo = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/home");
-        setUserProfile(res.data);
-        setCookie("nickname", userProfile);
+        const res = await instance.get("http://localhost:3000/home");
+        setUserProfile(res.data.result.nickname);
+        setCookie("nickname", decodeURIComponent(res.data.result.nickname));
+        setCookie("user_id", res.data.result.id);
       } catch (err) {
         console.error("프로필을 가져오는 도중 에러 발생:", err);
         //window.location.reload();
@@ -92,10 +80,6 @@ const Home = () => {
           <div className="home_title">
             <h3>취업정보</h3>
           </div>
-          {modalVisible && (
-            <ModalSuccess message={`안녕하세요, ${userProfile}님!`} />
-          )}
-
           <div className="home_sidebar">
             <div className="home_plus">
               <h4>Job학다식 +</h4>

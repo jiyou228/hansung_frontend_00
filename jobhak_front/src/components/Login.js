@@ -36,9 +36,12 @@ const Login = () => {
             width: 800,
             height: 100,
           });
-
+          if(res.data){
+            const {accessToken, refreshToken} = res.data;
+            localStorage.setItem("accessToken", accessToken);
+            setCookie("refreshToken", refreshToken, {path: '/'});
+          }
           setCookie("loggedIn", true);
-          setCookie("loginId", id);
           navigate("/home");
         }
       })

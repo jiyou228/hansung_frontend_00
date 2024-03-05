@@ -11,9 +11,6 @@ function MyPage() {
   const navigate = useNavigate();
   const [userid, setUserID] = useState("");
   const [userpw, setUserPW] = useState("");
-  const cookie = new Cookies();
-  const encodedNickname = cookie.get("nickname");
-  cookie.get("nickname", decodeURIComponent(encodedNickname));
   const [usernickname, setUserNickname] = useState("");
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
@@ -60,9 +57,7 @@ function MyPage() {
         console.log(JSON.stringify(res.data));
         //개인정보 데이터 넘겨주면 각각 저장함.
         const userData = res.data.result;
-        cookie.set("nickname", encodeURIComponent(userData.nickname));
         setUserID(userData.loginId);
-        cookie.set("id", userid);
         setUserPW(userData.password);
         setUserNickname(userData.nickname);
         setUserName(userData.name);
@@ -81,7 +76,7 @@ function MyPage() {
       <div className="main_container">
         <div className="profile_div">
           <label className="profile_name">
-            {decodeURIComponent(encodedNickname)}님
+            {decodeURIComponent(usernickname)}님
           </label>
           <br />
           <div className="example_div"></div>

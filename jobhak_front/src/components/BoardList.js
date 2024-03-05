@@ -29,8 +29,8 @@ const BoardList = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [category, setCategory] = useState("전체");
   const [isSearch, setisSearch] = useState("");
-  const [cookie, setCookie] = useCookies();
-
+  const [cookie] = useCookies();
+  const [userCount,setUserCount] = useState([]);
   const openFilter = () => {
     setisFilter(!isfilter);
   };
@@ -79,11 +79,13 @@ const BoardList = () => {
       setCategory("전체");
     }
   };
+
   const refresh = () => {
     setisSearch("");
     setSearchTitle("");
     window.location.reload();
   };
+
   useEffect(() => {
     setNickname(cookie.nickname);
     axios
@@ -95,13 +97,26 @@ const BoardList = () => {
         ),
         axios.get("/boardlist/best"),
         axios.get("/user/bookmark"),
+        axios.get('/boardlist/user', {
+          params: {
+            loginId: cookie.user_id
+          }
+        })
       ])
       .then(
-        axios.spread((res1, res2, res3) => {
-          res1 = setBoardList(res1.data.result);
-          res2 = setBestPosts(res2.data.result.slice(0, 5));
-          const postIds = res3.data.result.map((item) => item.postId);
-          setBookmarks(postIds);
+        axios.spread((res1, res2, res3, res4) => {
+          const boardListData = res1.data.result;
+          const bestPostsData = res2.data.result.slice(0, 5);
+          const bookmarksData = res3.data.result.map((item) => item.postId);
+          const userPostsData = res4.data.result;
+
+          // 사용자의 글 수 계산
+          // const userPostCount = 
+          // const userReplyCount = 
+          setBoardList(boardListData);
+          setBestPosts(bestPostsData);
+          setBookmarks(bookmarksData);
+          setUserCount([userPostCount, userReplyCount]);
         })
       )
       .catch((err) => {
@@ -119,7 +134,7 @@ const BoardList = () => {
               <p>
                 <b>{nickname}</b>님
               </p>
-              <strong>글 수: </strong>100
+              <strong>글 수: </strong>{userCount}
               <strong style={{ paddingLeft: "1vw" }}>댓글 수:</strong>200
             </div>
           </div>

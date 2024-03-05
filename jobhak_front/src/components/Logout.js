@@ -9,7 +9,7 @@ const Logout = () => {
         const handleLogout = async() =>{
             removeCookie("loggedIn");
             removeCookie("loginModal");
-            removeCookie("id");
+            removeCookie("user_id");
             removeCookie("nickname");
             console.log("쿠키 삭제 성공!");
             try{
@@ -22,6 +22,7 @@ const Logout = () => {
                 alert('로그아웃 도중 에러가 발생했습니다. 새로고침해주세요.');
             }
         };
+        removeCookie('loggedIn');
         navigate('/');
         handleLogout();
     });
