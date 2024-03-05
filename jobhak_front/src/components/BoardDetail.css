@@ -1,4 +1,4 @@
-.boardDetail_app{
+.boardDetail_app {
   position: relative;
   padding-bottom: 5vh;
 }
@@ -100,7 +100,7 @@
   font-weight: 600;
   margin-right: 2.1rem;
 }
-.boardlist_replies{
+.boardlist_replies {
   text-align: center;
   display: flex;
   justify-content: center;
@@ -112,7 +112,7 @@
   border-radius: 1vh;
   padding-bottom: 0.2vh;
 }
-.boardlist_replies textarea{
+.boardlist_replies textarea {
   border: none;
   outline: none;
   resize: none;
@@ -121,7 +121,7 @@
   font-size: large;
   padding: 0.5vh 0.5vw;
 }
-.boardlist_replies button{
+.boardlist_replies button {
   margin-right: 0.2vw;
   border: none;
   background-color: #104085;
@@ -131,25 +131,25 @@
   padding: 0.5vh 1.6vw;
   border-radius: 1vh;
 }
-.boardlist_replies button:active{
+.boardlist_replies button:active {
   font-size: larger;
   border-radius: 0.7vh;
 }
-.reply_delete{
+.reply_delete {
   position: absolute;
   right: 0;
   top: 1vh;
 }
-.reply_delete img{
+.reply_delete img {
   padding: 0;
   height: 3vh;
   cursor: pointer;
 }
-.reply_delete button{
+.reply_delete button {
   position: absolute;
   white-space: nowrap;
   padding: 1vh 2vw;
-  top:3vh;
+  top: 3vh;
   left: -5vw;
   z-index: 10;
   border: none;
@@ -158,10 +158,10 @@
   font-size: larger;
   font-weight: 700;
 }
-.reply_delete button:hover{
+.reply_delete button:hover {
   background-color: #d9d9d9;
 }
-.reply_reply{
+.reply_reply {
   display: flex;
   border: 2.5px solid #666666;
   width: 59.5vw;
@@ -172,7 +172,7 @@
   border-radius: 1vh;
   padding: 2vh 0;
 }
-.reply_profile{
+.reply_profile {
   width: 6vh;
   height: 6vh;
   border-radius: 70%;
@@ -183,56 +183,56 @@
   align-items: center;
   margin-left: 0.5vw;
 }
-.reply_profile img{
+.reply_profile img {
   width: 100%;
   object-fit: cover;
 }
-.replies_container{
+.replies_container {
   position: relative;
   width: fit-content;
   margin: auto;
 }
-.reply_rere{
+.reply_rere {
   position: absolute;
   right: 0.5vw;
   bottom: 0.5vh;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  gap:0.5vw;
+  gap: 0.5vw;
 }
-.rereply_add{
+.rereply_add {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.rereply_add b{
+.rereply_add b {
   padding-left: 0.5vw;
 }
-.reply_content{
+.reply_content {
   padding-left: 2vw;
   display: flex;
   gap: 1vh;
   flex-direction: column;
 }
-.reply_content label{
+.reply_content label {
   font-weight: 700;
   font-size: larger;
 }
-.rereply_add img{
+.rereply_add img {
   height: 3vh;
 }
-.rereply_addcontainer{
+.rereply_addcontainer {
   width: 60vw;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 1vw;
 }
-.rereply_addcontainer img{
+.rereply_addcontainer img {
   height: 5vh;
 }
-.rereply_addbox{
+.rereply_addbox {
   align-items: flex-end;
   border: 2.5px solid #666666;
   width: fit-content;
@@ -242,7 +242,7 @@
   margin-left: 1vw;
   display: flex;
 }
-.rereply_addbox textarea{
+.rereply_addbox textarea {
   border: none;
   outline: none;
   resize: none;
@@ -251,7 +251,7 @@
   font-size: large;
   padding: 0.5vh 0.5vw;
 }
-.rereply_addbox button{
+.rereply_addbox button {
   margin-right: 0.2vw;
   border: none;
   background-color: #104085;
@@ -263,16 +263,16 @@
   white-space: nowrap;
 }
 
-.rereply_container{
+.rereply_container {
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   margin-left: 1vw;
 }
-.rereply_container img{
+.rereply_container img {
   height: 5vh;
 }
-.rereply_profile{
+.rereply_profile {
   width: 6vh;
   height: 6vh;
   border-radius: 70%;
@@ -283,12 +283,12 @@
   align-items: center;
   margin-left: 1vw;
 }
-.rereply_profile img{
+.rereply_profile img {
   width: 100%;
   object-fit: cover;
   height: fit-content;
 }
-.rereply_box{
+.rereply_box {
   align-items: center;
   width: 55vw;
   border: 2.5px solid #666666;
@@ -299,30 +299,30 @@
   display: flex;
   position: relative;
 }
-.rereply_content{
+.rereply_content {
   padding: 2vh 0;
   margin-left: 2vw;
   display: flex;
   gap: 1vh;
   flex-direction: column;
 }
-.rereply_content label{
+.rereply_content label {
   font-weight: 700;
   font-size: larger;
 }
-.rereply_delete{
+.rereply_delete {
   position: absolute;
   right: 0vw;
-  top:1vh;
+  top: 1vh;
 }
-.rereply_delete img{
+.rereply_delete img {
   height: 3vh;
 }
-.rereply_delete button{
+.rereply_delete button {
   position: absolute;
   white-space: nowrap;
   padding: 1vh 2vw;
-  top:3vh;
+  top: 3vh;
   left: -5vw;
   z-index: 10;
   border: none;
@@ -331,10 +331,10 @@
   font-size: larger;
   font-weight: 700;
 }
-.rereply_delete button:hover{
+.rereply_delete button:hover {
   background-color: #d9d9d9;
 }
-.rereply_date{
+.rereply_date {
   position: absolute;
   right: 0.5vw;
   bottom: 1vh;

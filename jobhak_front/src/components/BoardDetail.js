@@ -264,14 +264,14 @@ function BoardDetail() {
       <div className="board_div">
         <img className="profile_img" src={profile} alt="프사" width={60} />
         <label className="posttitle_lb">{title}</label>
-        {userId === user_id && (
-          <img
-            className="dropdown"
-            src={dropdot}
-            alt="dropbox"
-            onClick={toggleDropdown}
-          />
-        )}
+
+        <img
+          className="dropdown"
+          src={dropdot}
+          alt="dropbox"
+          onClick={toggleDropdown}
+        />
+
         {isDropdownOpen && (
           <div className="dropdown-menu">
             <button onClick={handleEditClick} className="postedit_btn">
@@ -295,8 +295,8 @@ function BoardDetail() {
               ID는 DB에 저장되어 있는 유저의 고유 번호이다. */}
         <br />
         <label className="post_nickname">
-          {/* {decodeURIComponent(encodedNickname)} */}
-          {nickname}
+          {decodeURIComponent(encodedNickname)}
+          {/* {nickname} */}
         </label>
         <label className="category_lb">
           {" "}
