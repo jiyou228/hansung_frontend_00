@@ -15,11 +15,10 @@ import no3 from "../assets/카드뉴스_자소서.svg";
 import instance from "../axiosConfig";
 
 const Home = () => {
-  const [setCookie] = useCookies();
+  const [cookie, setCookie] = useCookies();
   const [userProfile, setUserProfile] = useState("");
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
-
 
   useEffect(() => {
     const changeImage = setInterval(() => {

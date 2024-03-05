@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import "./BoardList.css";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import instance from "../axiosConfig";
 
 const BoardList = () => {
   const [isfilter, setisFilter] = useState(false);
@@ -30,7 +31,7 @@ const BoardList = () => {
   const [category, setCategory] = useState("전체");
   const [isSearch, setisSearch] = useState("");
   const [cookie] = useCookies();
-  const [userCount,setUserCount] = useState([]);
+  const [userCount, setUserCount] = useState([]);
   const openFilter = () => {
     setisFilter(!isfilter);
   };
@@ -40,7 +41,7 @@ const BoardList = () => {
   };
   const submitSearch = () => {
     if (searchTitle) {
-      axios
+      instance
         .get(`/boardlist/search/${searchTitle}`)
         .then((res) => {
           if (res.data.result === null) {
@@ -90,18 +91,18 @@ const BoardList = () => {
     setNickname(cookie.nickname);
     axios
       .all([
-        axios.get(
+        instance.get(
           `/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
-        axios.get("/boardlist/best"),
-        axios.get("/user/bookmark"),
-        axios.get('/boardlist/user', {
+        instance.get("/boardlist/best"),
+        instance.get("/user/bookmark"),
+        instance.get("/boardlist/user", {
           params: {
-            loginId: cookie.user_id
-          }
-        })
+            loginId: cookie.user_id,
+          },
+        }),
       ])
       .then(
         axios.spread((res1, res2, res3, res4) => {
@@ -111,12 +112,12 @@ const BoardList = () => {
           const userPostsData = res4.data.result;
 
           // 사용자의 글 수 계산
-          // const userPostCount = 
-          // const userReplyCount = 
+          // const userPostCount =
+          // const userReplyCount =
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
           setBookmarks(bookmarksData);
-          setUserCount([userPostCount, userReplyCount]);
+          // setUserCount([userPostCount, userReplyCount]);
         })
       )
       .catch((err) => {
@@ -134,7 +135,8 @@ const BoardList = () => {
               <p>
                 <b>{nickname}</b>님
               </p>
-              <strong>글 수: </strong>{userCount}
+              <strong>글 수: </strong>
+              {userCount}
               <strong style={{ paddingLeft: "1vw" }}>댓글 수:</strong>200
             </div>
           </div>

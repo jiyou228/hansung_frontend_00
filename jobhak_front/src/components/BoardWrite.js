@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../node_modules/react-quill/dist/quill.snow.css";
+import instance from "../axiosConfig";
 
 function BoardWrite() {
   const [userid, setUserId] = useState("");
@@ -47,7 +48,7 @@ function BoardWrite() {
   };
 
   const onHandleSave = () => {
-    axios
+    instance
       .post(`http://localhost:3000/boardlist/write`, {
         user_id: userid,
         title: title,

@@ -54,9 +54,6 @@ function Signup() {
       .post("http://localhost:3000/confirm/email", {
         email: useremail,
       })
-      .post("http://localhost:3000/confirm/email", {
-        email: useremail,
-      })
 
       .then((response) => {
         console.log(response);
@@ -68,7 +65,7 @@ function Signup() {
       });
   };
 
-  const CodeConfirm = () => {
+  const CodeConfirm = async () => {
     if (inputcode === confirmcode) {
       Swal.fire({
         icon: "success",
@@ -79,6 +76,7 @@ function Signup() {
         width: 800,
         height: 100,
       });
+      return true;
     } else {
       Swal.fire({
         icon: "warning",
@@ -89,6 +87,7 @@ function Signup() {
         width: 800,
         height: 100,
       });
+      return false;
     }
   };
 
@@ -156,12 +155,13 @@ function Signup() {
       username === "" ||
       usernickname === "" ||
       useremail === "" ||
-      confirmcode === ""
+      confirmcode === "" ||
+      !(await CodeConfirm())
     ) {
       Swal.fire({
         icon: "warning",
         title: "경고",
-        text: "빈칸을 모두 채워주세요!",
+        text: "빈칸이 있거나 코드를 확인하지 않았습니다!",
         showCancelButton: false,
         confirmButtonText: "확인",
         width: 800,
