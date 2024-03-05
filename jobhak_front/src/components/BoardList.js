@@ -38,7 +38,7 @@ const BoardList = () => {
   const openCategory = () => {
     setisCategory(!isCategory);
   };
-  
+
   const submitSearch = () => {
     if (searchTitle) {
       instance
@@ -92,14 +92,13 @@ const BoardList = () => {
     axios
       .all([
         instance.get(
-        instance.get(
           `/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
         instance.get("/boardlist/best"),
         instance.get("/user/bookmark"),
-        instance.get('/boardlist/user', {
+        instance.get("/boardlist/user", {
           params: {
             loginId: cookie.user_id,
           },
