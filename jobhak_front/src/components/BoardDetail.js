@@ -12,6 +12,7 @@ import reply_arrow from "../assets/reply.png";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import { Link } from "react-router-dom";
+import instance from "../axiosConfig";
 
 function BoardDetail() {
   const [replyContent, setReplyContent] = useState("");
@@ -50,7 +51,8 @@ function BoardDetail() {
 
   const handleBookmarkClick = () => {
     setIsBookmarked(!isBookmarked);
-    axios
+
+    instance
       .post(`http://localhost:3000/boardlist/${postId}/bookmark`, {
         post_id: postId,
         user_id: user_id,
@@ -78,7 +80,7 @@ function BoardDetail() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          if(replyId === undefined && parentReplyId === undefined){
+          if (replyId === undefined && parentReplyId === undefined) {
             navigate(`/boardlist/edit/${postId}`, {
               state: {
                 user_id: user_id,
@@ -89,20 +91,18 @@ function BoardDetail() {
                 post_id: postId,
               },
             });
-          }
-          else if(replyId !== undefined && parentReplyId === undefined){
-            axios.patch(`/boardlist/detail/${postId}/reply`, {
+          } else if (replyId !== undefined && parentReplyId === undefined) {
+            instance.patch(`/boardlist/detail/${postId}/reply`, {
               postId: postId,
               replyId: replyId,
-              replyContent: replyContent
+              replyContent: replyContent,
             });
-          }
-          else{
-            axios.patch(`/boardlist/detail/${postId}/reply`, {
+          } else {
+            instance.patch(`/boardlist/detail/${postId}/reply`, {
               postId: postId,
               replyId: replyId,
               parentReplyId: parentReplyId,
-              replyContent: reReplyContent
+              replyContent: reReplyContent,
             });
           }
         }
@@ -128,14 +128,17 @@ function BoardDetail() {
       .then((result) => {
         if (result.isConfirmed) {
           if (!option) {
-            axios.delete(`http://localhost:3000/boardlist/delete/${postId}`, {
-              data: {
-                post_id: postId,
-              },
-            });
+            instance.delete(
+              `http://localhost:3000/boardlist/delete/${postId}`,
+              {
+                data: {
+                  post_id: postId,
+                },
+              }
+            );
             navigate("../boardlist");
           } else if (option) {
-            axios
+            instance
               .delete(`/boardlist/${postId}/reply/delete/${option}`, {
                 data: {
                   postId: postId,
@@ -182,37 +185,41 @@ function BoardDetail() {
 
   const getData = () => {
     axios
-    .all([axios.get('/user/bookmark'), axios.get(`http://localhost:3000/boardlist/detail/${postId}`)])
-    .then(
-      axios.spread((detail, bookmark) => {
-        if(detail.data.result){
-          const userData = detail.data.result;
-          setCategory(userData.category);
-          setTitle(userData.title);
-          setContent(userData.content);
-          setUserPic(userData.picture);
-          setCommentCount(userData.commentcount);
-          setBookmarkCount(userData.bookmarkcount);
-          setReplyList(userData.replies);
-          setPostDate(userData.date);
-          setUserId(userData.userId);
-          setNickname(userData.nickname);
-        }
-        if(bookmark.data.result){
-          const bookmarkIds = bookmark.data.result.map((item) => item.postId);
-          if(bookmarkIds.includes(postId)){
-            setIsBookmarked(true);
+      .all([
+        instance.get("/user/bookmark"),
+
+        instance.get(`http://localhost:3000/boardlist/detail/${postId}`),
+      ])
+      .then(
+        axios.spread((detail, bookmark) => {
+          if (detail.data.result) {
+            const userData = detail.data.result;
+            setCategory(userData.category);
+            setTitle(userData.title);
+            setContent(userData.content);
+            setUserPic(userData.picture);
+            setCommentCount(userData.commentcount);
+            setBookmarkCount(userData.bookmarkcount);
+            setReplyList(userData.replies);
+            setPostDate(userData.date);
+            setUserId(userData.userId);
+            setNickname(userData.nickname);
           }
-        }
-      })
-    )
-    .catch((err) => {
-      console.log(err + ":: detail err");
-    });
+          if (bookmark.data.result) {
+            const bookmarkIds = bookmark.data.result.map((item) => item.postId);
+            if (bookmarkIds.includes(postId)) {
+              setIsBookmarked(true);
+            }
+          }
+        })
+      )
+      .catch((err) => {
+        console.log(err + ":: detail err");
+      });
   };
 
   const handleReply = () => {
-    axios
+    instance
       .post(`/boardlist/detail/${postId}/reply`, {
         postId: postId,
         replyContent: replyContent,
@@ -230,7 +237,7 @@ function BoardDetail() {
   };
 
   const handlereReply = (parentReplyId) => {
-    axios
+    instance
       .post(`/boardlist/detail/${postId}/reply`, {
         postId: postId,
         replyContent: reReplyContent,
@@ -251,7 +258,7 @@ function BoardDetail() {
     <div className="boardDetail_app">
       <Nav />
       <div className="button_container">
-        <Link to= {`/boardlist/detail/${postId - 1}`}>
+        <Link to={`/boardlist/detail/${postId - 1}`}>
           <button className="prev_btn"> ▲ 이전글</button>
         </Link>
         <Link to={`/boardlist/detail/${postId + 1}`}>
@@ -294,9 +301,7 @@ function BoardDetail() {
               board(해당 글)의 user의 ID를 비교했을 때 같으면 수정, 삭제 버튼이 보이게 한다.
               ID는 DB에 저장되어 있는 유저의 고유 번호이다. */}
         <br />
-        <label className="post_nickname">
-          {nickname}
-        </label>
+        <label className="post_nickname">{nickname}</label>
         <label className="category_lb">
           {" "}
           [
@@ -349,7 +354,7 @@ function BoardDetail() {
                       onClick={() => delOpenReply(reply.replyId)}
                     />
                     {openDelReply[reply.replyId] && (
-                      <button onClick={() => handleEditClick(reply.replyId, )}>
+                      <button onClick={() => handleEditClick(reply.replyId)}>
                         수정
                       </button>
                     )}
@@ -414,8 +419,11 @@ function BoardDetail() {
                       />
                       {openDelReply[subReply.replyId] && (
                         <button
-                          onClick={() => handleEditClick(reply.replyId, subReply.replyId)}>
-                        수정
+                          onClick={() =>
+                            handleEditClick(reply.replyId, subReply.replyId)
+                          }
+                        >
+                          수정
                         </button>
                       )}
                       {openDelReply[subReply.replyId] && (

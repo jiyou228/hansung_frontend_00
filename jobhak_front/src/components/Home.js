@@ -20,7 +20,6 @@ const Home = () => {
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
 
-
   useEffect(() => {
     const changeImage = setInterval(() => {
       setIndex((i) => (i === image.length - 1 ? 0 : i + 1));

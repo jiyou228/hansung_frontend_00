@@ -7,6 +7,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "../../node_modules/react-quill/dist/quill.snow.css";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
+import instance from "../axiosConfig";
 
 function BoardEdit() {
   const location = useLocation();
@@ -46,7 +47,7 @@ function BoardEdit() {
   };
 
   const handleEditClick = () => {
-    axios
+    instance
       .patch(`http://localhost:3000/boardlist/edit/${postId}`, {
         post_id: postId,
         title: title,
