@@ -34,7 +34,6 @@ const Home = () => {
       try {
         const res = await instance.get("http://localhost:3000/home");
         setUserProfile(res.data.result.nickname);
-        console.log(res.data.result.nickname);
         setCookie("nickname", decodeURIComponent(res.data.result.nickname));
         setCookie("user_id", res.data.result.id);
       } catch (err) {
