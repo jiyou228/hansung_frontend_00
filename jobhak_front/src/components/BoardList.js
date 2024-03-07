@@ -107,12 +107,12 @@ const BoardList = () => {
         axios.spread((res1, res2, res3, res4) => {
           const boardListData = res1.data.result;
           const bestPostsData = res2.data.result.slice(0, 5);
-          const bookmarksData = res3.data.result.map((item) => item.postId);
-          const userPostsData = res4.data.result;
-
-          // 사용자의 글 수 계산
-          // const userPostCount = userPostsData.post.length
-          // const userReplyCount = userPostsData.replies.length
+          if (res3.data.result.length > 0) {
+            const bookmarksData = res3.data.result.map((item) => item.postId);
+            setBookmarks(bookmarksData);
+          } else {
+            setBookmarks([]);
+          }
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
           setBookmarks(bookmarksData);
