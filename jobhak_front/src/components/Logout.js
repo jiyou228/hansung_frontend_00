@@ -7,6 +7,7 @@ const Logout = () => {
     const [, , removeCookie] = useCookies();
     const navigate = useNavigate();
     useEffect(() => {
+        removeCookie("loggedIn");
         const handleLogout = async() =>{
             removeCookie("loggedIn");
             removeCookie("loginModal");
