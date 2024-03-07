@@ -98,11 +98,7 @@ const BoardList = () => {
         ),
         instance.get("/boardlist/best"),
         instance.get("/user/bookmark"),
-        instance.get("/boardlist/user", {
-          params: {
-            loginId: cookie.user_id,
-          },
-        }),
+        instance.get("/boardlist/user"),
       ])
       .then(
         axios.spread((res1, res2, res3, res4) => {
@@ -112,12 +108,11 @@ const BoardList = () => {
           const userPostsData = res4.data.result;
 
           // 사용자의 글 수 계산
-          // const userPostCount =
-          // const userReplyCount =
+          // const userPostCount = userPostsData.post.length
+          // const userReplyCount = userPostsData.replies.length
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
           setBookmarks(bookmarksData);
-          // setUserCount([userPostCount, userReplyCount]);
           // setUserCount([userPostCount, userReplyCount]);
         })
       )
