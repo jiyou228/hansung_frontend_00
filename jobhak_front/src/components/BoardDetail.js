@@ -128,15 +128,19 @@ function BoardDetail() {
       .then((result) => {
         if (result.isConfirmed) {
           if (!option) {
-            instance.delete(
-              `http://localhost:3000/boardlist/delete/${postId}`,
-              {
+            instance
+              .delete(`http://localhost:3000/boardlist/delete/${postId}`, {
                 data: {
                   post_id: postId,
                 },
-              }
-            );
-            navigate("../boardlist");
+              })
+              .then((res) => {
+                console.log(res);
+                window.location.href = "/boardlist";
+              })
+              .catch((err) => {
+                console.log(err + "게시물 삭제 error ");
+              });
           } else if (option) {
             instance
               .delete(`/boardlist/${postId}/reply/delete/${option}`, {
@@ -147,13 +151,12 @@ function BoardDetail() {
               })
               .then(() => {
                 getData(); // 삭제 성공 시에만 getData 호출
+                navigate(0);
               })
               .catch((err) => {
-                console.log(err + "게시물 삭제 error ");
+                console.log(err + "댓글 삭제 error ");
               });
           }
-          //navigate("/boardlist"); navigate(0); // 속도 느림
-          window.location.href = "/boardlist";
         }
       })
       .catch((err) => {
@@ -191,7 +194,7 @@ function BoardDetail() {
         instance.get(`http://localhost:3000/boardlist/detail/${postId}`),
       ])
       .then(
-        axios.spread((detail, bookmark) => {
+        axios.spread((bookmark, detail) => {
           if (detail.data.result) {
             const userData = detail.data.result;
             setCategory(userData.category);
@@ -258,10 +261,10 @@ function BoardDetail() {
     <div className="boardDetail_app">
       <Nav />
       <div className="button_container">
-        <Link to={`/boardlist/detail/${postId - 1}`}>
+        <Link to={`/boardlist/detail/${postId}`}>
           <button className="prev_btn"> ▲ 이전글</button>
         </Link>
-        <Link to={`/boardlist/detail/${postId + 1}`}>
+        <Link to={`/boardlist/detail/${postId}`}>
           <button className="next_btn"> ▼ 다음글</button>
         </Link>
         <Link to="/boardlist">
@@ -284,7 +287,7 @@ function BoardDetail() {
             <button onClick={handleEditClick} className="postedit_btn">
               수정
             </button>
-            <button onClick={handleDeleteClick} className="postdelete_btn">
+            <button onClick={handleDeleteClick()} className="postdelete_btn">
               삭제
             </button>
           </div>

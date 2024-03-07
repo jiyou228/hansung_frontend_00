@@ -31,6 +31,9 @@ const BoardList = () => {
   const [isSearch, setisSearch] = useState("");
   const [cookie] = useCookies();
   const [userCount, setUserCount] = useState([]);
+  const [bookmarkNum, setBookmarkNum] = useState("");
+  const [postNum, setPostNum] = useState("");
+  const [replyNum, setReplyNum] = useState("");
   const openFilter = () => {
     setisFilter(!isfilter);
   };
@@ -113,6 +116,9 @@ const BoardList = () => {
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
           setBookmarks(bookmarksData);
+          setBookmarkNum(res4.data.result.bookmarkNum);
+          setPostNum(res4.data.result.postNum);
+          setReplyNum(res4.data.result.replyNum);
           // setUserCount([userPostCount, userReplyCount]);
         })
       )
@@ -129,11 +135,15 @@ const BoardList = () => {
             <img src={profile} alt="프사" />
             <div className="boardlist_profileDetail">
               <p>
-                <b>{nickname}</b>님
+                <b style={{ fontSize: "large" }}>{nickname}</b>님
               </p>
-              <strong>글 수: </strong>
-              {userCount}
-              <strong style={{ paddingLeft: "1vw" }}>댓글 수:</strong>200
+
+              <label className="profile_count">글 수: {postNum}</label>
+              <br />
+              <label className="profile_count">댓글 수: {replyNum}</label>
+              <br />
+              <label className="profile_count">북마크 수: {bookmarkNum}</label>
+              <br />
             </div>
           </div>
           <div

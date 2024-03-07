@@ -26,7 +26,8 @@ function Bookmark() {
         console.log(JSON.stringify(res.data));
         const bookmark_arr = res.data.result || [];
         setBookMark_arr(bookmark_arr);
-        setBookMark_id(res.data.result.bookmarkId);
+
+        setBookMark_id(res.data.result[0].bookmarkId);
       })
 
       .catch((err) => {
@@ -43,9 +44,11 @@ function Bookmark() {
       })
       .then((res) => {
         console.log(res + "북마크 삭제 완");
+        window.location.href = "/user/bookmark";
       })
       .catch((error) => {
         console.error(error + "북마크 삭제 실패");
+        console.log(bookmark_id);
       });
   };
 
