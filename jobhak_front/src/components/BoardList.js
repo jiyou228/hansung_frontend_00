@@ -87,7 +87,6 @@ const BoardList = () => {
   const refresh = () => {
     setisSearch("");
     setSearchTitle("");
-    window.location.reload();
   };
 
   useEffect(() => {
@@ -115,7 +114,6 @@ const BoardList = () => {
           }
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
-          setBookmarks(bookmarksData);
           setBookmarkNum(res4.data.result.bookmarkNum);
           setPostNum(res4.data.result.postNum);
           setReplyNum(res4.data.result.replyNum);
@@ -135,15 +133,13 @@ const BoardList = () => {
             <img src={profile} alt="프사" />
             <div className="boardlist_profileDetail">
               <p>
-                <b style={{ fontSize: "large" }}>{nickname}</b>님
+                <b style={{ fontSize: "larger" }}>{nickname}</b>님
               </p>
-
-              <label className="profile_count">글 수: {postNum}</label>
-              <br />
-              <label className="profile_count">댓글 수: {replyNum}</label>
-              <br />
-              <label className="profile_count">북마크 수: {bookmarkNum}</label>
-              <br />
+              <div className="detail_count">
+              <label className="profile_count">글 수: <strong>{postNum}</strong></label>
+              <label className="profile_count">댓글 수: <strong>{replyNum}</strong></label>
+              </div>
+              <label className="profile_count">북마크 수: <strong>{bookmarkNum}</strong></label>
             </div>
           </div>
           <div
@@ -286,6 +282,7 @@ const BoardList = () => {
         </div>
         <div className="boardlist_search">
           <input
+            value={searchTitle}
             type="text"
             placeholder="글 제목을 검색해보세요."
             onChange={(e) => setSearchTitle(e.target.value)}

@@ -43,28 +43,28 @@ instance.interceptors.response.use(
     return response;
   },
   async error => {
-    // if(error.response){
-    //     if(error.response.status === 401){
-    //         console.error('Unauthorized request', error);
-    //         //accessToken 만료시?
-    //         try{
-    //           const accessToken = await refreshToken();
-    //           // 새로 발급받은 토큰으로 기존 요청 재시도
-    //           error.config.headers.Authorization = `Bearer ${accessToken}`;
-    //           return axios.request(error.config);
-    //         }
-    //         catch(refreshError){
-    //           // 토큰 재발급 실패시 로그아웃 처리
-    //           console.error('토큰 재발급 에러', refreshError);
-    //           window.location.href('/logout');
-    //           return Promise.reject(refreshError);
-    //         }
-    //       }
-    //     else if(error.response.status === 404){
-    //         console.error('404 에러: Page not Found');
-    //         window.location.href('/home');
-    //     }
-    // }
+    if(error.response){
+        if(error.response.status === 401){
+            console.error('Unauthorized request', error);
+            //accessToken 만료시?
+            // try{
+            //   const accessToken = await refreshToken();
+            //   // 새로 발급받은 토큰으로 기존 요청 재시도
+            //   error.config.headers.Authorization = `Bearer ${accessToken}`;
+            //   return axios.request(error.config);
+            // }
+            // catch(refreshError){
+            //   // 토큰 재발급 실패시 로그아웃 처리
+            //   console.error('토큰 재발급 에러', refreshError);
+            //   window.location.href('/logout');
+            //   return Promise.reject(refreshError);
+            // }
+          }
+        else if(error.response.status === 404){
+            console.error('404 에러: Page not Found');
+            window.location.href('/home');
+        }
+    }
     return Promise.reject(error);
   }
 );

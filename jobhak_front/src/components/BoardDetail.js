@@ -37,6 +37,7 @@ function BoardDetail() {
   const [isreReply, setisRereply] = useState(null);
   const [openDelReply, setOpenDelReply] = useState(false);
   const isOutsideClick = useRef(false);
+  const [bookmarkId, setBookmarkId] = useState(0);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -50,9 +51,8 @@ function BoardDetail() {
   };
 
   const handleBookmarkClick = () => {
-    setIsBookmarked(!isBookmarked);
-
-    instance
+    if(isBookmarked === false){
+      instance
       .post(`http://localhost:3000/boardlist/${postId}/bookmark`, {
         post_id: postId,
         user_id: user_id,
@@ -63,6 +63,24 @@ function BoardDetail() {
       .catch((err) => {
         console.log(err + "북마크 추가 오류");
       });
+    }
+    else if(isBookmarked === true){
+
+      instance
+      .delete('/user/bookmark/delete',{
+        data: {
+          bookmarkId: bookmarkId
+        }
+      })
+      .then(() => {
+        console.log('북마크 삭제 완료');
+        getData();
+      })
+      .catch (err => {
+        console.error('에러 발생', err);
+      })
+    }
+    setIsBookmarked(!isBookmarked);
   };
 
   const handleEditClick = (replyId, parentReplyId) => {
@@ -196,9 +214,14 @@ function BoardDetail() {
             const bookmarkIds = bookmark.data.result.map((item) =>
               item.postId.toString()
             );
-            if (bookmarkIds.includes(`${postId}`)) {
+            if (bookmarkIds.includes(postId)) {
+              const bookmarkId = bookmark.data.result.find(
+                (item) => item.postId === detail.data.result.postId
+              ).bookmarkId;
               setIsBookmarked(true);
-            } else {
+              setBookmarkId(bookmarkId);
+            } 
+            else {
               setIsBookmarked(false);
             }
           }
@@ -208,8 +231,8 @@ function BoardDetail() {
             setTitle(userData.title);
             setContent(userData.content);
             setUserPic(userData.picture);
-            setCommentCount(userData.commentcount);
-            setBookmarkCount(userData.bookmarkcount);
+            setCommentCount(userData.replies.length);
+            // setBookmarkCount(userData.bookmarkcount);
             setReplyList(userData.replies);
             setPostDate(userData.date);
             setUserId(userData.userId);
@@ -330,9 +353,9 @@ function BoardDetail() {
         </div>
         <div className="board_bottom">
           <img src={post_comment} alt="comment" width={35} />
-          <label className="post_lb"> 10 {commentcount}</label>
-          <img src={off_bookmark} alt="bookmark" width={30} />
-          <label className="post_lb"> 30 {bookmarkcount}</label>
+          <label className="post_lb"> {commentcount > 0 ? commentcount : 0}</label>
+          <img src={off_bookmark} className= "bookmark" alt="bookmark" width={30} />
+          <label className="post_lb"> {bookmarkcount > 0 ? bookmarkcount : 0}</label>
         </div>
       </div>
       <div className="detail_replies">

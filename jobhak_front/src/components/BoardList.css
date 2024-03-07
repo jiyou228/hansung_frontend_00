@@ -6,34 +6,45 @@
 .boardlist_top {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
+  margin: 3vh auto;
 }
 .boardlist_profile {
   background-color: #eff5ff;
   align-items: center;
   justify-content: center;
   display: block;
-  margin-top: 5vh;
   margin-right: 2vw;
   padding: 3vh 2vw;
   word-wrap: none;
+  text-align: center;
 }
 .boardlist_profile b {
   font-weight: 800;
 }
 .boardlist_profile img {
-  width: 10vw;
+  width: clamp(60px, 8vw, 150px);
   background-color: white;
   padding-bottom: 0;
 }
 .boardlist_profileDetail {
   text-align: center;
-  padding-bottom: 2vh;
+  font-size: large;
+  white-space: nowrap;
+}
+.boardlist_profileDetail strong{
+  font-weight: 800;
+}
+
+.detail_count{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: clamp(10px, 2vw, 30px);
 }
 
 .boardlist_best {
   margin: auto;
-  padding-top: 3vh;
 }
 .boardlist_best ul {
   border: 2px solid #252525;
@@ -43,8 +54,9 @@
   text-align: left;
   width: 43vw;
   border-radius: 1rem;
-  font-size: 1.2rem;
-  min-height: 32vh;
+  font-size: large;
+  min-height: 15vh;
+  margin: 0;
 }
 .boardlist_best h2 {
   font-weight: 800;
@@ -71,7 +83,6 @@ a {
   padding: 0 1vw;
   padding-top: 3vh;
   padding-bottom: 2vh;
-  width: 60vw;
 }
 .boardlist_title {
   font-weight: 700;
@@ -108,6 +119,7 @@ a {
 .boardlist_filter img {
   height: 3.5vh;
   cursor: pointer;
+  margin-right: 2vw;
 }
 .boardlist_filter button {
   margin-left: 1vw;
@@ -116,7 +128,7 @@ a {
   border: none;
   background-color: #ffd3b6;
   font-weight: 800;
-  font-size: 1.2vw;
+  font-size: medium;
 }
 .boardlist_sort ul {
   list-style: none;
@@ -146,6 +158,7 @@ a {
   justify-content: space-between;
   gap: 5vw;
   margin-left: 1vw;
+  align-items: center;
 }
 .list_category {
   padding-left: 1vw;
@@ -181,25 +194,25 @@ a {
   position: relative;
   display: flex;
   align-items: center;
-  width: fit-content;
+  border-radius: 2rem;
+  border: 2px solid #252525;
   margin: 1vh auto;
+  width: fit-content;
 }
 .boardlist_search input {
-  width: 35vw;
   padding: 2vh 1.5vw;
+  width: clamp(260px, 40vw, 1000px);
   border: none;
   outline: none;
-  border: 3px solid #252525;
-  border-radius: 2rem;
   font-size: large;
+  border-radius: 2rem;
 }
 .boardlist_search .img {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1vw;
-  position: absolute;
-  right: 1.5vw;
+  margin-right: 1vw;
 }
 .boardlist_search .img .erase {
   height: 2.7vh;
@@ -243,9 +256,14 @@ a {
   float: left;
 }
 
-.profile_count {
-  display: inline-block;
-  text-align: left;
-  width: 120px;
-  font-weight: bold;
+@media ( max-width: 768px ) {
+  .boardlist_profile{
+    display: none;
+  }
+  .boardlist_best ul {
+    width: clamp(260px, 85vw, 700px);
+  }
+  .boardlist_top{
+    margin-top: 0;
+  }
 }

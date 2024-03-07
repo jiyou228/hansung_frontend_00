@@ -42,7 +42,6 @@
 }
 
 .write_form {
-    overflow-y: scroll;
     max-height: 80vh;
     margin-top: 1.5rem;
     margin: auto;
