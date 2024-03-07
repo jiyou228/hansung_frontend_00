@@ -15,6 +15,9 @@ function MyPage() {
   const [usernickname, setUserNickname] = useState("");
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
+  const cookie = new Cookies();
+  const encodedNickname = cookie.get("nickname");
+  cookie.get("nickname", decodeURIComponent(encodedNickname));
 
   const NickNameHandler = (e) => {
     setUserNickname(e.target.value);

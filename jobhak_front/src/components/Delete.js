@@ -6,6 +6,7 @@ import "./Delete.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import instance from "../axiosConfig";
 
 function Delete() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Delete() {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log(id);
-        axios
+        instance
           .delete(`http://localhost:3000/user/delete`, {
             data: { password: userpw, loginId: id },
           })
