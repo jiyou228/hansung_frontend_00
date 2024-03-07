@@ -20,6 +20,7 @@ function Signup() {
   const [usableid, setUsableID] = useState(false);
   const [confirmcode, setConfirmCode] = useState("");
   const [confrimemail, setConfirmEmail] = useState(null);
+  const [buttonconfirm, setButtonConfirm] = useState(false);
   const HandleInputID = (e) => {
     setLoginID(e.target.value);
   };
@@ -49,7 +50,7 @@ function Signup() {
   };
 
   const EmailConfirm = () => {
-    //이메일 인증 요청을 누르면 code가 감
+    setButtonConfirm(true);
     axios
       .post("http://localhost:3000/confirm/email", {
         email: useremail,
@@ -128,6 +129,7 @@ function Signup() {
   const SignUpContinue = async () => {
     const DoubleCheckPW =
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,}$/;
+    const isCodeConfirmed = await CodeConfirm();
     if (loginpw !== checkpw) {
       Swal.fire({
         icon: "warning",
@@ -155,12 +157,12 @@ function Signup() {
       usernickname === "" ||
       useremail === "" ||
       confirmcode === "" ||
-      !(await CodeConfirm())
+      !isCodeConfirmed
     ) {
       Swal.fire({
         icon: "warning",
         title: "경고",
-        text: "빈칸이 있거나 코드를 확인하지 않았습니다!",
+        text: "빈칸이 있습니다 확인해주세요!",
         showCancelButton: false,
         confirmButtonText: "확인",
         width: 800,
@@ -199,6 +201,17 @@ function Signup() {
             width: 800,
           });
         });
+    }
+    if (!isCodeConfirmed) {
+      Swal.fire({
+        icon: "warning",
+        title: "경고",
+        text: "코드가 인증되지 않았습니다.",
+        showCancelButton: false,
+        confirmButtonText: "확인",
+        width: 800,
+        height: 100,
+      });
     }
   };
   return (
@@ -293,7 +306,7 @@ function Signup() {
             onChange={HandleInputEmail}
           />
           <button className="joinform2_btn" onClick={EmailConfirm}>
-            인증 요청
+            {buttonconfirm ? "인증 재요청" : "인증 요청"}
           </button>
           <br />
           <label className="joinform_lb">인증코드</label>

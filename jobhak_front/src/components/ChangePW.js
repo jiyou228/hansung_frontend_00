@@ -6,6 +6,7 @@ import "./ChangePW.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import instance from "../axiosConfig";
 
 function ChangePW() {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ function ChangePW() {
         height: 100,
       });
     } else {
-      axios
+      instance
         .patch(`http://localhost:3000/user/edit/pw`, {
           password: checkpw,
         })
