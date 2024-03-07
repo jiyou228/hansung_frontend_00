@@ -24,6 +24,7 @@ import BoardWrite from "./components/BoardWrite";
 import Mypicture from "./components/Mypicture";
 import Bookmark from "./components/Bookmark";
 import BoardDetail from "./components/BoardDetail";
+import GPTResume from "./components/GPTResume";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
           <Route path="/user/bookmark" element={<Bookmark />} />
           <Route path="/boardlist/edit/:postId" element={<BoardDetail/>} />
           <Route path="/boardlist/detail/:postId" element={<BoardDetail />} />
+          <Route path="/resume/write/gpt" element = {<GPTResume/>}></Route>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
