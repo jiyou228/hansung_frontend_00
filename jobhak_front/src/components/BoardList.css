@@ -6,7 +6,7 @@
 .boardlist_top {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   margin: 3vh auto;
 }
 .boardlist_profile {

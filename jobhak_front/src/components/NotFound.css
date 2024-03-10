@@ -1,0 +1,44 @@
+.error{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.error_main img{
+    width: fit-content;
+    height: 25vh;
+}
+.error_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.error_404{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    gap: 2vw;
+    font-size: 28vh;
+}
+.error_text{
+    font-size: xx-large;
+    margin-top: 10vh;
+}
+.error_main strong{
+    letter-spacing: 0.1vw;
+    font-size: 18vh;
+}
+.error_main button{
+    border: none;
+    margin-top: 5vh;
+    padding: 1vh 2vw;
+    font-size: 3vh;
+    font-weight: 700;
+    background-color: #104085;
+    color: white;
+    border-radius: 1vh;
+}
+.error_main button:hover{
+    color: #d6e5fc;
+}
