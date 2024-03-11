@@ -125,12 +125,14 @@ function BoardWrite() {
           <input type="file" name="image" accept="image/*" multiple />
         </label>
       </div>
+      <div className="boardwrite_button">
       <button className="Bcancel_btn" onClick={handleCancel}>
         취소
       </button>
       <button className="Bsave_btn" onClick={onHandleSave}>
         등록
       </button>
+      </div>
     </div>
   );
 }

@@ -1,41 +1,51 @@
-.main_container {
+.mypage_app{
+  margin: 0 auto;
+}
+.mypage_main_container{
   display: flex;
   justify-content: space-between;
-  padding: 20px;
   box-sizing: border-box;
+  margin: 0 auto;
+  width: fit-content;
+  margin-top: 4vh;
 }
 
-.example_div {
-  width: 10rem;
-  height: 21vh;
+.mypage_example_div {
+  width: 12rem;
+  height: 14rem;
   background-color: #d9d9d9;
-  margin-left: 2.5rem;
 }
-
-.profile_div {
-  width: 30%;
-  padding: 20px;
+.mypage_profile_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3vh;
+}
+.mypage_profile_div {
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
-  box-sizing: border-box;
-  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 4vw;
 }
 
-.profile_name {
+.mypage_profile_name {
   font-size: 1.5em;
   font-weight: bold;
+  padding-bottom: 1vh;
 }
 
-.logout {
+.mypage_logout {
   cursor: pointer;
   color: red;
   margin-left: 0.5rem;
   font-weight: 700;
 }
 
-.profile_btn1,
-.profile_btn2 {
+.mypage_profile_btn1,
+.mypage_profile_btn2 {
   width: 5rem;
   height: 2rem;
   margin-top: 10px;
@@ -47,41 +57,46 @@
   border: none;
 }
 
-.profile_btn2 {
-  margin-left: 0.5rem;
+.mypage_profile_button{
+  display: flex;
+  gap: 20px;
+}
+.mypage_profile_button button:hover{
+  font-weight: 800;
 }
 
-.count_div {
+.mypage_count_div {
   margin-top: 20px;
 }
 
-.profile_count {
+.mypage_profile_count {
   margin-bottom: 5px;
 }
 
-.privacy_div {
-  width: 100%;
+.mypage_privacy_div {
+  width: 40vw;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-right: 20%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.privacy_move {
-  margin-left: 20%;
-  margin-top: 10%;
+.mypage_privacy_move{
 }
 
-.privacy_lb {
+.mypage_privacy_lb {
   margin-top: 10px;
   display: block;
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-.privacy_ip {
-  width: 70%;
+.mypage_privacy_ip {
+  width: 25vw;
   height: 2rem;
   padding: 8px;
   margin-top: 5px;
@@ -91,7 +106,7 @@
   border-radius: 0.5rem;
 }
 
-.privacy_btn {
+.mypage_privacy_btn {
   background-color: #104085;
   color: white;
   cursor: pointer;
@@ -99,33 +114,60 @@
   border-radius: 5px;
   height: 3rem;
   width: 10rem;
-  margin-top: 1rem;
   font-size: 1.3rem;
   font-weight: 800;
-  margin-left: 47%;
+  float: right;
+  margin-top: 3vh;
 }
-
-@media only screen and (max-width: 768px) {
-  .main_container {
-    flex-direction: column;
-  }
-
-  .profile_div,
-  .privacy_div {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-}
-
-.navbar_ul {
+.mypage_navbar_ul {
   list-style-type: none;
-  padding: 0;
+  padding: 2vh 0;
   margin: 2rem 0;
+  border-top: 2px solid #999999;
 }
 
-.navbarMenu {
+.mypage_navbarMenu {
   display: block;
   padding: 15px;
   text-decoration: none;
   font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .mypage_main_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mypage_profile_div {
+    width: 70vw;
+    margin-bottom: 20px;
+    flex-direction: row;
+  }
+  .mypage_example_div{
+    width: 8rem;
+    height: 11rem;
+  }
+  .mypage_profile_button{
+    gap: 1vw;
+  }
+  .mypage_navbarMenu {
+    display: flex;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    flex-direction: row;
+    white-space: nowrap;
+  }
+  .mypage_navbar_ul{
+    border-top: none;
+    border-left: 2px solid #999999;
+    margin-left: 3vw;
+  }
+  .mypage_privacy_div{
+    width: fit-content;
+  }
+  .mypage_privacy_ip{
+    width: 70vw;
+  }
 }

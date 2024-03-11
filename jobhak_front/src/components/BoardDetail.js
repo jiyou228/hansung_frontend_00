@@ -37,6 +37,7 @@ function BoardDetail() {
   const [isreReply, setisRereply] = useState(null);
   const [openDelReply, setOpenDelReply] = useState(false);
   const isOutsideClick = useRef(false);
+  const [bookmarkId, setBookmarkId] = useState(0);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -50,19 +51,34 @@ function BoardDetail() {
   };
 
   const handleBookmarkClick = () => {
+    if (isBookmarked === false) {
+      instance
+        .post(`http://localhost:3000/boardlist/${postId}/bookmark`, {
+          post_id: postId,
+          user_id: user_id,
+        })
+        .then((res) => {
+          console.log(res + "북마크 추가 완료");
+        })
+        .catch((err) => {
+          console.log(err + "북마크 추가 오류");
+        });
+    } else if (isBookmarked === true) {
+      instance
+        .delete("/user/bookmark/delete", {
+          data: {
+            bookmarkId: bookmarkId,
+          },
+        })
+        .then(() => {
+          console.log("북마크 삭제 완료");
+          getData();
+        })
+        .catch((err) => {
+          console.error("에러 발생", err);
+        });
+    }
     setIsBookmarked(!isBookmarked);
-
-    instance
-      .post(`http://localhost:3000/boardlist/${postId}/bookmark`, {
-        post_id: postId,
-        user_id: user_id,
-      })
-      .then((res) => {
-        console.log(res + "북마크 추가 완료");
-      })
-      .catch((err) => {
-        console.log(err + "북마크 추가 오류");
-      });
   };
 
   const handleEditClick = (replyId, parentReplyId) => {
@@ -207,8 +223,12 @@ function BoardDetail() {
             const bookmarkIds = bookmark.data.result.map((item) =>
               item.postId.toString()
             );
-            if (bookmarkIds.includes(`${postId}`)) {
+            if (bookmarkIds.includes(postId)) {
+              const bookmarkId = bookmark.data.result.find(
+                (item) => item.postId === detail.data.result.postId
+              ).bookmarkId;
               setIsBookmarked(true);
+              setBookmarkId(bookmarkId);
             } else {
               setIsBookmarked(false);
             }

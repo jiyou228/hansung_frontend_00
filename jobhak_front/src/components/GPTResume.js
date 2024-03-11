@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import instance from '../axiosConfig';
 
 const GPTResume = () => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         // const getGPT = instance.get('/'),
     })

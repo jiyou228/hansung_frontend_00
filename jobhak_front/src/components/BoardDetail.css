@@ -29,11 +29,16 @@
   width: 60vw;
   align-items: flex-end;
 }
-.post_lb {
-  vertical-align: 0.7rem;
-  margin-right: 0.5rem;
+.board_bottom {
+  display: flex;
+  align-items: center;
 }
-
+.board_bottom .bookmark {
+  margin-left: 1vw;
+}
+.post_lb {
+  margin-left: 0.5vw;
+}
 .prev_btn,
 .next_btn,
 .list_btn {
@@ -75,6 +80,7 @@
 }
 .board_icon img {
   height: clamp(35px, 4vh, 60px);
+  cursor: pointer;
 }
 .board_top .title {
   display: flex;

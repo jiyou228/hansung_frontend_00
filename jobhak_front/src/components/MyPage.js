@@ -74,35 +74,33 @@ function MyPage() {
   }, [userid]);
 
   return (
-    <>
+    <div className="mypage_app">
       <Nav />
-      <br />
-      <div className="main_container">
-        <div className="profile_div">
-          <label className="profile_name">
+      <div className="mypage_main_container">
+        <div className="mypage_profile_div">
+          <div className="mypage_profile_container">
+          <div className="mypage_profile_name">
             {decodeURIComponent(usernickname)}님
-          </label>
-          <br />
-          <div className="example_div"></div>
-
-          <button className="profile_btn1">삭제</button>
-          <button className="profile_btn2">업로드</button>
-
-          <br />
+          </div>
+          <div className="mypage_example_div"></div>
+          <div className="mypage_profile_button">
+          <button className="mypage_profile_btn1">삭제</button>
+          <button className="mypage_profile_btn2">업로드</button>
+          </div>
+          </div>
           <div
-            className="count_div"
+            className="mypage_count_div"
             style={{
               display: "inline-block",
               textAlign: "left",
             }}
           >
-            <hr />
-            <div className="navbar">
-              <ul className="navbar_ul">
+            <div className="mypage_navbar">
+              <ul className="mypage_navbar_ul">
                 <li>
                   <NavLink
                     to="/user/myInfo"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -114,7 +112,7 @@ function MyPage() {
                 <li>
                   <NavLink
                     to="/user/edit/pw"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -126,7 +124,7 @@ function MyPage() {
 
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/bookmark"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -138,7 +136,7 @@ function MyPage() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/picture"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -150,7 +148,7 @@ function MyPage() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/delete"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -165,48 +163,48 @@ function MyPage() {
           </div>
         </div>
 
-        <div className="privacy_div">
-          <div className="privacy_move">
-            <label className="privacy_lb">아이디</label>
+        <div className="mypage_privacy_div">
+          <div className="mypage_privacy_move">
+            <label className="mypage_privacy_lb">아이디</label>
             <input
-              className="privacy_ip"
+              className="mypage_privacy_ip"
               disabled={true}
               type="text"
               value={userid}
             />
 
             <br />
-            <label className="privacy_lb">닉네임</label>
+            <label className="mypage_privacy_lb">닉네임</label>
             <input
-              className="privacy_ip"
+              className="mypage_privacy_ip"
               type="text"
               value={usernickname}
               onChange={NickNameHandler}
             />
             <br />
-            <label className="privacy_lb">이름</label>
+            <label className="mypage_privacy_lb">이름</label>
             <input
-              className="privacy_ip"
+              className="mypage_privacy_ip"
               disabled={true}
               type="text"
               value={username}
             />
             <br />
-            <label className="privacy_lb">이메일</label>
+            <label className="mypage_privacy_lb">이메일</label>
             <input
-              className="privacy_ip"
+              className="mypage_privacy_ip"
               disabled={true}
               type="email"
               value={useremail}
             />
             <br />
-            <button className="privacy_btn" onClick={onSaveHandler}>
+            <button className="mypage_privacy_btn" onClick={onSaveHandler}>
               수정하기
             </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default MyPage;

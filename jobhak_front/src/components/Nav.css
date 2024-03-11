@@ -179,7 +179,8 @@
         left: 50%;
         transform: translate(-50%,-50%);
         top: 50%;
-        width: 22vw;
+        width: clamp(30px, 25vw, 500px);
+        object-fit: cover;
     }
     .navbar_app{
         position: relative;
