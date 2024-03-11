@@ -16,13 +16,15 @@ import instance from "../axiosConfig";
 import GAN_icon from "../assets/GAN_icon.png";
 import learning_icon from "../assets/learning_icon.png";
 import deep_icon from "../assets/deep_icon.png";
-
+import building from '../assets/building.png';
 const Home = () => {
   const [cookie, setCookie] = useCookies();
   const [userProfile, setUserProfile] = useState("");
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
   const [jobList, setJobList] = useState([]);
+  const defaultImage = building;
+  const [imageList, setImageList] = useState([defaultImage]);
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -35,16 +37,17 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .all([instance.get("/home"), instance.get("/home/saramin")])
+      .all([instance.get("/home"), instance.get("/home/saramin"), instance.get('/home/saramin/href')])
       .then(
-        axios.spread((profile, saramin) => {
+        axios.spread((profile, saramin, image) => {
           setUserProfile(profile.data.result.nickname);
           setCookie(
             "nickname",
             decodeURIComponent(profile.data.result.nickname)
           );
           setCookie("user_id", profile.data.result.id);
-          setJobList(saramin.data);
+          setJobList(saramin.data.jobs.job);
+          setImageList(image.data);
         })
       )
       .catch((err) => {
@@ -145,14 +148,9 @@ const Home = () => {
                   공고
                 </h4>
                 <ul>
-                  <li>공고</li>
-                  <li>공고</li>
-                  <li>공고</li>
-                  <li>공고</li>
-                  <li>공고</li>
-                  <li>공고</li>
-                  <li>공고</li>
-                  <li>공고</li>
+                  <li>{imageList.map((imageUrl, index) => (
+                <img key={index} src={imageUrl || defaultImage} alt={`Image ${index}`} />
+                ))}</li>
                 </ul>
               </div>
             </div>

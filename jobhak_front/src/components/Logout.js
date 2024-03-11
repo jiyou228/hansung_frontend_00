@@ -19,19 +19,23 @@ const Logout = () => {
                 instance.get("http://localhost:3000/logout");
                 alert('로그아웃이 완료되었습니다.');
                 console.log("로그아웃 완료");
+                navigate('/');
                 removeCookie("loggedIn");
 
             }
             catch(err){
+                removeCookie("loggedIn");
                 console.error("에러 발생: ", err);
                 alert('로그아웃 도중 에러가 발생했습니다. 새로고침해주세요.');
                 removeCookie("loggedIn");
+                navigate('/');
+
 
             }
         };
         removeCookie('loggedIn');
         navigate('/');
         handleLogout();
-    });
+    }, []);
 }
 export default Logout;

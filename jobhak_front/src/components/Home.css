@@ -217,6 +217,10 @@
     list-style: none;
     padding: 0 9vw;
 }
+.home_hot img{
+    height: 5vh;
+    background-color: white;
+}
 .home_hot h4{
     font-size: x-large;
 }
