@@ -48,7 +48,7 @@
     transform: translateX(-50%);
 }
 .home_headTitle button:hover{
-    color: #d6e5fc;
+    color: #afcfff;
 }
 @keyframes typing {
     from{
