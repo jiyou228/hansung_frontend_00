@@ -50,7 +50,7 @@ instance.interceptors.response.use(
       if (error.response.status === 401) {
         console.error("Unauthorized request", error);
         if (cookies.loggedIn) {
-          if (error.response.message === "토큰 기한이 만료됐습니다.") {
+          if (error.response.data.message === "토큰 기한이 만료됐습니다.") {
             //accessToken 만료시?
             try {
               const accessToken = await refreshToken();
@@ -64,7 +64,7 @@ instance.interceptors.response.use(
               return Promise.reject(refreshError);
             }
           } else if (
-            error.response.message ===
+            error.response.data.message ===
             "Full authentication is required to access this resource"
           ) {
             window.location.href = "/";
