@@ -36,7 +36,7 @@ function Delete() {
       if (result.isConfirmed) {
         console.log(id);
         instance
-          .delete(`http://localhost:3000/user/delete`, {
+          .delete(`https://localhost:3000/user/delete`, {
             data: { password: userpw, loginId: id },
           })
           .then((res) => {
@@ -69,36 +69,33 @@ function Delete() {
   };
 
   return (
-    <>
+    <div className="mypage_app">
       <Nav />
-      <br />
-      <div className="main_container">
-        <div className="profile_div">
-          <label className="profile_name">
-            {" "}
-            {decodeURIComponent(encodedNickname)}님
-          </label>
-          <br />
-          <div className="example_div"></div>
-
-          <button className="profile_btn1">삭제</button>
-          <button className="profile_btn2">업로드</button>
-
-          <br />
+      <div className="mypage_main_container">
+        <div className="mypage_profile_div">
+          <div className="mypage_profile_container">
+            <div className="mypage_profile_name">
+              {decodeURIComponent(encodedNickname)}님
+            </div>
+            <div className="mypage_example_div"></div>
+            <div className="mypage_profile_button">
+              <button className="mypage_profile_btn1">삭제</button>
+              <button className="mypage_profile_btn2">업로드</button>
+            </div>
+          </div>
           <div
-            className="count_div"
+            className="mypage_count_div"
             style={{
               display: "inline-block",
               textAlign: "left",
             }}
           >
-            <hr />
-            <div className="navbar">
-              <ul className="navbar_ul">
+            <div className="mypage_navbar">
+              <ul className="mypage_navbar_ul">
                 <li>
                   <NavLink
                     to="/user/myInfo"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -110,7 +107,7 @@ function Delete() {
                 <li>
                   <NavLink
                     to="/user/edit/pw"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -122,7 +119,7 @@ function Delete() {
 
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/bookmark"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -134,7 +131,7 @@ function Delete() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/picture"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -146,7 +143,7 @@ function Delete() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/delete"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -160,9 +157,8 @@ function Delete() {
             </div>
           </div>
         </div>
-
-        <div className="delete_div">
-          <div className="delete_move">
+        <div className="mypage_privacy_div">
+          <div className="mypage_privacy_move">
             <label className="delete_lb">현재 비밀번호</label>
             <input
               placeholder="계정을 삭제하려면 현재 사용하시는 비밀번호를 입력하세요."
@@ -179,7 +175,7 @@ function Delete() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Delete;

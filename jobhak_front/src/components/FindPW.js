@@ -13,7 +13,7 @@ const FindPW = () => {
   const findPWSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("http://localhost:3000/find/pw", {
+      .post("https://localhost:3000/find/pw", {
         loginId: id,
         name: name,
         email: email,

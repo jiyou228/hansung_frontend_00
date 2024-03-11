@@ -53,7 +53,7 @@ function BoardDetail() {
   const handleBookmarkClick = () => {
     if (isBookmarked === false) {
       instance
-        .post(`http://localhost:3000/boardlist/${postId}/bookmark`, {
+        .post(`https://localhost:3000/boardlist/${postId}/bookmark`, {
           post_id: postId,
           user_id: user_id,
         })
@@ -142,7 +142,7 @@ function BoardDetail() {
         if (result.isConfirmed) {
           if (!option) {
             instance
-              .delete(`http://localhost:3000/boardlist/delete/${postId}`, {
+              .delete(`https://localhost:3000/boardlist/delete/${postId}`, {
                 data: {
                   post_id: postId,
                 },
@@ -215,7 +215,7 @@ function BoardDetail() {
       .all([
         instance.get("/user/bookmark"),
 
-        instance.get(`http://localhost:3000/boardlist/detail/${postId}`),
+        instance.get(`https://localhost:3000/boardlist/detail/${postId}`),
       ])
       .then(
         axios.spread((bookmark, detail) => {

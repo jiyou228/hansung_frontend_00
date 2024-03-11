@@ -49,11 +49,9 @@
   width: 40rem;
 }
 .joinform {
-  width: 50rem;
-  position: absolute;
-  left: 53.5%;
-  top: 63%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .joinform_lb {
@@ -126,14 +124,4 @@
 }
 .login_logo {
   margin-top: 10px;
-}
-
-@media only screen and (max-width: 768px) {
-  .joinform {
-    width: 50rem;
-    position: absolute;
-    left: 58%;
-    top: 63%;
-    transform: translate(-50%, -50%);
-  }
 }

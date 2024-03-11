@@ -6,6 +6,8 @@
   border-color: #104085;
   font-size: 1.3rem;
   padding: 0.5rem;
+  width: 35.8vw;
+  height: 2.8rem;
   text-align: center;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -17,4 +19,10 @@
 
 .bookmark_content {
   display: flex;
+}
+
+@media only screen and (max-width: 768px) {
+  .changepw_div {
+    width: 78vw;
+  }
 }

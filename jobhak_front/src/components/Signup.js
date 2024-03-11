@@ -52,7 +52,7 @@ function Signup() {
   const EmailConfirm = () => {
     setButtonConfirm(true);
     axios
-      .post("http://localhost:3000/confirm/email", {
+      .post("https://localhost:3000/confirm/email", {
         email: useremail,
       })
       .then((response) => {
@@ -93,7 +93,7 @@ function Signup() {
 
   const idValidation = () => {
     axios
-      .post("http://localhost:3000/verify/id", {
+      .post("https://localhost:3000/verify/id", {
         loginId: loginid,
       })
       .then((response) => {
@@ -170,7 +170,7 @@ function Signup() {
       });
     } else {
       await axios
-        .post(`http://localhost:3000/join`, {
+        .post(`https://localhost:3000/join`, {
           loginId: loginid,
           password: loginpw,
           name: username,
@@ -218,7 +218,6 @@ function Signup() {
     <div className="signup">
       <div className="logo-container">
         <img src={Jobhak} className="Jobhak_logo" width="350" alt="logo" />
-        {/* <div className="title_lb"> Sign Up!</div> */}
       </div>
       <br />
       <label className="joincheck_lb">
@@ -249,8 +248,9 @@ function Signup() {
         </Link>
       </div>
       <hr className="joinform_hr" />
-      <div>
-        <div className="joinform">
+
+      <div className="joinform">
+        <div className="joinform_div">
           <br />
           <label className="joinform_lb">아이디</label>
           <input

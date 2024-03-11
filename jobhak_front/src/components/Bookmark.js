@@ -21,7 +21,7 @@ function Bookmark() {
 
   useEffect(() => {
     instance
-      .get(`http://localhost:3000/user/bookmark`)
+      .get(`https://localhost:3000/user/bookmark`)
       .then((res) => {
         console.log(JSON.stringify(res.data));
         const bookmark_arr = res.data.result || [];
@@ -37,7 +37,7 @@ function Bookmark() {
 
   const DeleteBookmark = () => {
     instance
-      .delete(`http://localhost:3000/user/bookmark/delete`, {
+      .delete(`https://localhost:3000/user/bookmark/delete`, {
         data: {
           bookmarkId: bookmark_id,
         },
@@ -57,36 +57,33 @@ function Bookmark() {
   };
 
   return (
-    <>
+    <div className="mypage_app">
       <Nav />
-      <br />
-      <div className="main_container">
-        <div className="profile_div">
-          <label className="profile_name">
-            {decodeURIComponent(encodedNickname)}님
-          </label>
-
-          <br />
-          <div className="example_div"></div>
-
-          <button className="profile_btn1">삭제</button>
-          <button className="profile_btn2">업로드</button>
-
-          <br />
+      <div className="mypage_main_container">
+        <div className="mypage_profile_div">
+          <div className="mypage_profile_container">
+            <div className="mypage_profile_name">
+              {decodeURIComponent(encodedNickname)}님
+            </div>
+            <div className="mypage_example_div"></div>
+            <div className="mypage_profile_button">
+              <button className="mypage_profile_btn1">삭제</button>
+              <button className="mypage_profile_btn2">업로드</button>
+            </div>
+          </div>
           <div
-            className="count_div"
+            className="mypage_count_div"
             style={{
               display: "inline-block",
               textAlign: "left",
             }}
           >
-            <hr />
-            <div className="navbar">
-              <ul className="navbar_ul">
+            <div className="mypage_navbar">
+              <ul className="mypage_navbar_ul">
                 <li>
                   <NavLink
                     to="/user/myInfo"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -98,7 +95,7 @@ function Bookmark() {
                 <li>
                   <NavLink
                     to="/user/edit/pw"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -110,7 +107,7 @@ function Bookmark() {
 
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/bookmark"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -122,7 +119,7 @@ function Bookmark() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/picture"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -134,7 +131,7 @@ function Bookmark() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/delete"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -148,7 +145,6 @@ function Bookmark() {
             </div>
           </div>
         </div>
-
         <div className="changepw_div">
           {bookmark_arr.map((bookmark, index) => (
             <div
@@ -176,7 +172,7 @@ function Bookmark() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Bookmark;

@@ -57,7 +57,7 @@ function ChangePW() {
       });
     } else {
       instance
-        .patch(`http://localhost:3000/user/edit/pw`, {
+        .patch(`https://localhost:3000/user/edit/pw`, {
           password: checkpw,
         })
         .then((res) => {
@@ -88,36 +88,33 @@ function ChangePW() {
   };
 
   return (
-    <>
+    <div className="mypage_app">
       <Nav />
-      <br />
-      <div className="main_container">
-        <div className="profile_div">
-          <label className="profile_name">
-            {decodeURIComponent(encodedNickname)}님
-          </label>
-
-          <br />
-          <div className="example_div"></div>
-
-          <button className="profile_btn1">삭제</button>
-          <button className="profile_btn2">업로드</button>
-
-          <br />
+      <div className="mypage_main_container">
+        <div className="mypage_profile_div">
+          <div className="mypage_profile_container">
+            <div className="mypage_profile_name">
+              {decodeURIComponent(encodedNickname)}님
+            </div>
+            <div className="mypage_example_div"></div>
+            <div className="mypage_profile_button">
+              <button className="mypage_profile_btn1">삭제</button>
+              <button className="mypage_profile_btn2">업로드</button>
+            </div>
+          </div>
           <div
-            className="count_div"
+            className="mypage_count_div"
             style={{
               display: "inline-block",
               textAlign: "left",
             }}
           >
-            <hr />
-            <div className="navbar">
-              <ul className="navbar_ul">
+            <div className="mypage_navbar">
+              <ul className="mypage_navbar_ul">
                 <li>
                   <NavLink
                     to="/user/myInfo"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -129,7 +126,7 @@ function ChangePW() {
                 <li>
                   <NavLink
                     to="/user/edit/pw"
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
                       color: isActive ? "#104085" : "black",
@@ -141,7 +138,7 @@ function ChangePW() {
 
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/bookmark"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -153,7 +150,7 @@ function ChangePW() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/picture"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -165,7 +162,7 @@ function ChangePW() {
                 </li>
                 <li>
                   <NavLink
-                    className="navbarMenu"
+                    className="mypage_navbarMenu"
                     to="/user/delete"
                     style={({ isActive }) => ({
                       fontWeight: isActive ? 800 : 500,
@@ -180,8 +177,8 @@ function ChangePW() {
           </div>
         </div>
 
-        <div className="changepw_div">
-          <div className="changepw_move">
+        <div className="mypage_privacy_div">
+          <div className="mypage_privacy_move">
             <label className="changepw_lb">기존 비밀번호</label>
             <input
               placeholder="기존 비밀번호를 입력해주세요."
@@ -209,13 +206,14 @@ function ChangePW() {
               value={recheckpw}
               onChange={ReCheckPWHandler}
             />
+            <br />
             <button className="changepw_btn" onClick={SavePWHandler}>
               수정하기
             </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 export default ChangePW;

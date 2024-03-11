@@ -21,7 +21,7 @@ const Login = () => {
   const submitLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/", {
+      .post("https://localhost:3000/", {
         loginId: id,
         password: pw,
       })
@@ -36,10 +36,10 @@ const Login = () => {
             width: 800,
             height: 100,
           });
-          if(res.data){
-            const {accessToken, refreshToken} = res.data;
+          if (res.data) {
+            const { accessToken, refreshToken } = res.data;
             localStorage.setItem("accessToken", accessToken);
-            setCookie("refreshToken", refreshToken, {path: '/'});
+            setCookie("refreshToken", refreshToken, { path: "/" });
           }
           setCookie("loggedIn", true);
           navigate("/home");

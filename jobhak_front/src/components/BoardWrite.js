@@ -49,7 +49,7 @@ function BoardWrite() {
 
   const onHandleSave = () => {
     instance
-      .post(`http://localhost:3000/boardlist/write`, {
+      .post(`https://localhost:3000/boardlist/write`, {
         user_id: userid,
         title: title,
         content: content,
@@ -126,12 +126,12 @@ function BoardWrite() {
         </label>
       </div>
       <div className="boardwrite_button">
-      <button className="Bcancel_btn" onClick={handleCancel}>
-        취소
-      </button>
-      <button className="Bsave_btn" onClick={onHandleSave}>
-        등록
-      </button>
+        <button className="Bcancel_btn" onClick={handleCancel}>
+          취소
+        </button>
+        <button className="Bsave_btn" onClick={onHandleSave}>
+          등록
+        </button>
       </div>
     </div>
   );

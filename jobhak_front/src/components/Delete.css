@@ -81,7 +81,7 @@
 }
 
 .delete_ip {
-  width: 75%;
+  width: 25vw;
   height: 2rem;
   padding: 8px;
   margin-top: 5px;
@@ -102,19 +102,12 @@
   margin-top: 1rem;
   font-size: 1.3rem;
   font-weight: 800;
-  margin-left: 59%;
+  float: right;
 }
 
-/* Responsive Design */
 @media only screen and (max-width: 768px) {
-  .main_container {
-    flex-direction: column;
-  }
-
-  .profile_div,
-  .delete_div {
-    width: 100%;
-    margin-bottom: 20px;
+  .delete_ip {
+    width: 70vw;
   }
 }
 

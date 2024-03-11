@@ -94,13 +94,13 @@ const BoardList = () => {
     axios
       .all([
         instance.get(
-          `/boardlist?page=${
+          `https://localhost:3000/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
-        instance.get("/boardlist/best"),
-        instance.get("/user/bookmark"),
-        instance.get("/boardlist/user"),
+        instance.get("https://localhost:3000/boardlist/best"),
+        instance.get("https://localhost:3000/user/bookmark"),
+        instance.get("https://localhost:3000/boardlist/user"),
       ])
       .then(
         axios.spread((res1, res2, res3, res4) => {

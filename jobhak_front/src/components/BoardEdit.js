@@ -48,7 +48,7 @@ function BoardEdit() {
 
   const handleEditClick = () => {
     instance
-      .patch(`http://localhost:3000/boardlist/edit/${postId}`, {
+      .patch(`https://localhost:3000/boardlist/edit/${postId}`, {
         post_id: postId,
         title: title,
         content: content,

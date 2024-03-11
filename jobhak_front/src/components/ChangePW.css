@@ -1,7 +1,7 @@
 .main_container {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+
   box-sizing: border-box;
 }
 
@@ -60,16 +60,15 @@
 }
 
 .changepw_div {
-  width: 100%;
+  width: 40vw;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-right: 20%;
   box-sizing: border-box;
 }
 
 .changepw_move {
-  margin-left: 20%;
+  margin-left: 30%;
   margin-top: 18%;
 }
 
@@ -81,7 +80,7 @@
 }
 
 .changepw_ip {
-  width: 70%;
+  width: 25vw;
   height: 2rem;
   padding: 8px;
   margin-top: 0.5rem;
@@ -102,19 +101,13 @@
   margin-top: 1rem;
   font-size: 1.3rem;
   font-weight: 800;
-  margin-left: 47%;
+  float: right;
 }
 
 /* Responsive Design */
 @media only screen and (max-width: 768px) {
-  .main_container {
-    flex-direction: column;
-  }
-
-  .profile_div,
-  .privacy_div {
-    width: 100%;
-    margin-bottom: 20px;
+  .changepw_ip {
+    width: 70vw;
   }
 }
 

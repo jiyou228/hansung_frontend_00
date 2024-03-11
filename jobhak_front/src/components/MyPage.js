@@ -25,7 +25,7 @@ function MyPage() {
 
   const onSaveHandler = () => {
     instance
-      .patch(`http://localhost:3000/user/edit`, {
+      .patch(`https://localhost:3000/user/edit`, {
         nickname: usernickname,
       })
       .then((res) => {
@@ -56,7 +56,7 @@ function MyPage() {
 
   useEffect(() => {
     instance
-      .get(`http://localhost:3000/user/myInfo`)
+      .get(`https://localhost:3000/user/myInfo`)
       .then((res) => {
         console.log(JSON.stringify(res.data));
         //개인정보 데이터 넘겨주면 각각 저장함.
@@ -79,14 +79,14 @@ function MyPage() {
       <div className="mypage_main_container">
         <div className="mypage_profile_div">
           <div className="mypage_profile_container">
-          <div className="mypage_profile_name">
-            {decodeURIComponent(usernickname)}님
-          </div>
-          <div className="mypage_example_div"></div>
-          <div className="mypage_profile_button">
-          <button className="mypage_profile_btn1">삭제</button>
-          <button className="mypage_profile_btn2">업로드</button>
-          </div>
+            <div className="mypage_profile_name">
+              {decodeURIComponent(usernickname)}님
+            </div>
+            <div className="mypage_example_div"></div>
+            <div className="mypage_profile_button">
+              <button className="mypage_profile_btn1">삭제</button>
+              <button className="mypage_profile_btn2">업로드</button>
+            </div>
           </div>
           <div
             className="mypage_count_div"
