@@ -115,7 +115,7 @@ const BoardList = () => {
           }
           setBoardList(boardListData);
           setBestPosts(bestPostsData);
-          setBookmarks(bookmarksData);
+
           setBookmarkNum(res4.data.result.bookmarkNum);
           setPostNum(res4.data.result.postNum);
           setReplyNum(res4.data.result.replyNum);

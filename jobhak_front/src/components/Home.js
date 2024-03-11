@@ -13,9 +13,12 @@ import no1 from "../assets/카드뉴스_취업사진.svg";
 import no2 from "../assets/카드뉴스_작성.svg";
 import no3 from "../assets/카드뉴스_자소서.svg";
 import instance from "../axiosConfig";
+import GAN_icon from "../assets/GAN_icon.png";
+import learning_icon from "../assets/learning_icon.png";
+import deep_icon from "../assets/deep_icon.png";
 
 const Home = () => {
-  const [cookie,setCookie] = useCookies();
+  const [cookie, setCookie] = useCookies();
   const [userProfile, setUserProfile] = useState("");
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
@@ -51,6 +54,12 @@ const Home = () => {
         .scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
+
+  const openPopup = () => {
+    const url = "http://speller.cs.pusan.ac.kr/";
+    window.open(url, "_blank", "width=650,height=500");
+  };
+
   return (
     <>
       <Nav />
@@ -60,6 +69,11 @@ const Home = () => {
             가장 혁신적인 <br />
             취업툴
             <br />
+            {/* <img src={GAN_icon} alt="GAN_icon" width={"10%"} />
+            <br />
+            <img src={deep_icon} alt="deep_icon" />
+            <br />
+            <img src={learning_icon} alt="learning_icon" /> */}
             <img src={svg} alt="logo"></img>
             <button onClick={goBottom}>시작하기</button>
           </div>
@@ -82,9 +96,9 @@ const Home = () => {
           <div className="home_sidebar">
             <div className="home_plus">
               <h4>Job학다식 +</h4>
-              <Link to="/grammar">
-                <button>맞춤법 검사기</button>
-              </Link>
+
+              <button onClick={openPopup}>맞춤법 검사기</button>
+
               <Link to="/countchar">
                 <button>글자 수 세기</button>
               </Link>

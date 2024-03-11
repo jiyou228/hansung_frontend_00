@@ -168,6 +168,17 @@ function BoardDetail() {
   useEffect(() => {
     getData();
 
+    instance
+      .get(`/boardlist/detail/${postId}/count`)
+      .then((res) => {
+        //console.log(JSON.stringify(res.data));
+        setCommentCount(res.data.result.replyNum);
+        setBookmarkCount(res.data.result.bookmarkNum);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     const handleClickOutside = (event) => {
       if (openDelReply && isOutsideClick.current) {
         setOpenDelReply(false);
@@ -208,8 +219,6 @@ function BoardDetail() {
             setTitle(userData.title);
             setContent(userData.content);
             setUserPic(userData.picture);
-            setCommentCount(userData.commentcount);
-            setBookmarkCount(userData.bookmarkcount);
             setReplyList(userData.replies);
             setPostDate(userData.date);
             setUserId(userData.userId);
@@ -330,9 +339,9 @@ function BoardDetail() {
         </div>
         <div className="board_bottom">
           <img src={post_comment} alt="comment" width={35} />
-          <label className="post_lb"> 10 {commentcount}</label>
+          <label className="post_lb"> {commentcount}</label>
           <img src={off_bookmark} alt="bookmark" width={30} />
-          <label className="post_lb"> 30 {bookmarkcount}</label>
+          <label className="post_lb"> {bookmarkcount}</label>
         </div>
       </div>
       <div className="detail_replies">
