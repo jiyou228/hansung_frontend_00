@@ -9,11 +9,11 @@
     color: #252525;
     height: 100vh;
 }
-.logo_full{
-    width: 25rem;
+.findID_app .logo_full{
+    width: 18rem;
 }
 .findID_p{
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-top: 3rem;
 }
 .findID_form{
@@ -22,11 +22,11 @@
 .findID_input{
     padding-left: 1rem;
     background-color: #FCEDE8;
-    width: 29.5rem;
-    height: 3.5rem;
+    width: 20rem;
+    height: 3.2rem;
     border: none;
     border-radius: 0.5rem;
-    font-size: 1.2rem;
+    font-size: large;
     font-weight: 700;
 }
 .findID_email_container{
@@ -35,7 +35,7 @@
 .findID_submit{
     font-weight: 800;
     font-size: 1.3rem;
-    width: 30.5rem;
+    width: 21.2rem;
     height: 3rem;
     margin-top: 2.5rem;
     background-color:#FFD3B6;
@@ -52,4 +52,14 @@
 }
 .findID_underline{
     text-decoration: underline;
+}
+.findID_app button{
+    color: #252525;
+}
+
+@media(max-width: 768px){
+    .findID_app{
+        height: fit-content;
+        margin-top: 5vh;
+    }
 }

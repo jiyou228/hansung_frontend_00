@@ -30,7 +30,6 @@ const BoardList = () => {
   const [category, setCategory] = useState("전체");
   const [isSearch, setisSearch] = useState("");
   const [cookie] = useCookies();
-  const [userCount, setUserCount] = useState([]);
   const [bookmarkNum, setBookmarkNum] = useState("");
   const [postNum, setPostNum] = useState("");
   const [replyNum, setReplyNum] = useState("");
@@ -45,22 +44,23 @@ const BoardList = () => {
   const submitSearch = () => {
     if (searchTitle) {
       instance
-        .get(`/boardlist/search/${searchTitle}`)
+        .get(`https://localhost:3000/boardlist/search/${searchTitle}`)
         .then((res) => {
-          if (res.data.result === null) {
-            setisSearch(`${searchTitle}로 검색된 결과가 없습니다.`);
-            setBoardList([]);
+          if (res.data.result.length > 0 ) {
+            setBoardList(res.data.result);
           } else {
-            setBoardList([res.data.result]);
+            setBoardList([]);
+            setisSearch(`${searchTitle}로 검색된 결과가 없습니다.`);
           }
         })
         .catch((error) => {
-          console.error("에러 발생: ", error);
           setisSearch(
             `${searchTitle} 검색 중 에러가 발생했습니다. 새로고침 해주세요.`
           );
+          console.error(error);
         });
     } else {
+      setisSearch("");
       return;
     }
   };
@@ -94,13 +94,13 @@ const BoardList = () => {
     axios
       .all([
         instance.get(
-          `/boardlist?page=${
+          `https://localhost:3000/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
-        instance.get("/boardlist/best"),
-        instance.get("/user/bookmark"),
-        instance.get("/boardlist/user"),
+        instance.get("https://localhost:3000/boardlist/best"),
+        instance.get("https://localhost:3000/user/bookmark"),
+        instance.get("https://localhost:3000/boardlist/user"),
       ])
       .then(
         axios.spread((res1, res2, res3, res4) => {
@@ -118,7 +118,6 @@ const BoardList = () => {
           setBookmarkNum(res4.data.result.bookmarkNum);
           setPostNum(res4.data.result.postNum);
           setReplyNum(res4.data.result.replyNum);
-          // setUserCount([userPostCount, userReplyCount]);
         })
       )
       .catch((err) => {

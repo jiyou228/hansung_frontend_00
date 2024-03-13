@@ -1,15 +1,17 @@
 import React, { useState, useContext, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import logo from "../assets/white_logo.png";
 import burger from "../assets/햄버거.png";
 import close from "../assets/close.png";
 import login from "../assets/login_icon.png";
+import mobile from '../assets/mobile_logo.png';
 
 const Nav = () => {
   const [isNavOpen, setNavOpen] = useState(false);
   const [isProfile, setIsProfile] = useState(false);
   const profileRef = useRef(null);
+  const navigate = useNavigate();
 
   const openNav = () => {
     setNavOpen(!isNavOpen);
@@ -36,9 +38,20 @@ const Nav = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isProfile]);
+  const goHome = () => {
+    navigate('/home');
+  }
 
   return (
     <header className="navbar_app">
+      <img
+        src={isNavOpen ? close : burger}
+        alt="메뉴버튼"
+        className="burger"
+        onClick={openNav}
+      />
+      <img src={mobile} className="mobile_logo" alt="모바일 로고" onClick={goHome}/>
+
       <Link to="/home" className="navbar_link">
         <img src={logo} alt="jobhakdasik_logo" className="logo_half" />
       </Link>
@@ -72,20 +85,7 @@ const Nav = () => {
           <li className="navbar_logout">로그아웃</li>
         </Link>
       </ul>
-      <img
-        src={isNavOpen ? close : burger}
-        alt="메뉴버튼"
-        className="burger"
-        onClick={openNav}
-      />
-      <Link to="/user/myInfo">
-        <img
-          src={login}
-          alt="마이페이지버튼"
-          className="mypage"
-          title="마이페이지"
-        />
-      </Link>
+      
     </header>
   );
 };

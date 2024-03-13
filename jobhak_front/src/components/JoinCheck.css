@@ -22,8 +22,7 @@
 .next-button {
   font-size: 1.2rem;
   font-weight: bold;
-  width: 13vw;
-  height: 3.5vh;
+  padding: 0.5vh 4vw;
   background-color: #104085;
   color: white;
   border: 0rem;

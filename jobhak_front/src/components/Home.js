@@ -24,7 +24,8 @@ const Home = () => {
   const [index, setIndex] = useState(0);
   const [jobList, setJobList] = useState([]);
   const defaultImage = building;
-  const [imageList, setImageList] = useState([defaultImage]);
+  const [imageList, setImageList] = useState([]);
+  const [expireDate, setExpireDate] = useState([]);
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -37,7 +38,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .all([instance.get("/home"), instance.get("/home/saramin"), instance.get('/home/saramin/href')])
+      .all([instance.get("https://localhost:3000/home"), instance.get("https://localhost:3000/home/saramin"), instance.get('https://localhost:3000/home/saramin/href')])
       .then(
         axios.spread((profile, saramin, image) => {
           setUserProfile(profile.data.result.nickname);
@@ -46,8 +47,10 @@ const Home = () => {
             decodeURIComponent(profile.data.result.nickname)
           );
           setCookie("user_id", profile.data.result.id);
-          setJobList(saramin.data.jobs.job);
+          setJobList(saramin.data);
           setImageList(image.data);
+          const dates = saramin.data.map(job => job["expiration-date"]);
+          setExpireDate(dates);
         })
       )
       .catch((err) => {
@@ -89,9 +92,19 @@ const Home = () => {
             <img src={image[index]} alt="swipe" />
           </div>
         </div>
+        
         <div className="home_content" id="home_content">
           <div className="home_left">
             <Swipe />
+            <div className="home_mobile">
+            <button onClick={openPopup}>맞춤법 검사기</button>
+                  <Link to="/countchar">
+                    <button>글자 수 세기</button>
+                  </Link>
+                  <Link t0="">
+                    <button>😆Fun한다식😆</button>
+                  </Link>
+          </div>
             <div className="job_section">
               <h3 className="title">취업정보</h3>
               <h4>
@@ -100,26 +113,28 @@ const Home = () => {
                   취업 사람인
                 </a>
               </h4>
-              <br />
               <div className="home_jobcontainer">
-                {jobList.length > 0 &&
-                  jobList.map((job, index) => (
-                    <Link to={job.url} key={index}>
-                      <div className="home_job" key={index}>
-                        <div className="job_title">
+                {jobList.map((job, index) => (
+                  <Link to={job.url} key={index}>
+                    <div className="home_job" key={index}>
+                      <div className="job_title">
+                        {/* 이미지 리스트가 로드되지 않았을 때 */}
+                        {!imageList.length || !imageList[index] ? (
                           <h3>{job.company.detail.name}</h3>
-                          <h2>{job.position.title}</h2>
-                        </div>
-                        <div className="job_detail">
-                          <div>{job.position["experience-level"].name}</div>
-                          <div>
-                            {job.position["required-education-level"].name}
-                          </div>
-                          {/* 데이터에서 "job-type", "experience-level"과 같이 (-)이 포함된 키를 사용할 때는 대괄호 표기법을 사용하여 접근*/}
-                        </div>
+                        ) : (
+                          <img src={imageList[index]} className="image" alt={`Image ${index}`} />
+                        )}
+                        <h2>{job.position.title}</h2>
                       </div>
-                    </Link>
-                  ))}
+                      <div className="job_detail">
+                        <div>{job.position["experience-level"].name}</div>
+                        <div>{job.position["required-education-level"].name}</div>
+                        <div className="dday">D-{job.Dday}</div>
+                        {/* 데이터에서 "job-type", "experience-level"과 같이 (-)이 포함된 키를 사용할 때는 대괄호 표기법을 사용하여 접근*/}
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
@@ -132,9 +147,7 @@ const Home = () => {
             <div className="home_sidebar">
               <div className="home_plus">
                 <h4>Job학다식 +</h4>
-
                 <button onClick={openPopup}>맞춤법 검사기</button>
-
                 <Link to="/countchar">
                   <button>글자 수 세기</button>
                 </Link>
@@ -148,9 +161,7 @@ const Home = () => {
                   공고
                 </h4>
                 <ul>
-                  <li>{imageList.map((imageUrl, index) => (
-                <img key={index} src={imageUrl || defaultImage} alt={`Image ${index}`} />
-                ))}</li>
+                  <li>공고</li>
                 </ul>
               </div>
             </div>

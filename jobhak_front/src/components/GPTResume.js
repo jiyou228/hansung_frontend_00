@@ -3,12 +3,17 @@ import './GPTResume.css';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
 import instance from '../axiosConfig';
+import MemoryGame from './MemoryGame';
 
 const GPTResume = () => {
     const [isLoading, setIsLoading] = useState(true);
+    const [isStart, setIsStart] = useState(false);
     useEffect(() => {
         // const getGPT = instance.get('/'),
     })
+    const gameStart = () => {
+        setIsStart(true);
+    }
     return(
         <div className='gpt_app'>
             <Nav/>
@@ -41,7 +46,16 @@ const GPTResume = () => {
                 <div className='gpt_modal'>
                 <div className='gpt_loading'>
                 <div className="loader"></div>
-                <div className='gpt_text'><h3>chatGPT-4가 자기소개서를 생성중입니다...</h3></div>
+                {isStart ?  (
+                    <MemoryGame/>
+                ) : (<div className='loading_game'>
+                        <div className='gpt_text'>
+                            <h3>chatGPT-4가 자기소개서를 생성중입니다...</h3>
+                            <h4>생성되는 동안 게임하기</h4>
+                            <button onClick={gameStart}>게임 시작</button>
+                        </div>
+                    </div>
+                )}
                 </div>
             </div>
             )}
