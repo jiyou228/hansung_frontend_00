@@ -137,10 +137,6 @@
     height: clamp(50px, 35vh, 250px);
     justify-content: center;
 }
-.default-image{
-    height: 5vh;
-    
-}
 
 .job_detail {
     display: flex;
@@ -232,6 +228,9 @@
     margin-bottom: 1vh;
     font-size: large;
 }
+.dday{
+    font-weight: 800;
+}
 @media(max-width: 768px){
     .home_head{
         display: none;
@@ -258,19 +257,6 @@
         margin: auto;
         font-size: 1rem;
     }
-    .home_jobcontainer {
-        width: 70vw;
-        display: grid;
-        margin: auto;
-        text-align: center;
-        align-items: center;
-        padding-top: 3vh;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1rem;
-    }
-    .home_jobcontainer img{
-        max-width: 25vw;
-    }
     .home_right{
         display: none;
     }
@@ -280,25 +266,49 @@
     }
     .home_mobile{
         display: flex;
-        justify-content:center;
+        justify-content:space-between;
         white-space: nowrap;
-        width: 98vw;
-        margin: 2vh auto;
-        gap: 1vw;
+        margin: 2vh 1vw;
+        align-items: center;
     }
     .home_mobile button{
-        border: none;
+        width: 32vw;
+        height: 5vh;
         background-color: #104085;
+        border: none;
+        border-radius: 1vh;
         color: white;
-        border-radius: 0.5vw;
-        font-size: large;
-        font-weight: 700;
-        white-space: nowrap;
-        max-width: fit-content;
-        min-width: 30vw;
-        line-height: 5vh; /* 버튼의 고정 높이 */
-
+        font-weight: 800;
     }
-
+    .home_jobcontainer{
+        grid-template-columns: repeat(1, 1fr); /* 기본값을 1개씩 세로로 변경 */
+        row-gap: 2vh;
+        width: 90vw;
+    }
+    .home_job {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #cccccc;
+        background-color: white;
+        border-radius: 1vh;
+        height: fit-content;
+        padding: 2vh 2vw;
+        gap: 3vh;
+    }
+    .job_title .image{
+        min-width: 30vw;
+        margin-top: 0;
+    }
+    
+    .job_detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5vh;
+        flex-direction: column;
+        font-size: medium;
+        font-weight: 500;
+        padding-bottom: 1vh;
+    }
     
 }

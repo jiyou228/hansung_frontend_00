@@ -26,6 +26,7 @@ import Bookmark from "./components/Bookmark";
 import BoardDetail from "./components/BoardDetail";
 import GPTResume from "./components/GPTResume";
 import NotFound from "./components/NotFound";
+import ResetPW from "./components/ResetPW";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
           <Route path="/resume/write/gpt" element = {<GPTResume/>}></Route>
           <Route path="/*" element={<NotFound />} />
           <Route path="/notfound" element={<NotFound/>}/>
+          <Route path="/reset/pw" element={<ResetPW />}/>
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

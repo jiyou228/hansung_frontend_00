@@ -69,11 +69,11 @@
     width: 100%;
     border: 1.5px solid black;
     border-radius: 10px;
-    height: 3rem;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
     box-sizing: border-box;
     margin-top: 0.5rem;
     font-family: NanumSquare;
+    font-size: medium;
 }
 
 .toggle_container{
@@ -93,6 +93,7 @@
     background-color: #104085;
     color: white;
     transition: background-color 0.5s, color 0.5s;
+    cursor: pointer;
   }
   
   .toggle_button.active {
@@ -152,6 +153,7 @@
     margin-left: 1rem;
     padding: 0.3rem 1rem;
     border-radius: 0.3rem;
+    white-space: nowrap;
 }
 
 .write_textarea {
@@ -199,48 +201,125 @@
     font-weight: 700;
     font-size: 1.5rem;
 }
+.write_career{
+    display: flex;
+    align-items: center;
+    padding: 2vh 0;
+}
+.write_experience{
+    display: flex;
+    align-items: center;
+    padding: 2vh 0;
+}
 .write_career_container input{
     margin-left: 1rem;
 }
 .write_career_container label{
     margin-left: 1rem;
+    white-space: nowrap;
 }
 .write_career_container label:first-child{
     margin-left: 0;
 }
-#write_career button{
-    font-weight: 700;
-    font-size: 1.2rem;
-    border: none;
-    background-color: #104085;
-    color: white;
-    padding: 0.2rem 1rem;
-    margin-left: 1rem;
-    border-radius: 0.5rem;
-}
-#write_career{
-    margin-top: 1rem;
-}
+
 .write_experience_container input{
     margin-left: 1rem;
 }
 .write_experience_container label{
     margin-left: 1rem;
+    white-space: nowrap;
 }
 .write_experience_container label:first-child{
     margin-left: 0;
 }
-#write_experience button{
-    font-weight: 700;
-    font-size: 1.2rem;
-    border: none;
-    background-color: #104085;
-    color: white;
-    padding: 0.2rem 1rem;
-    margin-left: 1rem;
-    border-radius: 0.5rem;
-}
-#write_experience{
-    margin-top: 1rem;
-}
 
+@media(max-width: 768px){
+    .write_list{
+        white-space: nowrap;
+        font-size:large;
+    }
+    .write_container{
+        width: 90vw;
+    }
+    .write_list{
+        justify-content: space-between;
+        gap: 0;
+        padding: 0;
+    }
+    .write_title{
+        padding-bottom: 4vh;
+        margin-top: 3vh;
+        font-size: larger;
+    }
+    .write_label{
+        font-size: large;
+    }
+    .write_content{
+        width: 95vw;
+    }
+    .write_input, .write_textarea{
+        font-size: medium;
+    }
+    .write_input{
+        padding: 0.5rem;
+    }
+    .write_career{
+        display: grid;
+        row-gap: 1vh;
+        align-items: center;
+    }
+
+    .write_career_container label{
+        margin: 0;
+        font-weight: 600;
+    }
+    .write_career_container input{
+        margin: 0;
+    }
+    .write_button {
+        margin: 0;
+        font-size: medium;
+    }
+    .write_career .write_button{
+        justify-self: end;
+    }
+    .write_experience{
+        display: grid;
+        row-gap: 1vh;
+        align-items: center;
+    }
+
+    .write_experience_container label{
+        margin: 0;
+        font-weight: 600;
+    }
+    .write_experience_container input{
+        margin: 0;
+    }
+    .write_experience .write_button{
+        justify-self: end;
+    }
+    .write_experience_container{
+        margin-top: 5vh;
+    }
+    .write_input_container .write_button{
+        margin-left: 3vw;
+    }
+    .write_input_container:last-child .write_input::placeholder{
+        white-space: initial;
+        font-size: 1.5vh;
+    }
+    .toggle_container{
+        margin-top: 2vh;
+        display: block;
+    }
+    .toggle_container label{
+        margin-left: 0;
+        font-size: medium;
+    }
+    .toggle_button, .toggle_button.active{
+        width: fit-content;
+        padding: 0 7vw;
+        line-height: 3vh;
+    }
+}

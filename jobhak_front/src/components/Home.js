@@ -38,9 +38,9 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .all([instance.get("https://localhost:3000/home"), instance.get("https://localhost:3000/home/saramin"), instance.get('https://localhost:3000/home/saramin/href')])
+      .all([instance.get("https://localhost:3000/home"), instance.get("https://localhost:3000/home/saramin")])
       .then(
-        axios.spread((profile, saramin, image) => {
+        axios.spread((profile, saramin) => {
           setUserProfile(profile.data.result.nickname);
           setCookie(
             "nickname",
@@ -48,13 +48,19 @@ const Home = () => {
           );
           setCookie("user_id", profile.data.result.id);
           setJobList(saramin.data);
-          setImageList(image.data);
-          const dates = saramin.data.map(job => job["expiration-date"]);
-          setExpireDate(dates);
         })
       )
       .catch((err) => {
         console.error("프로필을 가져오는 도중 에러 발생:", err);
+      });
+
+      instance
+      .get('https://localhost:3000/home/saramin/href')
+      .then(image => {
+        setImageList(image.data);
+      })
+      .catch(err => {
+        console.error('에러 발생!', err);
       });
   }, []);
 
@@ -113,6 +119,7 @@ const Home = () => {
                   취업 사람인
                 </a>
               </h4>
+              <br/>
               <div className="home_jobcontainer">
                 {jobList.map((job, index) => (
                   <Link to={job.url} key={index}>
@@ -129,7 +136,7 @@ const Home = () => {
                       <div className="job_detail">
                         <div>{job.position["experience-level"].name}</div>
                         <div>{job.position["required-education-level"].name}</div>
-                        <div className="dday">D-{job.Dday}</div>
+                        <div className="dday">D-{job.dday}</div>
                         {/* 데이터에서 "job-type", "experience-level"과 같이 (-)이 포함된 키를 사용할 때는 대괄호 표기법을 사용하여 접근*/}
                       </div>
                     </div>
