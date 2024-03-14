@@ -96,13 +96,9 @@ const BoardList = () => {
       .all([
         instance.get(
           `https://localhost:3000/boardlist?page=${
-          `https://localhost:3000/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
-        instance.get("https://localhost:3000/boardlist/best"),
-        instance.get("https://localhost:3000/user/bookmark"),
-        instance.get("https://localhost:3000/boardlist/user"),
         instance.get("https://localhost:3000/boardlist/best"),
         instance.get("https://localhost:3000/user/bookmark"),
         instance.get("https://localhost:3000/boardlist/user"),
