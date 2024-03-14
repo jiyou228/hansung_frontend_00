@@ -144,7 +144,7 @@ const WriteResume = () => {
 };
 
   return (
-    <>
+    <div className="write_app">
       <Nav />
       <div className="write_container">
         <ul className="write_list">
@@ -184,11 +184,11 @@ const WriteResume = () => {
               <>
               <h4>※ 이 부분을 작성하시면 더 좋은 자기소개서가 작성됩니다.</h4>
                 <div className="write_career_container" id="write_career_container">
-                <h4>경력</h4>
                 <div className= "write_add" onClick={addWriteCareer}>
                  +
                 </div>
-                  {careers.map((_, index) => (
+                <h4>경력</h4>
+                {careers.map((_, index) => (
                     <div key={index} className="write_career">
                       <label>회사명</label>
                       <input type="text" id="company_name" onChange={(e) => handleTextareaChange('careers', index, e)} value={careers[index].company_name} />
@@ -204,10 +204,10 @@ const WriteResume = () => {
                 </div>
                 
                 <div className="write_experience_container" id="write_experience_container">
-                  <h4>관련 경험 및 대외활동</h4>
                 <div className="write_add" onClick={addWriteExperience}>
                   +
                 </div>
+                  <h4>관련 경험 및 대외활동</h4>
                   {experiences.map((_, index) => (
                     <div key={index} className="write_experience">
                       <label>활동명</label>
@@ -261,7 +261,7 @@ const WriteResume = () => {
       open = {true}
       />
       )}
-    </>
+    </div>
   );
 };
 

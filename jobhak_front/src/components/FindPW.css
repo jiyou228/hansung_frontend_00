@@ -10,10 +10,10 @@
     color: #252525;
 }
 .logo_full{
-    width: 25rem;
+    width: 18rem;
 }
 .findPW_p{
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-top: 3rem;
 }
 .findPW_form{
@@ -22,11 +22,11 @@
 .findPW_input{
     padding-left: 1rem;
     background-color: #FCEDE8;
-    width: 29.5rem;
-    height: 3.5rem;
+    width: 20rem;
+    height: 3.2rem;
     border: none;
     border-radius: 0.5rem;
-    font-size: 1.2rem;
+    font-size: large;
     font-weight: 700;
 }
 .findPW_input_container{
@@ -35,7 +35,7 @@
 .findPW_submit{
     font-weight: 800;
     font-size: 1.3rem;
-    width: 30.5rem;
+    width: 21.2rem;
     height: 3rem;
     margin-top: 2.5rem;
     background-color:#FFD3B6;
@@ -50,4 +50,14 @@
     text-decoration: underline;
     font-size: 1.2rem;
     margin-top: 2.5rem;
+}
+.findPW_app button{
+    color: #252525;
+}
+
+@media(max-width: 768px){
+    .findPW_app{
+        height: fit-content;
+        margin-top: 5vh;
+    }
 }

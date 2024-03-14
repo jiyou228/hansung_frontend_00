@@ -132,7 +132,7 @@
     display: flex;
     flex-direction: column;
     border: 1px solid #cccccc;
-    background-color: #eff2ff;
+    background-color: white;
     border-radius: 1vh;
     height: clamp(50px, 35vh, 250px);
     justify-content: center;
@@ -148,6 +148,10 @@
     font-size: large;
     font-weight: 600;
     white-space: nowrap;
+}
+.job_title .image{
+    width: 10vw;
+    margin-top: 2vh;
 }
 
 .job_title {
@@ -217,16 +221,15 @@
     list-style: none;
     padding: 0 9vw;
 }
-.home_hot img{
-    height: 5vh;
-    background-color: white;
-}
 .home_hot h4{
     font-size: x-large;
 }
 .home_hot li{
     margin-bottom: 1vh;
     font-size: large;
+}
+.dday{
+    font-weight: 800;
 }
 @media(max-width: 768px){
     .home_head{
@@ -254,20 +257,58 @@
         margin: auto;
         font-size: 1rem;
     }
-    .home_jobcontainer {
-        width: 70vw;
-        display: grid;
-        margin: auto;
-        text-align: center;
+    .home_right{
+        display: none;
+    }
+    .job_section{
+        min-width: 90vw;
+        margin: 0 auto;
+    }
+    .home_mobile{
+        display: flex;
+        justify-content:space-between;
+        white-space: nowrap;
+        margin: 2vh 1vw;
         align-items: center;
-        padding-top: 3vh;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1rem;
     }
-    .home_jobcontainer img{
-        max-width: 25vw;
+    .home_mobile button{
+        width: 32vw;
+        height: 5vh;
+        background-color: #104085;
+        border: none;
+        border-radius: 1vh;
+        color: white;
+        font-weight: 800;
     }
-    .home_plus{
-        display: block;
+    .home_jobcontainer{
+        grid-template-columns: repeat(1, 1fr); /* 기본값을 1개씩 세로로 변경 */
+        row-gap: 2vh;
+        width: 90vw;
     }
+    .home_job {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #cccccc;
+        background-color: white;
+        border-radius: 1vh;
+        height: fit-content;
+        padding: 2vh 2vw;
+        gap: 3vh;
+    }
+    .job_title .image{
+        min-width: 30vw;
+        margin-top: 0;
+    }
+    
+    .job_detail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5vh;
+        flex-direction: column;
+        font-size: medium;
+        font-weight: 500;
+        padding-bottom: 1vh;
+    }
+    
 }

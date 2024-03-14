@@ -1,6 +1,7 @@
 .boardlist_app {
   position: absolute;
   left: 50%;
+  white-space: nowrap;
   transform: translateX(-50%);
 }
 .boardlist_top {
@@ -127,6 +128,7 @@ a {
   border-radius: 1rem;
   border: none;
   background-color: #ffd3b6;
+  color: #252525;
   font-weight: 800;
   font-size: medium;
 }

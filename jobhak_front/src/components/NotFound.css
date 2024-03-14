@@ -3,15 +3,15 @@
     display: flex;
     flex-direction: column;
 }
-.error_main img{
-    width: fit-content;
-    height: 25vh;
+.error_404 img{
+    height: 20vh;
 }
 .error_main{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: max-content;
 }
 .error_404{
     display: flex;
@@ -19,15 +19,15 @@
     justify-content: center;
     font-weight: 500;
     gap: 2vw;
-    font-size: 28vh;
+    font-size: 25vh;
 }
 .error_text{
-    font-size: xx-large;
+    font-size: large;
     margin-top: 10vh;
 }
 .error_main strong{
-    letter-spacing: 0.1vw;
-    font-size: 18vh;
+    letter-spacing: 0.5vw;
+    font-size: 15vh;
 }
 .error_main button{
     border: none;
@@ -42,3 +42,4 @@
 .error_main button:hover{
     color: #d6e5fc;
 }
+

@@ -98,7 +98,6 @@ const Login = () => {
               <img
                 src={showPw ? hide : view}
                 alt="보이기"
-                className="pw_icon"
               />
             </div>
           </div>
@@ -106,21 +105,22 @@ const Login = () => {
             로그인
           </button>
         </form>
-        <ul className="login_ul">
+        <div className="login_move">
           <Link to="/joincheck" className="login_link">
-            <li className="login_li_join">회원가입</li>
+          <div className="login_li_join">회원가입</div>
           </Link>
-
-          <li className="login_li_id">
-            <Link to="/find/id" className="login_link">
-              아이디
+          <div className="login_find">
+            <div className="login_li_id">
+              <Link to="/find/id" className="login_link">
+                아이디
+              </Link>
+            </div>
+            <div style={{padding: '0 1vw'}}>•</div>
+            <Link to="/find/pw" className="login_link">
+              <div className="login_li_pw">비밀번호 찾기</div>
             </Link>
-          </li>
-          <li style={{ paddingLeft: "1rem" }}>•</li>
-          <Link to="/find/pw" className="login_link">
-            <li className="login_li_pw">비밀번호 찾기</li>
-          </Link>
-        </ul>
+          </div>
+        </div>
         <div className="login_line_container">
           <div className="login_line"></div>
           <div className="login_or">또는</div>
@@ -128,12 +128,12 @@ const Login = () => {
         </div>
         <Link to="/login/naver">
           <div className="login_naver_container">
-            <img src={naver} className="login_naver" alt="naver_login" />
+            <img src={naver} className = "login_logo" alt="naver_login" />
           </div>
         </Link>
         <Link to="/login/kakao">
           <div className="login_kakao_container">
-            <img src={kakao} className="login_kakao" alt="kakao_login" />
+            <img src={kakao} className="login_logo" alt="kakao_login" />
           </div>
         </Link>
       </div>

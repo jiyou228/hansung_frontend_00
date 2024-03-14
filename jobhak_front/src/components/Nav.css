@@ -73,20 +73,17 @@
 }
 
 .burger{
-    visibility: hidden;
-    width: 0;
+    display: none;
 }
-.mypage{
-    visibility: hidden;
-    width: 0;
+.mobile_logo{
+    display: none;
 }
+
 @media ( max-width: 768px ) {
     .nav_mobile {
-        visibility: hidden;
+        display: none!important;
     }
-    
     .nav_mobile.open {
-        visibility: visible;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -96,7 +93,7 @@
         background-color: #092958;
         color: white;
         width: 100vw;
-        top:5.5vw;
+        top:7vh;
         padding: 0;
         font-size: 3.5vw;
         width: 100vw;
@@ -104,6 +101,7 @@
         padding-top: 2vh;
         padding-bottom: 1vh;
         font-weight: 800;
+        display: block!important;
     }
     .navbar_app li{
         padding: 2vh 0;
@@ -141,7 +139,7 @@
         font-weight: 800;
     }
     .navbar_app .navbar_logout{
-        display: none;
+        padding-bottom: 3vh;
     }
     .navbar_app li:hover{
         width: 100vw;
@@ -159,32 +157,28 @@
         color: #104085;
     }
     .burger{
-        visibility: visible;
-        width: 4vw;
-        left: 3vw;
-        position: absolute;
-        top:50%;
-        transform: translateY(-50%);
-    }
-    .mypage{
-        visibility: visible;
-        width: 6vw;
-        position: absolute;
-        right: 3vw;
-        top:50%;
-        transform: translateY(-50%);
+        width: 7vw;
+        display: block;
+        padding-left: 3vw;
     }
     .logo_half{
-        position: absolute;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        top: 50%;
-        width: clamp(30px, 25vw, 500px);
-        object-fit: cover;
+        display: none;
     }
     .navbar_app{
-        position: relative;
         margin-top: 0;
-        height: 9vw;
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 3vh 0;
+    }
+    .mobile_logo{
+        display: block;
+        width: 35vw;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .mobile_link{
+        cursor: pointer;
     }
   }
