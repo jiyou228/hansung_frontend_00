@@ -51,7 +51,7 @@ function JoinCheck() {
   };
 
   return (
-    <div>
+    <div className="joincheck_container">
       <img
         className="homelogo"
         src={homelogo}
@@ -71,7 +71,7 @@ function JoinCheck() {
               checked={agreements.termsOfService && agreements.privacyPolicy}
               onChange={handleCheckAllChange}
             />
-            <label htmlFor="checkAll">
+            <label style={{ padding: ".6rem" }} htmlFor="checkAll">
               Job학다식 이용약관, 개인정보 수집 및 이용, 프로모션 정보 수신에
               모두 동의합니다.
             </label>
@@ -162,6 +162,8 @@ function JoinCheck() {
             </div>
           </div>
         </div>
+      </form>
+      <div className="button_container">
         <button type="button" className="cancel-button" onClick={handleCancel}>
           취소
         </button>
@@ -175,7 +177,7 @@ function JoinCheck() {
         >
           다음
         </button>
-      </form>
+      </div>
     </div>
   );
 }

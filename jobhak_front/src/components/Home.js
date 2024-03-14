@@ -22,8 +22,6 @@ const Home = () => {
   const [jobList, setJobList] = useState([]);
   const defaultImage = building;
   const [imageList, setImageList] = useState([defaultImage]);
-  const defaultImage = building;
-  const [imageList, setImageList] = useState([defaultImage]);
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -43,14 +41,15 @@ const Home = () => {
       ])
       .then(
         axios.spread((profile, saramin, image) => {
+          //console.log(JSON.stringify(image));
           setUserProfile(profile.data.result.nickname);
           setCookie(
             "nickname",
             decodeURIComponent(profile.data.result.nickname)
           );
           setCookie("user_id", profile.data.result.id);
-          setJobList(saramin.data.jobs.job);
-          setImageList(image.data);
+          setJobList(saramin.data);
+          //setImageList(image.data);
         })
       )
       .catch((err) => {

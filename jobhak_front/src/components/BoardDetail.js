@@ -208,7 +208,7 @@ function BoardDetail() {
       document.removeEventListener("click", handleClickOutside);
       isOutsideClick.current = false; // cleanup 함수에서 외부 클릭 감지 해제
     };
-  }, [user_id, openDelReply]);
+  }, [user_id, openDelReply, postId]);
 
   const getData = () => {
     axios
@@ -219,6 +219,7 @@ function BoardDetail() {
       ])
       .then(
         axios.spread((bookmark, detail) => {
+          console.log(JSON.stringify(detail));
           if (bookmark.data.result) {
             const bookmarkIds = bookmark.data.result.map((item) =>
               item.postId.toString()
@@ -291,7 +292,7 @@ function BoardDetail() {
   return (
     <div className="boardDetail_app">
       <Nav />
-      <div className="button_container">
+      <div className="button_container1">
         <Link to={`/boardlist/detail/${postId}`}>
           <button className="prev_btn"> ▲ 이전글</button>
         </Link>
@@ -338,11 +339,14 @@ function BoardDetail() {
             />
             {isDropdownOpen && (
               <div className="dropdown-menu">
-                <button onClick={handleEditClick} className="postedit_btn">
+                <button
+                  onClick={() => handleEditClick()}
+                  className="postedit_btn"
+                >
                   수정
                 </button>
                 <button
-                  onClick={handleDeleteClick()}
+                  onClick={() => handleDeleteClick()}
                   className="postdelete_btn"
                 >
                   삭제

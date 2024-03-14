@@ -45,13 +45,19 @@ const BoardList = () => {
   const submitSearch = () => {
     if (searchTitle) {
       instance
-        .get(`/boardlist/search/${searchTitle}`)
+        .post(`/boardlist/search/${searchTitle}`)
         .then((res) => {
-          if (res.data.result === null) {
+          //console.log(JSON.stringify(res.data));
+          if (
+            res.data &&
+            Array.isArray(res.data.result) &&
+            res.data.result.length > 0
+          ) {
+            setBoardList(res.data.result);
+            setisSearch("");
+          } else {
             setisSearch(`${searchTitle}로 검색된 결과가 없습니다.`);
             setBoardList([]);
-          } else {
-            setBoardList([res.data.result]);
           }
         })
         .catch((error) => {
@@ -118,7 +124,6 @@ const BoardList = () => {
           setBookmarkNum(res4.data.result.bookmarkNum);
           setPostNum(res4.data.result.postNum);
           setReplyNum(res4.data.result.replyNum);
-          // setUserCount([userPostCount, userReplyCount]);
         })
       )
       .catch((err) => {
@@ -262,12 +267,11 @@ const BoardList = () => {
                   )}
                 </div>
                 <div className="boardlist_content">
+                  {/* {removeHTML((board.content || "").substring(0, 40))} */}
                   {removeHTML(board.content.substring(0, 40))}
                   <div className="boardlist_comment">
                     <img src={comment} alt="댓글" />
-                    <label>
-                      {board.replies.length > 0 ? board.replies.length : 0}
-                    </label>
+                    <label>{board.replies ? board.replies.length : 0}</label>
                   </div>
                 </div>
               </div>

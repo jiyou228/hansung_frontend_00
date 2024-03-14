@@ -1,5 +1,6 @@
 .signup {
   padding: 20px;
+  white-space: nowrap;
 }
 
 .logo-container {
@@ -68,7 +69,6 @@
   height: 3rem;
   width: 21rem;
   font-size: 1.1rem;
-
   font-weight: 800;
   padding-left: 1rem;
   background-color: #fcede8;
@@ -124,4 +124,38 @@
 }
 .login_logo {
   margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .signup {
+    padding: 10px;
+  }
+  .joinform_div {
+    width: 100%;
+  }
+  .joinform_ip {
+    width: 15rem;
+    margin-right: -1rem;
+    font-size: 0.8rem;
+  }
+  .joinform_lb {
+    margin-left: 1.7rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    display: block;
+    text-align: left;
+    width: 5rem;
+  }
+  .joinform2_btn,
+  .joinform_btn {
+    width: 4.5rem;
+    height: 2rem;
+  }
+  .signup_btn {
+    width: 16rem;
+    margin-left: 1.5rem;
+  }
+  .joinform_hr {
+    width: 20rem;
+  }
 }

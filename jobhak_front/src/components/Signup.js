@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Jobhak from "../assets/jobhak_full.png";
-import naver_join from "../assets/naver_join.png";
-import kakao_join from "../assets/kakao_join.png";
 import kakao_circle from "../assets/kakao_circle.png";
 import naver_circle from "../assets/naver_circle.png";
 import Swal from "sweetalert2";
@@ -21,6 +19,7 @@ function Signup() {
   const [confirmcode, setConfirmCode] = useState("");
   const [confrimemail, setConfirmEmail] = useState(null);
   const [buttonconfirm, setButtonConfirm] = useState(false);
+  const [LastCheck, setLastCheck] = useState(false);
   const HandleInputID = (e) => {
     setLoginID(e.target.value);
   };
@@ -57,7 +56,8 @@ function Signup() {
       })
       .then((response) => {
         console.log(response);
-        setInputCode(response.data.authNumber.toString());
+        setInputCode(response.data.toString());
+        console.log(response.data.toString());
         alert("인증 코드가 이메일로 전송되었습니다.");
       })
       .catch((error) => {
@@ -76,7 +76,7 @@ function Signup() {
         width: 800,
         height: 100,
       });
-      return true;
+      setLastCheck(true);
     } else {
       Swal.fire({
         icon: "warning",
@@ -108,28 +108,25 @@ function Signup() {
             height: 100,
           });
           setUsableID(true);
-        } else {
-          Swal.fire({
-            icon: "warning",
-            title: "경고",
-            text: "이미 사용 중인 아이디 입니다.",
-            showCancelButton: false,
-            confirmButtonText: "확인",
-            width: 800,
-            height: 100,
-          });
-          setLoginID("");
         }
       })
       .catch((error) => {
         console.log("ID Vaildation error", error);
+        Swal.fire({
+          icon: "warning",
+          title: "경고",
+          text: "이미 사용 중인 아이디 입니다.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
       });
   };
 
   const SignUpContinue = async () => {
     const DoubleCheckPW =
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,}$/;
-    const isCodeConfirmed = await CodeConfirm();
     if (loginpw !== checkpw) {
       Swal.fire({
         icon: "warning",
@@ -156,8 +153,7 @@ function Signup() {
       username === "" ||
       usernickname === "" ||
       useremail === "" ||
-      confirmcode === "" ||
-      !isCodeConfirmed
+      confirmcode === ""
     ) {
       Swal.fire({
         icon: "warning",
@@ -202,7 +198,7 @@ function Signup() {
           });
         });
     }
-    if (!isCodeConfirmed) {
+    if (!LastCheck) {
       Swal.fire({
         icon: "warning",
         title: "경고",
@@ -212,6 +208,7 @@ function Signup() {
         width: 800,
         height: 100,
       });
+      return;
     }
   };
   return (
@@ -252,7 +249,9 @@ function Signup() {
       <div className="joinform">
         <div className="joinform_div">
           <br />
-          <label className="joinform_lb">아이디</label>
+          <label className="joinform_lb" style={{ marginBottom: "-1rem" }}>
+            아이디
+          </label>
           <input
             className="joinform_ip"
             type="text"
@@ -320,7 +319,11 @@ function Signup() {
             코드 확인
           </button>
           <br />
-          <button className="signup_btn" onClick={SignUpContinue}>
+          <button
+            className="signup_btn"
+            onClick={SignUpContinue}
+            disabled={!LastCheck}
+          >
             회원가입
           </button>
         </div>
