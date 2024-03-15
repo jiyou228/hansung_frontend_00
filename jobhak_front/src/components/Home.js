@@ -164,10 +164,16 @@ const Home = () => {
                   곧 마감되는 <br />
                   공고
                 </h4>
-                <ul>
-                  <li>공고</li>
-                </ul>
-              </div>
+                {jobList.filter((i) => parseFloat(i.dday) <= 3.0).map((item, index) => (
+                  <Link to = {item.url} key={index}>
+                  <div key={index} className="job_expire">
+                    <h3>{item.company.detail.name}</h3>
+                    <p>{item.position.title}</p>
+                    <p className="dday">D-{item["dday"]}</p>
+                  </div>
+                  </Link>
+                ))}
+                </div>
             </div>
           </div>
         </div>

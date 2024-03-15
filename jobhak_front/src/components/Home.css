@@ -47,6 +47,9 @@
     left: 50%;
     transform: translateX(-50%);
 }
+.home_mobile{
+    display: none;
+}
 .home_headTitle button:hover{
     color: #afcfff;
 }
@@ -150,7 +153,7 @@
     white-space: nowrap;
 }
 .job_title .image{
-    width: 10vw;
+    height: 6vh;
     margin-top: 2vh;
 }
 
@@ -216,6 +219,7 @@
     text-align: center;
     padding: 1vh 0;
     float: right;
+    padding-bottom: 4vh;
 }
 .home_hot ul{
     list-style: none;
@@ -224,12 +228,17 @@
 .home_hot h4{
     font-size: x-large;
 }
-.home_hot li{
-    margin-bottom: 1vh;
-    font-size: large;
+.job_expire{
+    margin-top: 5vh;
+    width: 16vw;
+    padding: 0 2vw;
+}
+.job_expire h3{
+    font-weight: 700;
 }
 .dday{
     font-weight: 800;
+    color: #656565;
 }
 @media(max-width: 768px){
     .home_head{

@@ -50,7 +50,7 @@
     width: 20rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 }
 .login_find{
     display: flex;
@@ -100,91 +100,35 @@
     top: 50%;
     transform: translateY(-50%);
 }
-/* @media(max-width: 768px){
-    .login .login_form{
-        margin-top: 1.5rem;
-        width: 70vw;
+@media(max-width: 768px) {
+    .login_app {
+        font-size: 120%;
     }
-    .login .logo_full{
-        width: 70vw;
+    .login_input {
+        width: 30rem;
+        height: 4rem;
     }
-    .login_input{
-        width: 70vw;
+    .login_app .logo_full{
+        width: 28rem;
     }
-    .login_pw_container{
-        position: relative;
+    .login_app input{
+        font-size: larger;
     }
-    .pw_visible{
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
+    .login_submit {
+        width: 31rem;
+        height: 3.6rem;
     }
-    .login_submit{
-        width: 70vw;
+    .login_line {
+        width: 13rem;
     }
-} */
-
-/* .login_app{
-
+    .login_or{
+        font-size: larger;
+    }
+    .login_move{
+        width: 30rem;
+        font-size: larger;
+    }
+    .login_app .login_logo {
+        width: 30rem;
+    }
 }
-.login_app .logo_full{
-
-}
-.login_form{
-
-}
-.login_input{
-
-}
-.login_pw_container{
-
-}
-.pw_visible{
-
-}
-.pw_img{
-
-}
-.login_submit{
-
-}
-.login_ul{
-
-}
-.login_li_join{
-
-}
-.login_li_id{
-
-}
-.login_li_pw{
-
-}
-.login_line_container{
-
-}
-.login_line{
-
-}
-.login_or{
-
-}
-.login_line{
-
-}
-.login_link{
-
-}
-.login_naver_container{
-
-}
-.login_kakao_container{
-
-}
-.login_naver{
-
-}
-.login_logo{
-
-} */
