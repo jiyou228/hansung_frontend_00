@@ -14,41 +14,42 @@
     white-space: nowrap;
 }
 .login_app .logo_full{
-    width: 18rem;
+    width: 20em;
 }
 .login_form{
-    margin-top: 3rem;
+    margin-top: 3em;
 }
 .login_input{
-    padding-left: 1rem;
+    padding-left: 1em;
     background-color: #FCEDE8;
-    width: 20rem;
-    height: 3.2rem;
+    width: 20em;
+    font-size: 1.1em;
+    height: 3em;
     border: none;
-    border-radius: 0.5rem;
-    font-size: large;
+    border-radius: 0.5em;
     font-weight: 700;
 }
 .login_pw_container{
-    margin-top: 1.5rem;
+    margin-top: 1.5em;
     position: relative;
 }
 .login_submit{
     font-weight: 800;
-    font-size: x-large;
-    width: 21.2rem;
-    height: 3rem;
-    margin-top: 2.5rem;
+    width: 20em;
+    height: 3em;
+    font-size: 1.1em;
+    margin-top: 2.5em;
     background-color:#FFD3B6;
     border: none;
     color: #252525;
-    border-radius: 1rem;
+    border-radius: 1em;
 }
 .login_move{
-    margin-top: 1rem;
+    margin-top: 1em;
     font-size: medium;
-    width: 20rem;
+    width: 20em;
     display: flex;
+    font-size: 1em;
     justify-content: space-between;
     align-items: baseline;
 }
@@ -68,20 +69,21 @@
     margin-top: 4vh;
 }
 .login_line{
-    margin-top: 0.7rem;
-    border-top: 0.1rem solid black;
-    width: 8.5rem;
+    margin-top: 0.7em;
+    border-top: 0.1em solid black;
+    width: 8.5em;
+    
 }
 .login_or{
-    margin: 0 1rem;
-    font-size: 1.2rem;
+    margin: 0 1em;
+    font-size: 1.2em;
     font-weight: 700;
 }
 .login_naver_container{
-    margin-top: 2rem;
+    margin-top: 2em;
 }
 .login_app .login_logo{
-    width: 21rem;
+    width: 22em;
     margin: 0;
 }
 .login_kakao_container{
@@ -91,44 +93,32 @@
     margin-top: 1vh;
 }
 .pw_visible img{
-    width: 2rem;
+    width: 2em;
     cursor: pointer;
 }
 .pw_visible{
     position: absolute;
-    right: 1rem;
+    right: 1em;
     top: 50%;
     transform: translateY(-50%);
 }
-@media(max-width: 768px) {
-    .login_app {
-        font-size: 120%;
+.login_input, .login_submit, .login_logo{
+    box-sizing: border-box;
+}
+@media screen and (min-width: 1800px){
+    .login{
+        font-size: 24px;
     }
-    .login_input {
-        width: 30rem;
-        height: 4rem;
+    .login_form{
+        font-size: 24px;
     }
-    .login_app .logo_full{
-        width: 28rem;
+}
+
+@media (max-width: 375px) {
+    .login{
+        font-size: 14px;
     }
-    .login_app input{
-        font-size: larger;
-    }
-    .login_submit {
-        width: 31rem;
-        height: 3.6rem;
-    }
-    .login_line {
-        width: 13rem;
-    }
-    .login_or{
-        font-size: larger;
-    }
-    .login_move{
-        width: 30rem;
-        font-size: larger;
-    }
-    .login_app .login_logo {
-        width: 30rem;
+    .login_form{
+        font-size: 14px;
     }
 }

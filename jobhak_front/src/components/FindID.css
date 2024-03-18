@@ -10,41 +10,44 @@
     height: 100vh;
 }
 .findID_app .logo_full{
-    width: 18rem;
+    width: 18em;
 }
 .findID_p{
-    font-size: 1.7rem;
-    margin-top: 3rem;
+    font-size: 1.7em;
+    margin-top: 3em;
 }
 .findID_form{
-    margin-top: 1rem;
+    margin-top: 1em;
+    box-sizing: border-box;
 }
 .findID_input{
-    padding-left: 1rem;
+    padding-left: 1em;
     background-color: #FCEDE8;
-    width: 20rem;
-    height: 3.2rem;
+    width: 20em;
+    height: 3em;
     border: none;
-    border-radius: 0.5rem;
-    font-size: large;
+    border-radius: 0.5em;
+    font-size: 1.1em;
+    box-sizing: border-box;
     font-weight: 700;
 }
 .findID_email_container{
-    margin-top: 1.5rem;
+    margin-top: 1.5em;
 }
 .findID_submit{
     font-weight: 800;
-    font-size: 1.3rem;
-    width: 21.2rem;
-    height: 3rem;
-    margin-top: 2.5rem;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    width: 20em;
+    height: 3em;
+    margin-top: 2.5em;
     background-color:#FFD3B6;
     border: none;
-    border-radius: 1rem;
+    border-radius: 1em;
 }
 .finID_pw_container{
-    margin-top: 2.5rem;
-    font-size: 1.2rem;
+    margin-top: 2.5em;
+    font-size: 1.2em;
 }
 .findID_link{
     text-decoration: none;
@@ -55,11 +58,30 @@
 }
 .findID_app button{
     color: #252525;
+    box-sizing: border-box;
 }
 
 @media(max-width: 768px){
     .findID_app{
         height: fit-content;
         margin-top: 5vh;
+    }
+}
+
+@media screen and (min-width: 1800px){
+    .findID_app{
+        font-size: 24px;
+    }
+    .findID_form{
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 375px) {
+    .findID_app{
+        font-size: 14px;
+    }
+    .findID_form{
+        font-size: 14px;
     }
 }

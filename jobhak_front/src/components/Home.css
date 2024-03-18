@@ -304,6 +304,9 @@
         padding: 2vh 2vw;
         gap: 3vh;
     }
+    .job_title h2{
+        font-weight: 700;
+    }
     .job_title .image{
         min-width: 30vw;
         margin-top: 0;
@@ -316,7 +319,7 @@
         gap: 0.5vh;
         flex-direction: column;
         font-size: medium;
-        font-weight: 500;
+        font-weight: 600;
         padding-bottom: 1vh;
     }
     

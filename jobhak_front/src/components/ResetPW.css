@@ -10,37 +10,39 @@
     color: #252525;
 }
 .logo_full{
-    width: 18rem;
+    width: 18em;
 }
 .resetPW_p{
-    font-size: 1.7rem;
-    margin-top: 3rem;
+    font-size: 1.7em;
+    margin-top: 3em;
 }
 .resetPW_form{
-    margin-top: 1rem;
+    margin-top: 1em;
 }
 .resetPW_input{
-    padding-left: 1rem;
+    padding-left: 1em;
     background-color: #FCEDE8;
-    width: 20rem;
-    height: 3.2rem;
+    width: 20em;
+    font-size: 1.1em;
+    box-sizing: border-box;
+    height: 3em;
     border: none;
-    border-radius: 0.5rem;
-    font-size: large;
+    border-radius: 0.5em;
     font-weight: 700;
 }
 .resetPW_input_container{
-    margin-top: 1.5rem;
+    margin-top: 1.5em;
 }
 .resetPW_submit{
     font-weight: 800;
-    font-size: 1.3rem;
-    width: 21.2rem;
-    height: 3rem;
-    margin-top: 2.5rem;
+    font-size: 1.1em;
+    width: 20em;
+    height: 3em;
+    box-sizing: border-box;
+    margin-top: 2.5em;
     background-color:#FFD3B6;
     border: none;
-    border-radius: 1rem;
+    border-radius: 1em;
 }
 .resetPW_link{
     text-decoration: none;
@@ -48,8 +50,8 @@
 }
 .resetPW_login{
     text-decoration: underline;
-    font-size: 1.2rem;
-    margin-top: 2.5rem;
+    font-size: 1.2em;
+    margin-top: 2.5em;
 }
 .resetPW_app button{
     color: #252525;
@@ -59,5 +61,23 @@
     .resetPW_app{
         height: fit-content;
         margin-top: 5vh;
+    }
+}
+
+@media screen and (min-width: 1800px){
+    .resetPW_app{
+        font-size: 24px;
+    }
+    .resetPW_form{
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 375px) {
+    .resetPW_app{
+        font-size: 14px;
+    }
+    .resetPW_form{
+        font-size: 14px;
     }
 }

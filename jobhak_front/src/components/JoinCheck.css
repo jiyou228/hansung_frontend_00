@@ -1,6 +1,11 @@
-/* .joincheck_container {
-  white-space: nowrap;
-} */
+.joincheck_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  
+}
 
 .form-group {
   margin-left: 7%;
@@ -41,20 +46,29 @@
 
 .cancel-button {
   font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.5vh 4vw;
+  color: #104085;
+  border: 0rem;
+  border-radius: 0.5rem;
+}
+
+/* .cancel-button {
+  font-size: 1.2rem;
   font-weight: bold;
   padding: 0.5vh 4vw;
   background-color: #104085;
   color: white;
   border: 0rem;
   border-radius: 0.5rem;
-}
+} */
 
 .button_container {
-  width: 60vw;
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: -7rem;
+  align-self: flex-end;
+  margin-top: 2vh;
+  width: 60vw;
 }
 
 .joinservice-form {
@@ -63,26 +77,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
 }
 
 .join-checkbox {
   width: 67vw;
-  height: 67vh;
+  height: 65vh;
   border: 0.1rem solid #ccc;
   overflow: auto;
   position: relative;
   display: flex;
   flex-direction: column;
+  padding-bottom: 5vh;
 }
 
 .homelogo {
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  transform: translate(-50%, -50%);
+  margin-bottom: 2vh;
 }
-
+.button_container{
+  float: right;
+}
 @media (max-width: 768px) {
   .join-checkbox {
     width: 90vw;

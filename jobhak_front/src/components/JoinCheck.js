@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./JoinCheck.css";
-import homelogo from "../assets/Homelogo.png";
+import homelogo from "../assets/jobhak_logo.png";
 import Swal from "sweetalert2";
 
 function JoinCheck() {

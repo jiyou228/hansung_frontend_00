@@ -10,7 +10,9 @@
     padding: 0 1rem;
     height: 3rem;
 }
-
+.add_title{
+    font-weight: 800;
+}
 .write_link {
     text-decoration: none;
     color: #252525;
@@ -142,12 +144,26 @@
   
 
 .write_button {
-    background-color: #104085;
     border: none;
     width: fit-content;
     text-align: center;
+    background-color: #104085;
     color: white;
     font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-left: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+    white-space: nowrap;
+}
+
+.write_delete {
+    border: none;
+    width: fit-content;
+    text-align: center;
+    color: #104085;
+    font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
     margin-left: 1rem;
@@ -268,7 +284,9 @@
         row-gap: 1vh;
         align-items: center;
     }
-
+    .write_career_container{
+        margin-top: 5vh;
+    }
     .write_career_container label{
         margin: 0;
         font-weight: 600;
@@ -288,6 +306,9 @@
         row-gap: 1vh;
         align-items: center;
     }
+    .write_delete{
+        margin-left: auto;
+    }
 
     .write_experience_container label{
         margin: 0;
@@ -305,10 +326,7 @@
     .write_input_container .write_button{
         margin-left: 3vw;
     }
-    .write_input_container:last-child .write_input::placeholder{
-        white-space: initial;
-        font-size: 1.5vh;
-    }
+    
     .toggle_container{
         margin-top: 2vh;
         display: block;
@@ -321,5 +339,8 @@
         width: fit-content;
         padding: 0 7vw;
         line-height: 3vh;
+    }
+    .write_button_next, .write_button_reset{
+        font-size: large;
     }
 }

@@ -187,7 +187,7 @@ const WriteResume = () => {
                 <div className= "write_add" onClick={addWriteCareer}>
                  +
                 </div>
-                <h4>경력</h4>
+                <h4 className="add_title">경력</h4>
                 {careers.map((_, index) => (
                     <div key={index} className="write_career">
                       <label>회사명</label>
@@ -198,7 +198,7 @@ const WriteResume = () => {
                       <input type="month" id="company_end" onChange={(e) => handleTextareaChange('careers', index, e)} value={careers[index].company_end} />
                       <label>업무내용 및 성과</label>
                       <input type="text" id="company_detail" onChange={(e) => handleTextareaChange('careers', index, e)} value={careers[index].company_detail} />
-                      <button type="button" className="write_button" onClick={() => handleDeleteCareer(index)}>삭제</button>
+                      <button type="button" className="write_delete" onClick={() => handleDeleteCareer(index)}>삭제</button>
                     </div>
                   ))}
                 </div>
@@ -207,7 +207,7 @@ const WriteResume = () => {
                 <div className="write_add" onClick={addWriteExperience}>
                   +
                 </div>
-                  <h4>관련 경험 및 대외활동</h4>
+                  <h4 className="add_title">관련 경험 및 대외활동</h4>
                   {experiences.map((_, index) => (
                     <div key={index} className="write_experience">
                       <label>활동명</label>
@@ -218,7 +218,7 @@ const WriteResume = () => {
                       <input type="month" id="experience_end" onChange={(e) => handleTextareaChange('experiences', index, e)} value={experiences[index].experience_end} />
                       <label>활동내용</label>
                       <input type="text" id="experience_detail" onChange={(e) => handleTextareaChange('experiences', index, e)} value={experiences[index].experience_detail} />
-                      <button type="button"  className="write_button" onClick={() => handleDeleteExperience(index)}>삭제</button>
+                      <button type="button"  className="write_delete" onClick={() => handleDeleteExperience(index)}>삭제</button>
                     </div>
                   ))}
                 </div>
@@ -226,7 +226,7 @@ const WriteResume = () => {
             )}
           </div>
           <div className="write_input_container">
-            <label className="write_label">채용공고 본문</label>
+            <label className="write_label">채용공고 링크</label>
             <button type= "button" className="write_button" onClick={pasteClipboard}>
               붙여넣기
             </button>
@@ -234,18 +234,12 @@ const WriteResume = () => {
               className="write_input"
               value={clipboardValue}
               onChange={(e) => setClipboardValue(e.target.value)}
-              placeholder="이 부분을 추가하시면 지원하는 기업에 맞는 자기소개서가 작성됩니다."
+              placeholder="채용공고의 URL(링크 주소)를 입력해주세요."
             />
-            {/* <textarea
-              className="write_textarea"
-              value={clipboardValue}
-              onChange={(e) => setClipboardValue(e.target.value)}
-              placeholder="이 부분을 추가하시면 지원하는 기업에 맞는 자기소개서가 작성됩니다."
-            /> */}
 
           </div>
         </div>
-        <div className="write_button_container">
+        <div className="write_button_container last">
           <button type="button" className="write_button_reset" onClick={onReset}>
             초기화
           </button>

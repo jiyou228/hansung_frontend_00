@@ -34,22 +34,28 @@ const Home = () => {
   }, [index]);
 
   useEffect(() => {
-    axios
-      .all([instance.get("https://localhost:3000/home"), instance.get("https://localhost:3000/home/saramin")])
-      .then(
-        axios.spread((profile, saramin) => {
-          setUserProfile(profile.data.result.nickname);
+    instance
+    .get("https://localhost:3000/home")
+      .then(profile => {
+        setUserProfile(profile.data.result.nickname);
           setCookie(
             "nickname",
             decodeURIComponent(profile.data.result.nickname)
           );
           setCookie("user_id", profile.data.result.id);
-          setJobList(saramin.data);
-        })
-      )
+      })
+      
       .catch((err) => {
         console.error("프로필을 가져오는 도중 에러 발생:", err);
       });
+
+      instance.get("https://localhost:3000/home/saramin")
+      .then(saramin => {
+        setJobList(saramin.data);
+      })
+      .catch(err =>{
+        console.error('에러 발생:', err);
+      })
 
       instance
       .get('https://localhost:3000/home/saramin/href')
@@ -133,7 +139,7 @@ const Home = () => {
                       <div className="job_detail">
                         <div>{job.position["experience-level"].name}</div>
                         <div>{job.position["required-education-level"].name}</div>
-                        <div className="dday">D-{job.dday}</div>
+                        <div className="dday">D-{job.dday === 0 ? 'DAY' : job.dday + 1}</div>
                         {/* 데이터에서 "job-type", "experience-level"과 같이 (-)이 포함된 키를 사용할 때는 대괄호 표기법을 사용하여 접근*/}
                       </div>
                     </div>
@@ -169,7 +175,7 @@ const Home = () => {
                   <div key={index} className="job_expire">
                     <h3>{item.company.detail.name}</h3>
                     <p>{item.position.title}</p>
-                    <p className="dday">D-{item["dday"]}</p>
+
                   </div>
                   </Link>
                 ))}

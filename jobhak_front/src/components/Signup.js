@@ -56,6 +56,7 @@ function Signup() {
       })
       .then((response) => {
         console.log(response);
+        
         setInputCode(response.data.toString());
         console.log(response.data.toString());
         alert("인증 코드가 이메일로 전송되었습니다.");
