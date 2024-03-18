@@ -6,7 +6,9 @@ import "./MyPage.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
+import ProfileImage from "./ProfileImage";
 import instance from "../axiosConfig";
+import Modal from 'react-modal';
 
 function MyPage() {
   const navigate = useNavigate();
@@ -15,6 +17,7 @@ function MyPage() {
   const [usernickname, setUserNickname] = useState("");
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
   cookie.get("nickname", decodeURIComponent(encodedNickname));
@@ -73,6 +76,13 @@ function MyPage() {
       });
   }, [userid]);
 
+  const openModal = () =>{
+    setIsModalOpen(true);
+  }
+  const closeModal = () =>{
+    setIsModalOpen(false);
+  }
+
   return (
     <div className="mypage_app">
       <Nav />
@@ -85,7 +95,7 @@ function MyPage() {
             <div className="mypage_example_div"></div>
             <div className="mypage_profile_button">
               <button className="mypage_profile_btn1">삭제</button>
-              <button className="mypage_profile_btn2">업로드</button>
+              <button className="mypage_profile_btn2" onClick={openModal}>업로드</button>
             </div>
           </div>
           <div
@@ -204,6 +214,9 @@ function MyPage() {
           </div>
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+        <ProfileImage/>
+      </Modal>
     </div>
   );
 }

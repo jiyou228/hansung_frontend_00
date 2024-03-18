@@ -45,9 +45,9 @@
   max-height: 560px;
 }
 
-input[type="file"] {
+/* input[type="file"] {
   display: none;
-}
+} */
 
 .file-input-label {
   display: inline-block;
