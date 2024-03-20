@@ -24,7 +24,7 @@
   font-weight: 800;
 }
 .boardlist_profile img {
-  width: clamp(60px, 8vw, 150px);
+  width: 10vw;
   background-color: white;
   padding-bottom: 0;
 }

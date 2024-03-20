@@ -22,7 +22,7 @@ const Home = () => {
   const [jobList, setJobList] = useState([]);
   const defaultImage = building;
   const [imageList, setImageList] = useState([]);
-  const [expireDate, setExpireDate] = useState([]);
+  const [imageURL, setImageUrl] = useState(null); 
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -34,6 +34,20 @@ const Home = () => {
   }, [index]);
 
   useEffect(() => {
+  instance.get('https://localhost:3000/user/picture')
+  .then((res) => {
+    if (Array.isArray(res.data.result) && res.data.result.length > 0) {
+      const imageUrl = res.data.result[0].match(/src=["'](.*?)["']/)[1];
+      setImageUrl(imageUrl);
+      setCookie("MyIMG", imageUrl);
+    } 
+    else {
+      console.error('No image URL found.');
+    }
+  })
+  .catch((err) => {
+    console.error(err);
+  });
     instance
     .get("https://localhost:3000/home")
       .then(profile => {
@@ -150,9 +164,9 @@ const Home = () => {
           </div>
           <div className="home_right">
             <div className="home_profile">
-              <img src={profile} alt="프로필" />
+              <img src={imageURL} alt="프로필" />
               <br />
-              <b>{userProfile}</b> 님
+              <label style={{fontWeight:'800'}}>{userProfile}</label> 님
             </div>
             <div className="home_sidebar">
               <div className="home_plus">
@@ -175,6 +189,7 @@ const Home = () => {
                   <div key={index} className="job_expire">
                     <h3>{item.company.detail.name}</h3>
                     <p>{item.position.title}</p>
+                    <div className="dday">D-{item.dday === 0 ? 'DAY' : item.dday + 1}</div>
 
                   </div>
                   </Link>

@@ -129,6 +129,9 @@
   text-decoration: none;
   font-size: 1.3rem;
 }
+.profile_image{
+  height: 30vh;
+}
 
 @media only screen and (max-width: 768px) {
   .mypage_main_container {
@@ -137,7 +140,7 @@
   }
 
   .mypage_profile_div {
-    width: 77vw;
+    min-width: 77vw;
     margin-bottom: 20px;
     flex-direction: row;
   }
@@ -152,7 +155,7 @@
     display: flex;
     padding: 15px;
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: medium;
     flex-direction: row;
     white-space: nowrap;
   }
@@ -166,5 +169,20 @@
   }
   .mypage_privacy_ip {
     width: 77vw;
+  }
+  .ReactModal__Content--after-open{
+    inset: 5vh 10vw!important;
+    margin-top: 10vh;
+  }
+  .profile_image{
+    width: 25vw;
+    height: 25vw;
+  }
+  .mypage_profile_button button{
+    font-size: medium;
+    width: 4rem;
+  }
+  .mypage_profile_container{
+    margin: 0;
   }
 }

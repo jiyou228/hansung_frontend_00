@@ -33,6 +33,7 @@ const BoardList = () => {
   const [bookmarkNum, setBookmarkNum] = useState("");
   const [postNum, setPostNum] = useState("");
   const [replyNum, setReplyNum] = useState("");
+  const [imageURL, setImageUrl] = useState(null);
   const openFilter = () => {
     setisFilter(!isfilter);
   };
@@ -92,6 +93,19 @@ const BoardList = () => {
 
   useEffect(() => {
     setNickname(cookie.nickname);
+    instance.get('https://localhost:3000/user/picture')
+    .then((res) => {
+      if (Array.isArray(res.data.result) && res.data.result.length > 0) {
+        const imageUrl = res.data.result[0].match(/src=["'](.*?)["']/)[1];
+        setImageUrl(imageUrl);
+        // console.log(imageUrl);
+      } else {
+        console.error('No image URL found.');
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+    });
     axios
       .all([
         instance.get(
@@ -131,7 +145,7 @@ const BoardList = () => {
       <div className="boardlist_app">
         <div className="boardlist_top">
           <div className="boardlist_profile">
-            <img src={profile} alt="프사" />
+            <img src={cookie.MyIMG} alt="프사" />
             <div className="boardlist_profileDetail">
               <p>
                 <b style={{ fontSize: "larger" }}>{nickname}</b>님

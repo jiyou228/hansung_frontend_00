@@ -13,7 +13,7 @@
 .home{
     overflow-y: scroll;
     width: 100%;
-    height: 92vh;
+    height: 90vh;
 }
 .home_head{
     display: flex;
@@ -139,6 +139,12 @@
     border-radius: 1vh;
     height: clamp(50px, 35vh, 250px);
     justify-content: center;
+    flex-grow: 1;
+    overflow: hidden;
+}
+.home_job img{
+    width: 100%;
+    height: auto;
 }
 
 .job_detail {

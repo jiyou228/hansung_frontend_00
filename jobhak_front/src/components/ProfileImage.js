@@ -8,6 +8,7 @@ import { useDebounceEffect } from './useDebouce';
 
 import 'react-image-crop/dist/ReactCrop.css';
 import instance from '../axiosConfig';
+import './ProfileImage.css';
 
 function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
   return centerCrop(
@@ -25,18 +26,15 @@ function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
   );
 }
 
-export default function ProfileImage() {
+export default function ProfileImage({ onSuccess }) {
   const [imgSrc, setImgSrc] = useState('');
   const [imageUrl, setImageUrl] = useState(''); // 추가: 이미지 URL 상태 추가
   const previewCanvasRef = useRef(null);
   const imgRef = useRef(null);
-  const hiddenAnchorRef = useRef(null);
-  const blobUrlRef = useRef('');
   const [crop, setCrop] = useState();
   const [completedCrop, setCompletedCrop] = useState();
-  const [scale, setScale] = useState(1);
-  const [rotate, setRotate] = useState(0);
   const [aspect, setAspect] = useState(1 / 1);
+  const [isChecked, setIsChecked] = useState(false);
 
   // 추가: 이미지 URL을 사용하여 이미지 불러오기
   useEffect(() => {
@@ -104,9 +102,9 @@ export default function ProfileImage() {
     });
 
     const formData = new FormData();
-    formData.append('image', blob);
+    formData.append('files', blob, 'crop.png');
     instance
-      .post('https://localhost:3000/user/picture', formData, {
+      .post('https://localhost:3000/user/image/save', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -114,6 +112,7 @@ export default function ProfileImage() {
       .then((res) => {
         if (res) {
           console.log('프로필 등록 성공');
+          onSuccess();
         }
       })
       .catch((err) => {
@@ -136,18 +135,54 @@ export default function ProfileImage() {
     [completedCrop],
   );
 
+  const handleRadioChange = (e) =>{
+    setIsChecked(e.target.value === '2');
+  }
   return (
-    <div className="App">
-      <div className="Crop-Controls">
-        {/* 이미지 URL 입력 필드 추가 */}
+    <div className="profileImage_app">
+      <h2>프로필 사진 업로드</h2>
+    <div style={{display: 'flex', gap: '2vw'}}>
+      <label>
+      <input
+        type="radio"
+        value="1"
+        checked={!isChecked}
+        onChange={handleRadioChange}
+      />
+      기기에서 가져오기
+    </label>
+    <label>
+      <input
+        type="radio"
+        value='2'
+        checked = {isChecked}
+        onChange={handleRadioChange}
+      />
+      이미지 주소로 가져오기
+    </label>
+    </div>
+    <div className="Crop-Controls">
+      {isChecked ? (
+        <div>
+          <label>이미지 주소 입력</label>
         <input
           type="text"
-          placeholder="Enter Image URL"
+          placeholder="이미지 주소(URL)"
           value={imageUrl}
           onChange={onImageUrlChange}
         />
+        </div>
+      ) :
+      (
+      <div>
+        <label>파일 업로드</label>
         <input type="file" accept="image/*" onChange={onSelectFile} />
       </div>
+      )}
+        
+        
+      </div>
+      <div className='profileImage_crop'>
       {!!imgSrc && (
         <ReactCrop
           crop={crop}
@@ -160,19 +195,23 @@ export default function ProfileImage() {
             alt="Crop me"
             src={imgSrc}
             onLoad={onImageLoad}
-            style={{ maxHeight: '60vh' }}
+            style={{height:'30vh' }}
           />
         </ReactCrop>
       )}
       {!!completedCrop && (
-        <>
+        <div className='profileImage_upload' style={{display:'none'}}>
           <div>
-            <canvas ref={previewCanvasRef} />
+            <canvas ref={previewCanvasRef}/>
           </div>
           <div>
-            <button onClick={onUploadCropClick}>업로드</button>
+            
           </div>
-        </>
+        </div>
+      )}
+      </div>
+      {!!completedCrop && (
+      <button className = "profileImage_button" onClick={onUploadCropClick}>업로드</button>
       )}
     </div>
   );

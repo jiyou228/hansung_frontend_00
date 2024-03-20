@@ -4,6 +4,9 @@
     width: 100%;
     font-family: 'NanumSquare';
     font-weight: 700;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
     color: white;
     z-index: 2000;
 }
@@ -12,14 +15,15 @@
     color: white;
 }
 .logo_half{
-    width: 10vw;
+    width: fit-content;
+    height: 7vh;
+    padding: 1vh 0;
     margin-left: 2vw;
 }
 .navbar_app .nav_mobile{
     list-style: none;
-    float: right;
     display:flex;
-    font-size: 1.1vw;
+    font-size: 2.3vh;
     margin-right: 2vw;
     gap: 1.5vw;
 }
@@ -93,15 +97,17 @@
         background-color: #092958;
         color: white;
         width: 100vw;
-        top:9vh;
+        top:10vh;
         padding: 0;
         font-size: 3.5vw;
         width: 100vw;
         text-align: center;
         padding-top: 2vh;
+        margin: 0;
         padding-bottom: 1vh;
         font-weight: 800;
         display: block!important;
+        box-sizing: border-box;
     }
     .navbar_app li{
         padding: 2vh 0;
@@ -121,7 +127,7 @@
         box-shadow: none;
         padding: 0;
         margin-top: 1vh;
-        width: 100vw;
+        width: 100vw;;
     }
     .navbar_profile.clicked:hover{
         background-color: white;
@@ -157,7 +163,7 @@
         color: #104085;
     }
     .burger{
-        width: 7vw;
+        height: 5vh;
         display: block;
         padding-left: 3vw;
     }
@@ -173,7 +179,7 @@
     }
     .mobile_logo{
         display: block;
-        width: 35vw;
+        height: 7vh;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);

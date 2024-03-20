@@ -1,11 +1,51 @@
-.profileImage img{
-    width: 300px;
-    height: 300px;
+.profileImage_app{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
 }
-.profileImage{
-    width: 100%;
-    height: 100%;
+
+.Crop-Controls {
+    margin-top: 5vh;
+    
 }
-.ReactCrop__image{
-    max-height: none;
+
+.Crop-Controls > div {
+    display: flex;
+    position: relative;
+    align-items: center;
+}
+.Crop-Controls label {
+    text-align: right;
+    padding-right: 2vw;
+}
+.Crop-Controls input{
+    text-align: center;
+    font-size: medium;
+    border: 1px solid black;
+}
+.profileImage_crop{
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    margin-top: 5vh;
+}
+.profileImage_button{
+    padding: 1vh 3vw;
+    position: absolute;
+    bottom: 5vh;
+    color: white;
+    background-color: #104085;
+    border: none;
+    font-size: larger;
+    border-radius: 1vh;
+    font-weight: 600;
+}
+.profileImage_button:active{
+    font-size: medium;
+}
+.profileImage_upload{
+    margin-top: 5vh;
 }
