@@ -1,315 +1,142 @@
-.home .swiper #png {
-  width: 16vw;
+.home .swiper #png{
+    width: 16vw;
 }
-.home .swiper-slide-prev {
-  margin: 0;
+.home .swiper-slide-prev{
+    margin:0;
 }
-.home .swiper {
-  width: 55vw;
+.home .swiper{
+    width: 55vw;
 }
-.home {
-  position: relative;
+.home{
+    position: relative;
 }
-<<<<<<< HEAD
 .home{
     overflow-y: scroll;
     width: 100%;
     height: 90vh;
-=======
-.home {
-  overflow-y: scroll;
-  width: 100%;
-  height: 92vh;
->>>>>>> 0c27bca44f09f4b37c9cd2406ca3bfaa23d8b553
 }
-.home_head {
-  display: flex;
-  text-align: right;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-  gap: 10vw;
-  height: 90vh;
+.home_head{
+    display: flex;
+    text-align: right;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    gap:10vw;
+    height: 90vh;
 }
-.home_headTitle img {
-  width: 35vw;
+.home_headTitle img{
+    width: 35vw;
 }
 
-.home_headTitle {
-  text-wrap: nowrap;
-  font-size: 6vw;
+.home_headTitle{
+    text-wrap: nowrap;
+    font-size: 6vw;
 }
-.home_headTitle button {
-  position: absolute;
-  bottom: 1vh;
-  border: none;
-  background-color: #104085;
-  padding: 1.5vh 5vw;
-  border-radius: 2vw;
-  font-size: 1.7vw;
-  color: white;
-  font-weight: 700;
-  box-shadow: 0px 0px 10px 5px #abd8ff1a;
-  left: 50%;
-  transform: translateX(-50%);
+.home_headTitle button{
+    position: absolute;
+    bottom: 1vh;
+    border: none;
+    background-color: #104085;
+    padding: 1.5vh 5vw;
+    border-radius: 2vw;
+    font-size: 1.7vw;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0px 0px 10px 5px #abd8ff1a;
+    left: 50%;
+    transform: translateX(-50%);
 }
-<<<<<<< HEAD
 .home_mobile{
     display: none;
 }
 .home_headTitle button:hover{
     color: #afcfff;
-=======
-.home_mobile {
-  display: none;
-}
-.home_headTitle button:hover {
-  color: #afcfff;
->>>>>>> 0c27bca44f09f4b37c9cd2406ca3bfaa23d8b553
 }
 @keyframes typing {
-  from {
-    font-size: 0;
-  }
-  to {
-    font-size: 6vw;
-  }
+    from{
+        font-size: 0;
+    }
+    to{
+        font-size: 6vw;
+    }
 }
-.home_web_swipe img {
-  width: 27vw;
-  border-radius: 10px;
-  border: 1px solid #0000001a;
-  box-shadow: 0px 0px 10px 1px #0000001a;
-  margin-bottom: 2vh;
-  margin-top: 3.5vh;
-  background-color: white;
+.home_web_swipe img{
+    width: 27vw;
+    border-radius: 10px;
+    border: 1px solid #0000001a;
+    box-shadow: 0px 0px 10px 1px #0000001a;
+    margin-bottom: 2vh;
+    margin-top: 3.5vh;
+    background-color: white;
 }
 
-.home_content {
-  display: flex;
-  justify-content: center;
-  gap: 5vw;
-  padding-bottom: 5vh;
+.home_content{
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+    padding-bottom: 5vh;
 }
-.job_section {
-  margin-top: 8vh;
-  width: 60vw;
+.job_section{
+    margin-top: 8vh;
+    width: 60vw;
 }
-.job_section .title {
-  text-align: center;
-  border-bottom: 2px solid #333333;
-  padding-bottom: 2vh;
-  font-weight: 700;
-  font-size: x-large;
+.job_section .title{
+    text-align: center;
+    border-bottom: 2px solid #333333;
+    padding-bottom: 2vh;
+    font-weight: 700;
+    font-size: x-large;
 }
-.home_profile {
-  background-color: #eff5ff;
-  width: fit-content;
-  padding: 4vh 2vw;
-  text-align: center;
-  font-size: 1.2vw;
-  margin-top: 3vh;
+.home_profile{
+    background-color: #EFF5FF;
+    width: fit-content;
+    padding: 4vh 2vw;
+    text-align: center;
+    font-size: 1.2vw;
+    margin-top: 3vh;
 }
-.home_left {
-  display: flex;
-  flex-direction: column;
+.home_left{
+    display: flex;
+    flex-direction: column;
 }
-.home_right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.home_right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.home_swipe {
-  display: flex;
-  text-align: center;
+.home_swipe{
+    display: flex;
+    text-align: center;
 }
-.home_profile img {
-  width: 12vw;
-  margin-bottom: 3vh;
-  margin-top: 3vh;
-  background-color: white;
+.home_profile img{
+    width: 12vw;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    background-color: white;
 }
 .home_jobcontainer {
-  margin: 0 auto;
-  margin-top: 5vh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 5vh;
-  column-gap: 1vw;
+    margin: 0 auto;
+    margin-top:5vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 5vh;
+    column-gap: 1vw;
 }
-.job_section h4 {
-  float: right;
-  margin-top: 0;
-  font-weight: 500;
+.job_section h4{
+    float: right;
+    margin-top: 0;
+    font-weight: 500;
 }
-.job_section a {
-  font-weight: 600;
+.job_section a{
+    font-weight: 600;
 }
 .home_job {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #cccccc;
-  background-color: white;
-  border-radius: 1vh;
-  height: clamp(50px, 35vh, 250px);
-  justify-content: center;
-}
-
-.job_detail {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  gap: 1vw;
-  flex-direction: column;
-  font-size: large;
-  font-weight: 600;
-  white-space: nowrap;
-}
-.job_title .image {
-  height: 6vh;
-  margin-top: 2vh;
-}
-
-.job_title {
-  flex: 1;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  padding: 0 1vw;
-}
-
-.job_title h3 {
-  font-weight: 600;
-  font-size: medium;
-}
-
-.job_title h2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: large;
-  margin: 0; /* 제목에 디폴트 마진 제거 */
-}
-
-.home_plus {
-  border: 2px solid #252525;
-  padding: 0 3vw;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  float: right;
-  font-size: x-large;
-  padding-bottom: 3vh;
-}
-.home_plus button {
-  border: none;
-  background-color: #104085;
-  color: white;
-  padding: 1vh 0;
-  border-radius: 0.5vw;
-  font-size: large;
-  font-weight: 700;
-  margin-bottom: 2vh;
-  white-space: nowrap;
-  width: 15vw;
-}
-.home_sidebar {
-  float: right;
-  display: flex;
-  flex-direction: column;
-  gap: 5vh;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10vh;
-}
-.home_hot {
-  background-color: #eff5ff;
-  text-align: center;
-  padding: 1vh 0;
-  float: right;
-}
-.home_hot ul {
-  list-style: none;
-  padding: 0 9vw;
-}
-.home_hot h4 {
-  font-size: x-large;
-}
-.home_hot li {
-  margin-bottom: 1vh;
-  font-size: large;
-}
-.dday {
-  font-weight: 800;
-}
-@media (max-width: 768px) {
-  .home_head {
-    display: none;
-  }
-  .home .swiper #png {
-    width: 30vw;
-    margin-top: 2vh;
-  }
-  .home .swiper {
-    width: 100vw;
-    margin: 0;
-  }
-  .home .swiper-slide-prev {
-    margin-left: 0.8vw;
-  }
-  .home {
-    overflow-y: scroll;
-  }
-  .home_profile {
-    display: none;
-  }
-  .home_title {
-    width: 90vw;
-    margin: auto;
-    font-size: 1rem;
-  }
-  .home_right {
-    display: none;
-  }
-  .job_section {
-    min-width: 90vw;
-    margin: 0 auto;
-  }
-  .home_mobile {
-    display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
-    margin: 2vh 1vw;
-    align-items: center;
-  }
-  .home_mobile button {
-    width: 32vw;
-    height: 5vh;
-    background-color: #104085;
-    border: none;
-    border-radius: 1vh;
-    color: white;
-    font-weight: 800;
-  }
-  .home_jobcontainer {
-    grid-template-columns: repeat(1, 1fr); /* 기본값을 1개씩 세로로 변경 */
-    row-gap: 2vh;
-    width: 90vw;
-  }
-  .home_job {
     display: flex;
     flex-direction: column;
     border: 1px solid #cccccc;
     background-color: white;
     border-radius: 1vh;
-<<<<<<< HEAD
     height: clamp(50px, 35vh, 250px);
     justify-content: center;
     flex-grow: 1;
@@ -319,24 +146,14 @@
     width: 100%;
     height: auto;
 }
-=======
-    height: fit-content;
-    padding: 2vh 2vw;
-    gap: 3vh;
-  }
-  .job_title .image {
-    min-width: 30vw;
-    margin-top: 0;
-  }
->>>>>>> 0c27bca44f09f4b37c9cd2406ca3bfaa23d8b553
 
-  .job_detail {
+.job_detail {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5vh;
+    flex: 1;
+    gap: 1vw;
     flex-direction: column;
-<<<<<<< HEAD
     font-size: large;
     font-weight: 600;
     white-space: nowrap;
@@ -513,10 +330,4 @@
         padding-bottom: 1vh;
     }
     
-=======
-    font-size: medium;
-    font-weight: 500;
-    padding-bottom: 1vh;
-  }
->>>>>>> 0c27bca44f09f4b37c9cd2406ca3bfaa23d8b553
 }
