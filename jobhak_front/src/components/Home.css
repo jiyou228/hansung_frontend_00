@@ -160,6 +160,7 @@
 }
 .job_title .image{
     height: 6vh;
+    width: fit-content;
     margin-top: 2vh;
 }
 

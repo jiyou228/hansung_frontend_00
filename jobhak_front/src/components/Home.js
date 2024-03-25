@@ -36,8 +36,8 @@ const Home = () => {
   useEffect(() => {
   instance.get('https://localhost:3000/user/picture')
   .then((res) => {
-    if (Array.isArray(res.data.result) && res.data.result.length > 0) {
-      const imageUrl = res.data.result[0].match(/src=["'](.*?)["']/)[1];
+    if (res.data.result.length > 0) {
+      const imageUrl = res.data.result;
       setImageUrl(imageUrl);
       setCookie("MyIMG", imageUrl);
     } 

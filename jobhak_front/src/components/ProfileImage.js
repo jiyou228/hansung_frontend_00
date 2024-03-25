@@ -35,6 +35,7 @@ export default function ProfileImage({ onSuccess }) {
   const [completedCrop, setCompletedCrop] = useState();
   const [aspect, setAspect] = useState(1 / 1);
   const [isChecked, setIsChecked] = useState(false);
+  const [patchURL, setPatchURL] = useState(null);
 
   // 추가: 이미지 URL을 사용하여 이미지 불러오기
   useEffect(() => {
@@ -101,9 +102,21 @@ export default function ProfileImage({ onSuccess }) {
       type: 'image/png',
     });
 
+    instance.get('https://localhost:3000/user/picture')
+    .then((res) =>{
+    if (Array.isArray(res.data.result) && res.data.result.length > 0) {
+      const imageUrl = res.data.result[0].match(/src=["'](.*?)["']/)[1];
+      setPatchURL(imageUrl);
+    }
+    })
+    .catch((err) =>{
+    console.error(err);
+    })
+
     const formData = new FormData();
     formData.append('files', blob, 'crop.png');
-    instance
+    if(patchURL === null){
+      instance
       .post('https://localhost:3000/user/image/save', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -118,6 +131,24 @@ export default function ProfileImage({ onSuccess }) {
       .catch((err) => {
         console.error(err);
       });
+    }
+    else{
+      instance
+      .patch('https://localhost:3000/user/image/update', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => {
+        if (res) {
+          console.log('프로필 등록 성공');
+          onSuccess();
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+    }
   }
 
   useDebounceEffect(

@@ -8,6 +8,11 @@ import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import instance from "../axiosConfig";
 import delete_icon from "../assets/delete_icon.png";
+import ProfileImage from "./ProfileImage";
+import Modal from 'react-modal';
+import HandleProfile from "./HandleProfile";
+
+Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
 
 function Bookmark() {
   const cookie = new Cookies();
@@ -18,6 +23,8 @@ function Bookmark() {
   const navigate = useNavigate();
   const [bookmark_arr, setBookMark_arr] = useState([]);
   const [bookmark_id, setBookMark_id] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   useEffect(() => {
     instance
@@ -56,6 +63,13 @@ function Bookmark() {
     navigate(`/boardlist/detail/${postId}`);
   };
 
+  const openModal = () =>{
+    setIsModalOpen(true);
+  }
+  const closeModal = () =>{
+    setIsModalOpen(false);
+  }
+
   return (
     <div className="mypage_app">
       <Nav />
@@ -65,11 +79,7 @@ function Bookmark() {
             <div className="mypage_profile_name">
               {decodeURIComponent(encodedNickname)}님
             </div>
-            <div className="mypage_example_div"></div>
-            <div className="mypage_profile_button">
-              <button className="mypage_profile_btn1">삭제</button>
-              <button className="mypage_profile_btn2">업로드</button>
-            </div>
+            <HandleProfile openModal={openModal}/>
           </div>
           <div
             className="mypage_count_div"
@@ -172,6 +182,33 @@ function Bookmark() {
           ))}
         </div>
       </div>
+      <Modal isOpen={isModalOpen} onRequestClose={closeModal}
+      style={{
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.75)'
+        },
+        content: {
+          position: 'absolute',
+          top: '10vh',
+          left: '10vw',
+          right: '10vw',
+          bottom: '10vh',
+          border: '1px solid #ccc',
+          background: '#fff',
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          borderRadius: '4px',
+          outline: 'none',
+          padding: '20px'
+        }
+      }}> 
+        <ProfileImage onSuccess={closeModal}/>
+      </Modal>
     </div>
   );
 }

@@ -6,9 +6,12 @@ import "./MyPage.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
-import ProfileImage from "./ProfileImage";
 import instance from "../axiosConfig";
+
+import ProfileImage from "./ProfileImage";
 import Modal from 'react-modal';
+import HandleProfile from "./HandleProfile";
+import DelProfileImage from "./DelProfileImage";
 
 Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
 
@@ -19,11 +22,11 @@ function MyPage() {
   const [usernickname, setUserNickname] = useState("");
   const [username, setUserName] = useState("");
   const [useremail, setUserEmail] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
   cookie.get("nickname", decodeURIComponent(encodedNickname));
-  const [imageURL,setImageUrl] = useState(null);
 
   const NickNameHandler = (e) => {
     setUserNickname(e.target.value);
@@ -79,12 +82,16 @@ function MyPage() {
       });
   }, [userid]);
 
-  const openModal = () =>{
-    setIsModalOpen(true);
+  const openUploadModal = () =>{
+    setIsUploadOpen(true);
   }
-  const closeModal = () =>{
-    setIsModalOpen(false);
+  const closeUploadModal = () =>{
+    setIsUploadOpen(false);
   }
+  const openDeleteModal = () =>{
+    setIsDeleteOpen(true);
+  }
+  
 
   return (
     <div className="mypage_app">
@@ -95,11 +102,7 @@ function MyPage() {
             <div className="mypage_profile_name">
               {decodeURIComponent(usernickname)}님
             </div>
-            <img src={cookie.get("MyIMG")} alt="프사" className="profile_image"/>
-              <div className="mypage_profile_button">
-              <button className="mypage_profile_btn1">삭제</button>
-              <button className="mypage_profile_btn2" onClick={openModal}>업로드</button>
-            </div>
+            <HandleProfile openUploadModal = {openUploadModal} openDeleteModal={openDeleteModal}/>
           </div>
           <div
             className="mypage_count_div"
@@ -217,7 +220,7 @@ function MyPage() {
           </div>
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}
+      <Modal isOpen={isUploadOpen} onRequestClose={closeUploadModal}
       style={{
         overlay: {
           position: 'fixed',
@@ -230,8 +233,8 @@ function MyPage() {
         content: {
           position: 'absolute',
           top: '10vh',
-          left: '10vw',
-          right: '10vw',
+          left: '15vw',
+          right: '15vw',
           bottom: '10vh',
           border: '1px solid #ccc',
           background: '#fff',
@@ -242,8 +245,11 @@ function MyPage() {
           padding: '20px'
         }
       }}> 
-        <ProfileImage onSuccess={closeModal}/>
+        <ProfileImage onSuccess={closeUploadModal}/>
       </Modal>
+      {isDeleteOpen && (
+        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)}/>
+      )}
     </div>
   );
 }

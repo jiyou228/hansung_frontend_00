@@ -7,6 +7,10 @@ import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import instance from "../axiosConfig";
+import ProfileImage from "./ProfileImage";
+import Modal from 'react-modal';
+import HandleProfile from "./HandleProfile";
+import DelProfileImage from "./DelProfileImage";
 
 function Delete() {
   const navigate = useNavigate();
@@ -14,12 +18,24 @@ function Delete() {
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
   cookie.get("nickname", decodeURIComponent(encodedNickname));
-  const id = cookie.get("id");
-  cookie.get("id", id);
+  const id = cookie.get("user_id");
+  cookie.get("user_id", id);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const PWHandler = (e) => {
     setUserPW(e.target.value);
   };
+
+  const openUploadModal = () =>{
+    setIsUploadOpen(true);
+  }
+  const closeUploadModal = () =>{
+    setIsUploadOpen(false);
+  }
+  const openDeleteModal = () =>{
+    setIsDeleteOpen(true);
+  }
 
   const userDeleteHandler = () => {
     Swal.fire({
@@ -77,11 +93,7 @@ function Delete() {
             <div className="mypage_profile_name">
               {decodeURIComponent(encodedNickname)}님
             </div>
-            <div className="mypage_example_div"></div>
-            <div className="mypage_profile_button">
-              <button className="mypage_profile_btn1">삭제</button>
-              <button className="mypage_profile_btn2">업로드</button>
-            </div>
+            <HandleProfile openUploadModal = {openUploadModal} openDeleteModal={openDeleteModal}/>
           </div>
           <div
             className="mypage_count_div"
@@ -175,6 +187,36 @@ function Delete() {
           </div>
         </div>
       </div>
+      <Modal isOpen={isUploadOpen} onRequestClose={closeUploadModal}
+      style={{
+        overlay: {
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(255, 255, 255, 0.75)'
+        },
+        content: {
+          position: 'absolute',
+          top: '10vh',
+          left: '10vw',
+          right: '10vw',
+          bottom: '10vh',
+          border: '1px solid #ccc',
+          background: '#fff',
+          overflow: 'auto',
+          WebkitOverflowScrolling: 'touch',
+          borderRadius: '4px',
+          outline: 'none',
+          padding: '20px'
+        }
+      }}> 
+        <ProfileImage onSuccess={closeUploadModal}/>
+      </Modal>
+      {isDeleteOpen && (
+        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)}/>
+      )}
     </div>
   );
 }

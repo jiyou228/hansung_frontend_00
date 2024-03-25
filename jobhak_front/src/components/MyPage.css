@@ -130,7 +130,9 @@
   font-size: 1.3rem;
 }
 .profile_image{
-  height: 30vh;
+  height: 25vh;
+  padding: 1px;
+  border: 0.3vh solid #777777;
 }
 
 @media only screen and (max-width: 768px) {
