@@ -15,14 +15,17 @@ function BoardWrite() {
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
 
   const onBoardTitle = (e) => {
     setTitle(e.target.value);
   };
 
-  const onBoardContent = (e) => {
-    setContent(e.target.value);
+  const onSelectFile = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    setFileName(selectedFile.name);
   };
 
   const onBoardCategory = (e) => {
@@ -48,14 +51,23 @@ function BoardWrite() {
   };
 
   const onHandleSave = () => {
-    instance
-      .post(`https://localhost:3000/boardlist/write`, {
-        user_id: userid,
-        title: title,
-        content: content,
-        file: file,
-        category: category,
+    const formData = new FormData();
+    const datas = {
+      title: title,
+      content: content,
+      category: category,
+    };
+    formData.append(
+      "PostDto",
+      new Blob([JSON.stringify(datas)], {
+        type: "application/json",
       })
+    );
+    formData.append("files", file);
+    console.log(formData);
+
+    instance
+      .post(`https://localhost:3000/boardlist/write`, formData)
       .then((res) => {
         console.log("게시물 등록 성공" + res);
         navigate("/boardlist");
@@ -122,8 +134,22 @@ function BoardWrite() {
         <br />
         <label className="file-input-label">
           첨부파일
-          <input type="file" name="image" accept="image/*" multiple />
+          <form
+            className="file_upload"
+            name="form"
+            method="post"
+            encType="multipart/form-data"
+          >
+            <input
+              type="file"
+              name="fileName"
+              onChange={onSelectFile}
+              accept=".png, .jpg, .pdf"
+              multiple
+            />
+          </form>
         </label>
+        <span className="file-name">{fileName}</span>
       </div>
       <div className="boardwrite_button">
         <button className="Bcancel_btn" onClick={handleCancel}>

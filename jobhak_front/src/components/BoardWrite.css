@@ -41,13 +41,17 @@
   resize: vertical;
   font-size: 1.2rem;
 }
-.ql-container.ql-snow{
+.ql-container.ql-snow {
   max-height: 560px;
 }
 
 /* input[type="file"] {
   display: none;
 } */
+
+.file-name {
+  margin-left: 1rem;
+}
 
 .file-input-label {
   display: inline-block;
@@ -59,34 +63,34 @@
   cursor: pointer;
   margin-top: 1rem;
 }
-.boardwrite_button{
+.boardwrite_button {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: initial;
-  gap:2vw;
+  gap: 2vw;
   float: right;
   width: 60vw;
   margin-top: 3vh;
   padding-bottom: 3vh;
 }
 
-.boardwrite_button button{
+.boardwrite_button button {
   border: none;
   padding: 1vh 3vw;
   font-size: large;
   border-radius: 5px;
   font-weight: 700;
 }
-.Bcancel_btn:hover{
-  color:#777a7f;
+.Bcancel_btn:hover {
+  color: #777a7f;
 }
 
-.Bsave_btn{
+.Bsave_btn {
   background-color: #104085;
   color: white;
 }
-.Bsave_btn:hover{
+.Bsave_btn:hover {
   color: #c0d8ff;
 }
 

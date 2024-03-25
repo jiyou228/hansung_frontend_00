@@ -63,6 +63,20 @@
   font-weight: 800;
 }
 
+.file-output-label {
+  display: inline-block;
+  background-color: #a2a5aa;
+  color: white;
+  padding: 8px 10px;
+  width: 7rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: center;
+}
+
 .category_lb {
   font-size: 1.1rem;
   font-weight: 600;

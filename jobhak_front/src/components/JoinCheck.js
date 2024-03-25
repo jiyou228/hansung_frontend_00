@@ -163,7 +163,7 @@ function JoinCheck() {
           </div>
         </div>
       </form>
-      <div className="button_container">
+      <div className="button_center">
         <button type="button" className="cancel-button" onClick={handleCancel}>
           취소
         </button>

@@ -45,12 +45,11 @@ const BoardList = () => {
   const submitSearch = () => {
     if (searchTitle) {
       instance
-        .get(`https://localhost:3000/boardlist/search/${searchTitle}`)
+        .post(`https://localhost:3000/boardlist/search/${searchTitle}`)
         .then((res) => {
-          if (res.data.result.length > 0 ) {
+          if (res.data.result.length > 0) {
             setBoardList(res.data.result);
           } else {
-            setBoardList([]);
             setisSearch(`${searchTitle}로 검색된 결과가 없습니다.`);
             setBoardList([]);
           }
