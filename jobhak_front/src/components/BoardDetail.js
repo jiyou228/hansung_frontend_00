@@ -1,5 +1,5 @@
 import Nav from "./Nav";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BoardDetail.css";
@@ -244,6 +244,7 @@ function BoardDetail() {
             setPostDate(userData.date);
             setUserId(userData.userId);
             setNickname(userData.nickname);
+            setFile(userData.fileName);
           }
         })
       )
@@ -251,6 +252,26 @@ function BoardDetail() {
         console.log(err + ":: detail err");
       });
   };
+
+  // const onClickImgLink = useCallback((file, name) => {
+  //   fetch(file, { method: "GET" })
+  //     .then((res) => res.blob())
+  //     .then((blob) => {
+  //       const url = window.URL.createObjectURL(blob);
+  //       const a = document.createElement("a");
+  //       a.href = url;
+  //       a.download = name;
+  //       document.body.appendChild(a);
+  //       a.click();
+  //       setTimeout((_) => {
+  //         window.URL.revokeObjectURL(url);
+  //       }, 1000);
+  //       a.remove();
+  //     })
+  //     .catch((err) => {
+  //       console.error("err", err);
+  //     });
+  // }, []);
 
   const handleReply = () => {
     instance
@@ -366,6 +387,19 @@ function BoardDetail() {
           <label className="post_lb"> {commentcount}</label>
           <img src={off_bookmark} alt="bookmark" width={30} />
           <label className="post_lb"> {bookmarkcount}</label>
+
+          <a
+            href={file}
+            rel="noopener noreferrer"
+            className="file-output-label"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(file, "_blank");
+            }}
+          >
+            첨부파일
+          </a>
+          <label>{file}</label>
         </div>
       </div>
       <div className="detail_replies">

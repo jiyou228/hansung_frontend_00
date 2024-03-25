@@ -49,8 +49,8 @@
   border-radius: 0.5rem;
 }
 
-.button_container {
-  width: 60vw;
+.button_center {
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
