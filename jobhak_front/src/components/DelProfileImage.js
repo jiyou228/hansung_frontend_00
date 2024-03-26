@@ -2,6 +2,8 @@ import { useEffect} from "react";
 import instance from "../axiosConfig";
 import Swal from "sweetalert2";
 
+const defaultImageUrl = "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/default/default.png";
+
 const DelProfileImage = () =>{
     useEffect(() =>{
         Swal.fire({
@@ -19,7 +21,7 @@ const DelProfileImage = () =>{
             if (result.isConfirmed) {
                 instance.get('https://localhost:3000/user/picture')
                 .then((res) =>{
-                    if (Array.isArray(res.data.result) && res.data.result.length > 0) {
+                    if (res.data.result !== defaultImageUrl) {
                         instance.delete('https://localhost:3000/user/image/delete')
                         .then((res) =>{
                             console.log("프로필 사진 삭제 성공!", res.data);
