@@ -24,6 +24,7 @@ function Mypicture() {
     setIsModalOpen(true);
   }
   const closeModal = () =>{
+    window.location.reload();
     setIsModalOpen(false);
   }
 

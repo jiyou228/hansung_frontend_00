@@ -92,19 +92,7 @@ const BoardList = () => {
 
   useEffect(() => {
     setNickname(cookie.nickname);
-    instance.get('https://localhost:3000/user/picture')
-    .then((res) => {
-      if (Array.isArray(res.data.result) && res.data.result.length > 0) {
-        const imageUrl = res.data.result[0].match(/src=["'](.*?)["']/)[1];
-        setImageUrl(imageUrl);
-        // console.log(imageUrl);
-      } else {
-        console.error('No image URL found.');
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+    setImageUrl(cookie.MyIMG);
     axios
       .all([
         instance.get(

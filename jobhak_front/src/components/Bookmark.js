@@ -68,6 +68,7 @@ function Bookmark() {
   }
   const closeModal = () =>{
     setIsModalOpen(false);
+    window.location.reload();
   }
 
   return (
