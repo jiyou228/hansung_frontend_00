@@ -447,7 +447,7 @@ function BoardDetail() {
                     ) : (
                       <textarea
                         className="edit_reply"
-                        value={reply.replyContent}
+                        defaultValue={reply.replyContent}
                         onChange={(e) => setEditContent(e.target.value)}
                       />
                     )}
@@ -538,7 +538,7 @@ function BoardDetail() {
                         ) : (
                           <textarea
                             className="edit_reply"
-                            value={subReply.replyContent}
+                            defaultValue={subReply.replyContent}
                             onChange={(e) => setEditContent(e.target.value)}
                           />
                         )}
