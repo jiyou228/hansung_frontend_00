@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import React from "react";
 import { CookiesProvider } from "react-cookie";
 import Signup from "./components/Signup";
@@ -27,13 +27,14 @@ import BoardDetail from "./components/BoardDetail";
 import GPTResume from "./components/GPTResume";
 import NotFound from "./components/NotFound";
 import ResetPW from "./components/ResetPW";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <CookiesProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<PrivateRoute element={Home} />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/join" element={<Signup />} />
           <Route path="/joincheck" element={<JoinCheck />} />
@@ -42,25 +43,70 @@ function App() {
           <Route path="/login/kakao" element={<KakaoLogin />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
-          <Route path="/boardlist" element={<BoardList />}></Route>
-          <Route path="/user/myInfo" element={<MyPage />}></Route>
-          <Route path="/profile/female" element={<Profile />}></Route>
-          <Route path="/resume/write" element={<WriteResume />}></Route>
-          <Route path="/resume/revise" element={<ReviseResume />}></Route>
-          <Route path="/guide" element={<Guide />} />
-          <Route path="/countchar" element={<CountChar />} />
-          <Route path="/user/edit/pw" element={<ChangePW />} />
-          <Route path="/user/delete" element={<Delete />} />
-          <Route path="/grammar" element={<Grammar />} />
-          <Route path="/boardlist/write" element={<BoardWrite />} />
-          <Route path="/user/picture" element={<Mypicture />} />
-          <Route path="/user/bookmark" element={<Bookmark />} />
-          <Route path="/boardlist/edit/:postId" element={<BoardDetail/>} />
-          <Route path="/boardlist/detail/:postId" element={<BoardDetail />} />
-          <Route path="/resume/write/gpt" element = {<GPTResume/>}></Route>
+          <Route
+            path="/boardlist"
+            element={<PrivateRoute element={BoardList} />}
+          ></Route>
+          <Route
+            path="/user/myInfo"
+            element={<PrivateRoute element={MyPage} />}
+          ></Route>
+          <Route
+            path="/profile/female"
+            element={<PrivateRoute element={Profile} />}
+          ></Route>
+          <Route
+            path="/resume/write"
+            element={<PrivateRoute element={WriteResume} />}
+          ></Route>
+          <Route
+            path="/resume/revise"
+            element={<PrivateRoute element={ReviseResume} />}
+          ></Route>
+          <Route path="/guide" element={<PrivateRoute element={Guide} />} />
+          <Route
+            path="/countchar"
+            element={<PrivateRoute element={CountChar} />}
+          />
+          <Route
+            path="/user/edit/pw"
+            element={<PrivateRoute element={ChangePW} />}
+          />
+          <Route
+            path="/user/delete"
+            element={<PrivateRoute element={Delete} />}
+          />
+          <Route path="/grammar" element={<PrivateRoute element={Grammar} />} />
+          <Route
+            path="/boardlist/write"
+            element={<PrivateRoute element={BoardWrite} />}
+          />
+          <Route
+            path="/user/picture"
+            element={<PrivateRoute element={Mypicture} />}
+          />
+          <Route
+            path="/user/bookmark"
+            element={<PrivateRoute element={Bookmark} />}
+          />
+          <Route
+            path="/boardlist/edit/:postId"
+            element={<PrivateRoute element={BoardDetail} />}
+          />
+          <Route
+            path="/boardlist/detail/:postId"
+            element={<PrivateRoute element={BoardDetail} />}
+          />
+          <Route
+            path="/resume/write/gpt"
+            element={<PrivateRoute element={GPTResume} />}
+          ></Route>
           <Route path="/*" element={<NotFound />} />
-          <Route path="/notfound" element={<NotFound/>}/>
-          <Route path="/reset/pw" element={<ResetPW />}/>
+          <Route path="/notfound" element={<NotFound />} />
+          <Route
+            path="/reset/pw"
+            element={<PrivateRoute element={ResetPW} />}
+          />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

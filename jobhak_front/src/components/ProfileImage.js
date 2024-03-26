@@ -1,34 +1,31 @@
-import React, { useState, useRef, useEffect } from 'react';
-import ReactCrop, {
-  centerCrop,
-  makeAspectCrop,
-} from 'react-image-crop';
-import { canvasPreview } from './canvas';
-import { useDebounceEffect } from './useDebouce';
+import React, { useState, useRef, useEffect } from "react";
+import ReactCrop, { centerCrop, makeAspectCrop } from "react-image-crop";
+import { canvasPreview } from "./canvas";
+import { useDebounceEffect } from "./useDebouce";
 
-import 'react-image-crop/dist/ReactCrop.css';
-import instance from '../axiosConfig';
-import './ProfileImage.css';
+import "react-image-crop/dist/ReactCrop.css";
+import instance from "../axiosConfig";
+import "./ProfileImage.css";
 
 function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
   return centerCrop(
     makeAspectCrop(
       {
-        unit: '%',
+        unit: "%",
         width: 90,
       },
       aspect,
       mediaWidth,
-      mediaHeight,
+      mediaHeight
     ),
     mediaWidth,
-    mediaHeight,
+    mediaHeight
   );
 }
 
 export default function ProfileImage({ onSuccess }) {
-  const [imgSrc, setImgSrc] = useState('');
-  const [imageUrl, setImageUrl] = useState(''); // 추가: 이미지 URL 상태 추가
+  const [imgSrc, setImgSrc] = useState("");
+  const [imageUrl, setImageUrl] = useState(""); // 추가: 이미지 URL 상태 추가
   const previewCanvasRef = useRef(null);
   const imgRef = useRef(null);
   const [crop, setCrop] = useState();
@@ -48,8 +45,8 @@ export default function ProfileImage({ onSuccess }) {
     if (e.target.files && e.target.files.length > 0) {
       setCrop(undefined);
       const reader = new FileReader();
-      reader.addEventListener('load', () =>
-        setImgSrc(reader.result.toString()),
+      reader.addEventListener("load", () =>
+        setImgSrc(reader.result.toString())
       );
       reader.readAsDataURL(e.target.files[0]);
     }
@@ -71,7 +68,7 @@ export default function ProfileImage({ onSuccess }) {
     const image = imgRef.current;
     const previewCanvas = previewCanvasRef.current;
     if (!image || !previewCanvas || !completedCrop) {
-      throw new Error('Crop canvas does not exist');
+      throw new Error("Crop canvas does not exist");
     }
 
     const scaleX = image.naturalWidth / image.width;
@@ -79,11 +76,11 @@ export default function ProfileImage({ onSuccess }) {
 
     const offscreen = new OffscreenCanvas(
       completedCrop.width * scaleX,
-      completedCrop.height * scaleY,
+      completedCrop.height * scaleY
     );
-    const ctx = offscreen.getContext('2d');
+    const ctx = offscreen.getContext("2d");
     if (!ctx) {
-      throw new Error('No 2d context');
+      throw new Error("No 2d context");
     }
 
     ctx.drawImage(
@@ -95,59 +92,59 @@ export default function ProfileImage({ onSuccess }) {
       0,
       0,
       offscreen.width,
-      offscreen.height,
+      offscreen.height
     );
 
     const blob = await offscreen.convertToBlob({
-      type: 'image/png',
+      type: "image/png",
     });
 
-    instance.get('https://localhost:3000/user/picture')
-    .then((res) =>{
-    if (Array.isArray(res.data.result) && res.data.result.length > 0) {
-      const imageUrl = res.data.result[0].match(/src=["'](.*?)["']/)[1];
-      setPatchURL(imageUrl);
-    }
-    })
-    .catch((err) =>{
-    console.error(err);
-    })
+    instance
+      .get("https://localhost:3000/user/picture")
+      .then((res) => {
+        if (res.data.result.length > 0) {
+          const imageUrl = res.data.result;
+          setPatchURL(imageUrl);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
 
     const formData = new FormData();
-    formData.append('files', blob, 'crop.png');
-    if(patchURL === null){
+    formData.append("files", blob, "crop.png");
+    if (patchURL === null) {
       instance
-      .post('https://localhost:3000/user/image/save', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then((res) => {
-        if (res) {
-          console.log('프로필 등록 성공');
-          onSuccess();
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-    }
-    else{
+        .post("https://localhost:3000/user/image/save", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          if (res) {
+            console.log("프로필 등록 성공");
+            onSuccess();
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    } else {
       instance
-      .patch('https://localhost:3000/user/image/update', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then((res) => {
-        if (res) {
-          console.log('프로필 등록 성공');
-          onSuccess();
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+        .patch("https://localhost:3000/user/image/update", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          if (res) {
+            console.log("프로필 등록 성공");
+            onSuccess();
+          }
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   }
 
@@ -163,86 +160,83 @@ export default function ProfileImage({ onSuccess }) {
       }
     },
     100,
-    [completedCrop],
+    [completedCrop]
   );
 
-  const handleRadioChange = (e) =>{
-    setIsChecked(e.target.value === '2');
-  }
+  const handleRadioChange = (e) => {
+    setIsChecked(e.target.value === "2");
+  };
   return (
     <div className="profileImage_app">
       <h2>프로필 사진 업로드</h2>
-    <div style={{display: 'flex', gap: '2vw'}}>
-      <label>
-      <input
-        type="radio"
-        value="1"
-        checked={!isChecked}
-        onChange={handleRadioChange}
-      />
-      기기에서 가져오기
-    </label>
-    <label>
-      <input
-        type="radio"
-        value='2'
-        checked = {isChecked}
-        onChange={handleRadioChange}
-      />
-      이미지 주소로 가져오기
-    </label>
-    </div>
-    <div className="Crop-Controls">
-      {isChecked ? (
-        <div>
-          <label>이미지 주소 입력</label>
-        <input
-          type="text"
-          placeholder="이미지 주소(URL)"
-          value={imageUrl}
-          onChange={onImageUrlChange}
-        />
-        </div>
-      ) :
-      (
-      <div>
-        <label>파일 업로드</label>
-        <input type="file" accept="image/*" onChange={onSelectFile} />
-      </div>
-      )}
-        
-        
-      </div>
-      <div className='profileImage_crop'>
-      {!!imgSrc && (
-        <ReactCrop
-          crop={crop}
-          onChange={(_, percentCrop) => setCrop(percentCrop)}
-          onComplete={(c) => setCompletedCrop(c)}
-          aspect={aspect}
-        >
-          <img
-            ref={imgRef}
-            alt="Crop me"
-            src={imgSrc}
-            onLoad={onImageLoad}
-            style={{height:'30vh' }}
+      <div style={{ display: "flex", gap: "2vw" }}>
+        <label>
+          <input
+            type="radio"
+            value="1"
+            checked={!isChecked}
+            onChange={handleRadioChange}
           />
-        </ReactCrop>
-      )}
-      {!!completedCrop && (
-        <div className='profileImage_upload' style={{display:'none'}}>
+          기기에서 가져오기
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="2"
+            checked={isChecked}
+            onChange={handleRadioChange}
+          />
+          이미지 주소로 가져오기
+        </label>
+      </div>
+      <div className="Crop-Controls">
+        {isChecked ? (
           <div>
-            <canvas ref={previewCanvasRef}/>
+            <label>이미지 주소 입력</label>
+            <input
+              type="text"
+              placeholder="이미지 주소(URL)"
+              value={imageUrl}
+              onChange={onImageUrlChange}
+            />
           </div>
+        ) : (
           <div>
-            
+            <label>파일 업로드</label>
+            <input type="file" accept="image/*" onChange={onSelectFile} />
           </div>
-        </div>
-      )}
+        )}
+      </div>
+      <div className="profileImage_crop">
+        {!!imgSrc && (
+          <ReactCrop
+            crop={crop}
+            onChange={(_, percentCrop) => setCrop(percentCrop)}
+            onComplete={(c) => setCompletedCrop(c)}
+            aspect={aspect}
+          >
+            <img
+              ref={imgRef}
+              alt="Crop me"
+              src={imgSrc}
+              onLoad={onImageLoad}
+              style={{ height: "30vh" }}
+            />
+          </ReactCrop>
+        )}
+        {!!completedCrop && (
+          <div className="profileImage_upload" style={{ display: "none" }}>
+            <div>
+              <canvas ref={previewCanvasRef} />
+            </div>
+            <div></div>
+          </div>
+        )}
       </div>
       {!!completedCrop && (
-      <button className = "profileImage_button" onClick={onUploadCropClick}>업로드</button>
+        <button className="profileImage_button" onClick={onUploadCropClick}>
+          업로드
+        </button>
       )}
     </div>
   );

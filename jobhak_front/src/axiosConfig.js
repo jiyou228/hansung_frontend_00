@@ -1,8 +1,8 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axios from "axios";
+import Cookies from "js-cookie";
 const refreshToken = async () => {
   try {
-    const response = await axios.post("http://localhost:3000/reissue");
+    const response = await axios.post("https://localhost:3000/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
@@ -29,11 +29,6 @@ instance.interceptors.request.use(
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
-    // const cookie = Cookies.get('loggedIn');
-    // if(cookie !== true){
-    //   window.location.href= '/'
-    // }
-    // https://velog.io/@line_jeong32/Backend-%EC%9D%B8%EC%A6%9D-%EB%B3%B4%EC%95%88-1-Cookie-Session-Token
     return config;
   },
   (error) => {
@@ -42,48 +37,44 @@ instance.interceptors.request.use(
 );
 
 // 응답 인터셉터 설정
-// instance.interceptors.response.use(
-//   response => {
-//     return response;
-//   },
-//   async (error) => {
-//     const cookie = Cookies.get('loggedIn');
-//     const {
-//       response: {status}
-//     }  = error;
+instance.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const cookie = Cookies.get("loggedIn");
+    const {
+      response: { status },
+    } = error;
 
-//     if(status === 401){
-//       if(cookie){
-//         if(error.response.data.errorCode === 999)
-//         {
-//           //accessToken 만료시?
-//           try {
-//             const accessToken = await refreshToken();
-//             // 새로 발급받은 토큰으로 기존 요청 재시도
-//             error.config.headers.Authorization = `Bearer ${accessToken}`;
-//             return axios.request(error.config);
-//           } catch (refreshError) {
-//             // 토큰 재발급 실패시 로그아웃 처리
-//             console.error("토큰 재발급 에러", refreshError);
-//             window.location.href = "/logout";
-//             return Promise.reject(refreshError);
-//           }
-//         }
-//         else if(error.response.data.errorCode === 1004){
-//           window.location.href = '/logout';
-//         }
-//       }
-//       else{
-//         if(error.response.data.errorCode !== 1004){
-//            Cookies.set('loggedIn', true);
-//         }
-//       }
-//     }
-//     else if(status === 404){
-//       window.location.href = '/notfound';
-//     }
-//     return Promise.reject(error);
-//   }
-// );
+    if (status === 401) {
+      if (cookie) {
+        if (error.response.data.code === 999) {
+          //accessToken 만료시?
+          try {
+            const accessToken = await refreshToken();
+            // 새로 발급받은 토큰으로 기존 요청 재시도
+            error.config.headers.Authorization = `Bearer ${accessToken}`;
+            return axios.request(error.config);
+          } catch (refreshError) {
+            // 토큰 재발급 실패시 로그아웃 처리
+            console.error("토큰 재발급 에러", refreshError);
+            window.location.href = "/logout";
+            return Promise.reject(refreshError);
+          }
+        } else if (error.response.data.code === 1004) {
+          window.location.href = "/logout";
+        }
+      } else {
+        if (error.response.data.code !== 1004) {
+          Cookies.set("loggedIn", true);
+        }
+      }
+    } else if (status === 404) {
+      window.location.href = "/notfound";
+    }
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

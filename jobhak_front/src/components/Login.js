@@ -64,11 +64,11 @@ const Login = () => {
     setShowPw(!showPw);
   };
 
-  useEffect(() => {
-    if (cookie.loggedIn === true) {
-      navigate("/home");
-    }
-  });
+  // useEffect(() => {
+  //   if (cookie.loggedIn === true) {
+  //     navigate("/home");
+  //   }
+  // });
 
   return (
     <div className="login">
@@ -95,10 +95,7 @@ const Login = () => {
               onChange={(e) => setPw(e.target.value)}
             />
             <div className="pw_visible" onClick={pwVisible}>
-              <img
-                src={showPw ? hide : view}
-                alt="보이기"
-              />
+              <img src={showPw ? hide : view} alt="보이기" />
             </div>
           </div>
           <button type="submit" className="login_submit">
@@ -107,7 +104,7 @@ const Login = () => {
         </form>
         <div className="login_move">
           <Link to="/joincheck" className="login_link">
-          <div className="login_li_join">회원가입</div>
+            <div className="login_li_join">회원가입</div>
           </Link>
           <div className="login_find">
             <div className="login_li_id">
@@ -115,7 +112,7 @@ const Login = () => {
                 아이디
               </Link>
             </div>
-            <div style={{padding: '0 1vw'}}>•</div>
+            <div style={{ padding: "0 1vw" }}>•</div>
             <Link to="/find/pw" className="login_link">
               <div className="login_li_pw">비밀번호 찾기</div>
             </Link>
@@ -128,7 +125,7 @@ const Login = () => {
         </div>
         <Link to="/login/naver">
           <div className="login_naver_container">
-            <img src={naver} className = "login_logo" alt="naver_login" />
+            <img src={naver} className="login_logo" alt="naver_login" />
           </div>
         </Link>
         <Link to="/login/kakao">

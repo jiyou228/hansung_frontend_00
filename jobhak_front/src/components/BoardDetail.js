@@ -40,7 +40,7 @@ function BoardDetail() {
   const [bookmarkId, setBookmarkId] = useState(0);
   const [isEdit, setIsEdit] = useState(false);
   const [editModes, setEditModes] = useState({});
-  const [editContent, setEditContent] = useState('');
+  const [editContent, setEditContent] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -87,15 +87,13 @@ function BoardDetail() {
   const handleEditClick = (replyId, parentReplyId) => {
     var title = "";
     var message = "";
-    if(replyId === undefined && parentReplyId === undefined){
+    if (replyId === undefined && parentReplyId === undefined) {
       title = "게시물 수정";
       message = "게시물을 수정하시겠습니까?";
-    }
-    else if(parentReplyId === undefined){
+    } else if (parentReplyId === undefined) {
       title = "댓글 수정";
       message = "댓글을 수정하시겠습니까?";
-    }
-    else{
+    } else {
       title = "답글 수정";
       message = "답글을 수정하시겠습니까?";
     }
@@ -124,40 +122,41 @@ function BoardDetail() {
                 post_id: postId,
               },
             });
-            alert('엥ㄹ');
-          }
-          else{
-            setEditModes(prevState => ({
+            alert("엥ㄹ");
+          } else {
+            setEditModes((prevState) => ({
               ...prevState,
-              [replyId]: !prevState[replyId]
+              [replyId]: !prevState[replyId],
             }));
+          }
         }
-      }})
+      })
       .catch((err) => {
         console.log(err + "게시물 수정 error ");
       });
   };
 
-  const handleReplyEdit = (replyId) =>{
-    instance.patch(`https://localhost:3000/boardlist/detail/${postId}/reply`, {
+  const handleReplyEdit = (replyId) => {
+    instance
+      .patch(`https://localhost:3000/boardlist/detail/${postId}/reply`, {
         replyId: replyId,
         replyContent: editContent,
       })
-    .then((res) => {
-      if(res){
-        console.log('댓글 및 답글 수정 완료');
-        navigate(0);
-      }
-    })
-    .catch((err) =>{
-      console.error(err);
-    })
-  }
+      .then((res) => {
+        if (res) {
+          console.log("댓글 및 답글 수정 완료");
+          navigate(0);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   const handleDeleteClick = (option) => {
     var title = "게시물 삭제";
     var message = "정말 삭제하시겠습니까?";
 
-    if(option){
+    if (option) {
       title = "댓글/답글 삭제";
       message = "댓글/답글을 정말로 삭제하시겠습니까?";
     }
@@ -190,11 +189,14 @@ function BoardDetail() {
               });
           } else if (option) {
             instance
-              .delete(`https://localhost:3000/boardlist/${postId}/reply/delete/${option}`, {
-                data: {
-                  replyId: option,
-                },
-              })
+              .delete(
+                `https://localhost:3000/boardlist/${postId}/reply/delete/${option}`,
+                {
+                  data: {
+                    replyId: option,
+                  },
+                }
+              )
               .then(() => {
                 navigate(0);
               })
@@ -215,7 +217,7 @@ function BoardDetail() {
 
   useEffect(() => {
     getData();
-
+    //console.log(fileNameKey);
     instance
       .get(`https://localhost:3000/boardlist/detail/${postId}/count`)
       .then((res) => {
@@ -252,7 +254,7 @@ function BoardDetail() {
       ])
       .then(
         axios.spread((bookmark, detail) => {
-          // console.log(JSON.stringify(detail));
+          console.log(JSON.stringify(detail));
           if (bookmark.data.result) {
             const bookmarkIds = bookmark.data.result.map((item) =>
               item.postId.toString()
@@ -285,26 +287,8 @@ function BoardDetail() {
         console.log(err + ":: detail err");
       });
   };
-
-  // const onClickImgLink = useCallback((file, name) => {
-  //   fetch(file, { method: "GET" })
-  //     .then((res) => res.blob())
-  //     .then((blob) => {
-  //       const url = window.URL.createObjectURL(blob);
-  //       const a = document.createElement("a");
-  //       a.href = url;
-  //       a.download = name;
-  //       document.body.appendChild(a);
-  //       a.click();
-  //       setTimeout((_) => {
-  //         window.URL.revokeObjectURL(url);
-  //       }, 1000);
-  //       a.remove();
-  //     })
-  //     .catch((err) => {
-  //       console.error("err", err);
-  //     });
-  // }, []);
+  const fileNameKey = file ? Object.keys(file)[0] : null;
+  const fileNameValue = file ? Object.values(file)[0] : null;
 
   const handleReply = () => {
     instance
@@ -422,17 +406,17 @@ function BoardDetail() {
           <label className="post_lb"> {bookmarkcount}</label>
 
           <a
-            href={file}
+            href={fileNameKey}
             rel="noopener noreferrer"
             className="file-output-label"
             onClick={(e) => {
               e.preventDefault();
-              window.open(file, "_blank");
+              window.open(fileNameKey, "_blank");
             }}
           >
             첨부파일
           </a>
-          <label>{file}</label>
+          <label>{fileNameValue}</label>
         </div>
       </div>
       <div className="detail_replies">
@@ -452,63 +436,71 @@ function BoardDetail() {
         {replyList.map((reply) => (
           <div key={reply.replyId} className="replies_container">
             {!reply.parentReplyId && ( //댓글만 출력
-            <div className="reply_layout">
-              <div className="reply_reply">
-                <div className="reply_profile">
-                  <img src={profile} alt="프사" />
-                </div>
-                <div className="reply_content">
-                  <label>{reply.nickname}</label>  
-                  {!editModes[reply.replyId] ? (
-                    <div className="text">{reply.replyContent}</div>
-                  ) : (
-                    <textarea
-                      className="edit_reply"
-                      value={reply.replyContent}
-                      onChange={(e) => setEditContent(e.target.value)}/>
-                  )}      
-                  
-                  {reply.userId === user_id && (
-                    <div className="reply_delete">
-                      <img
-                        src={dropdot}
-                        alt="delete"
-                        onClick={() => delOpenReply(reply.replyId)}
+              <div className="reply_layout">
+                <div className="reply_reply">
+                  <div className="reply_profile">
+                    <img src={profile} alt="프사" />
+                  </div>
+                  <div className="reply_content">
+                    <label>{reply.nickname}</label>
+                    {!editModes[reply.replyId] ? (
+                      <div className="text">{reply.replyContent}</div>
+                    ) : (
+                      <textarea
+                        className="edit_reply"
+                        value={reply.replyContent}
+                        onChange={(e) => setEditContent(e.target.value)}
                       />
-                      {openDelReply[reply.replyId] && (
-                        <div className="edit_container">
-                          <button
-                            onClick={() => handleEditClick(reply.replyId)}
-                          >
-                            수정
-                          </button>
-                          <button
-                            onClick={() => handleDeleteClick(reply.replyId)}
-                          >
-                            삭제
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  )} 
+                    )}
+
+                    {reply.userId === user_id && (
+                      <div className="reply_delete">
+                        <img
+                          src={dropdot}
+                          alt="delete"
+                          onClick={() => delOpenReply(reply.replyId)}
+                        />
+                        {openDelReply[reply.replyId] && (
+                          <div className="edit_container">
+                            <button
+                              onClick={() => handleEditClick(reply.replyId)}
+                            >
+                              수정
+                            </button>
+                            <button
+                              onClick={() => handleDeleteClick(reply.replyId)}
+                            >
+                              삭제
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                </div>
-              {!editModes[reply.replyId] ? (
+                {!editModes[reply.replyId] ? (
                   <div className="reply_rere">
-                  <div>{reply.date}</div>
-                  <div
+                    <div>{reply.date}</div>
+                    <div
                       className="rereply_add"
                       onClick={() => addreReply(reply.replyId)}
-                                        >
+                    >
                       <img src={post_comment} alt="comment" />
                       <b>답글 달기</b>
+                    </div>
                   </div>
-                </div>) : (
+                ) : (
                   <div className="edit_button">
-                  <button onClick={() => setEditModes(!editModes[reply.replyId])}>취소</button>
-                  <button onClick={() => handleReplyEdit(reply.replyId)}>수정</button>
-                </div>
-                  )}
+                    <button
+                      onClick={() => setEditModes(!editModes[reply.replyId])}
+                    >
+                      취소
+                    </button>
+                    <button onClick={() => handleReplyEdit(reply.replyId)}>
+                      수정
+                    </button>
+                  </div>
+                )}
               </div>
             )}
             {/* 답글 등록*/}
@@ -517,13 +509,13 @@ function BoardDetail() {
                 <img src={reply_arrow} alt="답글" />
                 <div className="rereply_addbox">
                   <textarea
-                  value={reReplyContent}
+                    value={reReplyContent}
                     onChange={(e) => setreReplyContent(e.target.value)}
                     rows="3"
                     maxLength="300"
                     placeholder="답글을 작성해보세요."
                   />
-                  <button onClick={() => handlereReply(reply.replyId, )}>
+                  <button onClick={() => handlereReply(reply.replyId)}>
                     등록
                   </button>
                 </div>
@@ -535,56 +527,73 @@ function BoardDetail() {
               .map((subReply) => (
                 <div key={subReply.replyId} className="rereply_container">
                   <img src={reply_arrow} alt="답글" />
-                <div className="rereply_box">
-                  <div className="rereply_layout">
-                    <div className="rereply_profile">
-                      <img src={profile} alt="프사" />
-                    </div>
-                    <div className="rereply_content">
-                      <label>{subReply.nickname}</label>
-                      {!editModes[subReply.replyId] ? (
+                  <div className="rereply_box">
+                    <div className="rereply_layout">
+                      <div className="rereply_profile">
+                        <img src={profile} alt="프사" />
+                      </div>
+                      <div className="rereply_content">
+                        <label>{subReply.nickname}</label>
+                        {!editModes[subReply.replyId] ? (
                           <div className="text">{subReply.replyContent}</div>
-                      ) : (
-                          <textarea className="edit_reply" value = {subReply.replyContent} onChange={(e) => setEditContent(e.target.value)}/>
-                      ) }
-                    {subReply.userId === user_id && (
-                      <div className="rereply_delete">
-                        <img
-                          src={dropdot}
-                          alt="delete"
-                          onClick={() => delOpenReply(subReply.replyId)}
-                        />
-                        {openDelReply[subReply.replyId] && (
-                          <div className="edit_container">
-                            <button
-                              onClick={() =>
-                                handleEditClick(subReply.replyId, reply.replyId)
-                              }
-                            >
-                              수정
-                            </button>
-                            <button
-                              onClick={() =>
-                                handleDeleteClick(subReply.replyId)
-                              }
-                            >
-                              삭제
-                            </button>
+                        ) : (
+                          <textarea
+                            className="edit_reply"
+                            value={subReply.replyContent}
+                            onChange={(e) => setEditContent(e.target.value)}
+                          />
+                        )}
+                        {subReply.userId === user_id && (
+                          <div className="rereply_delete">
+                            <img
+                              src={dropdot}
+                              alt="delete"
+                              onClick={() => delOpenReply(subReply.replyId)}
+                            />
+                            {openDelReply[subReply.replyId] && (
+                              <div className="edit_container">
+                                <button
+                                  onClick={() =>
+                                    handleEditClick(
+                                      subReply.replyId,
+                                      reply.replyId
+                                    )
+                                  }
+                                >
+                                  수정
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleDeleteClick(subReply.replyId)
+                                  }
+                                >
+                                  삭제
+                                </button>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>
-                    )}
                     </div>
-                  </div>
-                  {!editModes[subReply.replyId] ? (
+                    {!editModes[subReply.replyId] ? (
                       <div className="rereply_date">{subReply.date}</div>
-                    ): (
+                    ) : (
                       <div className="edit_button">
-                        <button onClick={() => setEditModes(!editModes[subReply.replyId])}>취소</button>
-                        <button onClick={() => handleReplyEdit(subReply.replyId)}>수정</button>
+                        <button
+                          onClick={() =>
+                            setEditModes(!editModes[subReply.replyId])
+                          }
+                        >
+                          취소
+                        </button>
+                        <button
+                          onClick={() => handleReplyEdit(subReply.replyId)}
+                        >
+                          수정
+                        </button>
                       </div>
                     )}
-                </div>
+                  </div>
                 </div>
               ))}
           </div>
@@ -594,5 +603,3 @@ function BoardDetail() {
   );
 }
 export default BoardDetail;
-
-
