@@ -102,7 +102,7 @@ export default function ProfileImage({ onSuccess }) {
       type: 'image/png',
     });
 
-    instance.get('https://localhost:3000/user/picture')
+    instance.get('https://localhost:3000/user/image/show')
     .then((res) =>{
     if (res.data.result.length > 0) {
       const imageUrl = res.data.result;

@@ -34,10 +34,10 @@ const Home = () => {
   }, [index]);
 
   useEffect(() => {
-  instance.get('https://localhost:3000/user/picture')
+  instance.get('https://localhost:3000/user/image/show')
   .then((res) => {
     if (res.data.result) {
-      const imageUrl = Object.keys(res.data.result)[0]; // 이미지 URL 가져오기
+      const imageUrl = res.data.result; // 이미지 URL 가져오기
       console.log(res.data.result);
       setImageUrl(imageUrl);
       setCookie("MyIMG", imageUrl);

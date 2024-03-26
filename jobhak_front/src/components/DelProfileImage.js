@@ -19,7 +19,7 @@ const DelProfileImage = () =>{
           })
           .then((result) => {
             if (result.isConfirmed) {
-                instance.get('https://localhost:3000/user/picture')
+                instance.get('https://localhost:3000/user/image/show')
                 .then((res) =>{
                     if (res.data.result !== defaultImageUrl) {
                         instance.delete('https://localhost:3000/user/image/delete')

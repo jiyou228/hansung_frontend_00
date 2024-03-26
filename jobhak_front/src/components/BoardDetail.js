@@ -124,7 +124,6 @@ function BoardDetail() {
                 post_id: postId,
               },
             });
-            alert('엥ㄹ');
           }
           else{
             setEditModes(prevState => ({

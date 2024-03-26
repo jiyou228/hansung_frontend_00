@@ -7,8 +7,8 @@ const HandleProfile = ({ openUploadModal, openDeleteModal }) => {
     useEffect(() => {
         const fetchAndSetImageURL = async () => {
             try {
-                const response = await instance.get('https://localhost:3000/user/picture');
-                const imageURL = response.data.result ? Object.keys(response.data.result)[0] : null; // 이미지 URL 가져오기
+                const response = await instance.get('https://localhost:3000/user/image/show');
+                const imageURL = response.data.result; // 이미지 URL 가져오기
                 if (imageURL) {
                     cookie.set("MyIMG", imageURL); // 이미지 URL을 쿠키에 저장합니다.
                 }
