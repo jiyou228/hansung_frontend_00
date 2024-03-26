@@ -19,7 +19,7 @@ const DelProfileImage = () =>{
             if (result.isConfirmed) {
                 instance.get('https://localhost:3000/user/picture')
                 .then((res) =>{
-                    if (Array.isArray(res.data.result) && res.data.result.length > 0) {
+                    if (res.data.result.length > 0) {
                         instance.delete('https://localhost:3000/user/image/delete')
                         .then((res) =>{
                             console.log("프로필 사진 삭제 성공!", res.data);
