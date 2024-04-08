@@ -28,6 +28,7 @@ import GPTResume from "./components/GPTResume";
 import NotFound from "./components/NotFound";
 import ResetPW from "./components/ResetPW";
 import PrivateRoute from "./components/PrivateRoute";
+import Chatbot from "./components/chatbot";
 
 function App() {
   return (
@@ -107,6 +108,7 @@ function App() {
             path="/reset/pw"
             element={<PrivateRoute element={ResetPW} />}
           />
+          <Route path="/chatbot" element={<PrivateRoute element={Chatbot} />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>

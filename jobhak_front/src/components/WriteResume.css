@@ -1,346 +1,363 @@
 .write_list {
-    list-style: none;
-    display: flex;
-    gap: 3rem;
-    font-size: 1.5rem;
-    line-height: 3rem; 
-    margin-bottom:0;
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  font-size: 1.5rem;
+  line-height: 3rem;
+  margin-bottom: 0;
 }
 .write_list li {
-    padding: 0 1rem;
-    height: 3rem;
+  padding: 0 1rem;
+  height: 3rem;
 }
-.add_title{
-    font-weight: 800;
+.add_title {
+  font-weight: 800;
 }
 .write_link {
-    text-decoration: none;
-    color: #252525;
-    font-weight: 500;
+  text-decoration: none;
+  color: #252525;
+  font-weight: 500;
+}
+
+.revise_output {
+  display: inline-block;
+  color: #104085;
+  background-color: #dae8ff;
+  display: inline-block;
+  overflow: auto;
+  height: 58vh;
+  width: 32vw;
+  text-align: left;
+  word-break: break-all;
+  white-space: normal;
+  padding: 1rem 1rem 1rem;
+  resize: none;
+  overflow-y: scroll;
 }
 
 .write_link_active {
-    border-bottom: 5px solid #4C8EED;
-    text-decoration: none;
-    color: #252525;
-    font-weight: 700;
+  border-bottom: 5px solid #4c8eed;
+  text-decoration: none;
+  color: #252525;
+  font-weight: 700;
 }
 .write_container {
-    width: 72vw;
-    margin: auto;
+  width: 72vw;
+  margin: auto;
 }
-.write_title{
-    text-align: center;
-    font-weight: 800;
-    font-size: 1.8rem;
-    padding-bottom: 1vh;
+.write_title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.8rem;
+  padding-bottom: 1vh;
 }
 .write_hr {
-    position: relative;
-    top: -0.7rem;
-    border: 1px solid gray;
-    z-index: -100;
-    opacity: 20%;
+  position: relative;
+  top: -0.7rem;
+  border: 1px solid gray;
+  z-index: -100;
+  opacity: 20%;
 }
 
 .write_form {
-    max-height: 80vh;
-    margin-top: 1.5rem;
-    margin: auto;
-    display: block;
-    /* max-width: 73vw; */
+  max-height: 80vh;
+  margin-top: 1.5rem;
+  margin: auto;
+  display: block;
+  /* max-width: 73vw; */
 }
 
 .write_content {
-    margin: auto;
-    width: 70vw;
-    font-family: NanumSquare;
+  margin: auto;
+  width: 70vw;
+  font-family: NanumSquare;
 }
 
 .write_input_container {
-    margin-bottom: 2rem; 
+  margin-bottom: 2rem;
 }
 
 .write_label {
-    font-weight: 700;
-    font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1.15rem;
 }
 
 .write_input,
 .write_textarea {
-    width: 100%;
-    border: 1.5px solid black;
-    border-radius: 10px;
-    padding: 1rem 1rem;
-    box-sizing: border-box;
-    margin-top: 0.5rem;
-    font-family: NanumSquare;
-    font-size: medium;
+  width: 100%;
+  border: 1.5px solid black;
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  box-sizing: border-box;
+  margin-top: 0.5rem;
+  font-family: NanumSquare;
+  font-size: medium;
 }
 
-.toggle_container{
-    display: inline-block;
+.toggle_container {
+  display: inline-block;
 }
-.toggle_container label{
-    margin-left: 1rem;
-    font-size: 1.2rem;
-    padding-right: 1rem;
+.toggle_container label {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  padding-right: 1rem;
 }
 .toggle_button {
-    display: inline-block;
-    border-radius: 2rem;
-    text-align: center;
-    width: 7rem;
-    position: relative;
-    background-color: #104085;
-    color: white;
-    transition: background-color 0.5s, color 0.5s;
-    cursor: pointer;
-  }
-  
-  .toggle_button.active {
-    border-radius: 2rem;
-    text-align: center;
-    width: 7rem;
-    position: relative;
-    border: 2px solid #104085;
-    background-color: white;
-    color:#104085;
-    transition: background-color 0.5s, color 0.5s;
-  }
+  display: inline-block;
+  border-radius: 2rem;
+  text-align: center;
+  width: 7rem;
+  position: relative;
+  background-color: #104085;
+  color: white;
+  transition: background-color 0.5s, color 0.5s;
+  cursor: pointer;
+}
 
-  .toggle_circle.active{
-    width: 1.1rem;
-    height: 1.1rem;
-    border-radius: 50%;
-    background-color: #104085;
-    position: absolute;
-    top: 50%;
-    left: 0.5rem;
-    transform: translateY(-50%);
-    transition: 0.8s;
-  }
-  .toggle_circle{
-    width: 1.1rem;
-    height: 1.1rem;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    right: 0.5rem;
-    transform: translateY(-50%);
-    transition: 0.8s;
-  }
-  .toggle_text{
-    padding: 0.3rem 0;
-    font-weight: 700;
-    font-size: 1.2rem;
-    padding-right: 0.5rem;
-  }
-  .toggle_text.active{
-    padding: 0.3rem 0;
-    padding-left: 0.5rem;
-  }
-  
+.toggle_button.active {
+  border-radius: 2rem;
+  text-align: center;
+  width: 7rem;
+  position: relative;
+  border: 2px solid #104085;
+  background-color: white;
+  color: #104085;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.toggle_circle.active {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: #104085;
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translateY(-50%);
+  transition: 0.8s;
+}
+.toggle_circle {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  transition: 0.8s;
+}
+.toggle_text {
+  padding: 0.3rem 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding-right: 0.5rem;
+}
+.toggle_text.active {
+  padding: 0.3rem 0;
+  padding-left: 0.5rem;
+}
 
 .write_button {
-    border: none;
-    width: fit-content;
-    text-align: center;
-    background-color: #104085;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: 1rem;
-    padding: 0.3rem 1rem;
-    border-radius: 0.3rem;
-    white-space: nowrap;
+  border: none;
+  width: fit-content;
+  text-align: center;
+  background-color: #104085;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  white-space: nowrap;
 }
 
 .write_delete {
-    border: none;
-    width: fit-content;
-    text-align: center;
-    color: #104085;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    margin-left: 1rem;
-    padding: 0.3rem 1rem;
-    border-radius: 0.3rem;
-    white-space: nowrap;
+  border: none;
+  width: fit-content;
+  text-align: center;
+  color: #104085;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 0.3rem 1rem;
+  border-radius: 0.3rem;
+  white-space: nowrap;
 }
 
 .write_textarea {
-    height: 60vh;
-    resize: none;
-    margin-top: 1rem;
+  height: 60vh;
+  resize: none;
+  margin-top: 1rem;
 }
-.write_button_container{
-    margin: 0;
-    text-align: center;
-    padding-bottom: 2vh;
+.write_button_container {
+  margin: 0;
+  text-align: center;
+  padding-bottom: 2vh;
 }
 
 .write_button_next {
-    background-color: #104085;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 0.8rem;
-    padding: 0.5rem 3rem;
-    cursor: pointer;
-    margin-left: 1vw;
+  background-color: #104085;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.5rem 3rem;
+  cursor: pointer;
+  margin-left: 1vw;
 }
 .write_button_reset {
-    color: #104085;
-    font-size: 1.5rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 0.8rem;
-    padding: 0.5rem 2.3rem;
-    margin-right: 1vw;
-    border: 0.5px solid #0000001a;
+  color: #104085;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.5rem 2.3rem;
+  margin-right: 1vw;
+  border: 0.5px solid #0000001a;
 }
 
+.write_add {
+  cursor: pointer;
+  background-color: #104085;
+  color: white;
+  width: fit-content;
+  padding: 0.2rem 1rem;
+  float: right;
+  border-radius: 1rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.write_career {
+  display: flex;
+  align-items: center;
+  padding: 2vh 0;
+}
+.write_experience {
+  display: flex;
+  align-items: center;
+  padding: 2vh 0;
+}
+.write_career_container input {
+  margin-left: 1rem;
+}
+.write_career_container label {
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+.write_career_container label:first-child {
+  margin-left: 0;
+}
 
-.write_add{
-    cursor: pointer;
-    background-color: #104085;
-    color: white;
+.write_experience_container input {
+  margin-left: 1rem;
+}
+.write_experience_container label {
+  margin-left: 1rem;
+  white-space: nowrap;
+}
+.write_experience_container label:first-child {
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .write_list {
+    white-space: nowrap;
+    font-size: large;
+  }
+  .write_container {
+    width: 90vw;
+  }
+  .write_list {
+    justify-content: space-between;
+    gap: 0;
+    padding: 0;
+  }
+  .write_title {
+    padding-bottom: 4vh;
+    margin-top: 3vh;
+    font-size: larger;
+  }
+  .write_label {
+    font-size: large;
+  }
+  .write_content {
+    width: 95vw;
+  }
+  .write_input,
+  .write_textarea {
+    font-size: medium;
+  }
+  .write_input {
+    padding: 0.5rem;
+  }
+  .write_career {
+    display: grid;
+    row-gap: 1vh;
+    align-items: center;
+  }
+  .write_career_container {
+    margin-top: 5vh;
+  }
+  .write_career_container label {
+    margin: 0;
+    font-weight: 600;
+  }
+  .write_career_container input {
+    margin: 0;
+  }
+  .write_button {
+    margin: 0;
+    font-size: medium;
+  }
+  .write_career .write_button {
+    justify-self: end;
+  }
+  .write_experience {
+    display: grid;
+    row-gap: 1vh;
+    align-items: center;
+  }
+  .write_delete {
+    margin-left: auto;
+  }
+
+  .write_experience_container label {
+    margin: 0;
+    font-weight: 600;
+  }
+  .write_experience_container input {
+    margin: 0;
+  }
+  .write_experience .write_button {
+    justify-self: end;
+  }
+  .write_experience_container {
+    margin-top: 5vh;
+  }
+  .write_input_container .write_button {
+    margin-left: 3vw;
+  }
+
+  .toggle_container {
+    margin-top: 2vh;
+    display: block;
+  }
+  .toggle_container label {
+    margin-left: 0;
+    font-size: medium;
+  }
+  .toggle_button,
+  .toggle_button.active {
     width: fit-content;
-    padding: 0.2rem 1rem;
-    float: right;
-    border-radius: 1rem;
-    font-weight: 700;
-    font-size: 1.5rem;
-}
-.write_career{
-    display: flex;
-    align-items: center;
-    padding: 2vh 0;
-}
-.write_experience{
-    display: flex;
-    align-items: center;
-    padding: 2vh 0;
-}
-.write_career_container input{
-    margin-left: 1rem;
-}
-.write_career_container label{
-    margin-left: 1rem;
-    white-space: nowrap;
-}
-.write_career_container label:first-child{
-    margin-left: 0;
-}
-
-.write_experience_container input{
-    margin-left: 1rem;
-}
-.write_experience_container label{
-    margin-left: 1rem;
-    white-space: nowrap;
-}
-.write_experience_container label:first-child{
-    margin-left: 0;
-}
-
-@media(max-width: 768px){
-    .write_list{
-        white-space: nowrap;
-        font-size:large;
-    }
-    .write_container{
-        width: 90vw;
-    }
-    .write_list{
-        justify-content: space-between;
-        gap: 0;
-        padding: 0;
-    }
-    .write_title{
-        padding-bottom: 4vh;
-        margin-top: 3vh;
-        font-size: larger;
-    }
-    .write_label{
-        font-size: large;
-    }
-    .write_content{
-        width: 95vw;
-    }
-    .write_input, .write_textarea{
-        font-size: medium;
-    }
-    .write_input{
-        padding: 0.5rem;
-    }
-    .write_career{
-        display: grid;
-        row-gap: 1vh;
-        align-items: center;
-    }
-    .write_career_container{
-        margin-top: 5vh;
-    }
-    .write_career_container label{
-        margin: 0;
-        font-weight: 600;
-    }
-    .write_career_container input{
-        margin: 0;
-    }
-    .write_button {
-        margin: 0;
-        font-size: medium;
-    }
-    .write_career .write_button{
-        justify-self: end;
-    }
-    .write_experience{
-        display: grid;
-        row-gap: 1vh;
-        align-items: center;
-    }
-    .write_delete{
-        margin-left: auto;
-    }
-
-    .write_experience_container label{
-        margin: 0;
-        font-weight: 600;
-    }
-    .write_experience_container input{
-        margin: 0;
-    }
-    .write_experience .write_button{
-        justify-self: end;
-    }
-    .write_experience_container{
-        margin-top: 5vh;
-    }
-    .write_input_container .write_button{
-        margin-left: 3vw;
-    }
-    
-    .toggle_container{
-        margin-top: 2vh;
-        display: block;
-    }
-    .toggle_container label{
-        margin-left: 0;
-        font-size: medium;
-    }
-    .toggle_button, .toggle_button.active{
-        width: fit-content;
-        padding: 0 7vw;
-        line-height: 3vh;
-    }
-    .write_button_next, .write_button_reset{
-        font-size: large;
-    }
+    padding: 0 7vw;
+    line-height: 3vh;
+  }
+  .write_button_next,
+  .write_button_reset {
+    font-size: large;
+  }
 }

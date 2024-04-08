@@ -1,36 +1,12 @@
 import React, { useState } from "react";
-import Nav from "./Nav";
-import "./ReviseResume.css";
-import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 
-const Resume = () => {
+const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [revision, setRevision] = useState("");
 
   const apiKey = "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";
   const apiEndpoint = "https://api.openai.com/v1/chat/completions";
-
-  const onReset = (e) => {
-    e.preventDefault();
-    Swal.fire({
-      title: "warning",
-      text: "작성된 내용이 모두 초기화됩니다.\n 정말로 삭제하시겠습니까?",
-      icon: "warning",
-
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "확인",
-      cancelButtonText: "취소",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        window.location.reload();
-      }
-    });
-  };
 
   const addMessage = (sender, message) => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);
@@ -43,16 +19,6 @@ const Resume = () => {
     addMessage("user", message);
     setUserInput("");
     setLoading(true);
-
-    Swal.fire({
-      icon: "success",
-      title: "로딩 중.. 기다려주십시오",
-      text: "첨삭된 자기소개서를 불러오고 있습니다.",
-      showCancelButton: false,
-      confirmButtonText: "확인",
-      width: 800,
-      height: 100,
-    });
 
     try {
       const response = await fetch(apiEndpoint, {
@@ -84,7 +50,7 @@ const Resume = () => {
               content: message,
             },
           ],
-          max_tokens: 2048, // 답변 최대 글자 수,
+          max_tokens: 1024, // 답변 최대 글자 수,
           top_p: 1, // 다음 단어를 선택할 때 상위 p%의 확률 분포를 사용하는 매개변수, 높을수록 안정된 선택
           temperature: 1, // 답변의 다양성과 창의성, 낮을수록 일관적 (0~2)
           frequency_penalty: 1, // 전문적 단어의 빈도, 낮을수록 전문적 (0~1)
@@ -95,7 +61,7 @@ const Resume = () => {
 
       const data = await response.json();
       const aiResponse = data.choices?.[0]?.message?.content || "No response";
-      setRevision(aiResponse);
+      addMessage("bot", aiResponse);
     } catch (error) {
       console.error("오류 발생!", error);
       addMessage("오류 발생!");
@@ -111,55 +77,31 @@ const Resume = () => {
   };
 
   return (
-    <>
-      <Nav />
-      <div className="revise_container">
-        <ul className="revise_list">
-          <Link to="/resume/write" className="revise_link">
-            <li>AI 작성 자소서</li>
-          </Link>
-          <Link to="/resume/revise" className="revise_link_active">
-            <li>AI 첨삭 자소서</li>
-          </Link>
-        </ul>
-        <hr className="revise_hr" />
+    <div id="Chatbot">
+      <h1>인공지능 챗봇</h1>
+      <div className="chatDiv">
+        {loading && (
+          <span className="messageWait">답변을 기다리고 있습니다</span>
+        )}
+        {messages.map((msg, index) => (
+          <div key={index} className={`message ${msg.sender}`}>
+            {`${msg.sender === "user" ? "나" : "챗봇"}\n : ${msg.message}\n`}
+          </div>
+        ))}
       </div>
-      <div className="revise_title">AI 첨삭 자기소개서</div>
-      <form className="revise_form">
-        <div className="revise_count">글자수: {userInput.length}</div>
-        <div className="revise_content">
-          <div className="revise_inputarea">
-            <h3>나의 자기소개서</h3>
-            <textarea
-              maxLength="1000"
-              placeholder="자기소개서를 작성해보세요. (최대 1000자)"
-              className="revise_input"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              required
-            />
-          </div>
-          <div className="revise_outputarea">
-            <h3>AI 피드백</h3>
-            <div className="revise_output">{revision}</div>
-          </div>
-        </div>
-        <div className="revise_button_container">
-          <button onClick={onReset} className="revise_button_reset">
-            초기화
-          </button>
-          <button
-            type="submit"
-            onClick={handleSendMessage}
-            className="revise_button_next"
-          >
-            첨삭
-          </button>
-        </div>
-      </form>
-    </>
+      <div className="inputDiv">
+        <input
+          type="text"
+          style={{ width: "50vw", height: "50vh" }}
+          placeholder="메시지를 입력하세요"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <button onClick={handleSendMessage}>전송</button>
+      </div>
+    </div>
   );
 };
 
-export default Resume;
+export default Chatbot;

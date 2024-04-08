@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import instance from "../axiosConfig";
+import { useCookies } from "react-cookie";
 
 const NaverLogin = () => {
   const { naver } = window;
-  const NAVER_CLIENT_ID = 'JpTJiIlCSBmFu0fI3oft';
-  const NAVER_CALLBACK_URL = 'http://localhost:3000/login/naver';
+  const [, setCookie] = useCookies();
+  const NAVER_CLIENT_ID = "JpTJiIlCSBmFu0fI3oft";
+  const NAVER_CALLBACK_URL = "https://localhost:3000/login/naver";
   const navigate = useNavigate();
-
 
   const initializeNaverLogin = () => {
     const naverLogin = new naver.LoginWithNaverId({
       clientId: NAVER_CLIENT_ID,
       callbackUrl: NAVER_CALLBACK_URL,
       isPopup: true,
-      loginButton: { color: 'white'},
+      loginButton: { color: "white" },
       callbackHandle: true,
     });
 
@@ -25,12 +27,27 @@ const NaverLogin = () => {
         const name = naverLogin.user.getName();
         const id = naverLogin.user.getId();
         const nickname = naverLogin.user.getNickName();
-        const image = naverLogin.user.getProfileImage();
-        
-        alert(`이름: ${name}, 닉네임: ${nickname}\n아이디: ${id}\n이메일: ${email}\n프로필사진URL: ${image}`);
-        navigate('/');
-      }
-      else {
+
+        instance
+          .post("https://localhost:3000/login/naver", {
+            loginId: id,
+            name: name,
+            nickname: nickname,
+            email: email,
+          })
+          .then((res) => {
+            if (res.data) {
+              const { accessToken, refreshToken } = res.data;
+              localStorage.setItem("accessToken", accessToken);
+              setCookie("refreshToken", refreshToken, { path: "/" });
+            }
+            setCookie("loggedIn", true);
+            navigate("/home");
+          })
+          .catch((err) => {
+            console.error("에러 발생", err);
+          });
+      } else {
         naverLogin.authorize();
       }
     });
@@ -42,7 +59,7 @@ const NaverLogin = () => {
 
   return (
     <>
-      <div id="naverIdLogin"/> 
+      <div id="naverIdLogin" />
     </>
   );
 };
