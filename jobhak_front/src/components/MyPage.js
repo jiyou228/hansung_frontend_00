@@ -86,6 +86,7 @@ function MyPage() {
     setIsUploadOpen(true);
   }
   const closeUploadModal = () =>{
+    navigate(0);
     setIsUploadOpen(false);
   }
   const openDeleteModal = () =>{

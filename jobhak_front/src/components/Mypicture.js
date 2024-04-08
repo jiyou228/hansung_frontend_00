@@ -9,6 +9,7 @@ import { Cookies } from "react-cookie";
 import Modal from 'react-modal';
 import HandleProfile from "./HandleProfile";
 import ProfileImage from "./ProfileImage";
+import DelProfileImage from "./DelProfileImage";
 
 Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
 
@@ -17,15 +18,18 @@ function Mypicture() {
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
   cookie.get("nickname", decodeURIComponent(encodedNickname));
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
 
-  const openModal = () =>{
-    setIsModalOpen(true);
+  const openUploadModal = () =>{
+    setIsUploadOpen(true);
   }
-  const closeModal = () =>{
-    window.location.reload();
-    setIsModalOpen(false);
+  const closeUploadModal = () =>{
+    setIsUploadOpen(false);
+  }
+  const openDeleteModal = () =>{
+    setIsDeleteOpen(true);
   }
 
   return (
@@ -38,7 +42,7 @@ function Mypicture() {
             <div className="mypage_profile_name">
               {decodeURIComponent(encodedNickname)}님
             </div>
-            <HandleProfile openModal={openModal}/>
+            <HandleProfile openUploadModal = {openUploadModal} openDeleteModal={openDeleteModal}/>
           </div>
           <div
             className="mypage_count_div"
@@ -117,7 +121,7 @@ function Mypicture() {
 
         <div className="changepw_div"></div>
       </div>
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}
+      <Modal isOpen={isUploadOpen} onRequestClose={closeUploadModal}
       style={{
         overlay: {
           position: 'fixed',
@@ -142,8 +146,11 @@ function Mypicture() {
           padding: '20px'
         }
       }}> 
-        <ProfileImage onSuccess={closeModal}/>
+        <ProfileImage onSuccess={closeUploadModal}/>
       </Modal>
+      {isDeleteOpen && (
+        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)}/>
+      )}
     </div>
   );
 }

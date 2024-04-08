@@ -3,7 +3,7 @@ import "./WriteResume.css";
 import Nav from "./Nav.js";
 import { Link } from "react-router-dom";
 import ModalAlert from "./Modal_Alert.js";
-
+import instance from '../axiosConfig.js';
 const WriteResume = () => {
   const [clipboardValue, setClipboardValue] = useState("");
   const [isTextMode, setIsTextMode] = useState(false);
@@ -142,6 +142,9 @@ const WriteResume = () => {
   };
   
 };
+const getMyInfo = () =>{
+  instance.get('https://localhost:3000/',)
+}
 
   return (
     <div className="write_app">
@@ -178,6 +181,8 @@ const WriteResume = () => {
                         <div className={`toggle_text ${isTextMode ? 'active' : ''}`}>{isTextMode ? "꺼짐" : "켜짐"}</div>
                 </div>
             </div>
+            <br/>
+            <button onClick={getMyInfo}>나의 경험/경력 불러오기</button>
                 {isTextMode ? (
               <textarea className="write_textarea" placeholder="이 부분을 작성하시면 더 좋은 자기소개서가 작성됩니다." />
             ) : (

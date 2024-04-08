@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "jobhak_front"
+		}
+	],
+	"settings": {
+		"html-to-css-autocompletion.triggerCharacters": true,
+		"html-to-css-autocompletion.getSelectorsFromFileTypes": [
+			"html"
+		],
+		"html-to-css-autocompletion.autocompletionFilesScope": "linked-files"
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": []
+	}
+}

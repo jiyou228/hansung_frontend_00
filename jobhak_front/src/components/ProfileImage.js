@@ -6,6 +6,7 @@ import { useDebounceEffect } from "./useDebouce";
 import "react-image-crop/dist/ReactCrop.css";
 import instance from "../axiosConfig";
 import "./ProfileImage.css";
+import Cookies from "js-cookie";
 
 function centerAspectCrop(mediaWidth, mediaHeight, aspect) {
   return centerCrop(
@@ -123,8 +124,17 @@ export default function ProfileImage({ onSuccess }) {
         .then((res) => {
           if (res) {
             console.log("프로필 등록 성공");
-            onSuccess();
-          }
+            instance.get('https://localhost:3000/user/image/show')
+            .then((res) =>{
+                if(res.data.result){
+                  Cookies.set("MyIMG", res.data.result);
+                  onSuccess();
+                }
+            })
+            .catch((err) =>{
+                console.error('에러발생: ', err);
+            })
+                    }
         })
         .catch((err) => {
           console.error(err);
@@ -139,7 +149,16 @@ export default function ProfileImage({ onSuccess }) {
         .then((res) => {
           if (res) {
             console.log("프로필 등록 성공");
-            onSuccess();
+            instance.get('https://localhost:3000/user/image/show')
+                            .then((res) =>{
+                                if(res.data.result){
+                                    Cookies.set("MyIMG", res.data.result);
+                                    onSuccess();
+                                }
+                            })
+                            .catch((err) =>{
+                                console.error('에러발생: ', err);
+                            })
           }
         })
         .catch((err) => {

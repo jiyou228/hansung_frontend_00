@@ -141,6 +141,7 @@
     justify-content: center;
     flex-grow: 1;
     overflow: hidden;
+    width: 20vw;
 }
 .home_job img{
     width: 100%;
@@ -310,10 +311,13 @@
         height: fit-content;
         padding: 2vh 2vw;
         gap: 3vh;
+        width: 85vw;
+        margin: auto;
     }
     .job_title h2{
         font-weight: 700;
     }
+
     .job_title .image{
         min-width: 30vw;
         margin-top: 0;

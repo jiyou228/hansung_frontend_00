@@ -28,6 +28,7 @@ import GPTResume from "./components/GPTResume";
 import NotFound from "./components/NotFound";
 import ResetPW from "./components/ResetPW";
 import PrivateRoute from "./components/PrivateRoute";
+import ChangeName from "./components/ChangeName";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/login/kakao" element={<KakaoLogin />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
+          <Route path="/login/kakao/changeName" element={<ChangeName/>}></Route>
           <Route
             path="/boardlist"
             element={<PrivateRoute element={BoardList} />}
