@@ -11,6 +11,7 @@ import delete_icon from "../assets/delete_icon.png";
 import ProfileImage from "./ProfileImage";
 import Modal from 'react-modal';
 import HandleProfile from "./HandleProfile";
+import DelProfileImage from "./DelProfileImage";
 
 Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
 
@@ -23,7 +24,9 @@ function Bookmark() {
   const navigate = useNavigate();
   const [bookmark_arr, setBookMark_arr] = useState([]);
   const [bookmark_id, setBookMark_id] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isUploadOpen, setIsUploadOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+
 
 
   useEffect(() => {
@@ -63,12 +66,14 @@ function Bookmark() {
     navigate(`/boardlist/detail/${postId}`);
   };
 
-  const openModal = () =>{
-    setIsModalOpen(true);
+  const openUploadModal = () =>{
+    setIsUploadOpen(true);
   }
-  const closeModal = () =>{
-    setIsModalOpen(false);
-    window.location.reload();
+  const closeUploadModal = () =>{
+    setIsUploadOpen(false);
+  }
+  const openDeleteModal = () =>{
+    setIsDeleteOpen(true);
   }
 
   return (
@@ -80,7 +85,7 @@ function Bookmark() {
             <div className="mypage_profile_name">
               {decodeURIComponent(encodedNickname)}님
             </div>
-            <HandleProfile openModal={openModal}/>
+            <HandleProfile openUploadModal = {openUploadModal} openDeleteModal={openDeleteModal}/>
           </div>
           <div
             className="mypage_count_div"
@@ -183,7 +188,7 @@ function Bookmark() {
           ))}
         </div>
       </div>
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}
+      <Modal isOpen={isUploadOpen} onRequestClose={closeUploadModal}
       style={{
         overlay: {
           position: 'fixed',
@@ -208,8 +213,11 @@ function Bookmark() {
           padding: '20px'
         }
       }}> 
-        <ProfileImage onSuccess={closeModal}/>
+        <ProfileImage onSuccess={closeUploadModal}/>
       </Modal>
+      {isDeleteOpen && (
+        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)}/>
+      )}
     </div>
   );
 }

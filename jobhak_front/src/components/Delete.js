@@ -31,7 +31,6 @@ function Delete() {
     setIsUploadOpen(true);
   }
   const closeUploadModal = () =>{
-    window.location.reload();
     setIsUploadOpen(false);
   }
   const openDeleteModal = () =>{

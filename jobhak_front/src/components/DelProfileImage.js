@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 
 
 const defaultImageUrl = "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/default/default.png";
-const DelProfileImage = () =>{
+const DelProfileImage = ({onSuccess}) =>{
     const [,setCookie] = useCookies();
     useEffect(() =>{
         Swal.fire({
@@ -31,6 +31,7 @@ const DelProfileImage = () =>{
                             .then((res) =>{
                                 if(res.data.result){
                                     setCookie("MyIMG", res.data.result);
+                                    onSuccess();
                                 }
                             })
                             .catch((err) =>{
@@ -48,6 +49,9 @@ const DelProfileImage = () =>{
                 .catch((err) =>{
                 console.error(err);
                 }) 
+            }
+            else{
+                onSuccess();
             }
         })
     },[]);
