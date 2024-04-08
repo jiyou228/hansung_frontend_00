@@ -3,7 +3,7 @@ import "./WriteResume.css";
 import Nav from "./Nav.js";
 import { Link } from "react-router-dom";
 import ModalAlert from "./Modal_Alert.js";
-import instance from '../axiosConfig.js';
+import instance from "../axiosConfig.js";
 import Swal from "sweetalert2";
 
 const WriteResume = () => {
@@ -224,16 +224,11 @@ const WriteResume = () => {
       } else {
         alert("입사 및 시작은 반드시 퇴사 및 종료보다 이전이어야 합니다.");
       }
-      else{
-        alert('입사 및 시작은 반드시 퇴사 및 종료보다 이전이어야 합니다.');
-      }
-
+    }
   };
-  
-};
-const getMyInfo = () =>{
-  instance.get('https://localhost:3000/',)
-}
+  const getMyInfo = () => {
+    instance.get("https://localhost:3000/");
+  };
 
   return (
     <div className="write_app">
@@ -290,10 +285,13 @@ const getMyInfo = () =>{
                 </div>
               </div>
             </div>
-            <br/>
+            <br />
             <button onClick={getMyInfo}>나의 경험/경력 불러오기</button>
-                {isTextMode ? (
-              <textarea className="write_textarea" placeholder="이 부분을 작성하시면 더 좋은 자기소개서가 작성됩니다." />
+            {isTextMode ? (
+              <textarea
+                className="write_textarea"
+                placeholder="이 부분을 작성하시면 더 좋은 자기소개서가 작성됩니다."
+              />
             ) : (
               <>
                 <h4>※ 이 부분을 작성하시면 더 좋은 자기소개서가 작성됩니다.</h4>
