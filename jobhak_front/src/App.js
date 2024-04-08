@@ -114,7 +114,6 @@ function App() {
             path="/reset/pw"
             element={<PrivateRoute element={ResetPW} />}
           />
-          <Route path="/chatbot" element={<PrivateRoute element={Chatbot} />} />
         </Routes>
       </BrowserRouter>
     </CookiesProvider>
