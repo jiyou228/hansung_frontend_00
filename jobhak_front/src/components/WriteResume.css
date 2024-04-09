@@ -235,11 +235,22 @@
   display: flex;
   align-items: center;
   padding: 2vh 0;
+  flex-wrap: wrap;
 }
 .write_experience {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   padding: 2vh 0;
+}
+.experience_long{
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+}
+.experience_long input{
+  width: 100%;
 }
 .write_career_container input {
   margin-left: 1rem;

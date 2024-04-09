@@ -72,7 +72,7 @@ instance.interceptors.response.use(
       }
     } else if (status === 404) {
       window.location.href = "/notfound";
-    }
+    }   
     return Promise.reject(error);
   }
 );

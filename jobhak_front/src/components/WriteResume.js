@@ -387,6 +387,7 @@ const getMyInfo = () =>{
                         }
                         value={experiences[index].experience_end}
                       />
+                      <div className="experience_long">
                       <label>활동내용</label>
                       <input
                         type="text"
@@ -396,6 +397,7 @@ const getMyInfo = () =>{
                         }
                         value={experiences[index].experience_detail}
                       />
+                      </div>
                       <button
                         type="button"
                         className="write_delete"
