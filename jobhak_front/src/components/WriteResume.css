@@ -182,9 +182,13 @@
   font-weight: 700;
   cursor: pointer;
   margin-left: 1rem;
-  padding: 0.3rem 1rem;
+  padding: 0.4em 1em;
   border-radius: 0.3rem;
   white-space: nowrap;
+  box-sizing: border-box;
+}
+.write_delete:hover{
+  font-weight: 800;
 }
 
 .write_textarea {
@@ -233,23 +237,53 @@
 }
 .write_career {
   display: flex;
-  align-items: center;
-  padding: 2vh 0;
   flex-wrap: wrap;
+  padding: 2vh 0;
+  flex-direction: column;
 }
 .write_experience {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   padding: 2vh 0;
+  flex-direction: column;
+}
+
+#experience_name{
+  flex: 1;
+}
+.experience_three {
+  display: flex;
+  align-items: center;
+  width: 100%;  
+  box-sizing: border-box;
 }
 .experience_long{
-  width: 80vw;
   display: flex;
   align-items: center;
   margin-top: 1vh;
+  box-sizing: border-box;
+  width: 100%;
 }
 .experience_long input{
+  width: 100%;
+}
+#company_name{
+  flex: 1;
+}
+.career_three {
+  display: flex;
+  align-items: center;
+  width: 100%;  
+  box-sizing: border-box;
+}
+.career_long{
+  display: flex;
+  align-items: center;
+  margin-top: 1vh;
+  box-sizing: border-box;
+  width: 100%;
+}
+.career_long input{
   width: 100%;
 }
 .write_career_container input {
@@ -272,6 +306,24 @@
 }
 .write_experience_container label:first-child {
   margin-left: 0;
+}
+.write_delete.active{
+  display: none;
+}
+.write_getMyInfo{
+  border:none;
+  padding: 0.5em 1.2em;
+  border-radius: 1em;
+  margin-top: 2vh;
+  font-weight: 600;
+  font-size: 1em;
+  color: #104085;
+  background-color: #EFEFEF;
+  width: fit-content;
+  cursor: pointer;
+}
+.write_getMyInfo:hover{
+  font-weight: 800;
 }
 
 @media (max-width: 768px) {
@@ -351,6 +403,47 @@
   }
   .write_input_container .write_button {
     margin-left: 3vw;
+  }
+  .experience_three {
+    display: grid;
+    row-gap: 1vh;
+    width: 95vw;
+    align-items: center;
+  }
+
+  .experience_long{
+    display: grid;
+    row-gap: 1vh;
+    align-items: center;
+    margin-top: 1vh;
+    width: 95vw;
+  }
+  .experience_long input{
+    width: 95vw;
+    box-sizing: border-box;
+  }
+  .career_three {
+    display: grid;
+    row-gap: 1vh;
+    width: 95vw;
+    align-items: center;
+  }
+  .write_delete.active{
+    display: block;
+  }
+  .write_delete{
+    display: none;
+  }
+  .career_long{
+    display: grid;
+    row-gap: 1vh;
+    align-items: center;
+    margin-top: 1vh;
+    width: 95vw;
+  }
+  .career_long input{
+    width: 95vw;
+    box-sizing: border-box;
   }
 
   .toggle_container {
