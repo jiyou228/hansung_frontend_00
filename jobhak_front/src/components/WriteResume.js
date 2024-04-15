@@ -7,12 +7,12 @@ import Swal from "sweetalert2";
 
 const WriteResume = () => {
   const [clipboardValue, setClipboardValue] = useState("");
-    const [isTextMode, setIsTextMode] = useState(false);
-    const [careers, setCareers] = useState([]);
+  const [isTextMode, setIsTextMode] = useState(false);
+  const [careers, setCareers] = useState([]);
   const [experiences, setExperiences] = useState([]);
   const [companyName, setCompanyName] = useState("");
   const [jobPosition, setJobPosition] = useState("");
-const [revision, setRevision] = useState("");
+  const [revision, setRevision] = useState("");
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
 
@@ -140,7 +140,7 @@ const [revision, setRevision] = useState("");
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       handleSubmit();
-}
+    }
   };
 
   const addMessage = (sender, message) => {
@@ -148,7 +148,7 @@ const [revision, setRevision] = useState("");
   };
 
   const handleSubmit = async (e = null) => {
-if (e) {
+    if (e) {
       e.preventDefault();
     }
     const hasCompanyName =
@@ -225,10 +225,10 @@ if (e) {
             stop: "stop",
           }),
         });
-                const data = await response.json();
+        const data = await response.json();
         const aiResponse = data.choices?.[0]?.message?.content || "No response";
         setRevision(aiResponse);
-navigate("/resume/write/gpt", { state: { revision: aiResponse } });
+        navigate("/resume/write/gpt", { state: { revision: aiResponse } });
       } catch (error) {
         console.error("ChatGPT API 호출 중 오류 발생:", error);
         alert("ChatGPT API 호출 중 오류 발생");
@@ -291,16 +291,13 @@ navigate("/resume/write/gpt", { state: { revision: aiResponse } });
         }
       } else {
         alert("입사 및 시작은 반드시 퇴사 및 종료보다 이전이어야 합니다.");
-}
-<<<<<<< HEAD
-=======
       }
+    }
   };
-  
-const getMyInfo = () => {
+
+  const getMyInfo = () => {
     instance.get("https://localhost:3000/");
->>>>>>> jiyou
-};
+  };
 
   return (
     <div className="write_app">
@@ -359,7 +356,7 @@ const getMyInfo = () => {
             </div>
             <br />
             <button onClick={getMyInfo}>나의 경험/경력 불러오기</button>
-                {isTextMode ? (
+            {isTextMode ? (
               <textarea
                 onChange={handleTextChange}
                 className="write_textarea"
@@ -490,7 +487,7 @@ const getMyInfo = () => {
               type="button"
               className="write_button"
               onClick={pasteClipboard}
-onKeyDown={handleKeyDown}
+              onKeyDown={handleKeyDown}
             >
               붙여넣기
             </button>
@@ -514,7 +511,7 @@ onKeyDown={handleKeyDown}
             다음
           </button>
         </div>
-              </form>
+      </form>
     </div>
   );
 };
