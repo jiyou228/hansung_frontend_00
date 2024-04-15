@@ -29,7 +29,7 @@ import NotFound from "./components/NotFound";
 import ResetPW from "./components/ResetPW";
 import PrivateRoute from "./components/PrivateRoute";
 import ChangeName from "./components/ChangeName";
-import RedirectNaver from "./components/redirectNaver";
+import LoginRedirect from "./components/LoginRedirect";
 
 function App() {
   return (
@@ -43,13 +43,13 @@ function App() {
           <Route path="/" element={<Login />}></Route>
           <Route path="/login/naver" element={<NaverLogin />}></Route>
           <Route path="/login/kakao" element={<KakaoLogin />}></Route>
+          <Route path = "/login/callback" element={<LoginRedirect/>}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
           <Route
             path="/login/kakao/changeName"
             element={<ChangeName />}
           ></Route>
-          <Route path="/redirectNaver" element={<RedirectNaver />}></Route>
           <Route
             path="/boardlist"
             element={<PrivateRoute element={BoardList} />}

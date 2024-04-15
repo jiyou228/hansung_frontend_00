@@ -9,23 +9,16 @@ import { useCookies } from "react-cookie";
 
 const ChangeName = () => { 
   const [name, setName] = useState("");
-  const code = new URL(document.location.toString()).searchParams.get('code'); 
   const navigate = useNavigate();
-  const [,setCookie] = useCookies();
 
   const changeNameSubmit = (e) => {
     e.preventDefault();
     instance
       .post("https://localhost:3000/login/kakao/changeName", { 
         name: name,
-        accessCode: code
       })
       .then((res) =>{
-        if (res.data) {
-          const { accessToken, refreshToken, kakaoToken } = res.data;
-          localStorage.setItem("accessToken", accessToken);
-          localStorage.setItem("kakaoToken", kakaoToken);
-          setCookie("refreshToken", refreshToken, { path: "/" });
+        if (res){
           Swal.fire({
             icon: "success",
             title: "성공",
@@ -35,7 +28,7 @@ const ChangeName = () => {
             width: 800,
             height: 100,
           });
-          navigate('/home');
+          navigate('/redirectKakao');
         }
       })
       .catch((err) =>{
