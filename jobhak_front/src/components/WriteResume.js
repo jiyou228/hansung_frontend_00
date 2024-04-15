@@ -375,6 +375,7 @@ const WriteResume = () => {
                   <h4 className="add_title">경력</h4>
                   {careers.map((_, index) => (
                     <div key={index} className="write_career">
+                      <div className="career_three">
                       <label>회사명</label>
                       <input
                         type="text"
@@ -402,6 +403,15 @@ const WriteResume = () => {
                         }
                         value={careers[index].company_end}
                       />
+                      <button
+                        type="button"
+                        className="write_delete"
+                        onClick={() => handleDeleteCareer(index)}
+                      >
+                        삭제
+                      </button>
+                      </div>
+                      <div className="career_long">
                       <label>업무내용 및 성과</label>
                       <input
                         type="text"
@@ -411,9 +421,10 @@ const WriteResume = () => {
                         }
                         value={careers[index].company_detail}
                       />
-                      <button
+                    </div>
+                    <button
                         type="button"
-                        className="write_delete"
+                        className="write_delete active"
                         onClick={() => handleDeleteCareer(index)}
                       >
                         삭제
@@ -432,6 +443,7 @@ const WriteResume = () => {
                   <h4 className="add_title">관련 경험 및 대외활동</h4>
                   {experiences.map((_, index) => (
                     <div key={index} className="write_experience">
+                      <div className="experience_three">
                       <label>활동명</label>
                       <input
                         type="text"
@@ -459,6 +471,15 @@ const WriteResume = () => {
                         }
                         value={experiences[index].experience_end}
                       />
+                      <button
+                        type="button"
+                        className="write_delete"
+                        onClick={() => handleDeleteExperience(index)}
+                      >
+                        삭제
+                      </button>
+                      </div>
+                      <div className="experience_long">
                       <label>활동내용</label>
                       <input
                         type="text"
@@ -468,9 +489,10 @@ const WriteResume = () => {
                         }
                         value={experiences[index].experience_detail}
                       />
+                      </div>
                       <button
                         type="button"
-                        className="write_delete"
+                        className="write_delete active"
                         onClick={() => handleDeleteExperience(index)}
                       >
                         삭제
