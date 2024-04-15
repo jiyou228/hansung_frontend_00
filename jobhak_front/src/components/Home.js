@@ -14,15 +14,18 @@ import no2 from "../assets/카드뉴스_작성.svg";
 import no3 from "../assets/카드뉴스_자소서.svg";
 import instance from "../axiosConfig";
 import building from "../assets/building.png";
+import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
-  const [cookie, setCookie] = useCookies();
+  const [ , setCookie] = useCookies();
   const [userProfile, setUserProfile] = useState("");
   const image = [no1, no2, no3];
   const [index, setIndex] = useState(0);
   const [jobList, setJobList] = useState([]);
   const defaultImage = building;
   const [imageList, setImageList] = useState([]);
+  const navgigate = useNavigate();
   const [imageURL, setImageUrl] = useState(null);
+
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -55,6 +58,9 @@ const Home = () => {
         setUserProfile(profile.data.result.nickname);
         setCookie("nickname", decodeURIComponent(profile.data.result.nickname));
         setCookie("user_id", profile.data.result.id);
+        if(!profile.data.result.name){
+          navgigate('/login/kakao/changeName');
+        }
       })
 
       .catch((err) => {
