@@ -7,7 +7,6 @@ import logo from "../assets/black_jobhak_full.svg";
 import { useEffect, useState } from "react";
 import job from "../assets/공고.png";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import svg from "../assets/black_jobhak_full.svg";
 import no1 from "../assets/카드뉴스_취업사진.svg";
 import no2 from "../assets/카드뉴스_작성.svg";
@@ -42,7 +41,6 @@ const Home = () => {
       .then((res) => {
         if (res.data.result) {
           const imageUrl = res.data.result; // 이미지 URL 가져오기
-          console.log(res.data.result);
           setImageUrl(imageUrl);
           setCookie("MyIMG", imageUrl);
         } else {

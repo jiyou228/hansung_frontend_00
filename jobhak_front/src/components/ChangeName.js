@@ -28,7 +28,7 @@ const ChangeName = () => {
             width: 800,
             height: 100,
           });
-          navigate('/redirectKakao');
+          navigate('/home');
         }
       })
       .catch((err) =>{
