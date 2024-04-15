@@ -22,7 +22,7 @@ const Home = () => {
   const [jobList, setJobList] = useState([]);
   const defaultImage = building;
   const [imageList, setImageList] = useState([]);
-  const [imageURL, setImageUrl] = useState(null); 
+  const [imageURL, setImageUrl] = useState(null);
 
   useEffect(() => {
     const changeImage = setInterval(() => {
@@ -34,51 +34,49 @@ const Home = () => {
   }, [index]);
 
   useEffect(() => {
-  instance.get('https://localhost:3000/user/image/show')
-  .then((res) => {
-    if (res.data.result) {
-      const imageUrl = res.data.result; // 이미지 URL 가져오기
-      console.log(res.data.result);
-      setImageUrl(imageUrl);
-      setCookie("MyIMG", imageUrl);
-    } 
-    else {
-      console.error('No image URL found.');
-    }
-  })
-  .catch((err) => {
-    console.error(err);
-  });
     instance
-    .get("https://localhost:3000/home")
-      .then(profile => {
-        setUserProfile(profile.data.result.nickname);
-          setCookie(
-            "nickname",
-            decodeURIComponent(profile.data.result.nickname)
-          );
-          setCookie("user_id", profile.data.result.id);
+      .get("https://localhost:3000/user/image/show")
+      .then((res) => {
+        if (res.data.result) {
+          const imageUrl = res.data.result; // 이미지 URL 가져오기
+          console.log(res.data.result);
+          setImageUrl(imageUrl);
+          setCookie("MyIMG", imageUrl);
+        } else {
+          console.error("No image URL found.");
+        }
       })
-      
+      .catch((err) => {
+        console.error(err);
+      });
+    instance
+      .get("https://localhost:3000/home")
+      .then((profile) => {
+        setUserProfile(profile.data.result.nickname);
+        setCookie("nickname", decodeURIComponent(profile.data.result.nickname));
+        setCookie("user_id", profile.data.result.id);
+      })
+
       .catch((err) => {
         console.error("프로필을 가져오는 도중 에러 발생:", err);
       });
 
-      instance.get("https://localhost:3000/home/saramin")
-      .then(saramin => {
+    instance
+      .get("https://localhost:3000/home/saramin")
+      .then((saramin) => {
         setJobList(saramin.data);
       })
-      .catch(err =>{
-        console.error('에러 발생:', err);
-      })
+      .catch((err) => {
+        console.error("에러 발생:", err);
+      });
 
-      instance
-      .get('https://localhost:3000/home/saramin/href')
-      .then(image => {
+    instance
+      .get("https://localhost:3000/home/saramin/href")
+      .then((image) => {
         setImageList(image.data);
       })
-      .catch(err => {
-        console.error('에러 발생!', err);
+      .catch((err) => {
+        console.error("에러 발생!", err);
       });
   }, []);
 
@@ -116,19 +114,19 @@ const Home = () => {
             <img src={image[index]} alt="swipe" />
           </div>
         </div>
-        
+
         <div className="home_content" id="home_content">
           <div className="home_left">
             <Swipe />
             <div className="home_mobile">
-            <button onClick={openPopup}>맞춤법 검사기</button>
-                  <Link to="/countchar">
-                    <button>글자 수 세기</button>
-                  </Link>
-                  <Link t0="">
-                    <button>😆Fun한다식😆</button>
-                  </Link>
-          </div>
+              <button onClick={openPopup}>맞춤법 검사기</button>
+              <Link to="/countchar">
+                <button>글자 수 세기</button>
+              </Link>
+              <Link t0="">
+                <button>😆Fun한다식😆</button>
+              </Link>
+            </div>
             <div className="job_section">
               <h3 className="title">취업정보</h3>
               <h4>
@@ -137,7 +135,7 @@ const Home = () => {
                   취업 사람인
                 </a>
               </h4>
-              <br/>
+              <br />
               <div className="home_jobcontainer">
                 {jobList.map((job, index) => (
                   <Link to={job.url} key={index}>
@@ -147,14 +145,22 @@ const Home = () => {
                         {!imageList.length || !imageList[index] ? (
                           <h3>{job.company.detail.name}</h3>
                         ) : (
-                          <img src={imageList[index]} className="image" alt={`Image ${index}`} />
+                          <img
+                            src={imageList[index]}
+                            className="image"
+                            alt={`Image ${index}`}
+                          />
                         )}
                         <h2>{job.position.title}</h2>
                       </div>
                       <div className="job_detail">
                         <div>{job.position["experience-level"].name}</div>
-                        <div>{job.position["required-education-level"].name}</div>
-                        <div className="dday">D-{job.dday === 0 ? 'DAY' : job.dday + 1}</div>
+                        <div>
+                          {job.position["required-education-level"].name}
+                        </div>
+                        <div className="dday">
+                          D-{job.dday === 0 ? "DAY" : job.dday + 1}
+                        </div>
                         {/* 데이터에서 "job-type", "experience-level"과 같이 (-)이 포함된 키를 사용할 때는 대괄호 표기법을 사용하여 접근*/}
                       </div>
                     </div>
@@ -167,7 +173,7 @@ const Home = () => {
             <div className="home_profile">
               <img src={imageURL} alt="프로필" />
               <br />
-              <label style={{fontWeight:'800'}}>{userProfile}</label> 님
+              <label style={{ fontWeight: "800" }}>{userProfile}</label> 님
             </div>
             <div className="home_sidebar">
               <div className="home_plus">
@@ -181,21 +187,23 @@ const Home = () => {
                 </Link>
               </div>
               <div className="home_hot">
-                <h4>
-                  곧 마감되는 <br />
-                  공고
-                </h4>
-                {jobList.filter((i) => parseFloat(i.dday) <= 3.0).map((item, index) => (
-                  <Link to = {item.url} key={index}>
-                  <div key={index} className="job_expire">
-                    <h3>{item.company.detail.name}</h3>
-                    <p>{item.position.title}</p>
-                    <div className="dday">D-{item.dday === 0 ? 'DAY' : item.dday + 1}</div>
-
-                  </div>
-                  </Link>
-                ))}
-                </div>
+                <h4>곧 마감되는 공고</h4>
+                {jobList
+                  .filter((i) => parseFloat(i.dday) <= 3.0)
+                  .map((item, index) => (
+                    <Link to={item.url} key={index}>
+                      <div key={index} className="job_expire">
+                        <div className="job_expire2">
+                          <h3>{item.company.detail.name}</h3>
+                          <p>{item.position.title}</p>
+                          <div className="dday">
+                            D-{item.dday === 0 ? "DAY" : item.dday + 1}
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+              </div>
             </div>
           </div>
         </div>

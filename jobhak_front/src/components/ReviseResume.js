@@ -10,7 +10,7 @@ const Resume = () => {
   const [loading, setLoading] = useState(false);
   const [revision, setRevision] = useState("");
 
-  const apiKey = "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";
+  const apiKey = process.env.REACT_APP_API_KEY;
   const apiEndpoint = "https://api.openai.com/v1/chat/completions";
 
   const onReset = (e) => {
@@ -67,7 +67,7 @@ const Resume = () => {
             {
               role: "system",
               content:
-                "당신은 전문 취업용 자소서 컨설턴트입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요.",
+                "당신은 전문 취업용 자소서 컨설턴트입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 1000자 이내로 명확하고 구체적으로 내용을 꾸미고 단락을 나누어 자기소개서를 꾸며주세요.",
             },
             {
               role: "user",
@@ -96,6 +96,8 @@ const Resume = () => {
       const data = await response.json();
       const aiResponse = data.choices?.[0]?.message?.content || "No response";
       setRevision(aiResponse);
+      console.log(data);
+      console.log(typeof data);
     } catch (error) {
       console.error("오류 발생!", error);
       addMessage("오류 발생!");
