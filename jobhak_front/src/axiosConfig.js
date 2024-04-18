@@ -70,9 +70,10 @@ instance.interceptors.response.use(
           Cookies.set("loggedIn", true);
         }
       }
-    } else if (status === 404) {
-      window.location.href = "/notfound";
-    }   
+    } 
+    // else if (status === 404) {
+    //   window.location.href = "/notfound";
+    // }   
     return Promise.reject(error);
   }
 );

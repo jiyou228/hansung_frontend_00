@@ -56,10 +56,10 @@ const WriteResume = () => {
     setCareers([
       ...careers,
       {
-        company_name: "",
-        company_start: "",
-        company_end: "",
-        company_detail: "",
+        careerName: "",
+        startDate: "",
+        endDate: "",
+        careerContent: "",
       },
     ]);
   };
@@ -68,29 +68,29 @@ const WriteResume = () => {
     setExperiences([
       ...experiences,
       {
-        experience_name: "",
-        experience_start: "",
-        experience_end: "",
-        experience_detail: "",
+        expName: "",
+        startDate: "",
+        endDate: "",
+        expContent: "",
       },
     ]);
   };
   useEffect(() => {
     setCareers([
       {
-        company_name: "",
-        company_start: "",
-        company_end: "",
-        company_detail: "",
+        careerName: "",
+        startDate: "",
+        endDate: "",
+        careerContent: "",
       },
     ]);
 
     setExperiences([
       {
-        experience_name: "",
-        experience_start: "",
-        experience_end: "",
-        experience_detail: "",
+        expName: "",
+        startDate: "",
+        endDate: "",
+        expContent: "",
       },
     ]);
   }, []);
@@ -147,36 +147,123 @@ const WriteResume = () => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);
   };
 
+  const handleSave = () =>{
+    const careersBlob = new Blob([JSON.stringify(careers)], { type: 'application/json' });
+    const experiencesBlob = new Blob([JSON.stringify(experiences)], { type: 'application/json' });
+    
+    const formData = new FormData();
+    formData.append('careerSaveDto', careersBlob, 'careerSaveDto');
+    formData.append('expSaveDto', experiencesBlob, 'expSaveDto');
+    
+    console.log(JSON.stringify(careers));
+    console.log(JSON.stringify(experiences));
+
+    if (!isTextMode) {
+      instance.post("https://localhost:3000/resume/post/myList", formData,{
+        headers: {
+          'Content-Type': "multipart/form-data" // form-data로 요청을 보내야 함
+        }
+      })
+        .then((res) => {
+          if(res){
+            Swal.fire({
+              title: "저장 완료!",
+              text: "AI 작성 자소서의 '나의 경험/경력 불러오기' 버튼에서 불러올 수 있습니다.",
+              icon: "success"
+            });
+          }
+        })
+        .catch((err) => {
+          console.error('에러 발생', err);
+        });
+    } 
+    else {
+    instance.post("https://localhost:3000/resume/post/myText", {
+      content: text
+    })
+    .then((res) => {
+      if(res){
+        Swal.fire({
+          title: "저장 완료!",
+          text: "AI 작성 자소서의 '나의 경험/경력 불러오기' 버튼에서 불러올 수 있습니다.",
+          icon: "success"
+        });
+        }
+      })
+    .catch((err) => {
+      console.error('에러 발생', err);
+      });
+    }
+  }
+
   const handleSubmit = async (e = null) => {
     if (e) {
       e.preventDefault();
     }
-    const hasCompanyName =
-      experiences.some((experience) => experience.company_name) ||
-      careers.some((career) => career.company_name);
     Swal.fire({
-      icon: "success",
-      title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
-      text: "첨삭된 자기소개서를 불러오고 있습니다.",
-      showCancelButton: false,
-      confirmButtonText: "확인",
-      width: 800,
-      height: 100,
+      title: "저장하시겠습니까?",
+      text: "나의 경험/경력을 저장하시겠습니까?",
+      icon: "question",
+      showCancelButton: true,
+      showCloseButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "저장",
+      cancelButtonText: "안함",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          icon: "success",
+          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+          text: "첨삭된 자기소개서를 불러오고 있습니다.",
+          width: 800,
+          height: 100,
+          didOpen: () =>{
+            Swal.showLoading();
+          }
+        });
+        handleSave(); 
+      } else {
+        // Swal.fire({
+        //   icon: "success",
+        //   title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+        //   text: "첨삭된 자기소개서를 불러오고 있습니다.",
+        //   showCancelButton: false,
+        //   confirmButtonText: "확인",
+        //   width: 800,
+        //   height: 100,
+        // });
+        Swal.fire({
+          icon: "success",
+          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+          text: "첨삭된 자기소개서를 불러오고 있습니다.",
+          width: 800,
+          height: 100,
+          didOpen: () =>{
+            Swal.showLoading();
+          }
+        });
+      }
     });
+    const hasCompanyName =
+      experiences.some((experience) => experience.careerName) ||
+      careers.some((career) => career.careerName);
     if (
-      validate(careers, "company_start", "company_end") &&
-      validate(experiences, "experience_start", "experience_end")
+      validate(careers, "startDate", "endDate") &&
+      validate(experiences, "startDate", "endDate")
     ) {
       const formattedCareerText = careers
         .map(
           (career) =>
-            `- ${career.company_name}(${career.company_start} ~ ${career.company_end}): ${career.company_detail}`
+            `- ${career.careerName}(${career.startDate} ~ ${career.endDate}): ${career.careerContent}`
         )
         .join("\n");
       const formattedExperienceText = experiences
         .map(
           (experience) =>
-            `- ${experience.experience_name}(${experience.experience_start} ~ ${experience.experience_end}): ${experience.experience_detail}`
+            `- ${experience.expName}(${experience.startDate} ~ ${experience.endDate}): ${experience.expContent}`
         )
         .join("\n");
 
@@ -226,6 +313,7 @@ const WriteResume = () => {
           }),
         });
         const data = await response.json();
+        Swal.close();
         const aiResponse = data.choices?.[0]?.message?.content || "No response";
         setRevision(aiResponse);
         navigate("/resume/write/gpt", { state: { revision: aiResponse } });
@@ -296,7 +384,51 @@ const WriteResume = () => {
   };
 
   const getMyInfo = () => {
-    instance.get("https://localhost:3000/");
+    instance.get('https://localhost:3000/resume/get/IsText')
+    .then((res) =>{
+      if(res.data.result == false){
+        instance.get("https://localhost:3000/resume/get/myList")
+        .then((res)=>{
+          if(res.data){
+            if (res.data.result.careerToFront.length > 0 || res.data.result.expToFront.length > 0) {
+              if (res.data.result.careerToFront.length > 0) {
+                  setCareers(res.data.result.careerToFront);
+              }
+              if (res.data.result.expToFront.length > 0) {
+                  setExperiences(res.data.result.expToFront);
+              }
+          } else {
+              alert('불러올 경험/경력이 없습니다.');
+            }          
+          }
+          console.log(careers, experiences);
+         })
+         .catch((err)=>{
+          console.error('에러 발생', err);
+         })
+      }
+      else if(res.data.result == true){
+        instance.get("https://localhost:3000/resume/get/myText")
+        .then((res) =>{
+          if(res.data.result.content.length > 0){
+            const { content } = res.data.result;
+            // "content" 속성의 값을 JSON으로 파싱
+            const parsedContent = JSON.parse(content);
+            // "text" 속성의 값을 추출
+            const text = parsedContent.content;
+            // 추출한 값 사용
+            setIsTextMode(true);
+            setText(text);
+          }
+        })
+        .catch((err)=>{
+          console.error("에러발생:", err);
+        })
+      }
+    })
+    .catch((err)=>{
+      console.error('에러 발생:', err);
+    })
   };
 
   return (
@@ -355,9 +487,10 @@ const WriteResume = () => {
               </div>
             </div>
             <br />
-            <button onClick={getMyInfo}>나의 경험/경력 불러오기</button>
+            <div onClick={getMyInfo} className="write_getMyInfo">나의 경험/경력 불러오기</div>
             {isTextMode ? (
               <textarea
+                value={text}
                 onChange={handleTextChange}
                 className="write_textarea"
                 placeholder="이 부분을 작성하시면 더 좋은 자기소개서가 작성됩니다."
@@ -379,29 +512,29 @@ const WriteResume = () => {
                       <label>회사명</label>
                       <input
                         type="text"
-                        id="company_name"
+                        id="careerName"
                         onChange={(e) =>
                           handleTextareaChange("careers", index, e)
                         }
-                        value={careers[index].company_name}
+                        value={careers[index].careerName}
                       />
                       <label>입사</label>
                       <input
                         type="month"
-                        id="company_start"
+                        id="startDate"
                         onChange={(e) =>
                           handleTextareaChange("careers", index, e)
                         }
-                        value={careers[index].company_start}
+                        value={careers[index].startDate}
                       />
                       <label>퇴사</label>
                       <input
                         type="month"
-                        id="company_end"
+                        id="endDate"
                         onChange={(e) =>
                           handleTextareaChange("careers", index, e)
                         }
-                        value={careers[index].company_end}
+                        value={careers[index].endDate}
                       />
                       <button
                         type="button"
@@ -415,11 +548,11 @@ const WriteResume = () => {
                       <label>업무내용 및 성과</label>
                       <input
                         type="text"
-                        id="company_detail"
+                        id="careerContent"
                         onChange={(e) =>
                           handleTextareaChange("careers", index, e)
                         }
-                        value={careers[index].company_detail}
+                        value={careers[index].careerContent}
                       />
                     </div>
                     <button
@@ -447,29 +580,29 @@ const WriteResume = () => {
                       <label>활동명</label>
                       <input
                         type="text"
-                        id="experience_name"
+                        id="expName"
                         onChange={(e) =>
                           handleTextareaChange("experiences", index, e)
                         }
-                        value={experiences[index].experience_name}
+                        value={experiences[index].expName}
                       />
                       <label>시작</label>
                       <input
                         type="month"
-                        id="experience_start"
+                        id="startDate"
                         onChange={(e) =>
                           handleTextareaChange("experiences", index, e)
                         }
-                        value={experiences[index].experience_start}
+                        value={experiences[index].startDate}
                       />
                       <label>종료</label>
                       <input
                         type="month"
-                        id="experience_end"
+                        id="endDate"
                         onChange={(e) =>
                           handleTextareaChange("experiences", index, e)
                         }
-                        value={experiences[index].experience_end}
+                        value={experiences[index].endDate}
                       />
                       <button
                         type="button"
@@ -483,11 +616,11 @@ const WriteResume = () => {
                       <label>활동내용</label>
                       <input
                         type="text"
-                        id="experience_detail"
+                        id="expContent"
                         onChange={(e) =>
                           handleTextareaChange("experiences", index, e)
                         }
-                        value={experiences[index].experience_detail}
+                        value={experiences[index].expContent}
                       />
                       </div>
                       <button

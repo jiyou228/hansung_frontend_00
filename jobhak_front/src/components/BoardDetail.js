@@ -41,6 +41,7 @@ function BoardDetail() {
   const [isEdit, setIsEdit] = useState(false);
   const [editModes, setEditModes] = useState({});
   const [editContent, setEditContent] = useState("");
+  const [writerProfile, setWriterProfile] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -253,7 +254,6 @@ function BoardDetail() {
       ])
       .then(
         axios.spread((bookmark, detail) => {
-          console.log(JSON.stringify(detail));
           if (bookmark.data.result) {
             const bookmarkIds = bookmark.data.result.map((item) =>
               item.postId.toString()
@@ -279,6 +279,7 @@ function BoardDetail() {
             setUserId(userData.userId);
             setNickname(userData.nickname);
             setFile(userData.fileName);
+            setWriterProfile(userData.writerProfile);
           }
         })
       )
@@ -343,7 +344,7 @@ function BoardDetail() {
       <div className="board_div">
         <div className="board_top">
           <div className="board_left">
-            <img className="profile_img" src={profile} alt="프사" width={60} />
+            <img className="profile_img" src={writerProfile} alt="프사" width={60} />
             <div className="post_nickname">{nickname}</div>
           </div>
           <div className="title">
@@ -438,7 +439,7 @@ function BoardDetail() {
               <div className="reply_layout">
                 <div className="reply_reply">
                   <div className="reply_profile">
-                    <img src={profile} alt="프사" />
+                    <img src={Object.values(reply.replierProfile)[0]} alt="프사" />
                   </div>
                   <div className="reply_content">
                     <label>{reply.nickname}</label>
@@ -529,7 +530,7 @@ function BoardDetail() {
                   <div className="rereply_box">
                     <div className="rereply_layout">
                       <div className="rereply_profile">
-                        <img src={profile} alt="프사" />
+                        <img src={Object.values(subReply.replierProfile)[0]} alt="프사" />
                       </div>
                       <div className="rereply_content">
                         <label>{subReply.nickname}</label>

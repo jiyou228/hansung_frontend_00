@@ -9,15 +9,17 @@ const LoginRedirect =() =>{
         const urlParams = new URLSearchParams(window.location.search);
         const accessToken = urlParams.get("accessToken");
         const refreshToken = urlParams.get("refreshToken");
-        
+        const error = urlParams.get('error');
         if (accessToken !== null && refreshToken !== null) {
             localStorage.setItem("accessToken", accessToken);
             setCookie("refreshToken", refreshToken, { path: "/" });
-        } else {
+            navigate('/home');
+        } else if(!error) {
             alert("토큰을 받아올 수 없습니다. 새로고침 해주세요.")
         }
-        navigate('/home');
-        
+        else if(error){
+            navigate('/');
+        }
     }, [setCookie, window.location.search]);
 
     return null;
