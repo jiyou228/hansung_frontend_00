@@ -290,19 +290,26 @@
   }
   .home_mobile {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     white-space: nowrap;
     margin: 2vh 1vw;
     align-items: center;
+    width: fit-content;
   }
   .home_mobile button {
-    width: 32vw;
     height: 5vh;
     background-color: #104085;
     border: none;
-    border-radius: 1vh;
     color: white;
+    width: 50vw;
+    box-sizing: border-box;
     font-weight: 800;
+  }
+  .home_mobile button:last-child{
+    border-left: 0.5vw solid white;
+  } 
+  .home_mobile button:first-child{
+    border-right: 0.5vw solid white;
   }
   .home_jobcontainer {
     grid-template-columns: repeat(1, 1fr); /* 기본값을 1개씩 세로로 변경 */

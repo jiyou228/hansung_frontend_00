@@ -47,6 +47,10 @@
   margin: auto;
   width: fit-content;
 }
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+  color: white;
+}
 .gpt_content {
   border: 2px solid #252525;
   display: flex;
@@ -60,6 +64,7 @@
   margin-bottom: 5vh;
   padding: 0.7rem 1rem 0.7rem 1rem;
   line-height: 1.5rem;
+  resize: none;
 }
 .gpt_content h3 {
   text-align: center;

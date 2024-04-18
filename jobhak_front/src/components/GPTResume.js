@@ -7,11 +7,12 @@ import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const GPTResume = () => {
-  const location = useLocation();
-  const {
-    state: { revision },
-  } = location;
-
+  const [readOnly, setReadOnly] = useState(true);
+  // const location = useLocation();
+  // const {
+  //   state: { revision },
+  // } = location;
+  const revision = "hi";
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(revision);
@@ -19,21 +20,39 @@ const GPTResume = () => {
     } catch (error) {
       console.error("복사 실패:", error);
     }
+  }
+  const revise = () =>{
+    setReadOnly(false);
+    const Toast = Swal.mixin({
+      toast:true,
+      iconColor: 'white',
+      customClass: {
+        popup: 'colored-toast'
+      },
+      showConfirmButton: false,
+      timer: 1500,
+    })
+    Toast.fire({
+      icon: 'success',
+      title: '글 상자에서 수정이 가능합니다!'
+    })
+    
+  }
 
-    Swal.fire({
-      icon: "success",
-      title: "복사 중...",
-      text: "복사가 완료되었습니다!",
-      showCancelButton: false,
-      confirmButtonText: "확인",
-      width: 800,
-      height: 100,
-    });
-  };
+  //   Swal.fire({
+  //     icon: "success",
+  //     title: "복사 중...",
+  //     text: "복사가 완료되었습니다!",
+  //     showCancelButton: false,
+  //     confirmButtonText: "확인",
+  //     width: 800,
+  //     height: 100,
+  //   });
+  // };
 
   useEffect(() => {
-    console.log(revision);
-  }, [revision]);
+    Swal.close();
+  }, []);
   return (
     <div className="gpt_app">
       <Nav />
@@ -50,19 +69,17 @@ const GPTResume = () => {
       </div>
       <div className="gpt_title">AI 작성 자기소개서</div>
       <div className="gpt_box">
-        <div className="gpt_content">{revision}</div>
+        <textarea className="gpt_content" readOnly ={readOnly}>{revision}</textarea>
       </div>
       <div className="write_button_container">
-        <button
+      <button type ="button" 
+      className="gpt_button_copy"
+      onClick={revise}>수정하기</button>
+      <button
           type="button"
-          className="gpt_button_copy"
+          className="gpt_button_save"
           onClick={copyToClipboard}
-        >
-          복사하기
-        </button>
-        <button type="submit" className="gpt_button_save">
-          저장하기
-        </button>
+        > 복사하기 </button>
       </div>
     </div>
   );
