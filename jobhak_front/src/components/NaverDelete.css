@@ -1,0 +1,125 @@
+.main_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.example_div {
+  width: 10rem;
+  height: 21vh;
+  background-color: #d9d9d9;
+  margin-left: 2.5rem;
+}
+
+.profile_div {
+  width: 30%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 20%;
+}
+
+.profile_name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.logout {
+  cursor: pointer;
+  color: red;
+  margin-left: 0.5rem;
+  font-weight: 700;
+}
+
+.profile_btn1,
+.profile_btn2 {
+  width: 5rem;
+  height: 2rem;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #cdddf7;
+  border: none;
+}
+
+.profile_btn2 {
+  margin-left: 0.5rem;
+}
+
+.count_div {
+  margin-top: 20px;
+}
+
+.profile_count {
+  margin-bottom: 5px;
+}
+
+.delete_div {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 20%;
+  box-sizing: border-box;
+}
+
+.delete_move {
+  margin-left: 18%;
+  margin-top: 30%;
+}
+
+.delete_lb {
+  margin-top: 10px;
+  display: block;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.delete_ip {
+  width: 25vw;
+  height: 2rem;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  outline: none;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+}
+
+.naver_delete_btn {
+  background-color: rgb(100, 229, 91);
+  color: black;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  height: 2.8rem;
+  width: 13rem;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 800;
+  float: right;
+}
+
+@media only screen and (max-width: 768px) {
+  .mypage_privacy_div {
+    width: 85vw;
+  }
+}
+
+.navbar_ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.navbarMenu {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  font-size: 1.3rem;
+}

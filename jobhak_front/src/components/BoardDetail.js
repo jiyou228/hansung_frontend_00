@@ -41,6 +41,8 @@ function BoardDetail() {
   const [isEdit, setIsEdit] = useState(false);
   const [editModes, setEditModes] = useState({});
   const [editContent, setEditContent] = useState("");
+  const [next, setNext] = useState("");
+  const [prev, setPrev] = useState("");
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -279,6 +281,8 @@ function BoardDetail() {
             setUserId(userData.userId);
             setNickname(userData.nickname);
             setFile(userData.fileName);
+            setNext(userData.next);
+            setPrev(userData.prev);
           }
         })
       )
@@ -289,6 +293,17 @@ function BoardDetail() {
   const fileNameKey = file ? Object.keys(file)[0] : null;
   const fileNameValue = file ? Object.values(file)[0] : null;
 
+  const handlePrevClick = () => {
+    if (prev === null) {
+      alert("글이 없습니다.");
+    }
+  };
+
+  const handleNextClick = () => {
+    if (next === null) {
+      alert("글이 없습니다.");
+    }
+  };
   const handleReply = () => {
     instance
       .post(`https://localhost:3000/boardlist/detail/${postId}/reply`, {
@@ -330,11 +345,17 @@ function BoardDetail() {
     <div className="boardDetail_app">
       <Nav />
       <div className="button_container1">
-        <Link to={`/boardlist/detail/${postId}`}>
-          <button className="prev_btn"> ▲ 이전글</button>
+        <Link to={`/boardlist/detail/${prev}`}>
+          <button className="prev_btn" onClick={handlePrevClick}>
+            {" "}
+            ▲ 이전글
+          </button>
         </Link>
-        <Link to={`/boardlist/detail/${postId}`}>
-          <button className="next_btn"> ▼ 다음글</button>
+        <Link to={`/boardlist/detail/${next}`}>
+          <button className="next_btn" onClick={handleNextClick}>
+            {" "}
+            ▼ 다음글
+          </button>
         </Link>
         <Link to="/boardlist">
           <button className="list_btn">목록</button>
@@ -405,16 +426,20 @@ function BoardDetail() {
           <label className="post_lb"> {bookmarkcount}</label>
 
           <a
-            href={fileNameKey}
+            href={fileNameKey ? fileNameKey : "#"}
             rel="noopener noreferrer"
             className="file-output-label"
             onClick={(e) => {
-              e.preventDefault();
+              if (!fileNameKey) {
+                e.preventDefault();
+                return;
+              }
               window.open(fileNameKey, "_blank");
             }}
           >
             첨부파일
           </a>
+
           <label>{fileNameValue}</label>
         </div>
       </div>

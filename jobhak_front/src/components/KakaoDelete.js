@@ -2,7 +2,7 @@ import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Delete.css";
+import "./KakaoDelete.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
@@ -11,9 +11,11 @@ import ProfileImage from "./ProfileImage";
 import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import DelProfileImage from "./DelProfileImage";
+import { useCookies } from "react-cookie";
 
-function Delete() {
+function KakaoDelete() {
   const navigate = useNavigate();
+  const [, , removeCookie] = useCookies();
   const [userpw, setUserPW] = useState("");
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
@@ -22,15 +24,7 @@ function Delete() {
   cookie.get("user_id", id);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-  const [loginType, setLoginType] = useState(cookie.get("provider"));
-
-  useEffect(() => {
-    setLoginType(cookie.get("provider"));
-  }, []);
-
-  const PWHandler = (e) => {
-    setUserPW(e.target.value);
-  };
+  const [loginType, setLoginType] = useState(cookie.get("loginType"));
 
   const openUploadModal = () => {
     setIsUploadOpen(true);
@@ -41,6 +35,10 @@ function Delete() {
   const openDeleteModal = () => {
     setIsDeleteOpen(true);
   };
+
+  useEffect(() => {
+    setLoginType(cookie.get("loginType"));
+  });
 
   const userDeleteHandler = () => {
     Swal.fire({
@@ -55,36 +53,39 @@ function Delete() {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
-        instance
-          .delete(`https://localhost:3000/user/delete`, {
-            data: { password: userpw, loginId: id },
-          })
-          .then((res) => {
-            console.log("회원 탈퇴 성공:", res);
-            Swal.fire({
-              icon: "success",
-              title: "탈퇴 성공",
-              text: "잡학다식 회원 탈퇴에 성공하였습니다.",
-              showCancelButton: false,
-              confirmButtonText: "확인",
-              width: 800,
-              height: 100,
-            });
-            navigate("/");
-          })
-          .catch((err) => {
-            console.error("회원 탈퇴 실패:", err);
-            Swal.fire({
-              icon: "warning",
-              title: "탈퇴 실패",
-              text: "잡학다식 회원 탈퇴에 실패하였습니다.",
-              showCancelButton: false,
-              confirmButtonText: "확인",
-              width: 800,
-              height: 100,
-            });
+        try {
+          window.location.href = `http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/&mode=unlink`;
+          console.log("회원 탈퇴 성공:");
+          Swal.fire({
+            icon: "success",
+            title: "탈퇴 성공",
+            text: "잡학다식 회원 탈퇴에 성공하였습니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
           });
+          navigate("/");
+          removeCookie("loggedIn", { path: "/" });
+          removeCookie("loginModal", { path: "/" });
+          removeCookie("user_id", { path: "/" });
+          removeCookie("nickname", { path: "/" });
+          removeCookie("refreshToken", { path: "/" });
+          removeCookie("MyIMG", { path: "/" });
+          removeCookie("provider", { path: "/" });
+          localStorage.removeItem("accessToken");
+        } catch {
+          console.log("회원 탈퇴 실패:");
+          Swal.fire({
+            icon: "error",
+            title: "탈퇴 실패",
+            text: "잡학다식 회원 탈퇴에 실패하였습니다.",
+            showCancelButton: false,
+            confirmButtonText: "확인",
+            width: 800,
+            height: 100,
+          });
+        }
       }
     });
   };
@@ -124,20 +125,6 @@ function Delete() {
                     내 정보
                   </NavLink>
                 </li>
-                {loginType !== "KAKAO" && loginType !== "NAVER" && (
-                  <li>
-                    <NavLink
-                      to="/user/edit/pw"
-                      className="mypage_navbarMenu"
-                      style={({ isActive }) => ({
-                        fontWeight: isActive ? 800 : 500,
-                        color: isActive ? "#104085" : "black",
-                      })}
-                    >
-                      비밀번호 변경
-                    </NavLink>
-                  </li>
-                )}
 
                 <li>
                   <NavLink
@@ -163,66 +150,26 @@ function Delete() {
                     나의 사진
                   </NavLink>
                 </li>
-                {loginType !== "KAKAO" && loginType !== "NAVER" && (
-                  <li>
-                    <NavLink
-                      className="mypage_navbarMenu"
-                      to="/user/delete"
-                      style={({ isActive }) => ({
-                        fontWeight: isActive ? 800 : 500,
-                        color: isActive ? "#104085" : "black",
-                      })}
-                    >
-                      탈퇴하기
-                    </NavLink>
-                  </li>
-                )}
-                {loginType == "KAKAO" && (
-                  <li>
-                    <NavLink
-                      className="mypage_navbarMenu"
-                      to="/user/kakao/delete"
-                      style={({ isActive }) => ({
-                        fontWeight: isActive ? 800 : 500,
-                        color: isActive ? "#104085" : "black",
-                      })}
-                    >
-                      소셜로그인 탈퇴하기
-                    </NavLink>
-                  </li>
-                )}
-                {loginType == "NAVER" && (
-                  <li>
-                    <NavLink
-                      className="mypage_navbarMenu"
-                      to="/user/naver/delete"
-                      style={({ isActive }) => ({
-                        fontWeight: isActive ? 800 : 500,
-                        color: isActive ? "#104085" : "black",
-                      })}
-                    >
-                      소셜로그인 탈퇴하기
-                    </NavLink>
-                  </li>
-                )}
+                <li>
+                  <NavLink
+                    className="mypage_navbarMenu"
+                    to="/user/kakao/delete"
+                    style={({ isActive }) => ({
+                      fontWeight: isActive ? 800 : 500,
+                      color: isActive ? "#104085" : "black",
+                    })}
+                  >
+                    소셜로그인 해지하기
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>
         </div>
         <div className="mypage_privacy_div">
           <div className="mypage_privacy_move">
-            <label className="delete_lb">현재 비밀번호</label>
-            <input
-              placeholder="계정을 삭제하려면 현재 사용하시는 비밀번호를 입력하세요."
-              className="delete_ip"
-              type="text"
-              value={userpw}
-              onChange={PWHandler}
-            />
-
-            <br />
-            <button className="delete_btn" onClick={userDeleteHandler}>
-              탈퇴하기
+            <button className="kakao_delete_btn" onClick={userDeleteHandler}>
+              소셜로그인 해지하기
             </button>
           </div>
         </div>
@@ -263,4 +210,4 @@ function Delete() {
     </div>
   );
 }
-export default Delete;
+export default KakaoDelete;

@@ -30,6 +30,8 @@ import ResetPW from "./components/ResetPW";
 import PrivateRoute from "./components/PrivateRoute";
 import ChangeName from "./components/ChangeName";
 import LoginRedirect from "./components/LoginRedirect";
+import KakaoDelete from "./components/KakaoDelete";
+import NaverDelete from "./components/NaverDelete";
 
 function App() {
   return (
@@ -43,7 +45,7 @@ function App() {
           <Route path="/" element={<Login />}></Route>
           <Route path="/login/naver" element={<NaverLogin />}></Route>
           <Route path="/login/kakao" element={<KakaoLogin />}></Route>
-          <Route path = "/login/callback" element={<LoginRedirect/>}></Route>
+          <Route path="/login/callback" element={<LoginRedirect />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
           <Route
@@ -58,6 +60,7 @@ function App() {
             path="/user/myInfo"
             element={<PrivateRoute element={MyPage} />}
           ></Route>
+
           <Route
             path="/profile/female"
             element={<PrivateRoute element={Profile} />}
@@ -83,6 +86,14 @@ function App() {
             path="/user/delete"
             element={<PrivateRoute element={Delete} />}
           />
+          <Route
+            path="/user/kakao/delete"
+            element={<PrivateRoute element={KakaoDelete} />}
+          />
+          <Route
+            path="/user/naver/delete"
+            element={<PrivateRoute element={NaverDelete} />}
+          />
           <Route path="/grammar" element={<PrivateRoute element={Grammar} />} />
           <Route
             path="/boardlist/write"
@@ -92,10 +103,12 @@ function App() {
             path="/user/picture"
             element={<PrivateRoute element={Mypicture} />}
           />
+
           <Route
             path="/user/bookmark"
             element={<PrivateRoute element={Bookmark} />}
           />
+
           <Route
             path="/boardlist/edit/:postId"
             element={<PrivateRoute element={BoardDetail} />}

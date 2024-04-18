@@ -19,6 +19,7 @@ const Logout = () => {
         removeCookie("nickname", { path: "/" });
         removeCookie("refreshToken", { path: "/" });
         removeCookie("MyIMG", { path: "/" });
+        removeCookie("provider", { path: "/" });
         localStorage.removeItem("accessToken");
 
         alert("로그아웃이 완료되었습니다.");

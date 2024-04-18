@@ -7,18 +7,18 @@ import Swal from "sweetalert2";
 import instance from "../axiosConfig";
 import { useCookies } from "react-cookie";
 
-const ChangeName = () => { 
+const ChangeName = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
 
   const changeNameSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("https://localhost:3000/login/kakao/changeName", { 
+      .post("https://localhost:3000/login/kakao/changeName", {
         name: name,
       })
-      .then((res) =>{
-        if (res){
+      .then((res) => {
+        if (res) {
           Swal.fire({
             icon: "success",
             title: "성공",
@@ -28,11 +28,11 @@ const ChangeName = () => {
             width: 800,
             height: 100,
           });
-          navigate('/redirectKakao');
+          navigate("/home");
         }
       })
-      .catch((err) =>{
-        console.error('에러 발생', err);
+      .catch((err) => {
+        console.error("에러 발생", err);
         Swal.fire({
           icon: "warning",
           title: "오류",

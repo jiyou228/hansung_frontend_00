@@ -84,7 +84,7 @@ const FindPW = () => {
           확인
         </button>
       </form>
-      <Link to="/login" className="findPW_link">
+      <Link to="/" className="findPW_link">
         <p className="findPW_login">로그인 바로가기</p>
       </Link>
     </div>

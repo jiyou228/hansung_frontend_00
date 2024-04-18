@@ -9,11 +9,11 @@ import { Cookies } from "react-cookie";
 import instance from "../axiosConfig";
 import delete_icon from "../assets/delete_icon.png";
 import ProfileImage from "./ProfileImage";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
+Modal.setAppElement("#root"); // 모달 바깥의 요소를 설정
 
 function Bookmark() {
   const cookie = new Cookies();
@@ -26,10 +26,10 @@ function Bookmark() {
   const [bookmark_id, setBookMark_id] = useState("");
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-
-
+  const [loginType, setLoginType] = useState(cookie.get("provider"));
 
   useEffect(() => {
+    setLoginType(cookie.get("provider"));
     instance
       .get(`https://localhost:3000/user/bookmark`)
       .then((res) => {
@@ -66,15 +66,15 @@ function Bookmark() {
     navigate(`/boardlist/detail/${postId}`);
   };
 
-  const openUploadModal = () =>{
+  const openUploadModal = () => {
     setIsUploadOpen(true);
-  }
-  const closeUploadModal = () =>{
+  };
+  const closeUploadModal = () => {
     setIsUploadOpen(false);
-  }
-  const openDeleteModal = () =>{
+  };
+  const openDeleteModal = () => {
     setIsDeleteOpen(true);
-  }
+  };
 
   return (
     <div className="mypage_app">
@@ -85,7 +85,10 @@ function Bookmark() {
             <div className="mypage_profile_name">
               {decodeURIComponent(encodedNickname)}님
             </div>
-            <HandleProfile openUploadModal = {openUploadModal} openDeleteModal={openDeleteModal}/>
+            <HandleProfile
+              openUploadModal={openUploadModal}
+              openDeleteModal={openDeleteModal}
+            />
           </div>
           <div
             className="mypage_count_div"
@@ -108,18 +111,20 @@ function Bookmark() {
                     내 정보
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/user/edit/pw"
-                    className="mypage_navbarMenu"
-                    style={({ isActive }) => ({
-                      fontWeight: isActive ? 800 : 500,
-                      color: isActive ? "#104085" : "black",
-                    })}
-                  >
-                    비밀번호 변경
-                  </NavLink>
-                </li>
+                {loginType !== "KAKAO" && loginType !== "NAVER" && (
+                  <li>
+                    <NavLink
+                      to="/user/edit/pw"
+                      className="mypage_navbarMenu"
+                      style={({ isActive }) => ({
+                        fontWeight: isActive ? 800 : 500,
+                        color: isActive ? "#104085" : "black",
+                      })}
+                    >
+                      비밀번호 변경
+                    </NavLink>
+                  </li>
+                )}
 
                 <li>
                   <NavLink
@@ -145,18 +150,48 @@ function Bookmark() {
                     나의 사진
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    className="mypage_navbarMenu"
-                    to="/user/delete"
-                    style={({ isActive }) => ({
-                      fontWeight: isActive ? 800 : 500,
-                      color: isActive ? "#104085" : "black",
-                    })}
-                  >
-                    탈퇴하기
-                  </NavLink>
-                </li>
+                {loginType !== "KAKAO" && loginType !== "NAVER" && (
+                  <li>
+                    <NavLink
+                      className="mypage_navbarMenu"
+                      to="/user/delete"
+                      style={({ isActive }) => ({
+                        fontWeight: isActive ? 800 : 500,
+                        color: isActive ? "#104085" : "black",
+                      })}
+                    >
+                      탈퇴하기
+                    </NavLink>
+                  </li>
+                )}
+                {loginType == "KAKAO" && (
+                  <li>
+                    <NavLink
+                      className="mypage_navbarMenu"
+                      to="/user/kakao/delete"
+                      style={({ isActive }) => ({
+                        fontWeight: isActive ? 800 : 500,
+                        color: isActive ? "#104085" : "black",
+                      })}
+                    >
+                      소셜로그인 탈퇴하기
+                    </NavLink>
+                  </li>
+                )}
+                {loginType == "NAVER" && (
+                  <li>
+                    <NavLink
+                      className="mypage_navbarMenu"
+                      to="/user/naver/delete"
+                      style={({ isActive }) => ({
+                        fontWeight: isActive ? 800 : 500,
+                        color: isActive ? "#104085" : "black",
+                      })}
+                    >
+                      소셜로그인 탈퇴하기
+                    </NavLink>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -188,35 +223,38 @@ function Bookmark() {
           ))}
         </div>
       </div>
-      <Modal isOpen={isUploadOpen} onRequestClose={closeUploadModal}
-      style={{
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.75)'
-        },
-        content: {
-          position: 'absolute',
-          top: '10vh',
-          left: '10vw',
-          right: '10vw',
-          bottom: '10vh',
-          border: '1px solid #ccc',
-          background: '#fff',
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          borderRadius: '4px',
-          outline: 'none',
-          padding: '20px'
-        }
-      }}> 
-        <ProfileImage onSuccess={closeUploadModal}/>
+      <Modal
+        isOpen={isUploadOpen}
+        onRequestClose={closeUploadModal}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          },
+          content: {
+            position: "absolute",
+            top: "10vh",
+            left: "10vw",
+            right: "10vw",
+            bottom: "10vh",
+            border: "1px solid #ccc",
+            background: "#fff",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            borderRadius: "4px",
+            outline: "none",
+            padding: "20px",
+          },
+        }}
+      >
+        <ProfileImage onSuccess={closeUploadModal} />
       </Modal>
       {isDeleteOpen && (
-        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)}/>
+        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)} />
       )}
     </div>
   );

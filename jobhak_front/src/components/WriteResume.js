@@ -376,53 +376,53 @@ const WriteResume = () => {
                   {careers.map((_, index) => (
                     <div key={index} className="write_career">
                       <div className="career_three">
-                      <label>회사명</label>
-                      <input
-                        type="text"
-                        id="company_name"
-                        onChange={(e) =>
-                          handleTextareaChange("careers", index, e)
-                        }
-                        value={careers[index].company_name}
-                      />
-                      <label>입사</label>
-                      <input
-                        type="month"
-                        id="company_start"
-                        onChange={(e) =>
-                          handleTextareaChange("careers", index, e)
-                        }
-                        value={careers[index].company_start}
-                      />
-                      <label>퇴사</label>
-                      <input
-                        type="month"
-                        id="company_end"
-                        onChange={(e) =>
-                          handleTextareaChange("careers", index, e)
-                        }
-                        value={careers[index].company_end}
-                      />
-                      <button
-                        type="button"
-                        className="write_delete"
-                        onClick={() => handleDeleteCareer(index)}
-                      >
-                        삭제
-                      </button>
+                        <label>회사명</label>
+                        <input
+                          type="text"
+                          id="company_name"
+                          onChange={(e) =>
+                            handleTextareaChange("careers", index, e)
+                          }
+                          value={careers[index].company_name}
+                        />
+                        <label>입사</label>
+                        <input
+                          type="month"
+                          id="company_start"
+                          onChange={(e) =>
+                            handleTextareaChange("careers", index, e)
+                          }
+                          value={careers[index].company_start}
+                        />
+                        <label>퇴사</label>
+                        <input
+                          type="month"
+                          id="company_end"
+                          onChange={(e) =>
+                            handleTextareaChange("careers", index, e)
+                          }
+                          value={careers[index].company_end}
+                        />
+                        <button
+                          type="button"
+                          className="write_delete"
+                          onClick={() => handleDeleteCareer(index)}
+                        >
+                          삭제
+                        </button>
                       </div>
                       <div className="career_long">
-                      <label>업무내용 및 성과</label>
-                      <input
-                        type="text"
-                        id="company_detail"
-                        onChange={(e) =>
-                          handleTextareaChange("careers", index, e)
-                        }
-                        value={careers[index].company_detail}
-                      />
-                    </div>
-                    <button
+                        <label>업무내용 및 성과</label>
+                        <input
+                          type="text"
+                          id="company_detail"
+                          onChange={(e) =>
+                            handleTextareaChange("careers", index, e)
+                          }
+                          value={careers[index].company_detail}
+                        />
+                      </div>
+                      <button
                         type="button"
                         className="write_delete active"
                         onClick={() => handleDeleteCareer(index)}
@@ -444,51 +444,51 @@ const WriteResume = () => {
                   {experiences.map((_, index) => (
                     <div key={index} className="write_experience">
                       <div className="experience_three">
-                      <label>활동명</label>
-                      <input
-                        type="text"
-                        id="experience_name"
-                        onChange={(e) =>
-                          handleTextareaChange("experiences", index, e)
-                        }
-                        value={experiences[index].experience_name}
-                      />
-                      <label>시작</label>
-                      <input
-                        type="month"
-                        id="experience_start"
-                        onChange={(e) =>
-                          handleTextareaChange("experiences", index, e)
-                        }
-                        value={experiences[index].experience_start}
-                      />
-                      <label>종료</label>
-                      <input
-                        type="month"
-                        id="experience_end"
-                        onChange={(e) =>
-                          handleTextareaChange("experiences", index, e)
-                        }
-                        value={experiences[index].experience_end}
-                      />
-                      <button
-                        type="button"
-                        className="write_delete"
-                        onClick={() => handleDeleteExperience(index)}
-                      >
-                        삭제
-                      </button>
+                        <label>활동명</label>
+                        <input
+                          type="text"
+                          id="experience_name"
+                          onChange={(e) =>
+                            handleTextareaChange("experiences", index, e)
+                          }
+                          value={experiences[index].experience_name}
+                        />
+                        <label>시작</label>
+                        <input
+                          type="month"
+                          id="experience_start"
+                          onChange={(e) =>
+                            handleTextareaChange("experiences", index, e)
+                          }
+                          value={experiences[index].experience_start}
+                        />
+                        <label>종료</label>
+                        <input
+                          type="month"
+                          id="experience_end"
+                          onChange={(e) =>
+                            handleTextareaChange("experiences", index, e)
+                          }
+                          value={experiences[index].experience_end}
+                        />
+                        <button
+                          type="button"
+                          className="write_delete"
+                          onClick={() => handleDeleteExperience(index)}
+                        >
+                          삭제
+                        </button>
                       </div>
                       <div className="experience_long">
-                      <label>활동내용</label>
-                      <input
-                        type="text"
-                        id="experience_detail"
-                        onChange={(e) =>
-                          handleTextareaChange("experiences", index, e)
-                        }
-                        value={experiences[index].experience_detail}
-                      />
+                        <label>활동내용</label>
+                        <input
+                          type="text"
+                          id="experience_detail"
+                          onChange={(e) =>
+                            handleTextareaChange("experiences", index, e)
+                          }
+                          value={experiences[index].experience_detail}
+                        />
                       </div>
                       <button
                         type="button"
