@@ -106,11 +106,6 @@ const Home = () => {
             가장 혁신적인 <br />
             취업툴
             <br />
-            {/* <img src={GAN_icon} alt="GAN_icon" width={"10%"} />
-            <br />
-            <img src={deep_icon} alt="deep_icon" />
-            <br />
-            <img src={learning_icon} alt="learning_icon" /> */}
             <img src={svg} alt="logo"></img>
             <button onClick={goBottom}>시작하기</button>
           </div>
@@ -126,9 +121,6 @@ const Home = () => {
               <button onClick={openPopup}>맞춤법 검사기</button>
               <Link to="/countchar">
                 <button>글자 수 세기</button>
-              </Link>
-              <Link t0="">
-                <button>😆Fun한다식😆</button>
               </Link>
             </div>
             <div className="job_section">
@@ -185,9 +177,6 @@ const Home = () => {
                 <button onClick={openPopup}>맞춤법 검사기</button>
                 <Link to="/countchar">
                   <button>글자 수 세기</button>
-                </Link>
-                <Link t0="">
-                  <button>😆Fun한다식😆</button>
                 </Link>
               </div>
               <div className="home_hot">
