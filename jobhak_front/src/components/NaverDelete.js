@@ -37,6 +37,7 @@ function NaverDelete() {
   useEffect(() => {
     setLoginType(cookie.get("loginType"));
   });
+
   const userDeleteHandler = () => {
     Swal.fire({
       title: "정말 탈퇴하시겠습니까?",
@@ -50,39 +51,29 @@ function NaverDelete() {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        try {
-          window.location.href = `http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/&mode=unlink`;
-          console.log("회원 탈퇴 성공:");
-          Swal.fire({
-            icon: "success",
-            title: "탈퇴 성공",
-            text: "잡학다식 회원 탈퇴에 성공하였습니다.",
-            showCancelButton: false,
-            confirmButtonText: "확인",
-            width: 800,
-            height: 100,
-          });
-          navigate("/");
-          removeCookie("loggedIn", { path: "/" });
-          removeCookie("loginModal", { path: "/" });
-          removeCookie("user_id", { path: "/" });
-          removeCookie("nickname", { path: "/" });
-          removeCookie("refreshToken", { path: "/" });
-          removeCookie("MyIMG", { path: "/" });
-          removeCookie("provider", { path: "/" });
-          localStorage.removeItem("accessToken");
-        } catch {
-          console.log("회원 탈퇴 실패:");
-          Swal.fire({
-            icon: "error",
-            title: "탈퇴 실패",
-            text: "잡학다식 회원 탈퇴에 실패하였습니다.",
-            showCancelButton: false,
-            confirmButtonText: "확인",
-            width: 800,
-            height: 100,
-          });
-        }
+        window.location.href = `http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/&mode=unlink`;
+        console.log("회원 탈퇴 성공:");
+        Swal.fire({
+          icon: "success",
+          title: "탈퇴 성공",
+          text: "잡학다식 회원 탈퇴에 성공하였습니다.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
+        navigate("/");
+      } else {
+        console.log("회원 탈퇴 실패:");
+        Swal.fire({
+          icon: "error",
+          title: "탈퇴 실패",
+          text: "잡학다식 회원 탈퇴에 실패하였습니다.",
+          showCancelButton: false,
+          confirmButtonText: "확인",
+          width: 800,
+          height: 100,
+        });
       }
     });
   };

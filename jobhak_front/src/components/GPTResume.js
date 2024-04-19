@@ -8,11 +8,11 @@ import Swal from "sweetalert2";
 
 const GPTResume = () => {
   const [readOnly, setReadOnly] = useState(true);
-  // const location = useLocation();
-  // const {
-  //   state: { revision },
-  // } = location;
-  const revision = "hi";
+  const location = useLocation();
+  const {
+    state: { revision },
+  } = location;
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(revision);
@@ -20,24 +20,23 @@ const GPTResume = () => {
     } catch (error) {
       console.error("복사 실패:", error);
     }
-  }
-  const revise = () =>{
+  };
+  const revise = () => {
     setReadOnly(false);
     const Toast = Swal.mixin({
-      toast:true,
-      iconColor: 'white',
+      toast: true,
+      iconColor: "white",
       customClass: {
-        popup: 'colored-toast'
+        popup: "colored-toast",
       },
       showConfirmButton: false,
       timer: 1500,
-    })
+    });
     Toast.fire({
-      icon: 'success',
-      title: '글 상자에서 수정이 가능합니다!'
-    })
-    
-  }
+      icon: "success",
+      title: "글 상자에서 수정이 가능합니다!",
+    });
+  };
 
   //   Swal.fire({
   //     icon: "success",
@@ -69,17 +68,22 @@ const GPTResume = () => {
       </div>
       <div className="gpt_title">AI 작성 자기소개서</div>
       <div className="gpt_box">
-        <textarea className="gpt_content" readOnly ={readOnly}>{revision}</textarea>
+        <textarea className="gpt_content" readOnly={readOnly}>
+          {revision}
+        </textarea>
       </div>
       <div className="write_button_container">
-      <button type ="button" 
-      className="gpt_button_copy"
-      onClick={revise}>수정하기</button>
-      <button
+        <button type="button" className="gpt_button_copy" onClick={revise}>
+          수정하기
+        </button>
+        <button
           type="button"
           className="gpt_button_save"
           onClick={copyToClipboard}
-        > 복사하기 </button>
+        >
+          {" "}
+          복사하기{" "}
+        </button>
       </div>
     </div>
   );
