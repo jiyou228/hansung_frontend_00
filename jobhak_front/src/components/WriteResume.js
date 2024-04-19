@@ -215,14 +215,11 @@ const WriteResume = () => {
     .then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          icon: "success",
-          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
-          text: "첨삭된 자기소개서를 불러오고 있습니다.",
-          width: 800,
-          height: 100,
-          didOpen: () =>{
-            Swal.showLoading();
-          }
+          html:
+            '<div class  = "loader"></div>'
+            + '<h3>로딩 중..</h3>'
+            + '<h5>자기소개서를 작성하고 있습니다.</h5>',
+          showConfirmButton: false,
         });
         handleSave(); 
       } else {
@@ -236,14 +233,11 @@ const WriteResume = () => {
         //   height: 100,
         // });
         Swal.fire({
-          icon: "success",
-          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
-          text: "첨삭된 자기소개서를 불러오고 있습니다.",
-          width: 800,
-          height: 100,
-          didOpen: () =>{
-            Swal.showLoading();
-          }
+          html:
+            '<div class  = "loader"></div>'
+            + '<h3>로딩 중..</h3>'
+            + '<h5>자기소개서를 작성하고 있습니다.</h5>',
+          showConfirmButton: false,
         });
       }
     });
