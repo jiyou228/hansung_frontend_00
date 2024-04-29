@@ -25,6 +25,16 @@ const Home = () => {
   const navgigate = useNavigate();
   const [imageURL, setImageUrl] = useState(null);
 
+
+  // useEffect(() => {
+  //   const changeImage = setInterval(() => {
+  //     setIndex((i) => (i === image.length - 1 ? 0 : i + 1));
+  //   }, 3500);
+  //   return () => {
+  //     clearInterval(changeImage);
+  //   };
+  // }, [index]);
+
   useEffect(() => {
     instance
       .get("https://localhost:3000/user/image/show")
