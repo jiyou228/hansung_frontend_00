@@ -5,7 +5,7 @@ import no2 from "../assets/카드뉴스_작성.svg";
 import no3 from "../assets/카드뉴스_자소서.svg";
 import 'swiper/swiper.min.css'
 import { Autoplay, Scrollbar } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Swipe = () => {
     return (
