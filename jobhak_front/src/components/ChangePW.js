@@ -12,8 +12,6 @@ import HandleProfile from "./HandleProfile";
 import ProfileImage from "./ProfileImage";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
-
 function ChangePW() {
   const navigate = useNavigate();
   const [userpw, setUserPW] = useState("");
@@ -24,7 +22,9 @@ function ChangePW() {
   cookie.get("nickname", decodeURIComponent(encodedNickname));
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
-
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
 
   const openUploadModal = () =>{
     setIsUploadOpen(true);
