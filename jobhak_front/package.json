@@ -9,7 +9,6 @@
     "animate.css": "^4.1.1",
     "axios": "^1.6.7",
     "js-cookie": "^3.0.5",
-    "match-media": "^0.2.0",
     "openai": "^4.26.0",
     "react": "^18.2.0",
     "react-cookie": "^7.0.2",
@@ -37,15 +36,15 @@
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios|swiper)/\"",
     "eject": "react-scripts eject"
   },
-  "jest":{
-    "modulePathIgnorePatterns": ["<rootDir>/node_modules/match-media"]
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+  "jest": {
+    "setupFiles": ["test-setup.js"]
+},
   "browserslist": {
     "production": [
       ">0.2%",
