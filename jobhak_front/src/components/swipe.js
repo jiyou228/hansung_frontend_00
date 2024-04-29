@@ -3,17 +3,9 @@ import { Link } from "react-router-dom";
 import no1 from "../assets/카드뉴스_취업사진.svg";
 import no2 from "../assets/카드뉴스_작성.svg";
 import no3 from "../assets/카드뉴스_자소서.svg";
+import 'swiper/swiper.min.css'
 import { Autoplay, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react.js';
-
-
-
-import "./swipe.css";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/scrollbar";
-import "swiper/css/navigation";
 
 const Swipe = () => {
     return (
