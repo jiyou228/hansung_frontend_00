@@ -42,9 +42,6 @@
       "react-app/jest"
     ]
   },
-  "jest": {
-    "setupFiles": ["test-setup.js"]
-},
   "browserslist": {
     "production": [
       ">0.2%",
