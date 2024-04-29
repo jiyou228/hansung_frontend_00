@@ -1,12 +1,8 @@
 import Nav from "./Nav";
 import "./Home.css";
 import Swipe from "./swipe";
-import profile from "../assets/profile.png";
 import { useCookies } from "react-cookie";
-import logo from "../assets/black_jobhak_full.svg";
 import { useEffect, useState } from "react";
-import job from "../assets/공고.png";
-import axios from "axios";
 import svg from "../assets/black_jobhak_full.svg";
 import no1 from "../assets/카드뉴스_취업사진.svg";
 import no2 from "../assets/카드뉴스_작성.svg";
