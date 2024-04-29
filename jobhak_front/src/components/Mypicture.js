@@ -11,8 +11,6 @@ import HandleProfile from "./HandleProfile";
 import ProfileImage from "./ProfileImage";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement("#root"); // 모달 바깥의 요소를 설정
-
 function Mypicture() {
   const navigate = useNavigate();
   const cookie = new Cookies();
@@ -22,6 +20,10 @@ function Mypicture() {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [loginType, setLoginType] = useState(cookie.get("provider"));
 
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
+  
   useEffect(() => {
     setLoginType(cookie.get("provider"));
   }, []);
