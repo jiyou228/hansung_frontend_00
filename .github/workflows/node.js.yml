@@ -25,7 +25,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
+    - name: List directory structure
+      run: ls -la jobhak_front
     - name: Install dependencies
       run: npm ci
       working-directory: jobhak_front
@@ -37,8 +38,6 @@ jobs:
     - name: Test
       run: npm test
       working-directory: jobhak_front
-
-    # S3 업로드나 다른 단계를 여기에 추가하면 됩니다.
 
     - uses: awact/s3-action@master
       with:
