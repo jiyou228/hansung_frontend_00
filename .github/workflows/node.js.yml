@@ -11,32 +11,41 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v4
+
+    # hansung_frontend_00/jobhak_front으로 디렉토리 이동
+    - name: Change to the project directory
+      run: cd hansung_frontend_00/jobhak_front
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: '**/package-lock.json'
+      
+    # 이후 단계에서 'working-directory'를 사용하여 디렉토리 지정
     - run: npm ci
+      working-directory: hansung_frontend_00/jobhak_front
+      
     - run: npm run build --if-present
+      working-directory: hansung_frontend_00/jobhak_front
+      
     - run: npm test
+      working-directory: hansung_frontend_00/jobhak_front
+
     - uses: awact/s3-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
-        SOURCE_DIR: './build'
+        SOURCE_DIR: './hansung_frontend_00/jobhak_front/build'
         AWS_REGION: 'ap-northeast-2'
-        AWS_S3_BUCKET: ${{secrets.AWS_S3_BUCKET}}
-        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
-        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
