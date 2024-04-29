@@ -13,8 +13,6 @@ import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement("#root"); // 모달 바깥의 요소를 설정
-
 function MyPage() {
   const navigate = useNavigate();
   const [userid, setUserID] = useState("");
@@ -32,6 +30,10 @@ function MyPage() {
   const NickNameHandler = (e) => {
     setUserNickname(e.target.value);
   };
+  
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
 
   const onSaveHandler = () => {
     instance
