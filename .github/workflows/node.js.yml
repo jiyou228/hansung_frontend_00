@@ -29,7 +29,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
-    - uses: awact/s3-action@main
+    - uses: awact/s3-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
