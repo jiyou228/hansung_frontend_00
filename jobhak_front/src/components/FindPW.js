@@ -21,8 +21,8 @@ const FindPW = () => {
       .then((res) => {
         Swal.fire({
           icon: "success",
-          title: "비밀번호 찾기 성공",
-          text: `비밀번호: ${res.data.result}`,
+          title: "임시 비밀번호 전송",
+          text: `가입하신 이메일로 임시 비밀번호가 전송되었습니다.`,
           showCancelButton: false,
           confirmButtonText: "확인",
           width: 800,
