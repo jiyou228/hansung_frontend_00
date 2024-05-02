@@ -6,7 +6,7 @@ const HandleProfile = ({ openUploadModal, openDeleteModal }) => {
     const [imageUrl,setImageUrl] = useState(null);
 
     useEffect(() => {
-        instance.get('https://localhost:3000/user/image/show')
+        instance.get('http://43.200.36.126:8080/user/image/show')
                 .then((res) =>{
                 if(res.data.result){
                     cookie.set("MyIMG", res.data.result);

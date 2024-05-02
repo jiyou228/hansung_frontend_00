@@ -1,10 +1,10 @@
-.home .swiper #png {
+.home .swiper-slide-img{
   width: 16vw;
 }
 .home .swiper-slide-prev {
   margin: 0;
 }
-.home .swiper {
+.home .swiper-container{
   width: 55vw;
 }
 .home {

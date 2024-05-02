@@ -6,7 +6,7 @@ const Chatbot = () => {
   const [loading, setLoading] = useState(false);
 
   const apiKey = "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";
-  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+  const apiEndpoint = "http://api.openai.com/v1/chat/completions";
 
   const addMessage = (sender, message) => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);

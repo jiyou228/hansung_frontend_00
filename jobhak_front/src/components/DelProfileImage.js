@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useCookies } from "react-cookie";
 
 
-const defaultImageUrl = "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/default/default.png";
+const defaultImageUrl = "http://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/default/default.png";
 const DelProfileImage = ({onSuccess}) =>{
     const [,setCookie] = useCookies();
     useEffect(() =>{
@@ -21,13 +21,13 @@ const DelProfileImage = ({onSuccess}) =>{
           })
           .then((result) => {
             if (result.isConfirmed) {
-                instance.get('https://localhost:3000/user/image/show')
+                instance.get('http://43.200.36.126:8080/user/image/show')
                 .then((res) =>{
                     if (res.data.result !== defaultImageUrl) {
-                        instance.delete('https://localhost:3000/user/image/delete')
+                        instance.delete('http://43.200.36.126:8080/user/image/delete')
                         .then((res) =>{
                             console.log("프로필 사진 삭제 성공!", res.data);
-                            instance.get('https://localhost:3000/user/image/show')
+                            instance.get('http://43.200.36.126:8080/user/image/show')
                             .then((res) =>{
                                 if(res.data.result){
                                     setCookie("MyIMG", res.data.result);

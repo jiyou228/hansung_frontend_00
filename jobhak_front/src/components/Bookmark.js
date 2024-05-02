@@ -34,7 +34,7 @@ function Bookmark() {
   useEffect(() => {
     setLoginType(cookie.get("provider"));
     instance
-      .get(`https://localhost:3000/user/bookmark`)
+      .get(`http://43.200.36.126:8080/user/bookmark`)
       .then((res) => {
         console.log(JSON.stringify(res.data));
         const bookmark_arr = res.data.result || [];
@@ -50,7 +50,7 @@ function Bookmark() {
 
   const DeleteBookmark = () => {
     instance
-      .delete(`https://localhost:3000/user/bookmark/delete`, {
+      .delete(`http://43.200.36.126:8080/user/bookmark/delete`, {
         data: {
           bookmarkId: bookmark_id,
         },

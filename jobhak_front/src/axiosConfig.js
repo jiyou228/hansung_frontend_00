@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 const refreshToken = async () => {
   try {
-    const response = await axios.post("https://localhost:3000/reissue");
+    const response = await axios.post("http://43.200.36.126:8080/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
@@ -15,7 +15,7 @@ const refreshToken = async () => {
 
 // Axios 인스턴스 생성
 const instance = axios.create({
-  baseURL: "https://localhost:3000/",
+  baseURL: "http://43.200.36.126:8080/",
   withCredentials: true,
 });
 
@@ -24,10 +24,12 @@ instance.interceptors.request.use(
   (config) => {
     // 토큰을 로컬 스토리지 또는 다른 곳에서 가져와서 설정
     const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = Cookies.get("refreshToken");
 
     // 가져온 토큰이 있을 경우 요청 헤더에 설정
-    if (accessToken) {
+    if (accessToken && refreshToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
+      config.headers.Refresh = `Bearer ${refreshToken}`;
     }
     return config;
   },
@@ -70,10 +72,7 @@ instance.interceptors.response.use(
           Cookies.set("loggedIn", true);
         }
       }
-    } 
-    // else if (status === 404) {
-    //   window.location.href = "/notfound";
-    // }   
+    }   
     return Promise.reject(error);
   }
 );

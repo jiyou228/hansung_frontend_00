@@ -14,7 +14,7 @@ const ChangeName = () => {
   const changeNameSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("https://localhost:3000/login/kakao/changeName", {
+      .post("http://43.200.36.126:8080/login/kakao/changeName", {
         name: name,
       })
       .then((res) => {
