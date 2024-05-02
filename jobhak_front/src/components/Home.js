@@ -9,6 +9,7 @@ import no2 from "../assets/카드뉴스_작성.png";
 import no3 from "../assets/카드뉴스_자소서.png";
 import instance from "../axiosConfig";
 import building from "../assets/building.png";
+import aboutus from '../assets/aboutus.png';
 import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
   const [, setCookie] = useCookies();
@@ -197,6 +198,11 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="aboutUs">
+        <Link to = '/aboutUs'>
+          <img src = {aboutus} alt="aboutUs"/>
+        </Link>
         </div>
       </div>
     </>

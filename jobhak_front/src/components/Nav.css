@@ -29,17 +29,17 @@
 .navbar_app li:hover{
     background-color:white;
     color: #104085;
-    font-weight: 800;
+    font-weight: 700;
 }
 .navbar_app .navbar_logout{
-    font-weight: 800;
+    font-weight: 700;
     color: #B9CFFF;
     margin-left: 1vw;
 }
 .navbar_app .navbar_logout:hover{
     background-color:#B9CFFF;
     color: #104085;
-    font-weight: 800;
+    font-weight: 700;
 }
 .navbar_profile_name{
     cursor: pointer;
@@ -73,7 +73,7 @@
 .navbar_profile.clicked li:hover{
     background-color: #c1c1c180;
     text-decoration: none;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .burger{
@@ -105,7 +105,7 @@
         padding-top: 2vh;
         margin: 0;
         padding-bottom: 1vh;
-        font-weight: 800;
+        font-weight: 700;
         display: block!important;
         box-sizing: border-box;
     }
@@ -142,7 +142,7 @@
         background-color: #B9CFFF;
         text-decoration: underline;
         text-align: center;
-        font-weight: 800;
+        font-weight: 700;
     }
     .navbar_app .navbar_logout{
         padding-bottom: 3vh;
@@ -156,7 +156,7 @@
         background-color:white;
         color: #104085;
         text-decoration: none;
-        font-weight: 800;
+        font-weight: 700;
         text-align: center;
     }
     .navbar_app li:hover ul li{

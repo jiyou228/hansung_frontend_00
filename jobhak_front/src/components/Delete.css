@@ -29,7 +29,7 @@
 
 .logout {
   cursor: pointer;
-  color: red;
+  color: #F44336;
   margin-left: 0.5rem;
   font-weight: 700;
 }
@@ -92,7 +92,7 @@
 }
 
 .delete_btn {
-  background-color: rgb(255, 63, 63);
+  background-color: #F44336;
   color: white;
   cursor: pointer;
   border: none;

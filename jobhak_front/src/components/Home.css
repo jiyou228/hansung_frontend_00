@@ -212,6 +212,16 @@
   white-space: nowrap;
   width: 15vw;
 }
+.aboutUs{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+  align-items: center;
+}
+.aboutUs img{
+  width: 4vw;
+  transform: scaleX(-1);
+}
 .home_sidebar {
   float: right;
   display: flex;
@@ -252,18 +262,18 @@
   font-weight: 700;
 }
 .dday {
-  font-weight: 800;
+  font-weight: 700;
   color: #656565;
 }
 @media (max-width: 768px) {
   .home_head {
     display: none;
   }
-  .home .swiper #png {
+  .home .swiper-slide-img{
     width: 30vw;
     margin-top: 2vh;
   }
-  .home .swiper {
+  .home .swiper-container {
     width: 100vw;
     margin: 0;
   }
@@ -303,7 +313,7 @@
     color: white;
     width: 50vw;
     box-sizing: border-box;
-    font-weight: 800;
+    font-weight: 700;
   }
   .home_mobile button:last-child{
     border-left: 0.5vw solid white;
@@ -346,5 +356,8 @@
     font-size: medium;
     font-weight: 600;
     padding-bottom: 1vh;
+  }
+  .aboutUs img{
+    width: 15vw;
   }
 }

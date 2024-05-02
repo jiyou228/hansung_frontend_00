@@ -21,7 +21,7 @@
   text-align: center;
 }
 .boardlist_profile b {
-  font-weight: 800;
+  font-weight: 700;
 }
 .boardlist_profile img {
   width: 10vw;
@@ -34,7 +34,7 @@
   white-space: nowrap;
 }
 .boardlist_profileDetail strong{
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .detail_count{
@@ -60,7 +60,7 @@
   margin: 0;
 }
 .boardlist_best h2 {
-  font-weight: 800;
+  font-weight: 700;
 }
 .boardlist_best li {
   padding: 2vh 0;
@@ -129,7 +129,7 @@ a {
   border: none;
   background-color: #ffd3b6;
   color: #252525;
-  font-weight: 800;
+  font-weight: 700;
   font-size: medium;
 }
 .boardlist_sort ul {
@@ -250,7 +250,7 @@ a {
 }
 .boardlist_page p {
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 700;
   padding: 0 1vw;
 }
 

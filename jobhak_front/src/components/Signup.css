@@ -56,7 +56,7 @@
 }
 
 .joinform_lb {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.3rem;
   display: inline-block;
   text-align: center;
@@ -69,7 +69,7 @@
   height: 3rem;
   width: 21rem;
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
   padding-left: 1rem;
   background-color: #fcede8;
   color: #252525;
@@ -79,7 +79,7 @@
 }
 
 .joinform_btn {
-  font-weight: 800;
+  font-weight: 700;
 
   margin-left: 1.5rem;
   margin-top: 2rem;
@@ -92,7 +92,7 @@
 }
 
 .joinform2_btn {
-  font-weight: 800;
+  font-weight: 700;
 
   margin-left: 1.5rem;
   width: 5rem;
@@ -107,7 +107,7 @@
   margin-top: 0.7rem;
   background-color: #ffd3b6;
   color: #252525;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.3rem;
   border: 0rem;
   border-radius: 0.5rem;
