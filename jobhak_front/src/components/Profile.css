@@ -3,8 +3,10 @@
 }
 .profile_background{
     width: 30em;
+    text-align: center;
 }
 .profile_background img{
     width: 10em;
     box-shadow: 0px 0px 3px 2px #0000001a;
+    cursor: pointer;
 }

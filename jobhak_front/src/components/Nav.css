@@ -9,6 +9,7 @@
     align-items: center;
     color: white;
     z-index: 2000;
+    white-space: nowrap;
 }
 .navbar_link{
     text-decoration: none;

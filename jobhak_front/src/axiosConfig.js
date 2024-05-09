@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 const reIssue = async () => {
+  console.log(Cookies.get("refreshToken"));
   try {
     const response = await axios.post("http://43.200.36.126:8080/reissue");
     const { accessToken } = response.data;
@@ -25,11 +26,13 @@ instance.interceptors.request.use(
     // 토큰을 로컬 스토리지 또는 다른 곳에서 가져와서 설정
     const accessToken = localStorage.getItem("accessToken");
     const refreshToken = Cookies.get("refreshToken");
+    console.log(refreshToken);
 
     // 가져온 토큰이 있을 경우 요청 헤더에 설정
     if (accessToken && refreshToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
       config.headers.Refresh = `Bearer ${refreshToken}`;
+      console.log(config.headers);
     }
     return config;
   },
@@ -64,11 +67,11 @@ instance.interceptors.response.use(
           catch (refreshError) {
             // 토큰 재발급 실패시 로그아웃 처리
             console.error("토큰 재발급 에러", refreshError);
-            window.location.href = "/logout";
+            // window.location.href = "/logout";
             return Promise.reject(refreshError);
           }
         } else if (error.response.data.code === 1004) {
-          window.location.href = "/logout";
+          // window.location.href = "/logout";
         }
       } else {
         if (error.response.data.code !== 1004) {
