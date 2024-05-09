@@ -13,7 +13,7 @@ const ResetPW = () => {
   // const resetPWSubmit = (e) => {
   //   e.preventDefault();
   //   instance
-  //     .patch("https://localhost:3000/user/edit/pw", {
+  //     .patch("http://43.200.36.126:8080/user/edit/pw", {
   //       password: checkPw
   //     })
   //     .then((res) => {

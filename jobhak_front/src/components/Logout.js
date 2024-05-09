@@ -9,7 +9,7 @@ const Logout = () => {
 
   useEffect(() => {
     instance
-      .get("https://localhost:3000/logout")
+      .get("http://43.200.36.126:8080/logout")
       .then((res) => {
         console.log(res);
         // 쿠키 삭제

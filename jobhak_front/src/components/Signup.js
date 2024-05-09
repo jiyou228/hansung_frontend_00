@@ -51,7 +51,7 @@ function Signup() {
   const EmailConfirm = () => {
     setButtonConfirm(true);
     axios
-      .post("https://localhost:3000/confirm/email", {
+      .post("http://43.200.36.126:8080/confirm/email", {
         email: useremail,
       })
       .then((response) => {
@@ -94,7 +94,7 @@ function Signup() {
 
   const idValidation = () => {
     axios
-      .post("https://localhost:3000/verify/id", {
+      .post("http://43.200.36.126:8080/verify/id", {
         loginId: loginid,
       })
       .then((response) => {
@@ -167,7 +167,7 @@ function Signup() {
       });
     } else {
       await axios
-        .post(`https://localhost:3000/join`, {
+        .post(`http://43.200.36.126:8080/join`, {
           loginId: loginid,
           password: loginpw,
           name: username,

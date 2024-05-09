@@ -57,7 +57,7 @@ function Delete() {
       if (result.isConfirmed) {
         console.log(id);
         instance
-          .delete(`https://localhost:3000/user/delete`, {
+          .delete(`http://43.200.36.126:8080/user/delete`, {
             data: { password: userpw, loginId: id },
           })
           .then((res) => {
