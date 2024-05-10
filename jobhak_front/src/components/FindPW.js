@@ -13,7 +13,7 @@ const FindPW = () => {
   const findPWSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("http://43.200.36.126:8080/find/pw", {
+      .post("https://jobhakdasik.site/find/pw", {
         loginId: id,
         name: name,
         email: email,
