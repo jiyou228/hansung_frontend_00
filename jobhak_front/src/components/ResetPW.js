@@ -66,7 +66,7 @@ const ResetPW = () => {
     
     else {
       instance
-        .patch(`http://localhost:3000/reset/pw`, {
+        .patch(`https://jobhakdasik.site/reset/pw`, {
           password: checkPw,
           tempPW: tempPw
         })
