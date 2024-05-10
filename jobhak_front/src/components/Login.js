@@ -21,7 +21,7 @@ const Login = () => {
   const submitLogin = (e) => {
     e.preventDefault();
     axios
-      .post("https://jobhakdasik.site/", {
+      .post("https://jobhakdasik.site:8080/", {
         loginId: id,
         password: pw,
       })
