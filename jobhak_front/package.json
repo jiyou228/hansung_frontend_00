@@ -28,7 +28,7 @@
   },
   "homepage": "https://jobhakdasik.site",
     "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=80 && react-scripts start",
     "start:mac": "HTTPS=true SSL_CRT_FILE=./cert/cert.pem SSL_KEY_FILE=./cert/key.pem npm run start",
     "start:windows": "set HTTPS=true&&set SSL_CRT_FILE=cert/localhost.pem&&set SSL_KEY_FILE=cert/localhost-key.pem&&npm run start",
     "build": "react-scripts build",
