@@ -101,7 +101,7 @@ export default function ProfileImage({ onSuccess }) {
     });
 
     instance
-      .get("http://43.200.36.126:8080/user/image/show")
+      .get("https://jobhakdasik.site/user/image/show")
       .then((res) => {
         if (res.data.result.length > 0) {
           const imageUrl = res.data.result;
@@ -116,7 +116,7 @@ export default function ProfileImage({ onSuccess }) {
     formData.append("files", blob, "crop.png");
     if (patchURL === null) {
       instance
-        .post("http://43.200.36.126:8080/user/image/save", formData, {
+        .post("https://jobhakdasik.site/user/image/save", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -124,7 +124,7 @@ export default function ProfileImage({ onSuccess }) {
         .then((res) => {
           if (res) {
             console.log("프로필 등록 성공");
-            instance.get('http://43.200.36.126:8080/user/image/show')
+            instance.get('https://jobhakdasik.site/user/image/show')
             .then((res) =>{
                 if(res.data.result){
                   Cookies.set("MyIMG", res.data.result);
@@ -141,7 +141,7 @@ export default function ProfileImage({ onSuccess }) {
         });
     } else {
       instance
-        .patch("http://43.200.36.126:8080/user/image/update", formData, {
+        .patch("https://jobhakdasik.site/user/image/update", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -149,7 +149,7 @@ export default function ProfileImage({ onSuccess }) {
         .then((res) => {
           if (res) {
             console.log("프로필 등록 성공");
-            instance.get('http://43.200.36.126:8080/user/image/show')
+            instance.get('https://jobhakdasik.site/user/image/show')
                             .then((res) =>{
                                 if(res.data.result){
                                     Cookies.set("MyIMG", res.data.result);

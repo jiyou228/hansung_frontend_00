@@ -67,7 +67,7 @@ function BoardWrite() {
     console.log(formData);
 
     instance
-      .post(`http://43.200.36.126:8080/boardlist/write`, formData)
+      .post(`https://jobhakdasik.site/boardlist/write`, formData)
       .then((res) => {
         console.log("게시물 등록 성공" + res);
         navigate("/boardlist");

@@ -13,7 +13,7 @@ const ResetPW = () => {
   // const resetPWSubmit = (e) => {
   //   e.preventDefault();
   //   instance
-  //     .patch("http://43.200.36.126:8080/user/edit/pw", {
+  //     .patch("https://jobhakdasik.site/user/edit/pw", {
   //       password: checkPw
   //     })
   //     .then((res) => {
@@ -66,7 +66,7 @@ const ResetPW = () => {
     
     else {
       instance
-        .patch(`http://43.200.36.126:8080/reset/pw`, {
+        .patch(`https://jobhakdasik.site/reset/pw`, {
           password: checkPw,
           tempPW: tempPw
         })

@@ -159,7 +159,7 @@ const WriteResume = () => {
     console.log(JSON.stringify(experiences));
 
     if (!isTextMode) {
-      instance.post("http://43.200.36.126:8080/resume/post/myList", formData,{
+      instance.post("https://jobhakdasik.site/resume/post/myList", formData,{
         headers: {
           'Content-Type': "multipart/form-data" // form-data로 요청을 보내야 함
         }
@@ -178,7 +178,7 @@ const WriteResume = () => {
         });
     } 
     else {
-    instance.post("http://43.200.36.126:8080/resume/post/myText", {
+    instance.post("https://jobhakdasik.site/resume/post/myText", {
       content: text
     })
     .then((res) => {
@@ -384,10 +384,10 @@ const WriteResume = () => {
   };
 
   const getMyInfo = () => {
-    instance.get('http://43.200.36.126:8080/resume/get/IsText')
+    instance.get('https://jobhakdasik.site/resume/get/IsText')
     .then((res) =>{
       if(res.data.result == false){
-        instance.get("http://43.200.36.126:8080/resume/get/myList")
+        instance.get("https://jobhakdasik.site/resume/get/myList")
         .then((res)=>{
           if(res.data){
             if (res.data.result.careerToFront.length > 0 || res.data.result.expToFront.length > 0) {
@@ -408,7 +408,7 @@ const WriteResume = () => {
          })
       }
       else if(res.data.result == true){
-        instance.get("http://43.200.36.126:8080/resume/get/myText")
+        instance.get("https://jobhakdasik.site/resume/get/myText")
         .then((res) =>{
           if(res.data.result.content.length > 0){
             const { content } = res.data.result;

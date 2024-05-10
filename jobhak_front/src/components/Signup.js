@@ -51,7 +51,7 @@ function Signup() {
   const EmailConfirm = () => {
     setButtonConfirm(true);
     axios
-      .post("http://43.200.36.126:8080/confirm/email", {
+      .post("https://jobhakdasik.site/confirm/email", {
         email: useremail,
       })
       .then((response) => {
@@ -94,7 +94,7 @@ function Signup() {
 
   const idValidation = () => {
     axios
-      .post("http://43.200.36.126:8080/verify/id", {
+      .post("https://jobhakdasik.site/verify/id", {
         loginId: loginid,
       })
       .then((response) => {
@@ -167,7 +167,7 @@ function Signup() {
       });
     } else {
       await axios
-        .post(`http://43.200.36.126:8080/join`, {
+        .post(`https://jobhakdasik.site/join`, {
           loginId: loginid,
           password: loginpw,
           name: username,

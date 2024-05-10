@@ -1,9 +1,8 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const reIssue = async () => {
-  console.log(Cookies.get("refreshToken"));
+const refreshToken = async () => {
   try {
-    const response = await axios.post("http://43.200.36.126:8080/reissue");
+    const response = await axios.post("https://jobhakdasik.site/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
@@ -16,7 +15,7 @@ const reIssue = async () => {
 
 // Axios 인스턴스 생성
 const instance = axios.create({
-  baseURL: "http://43.200.36.126:8080/",
+  baseURL: "https://jobhakdasik.site/",
   withCredentials: true,
 });
 
@@ -25,14 +24,10 @@ instance.interceptors.request.use(
   (config) => {
     // 토큰을 로컬 스토리지 또는 다른 곳에서 가져와서 설정
     const accessToken = localStorage.getItem("accessToken");
-    const refreshToken = Cookies.get("refreshToken");
-    console.log(refreshToken);
 
     // 가져온 토큰이 있을 경우 요청 헤더에 설정
-    if (accessToken && refreshToken) {
+    if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
-      config.headers.Refresh = `Bearer ${refreshToken}`;
-      console.log(config.headers);
     }
     return config;
   },
@@ -57,27 +52,27 @@ instance.interceptors.response.use(
         if (error.response.data.code === 999) {
           //accessToken 만료시?
           try {
-            const { accessToken, refreshToken } = await reIssue(); // refreshToken 함수가 새로운 accessToken과 refreshToken을 반환하도록 가정합니다.
+            const accessToken = await refreshToken();
             // 새로 발급받은 토큰으로 기존 요청 재시도
             error.config.headers.Authorization = `Bearer ${accessToken}`;
-            error.config.headers.Refresh = `Bearer ${refreshToken}`; // 새로운 refreshToken을 설정합니다.
             return axios.request(error.config);
-          } 
-          
-          catch (refreshError) {
+          } catch (refreshError) {
             // 토큰 재발급 실패시 로그아웃 처리
             console.error("토큰 재발급 에러", refreshError);
-            // window.location.href = "/logout";
+            window.location.href = "/logout";
             return Promise.reject(refreshError);
           }
         } else if (error.response.data.code === 1004) {
-          // window.location.href = "/logout";
+          window.location.href = "/logout";
         }
       } else {
         if (error.response.data.code !== 1004) {
           Cookies.set("loggedIn", true);
         }
       }
+    } 
+    else if (status === 404) {
+      window.location.href = "/notfound";
     }   
     return Promise.reject(error);
   }
