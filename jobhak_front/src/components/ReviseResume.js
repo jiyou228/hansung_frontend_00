@@ -92,7 +92,7 @@ const Resume = () => {
           stop: ["stop"],
         }),
       });
-
+      setUserInput(message);
       const data = await response.json();
       const aiResponse = data.choices?.[0]?.message?.content || "No response";
       setRevision(aiResponse);

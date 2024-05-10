@@ -12,7 +12,7 @@ const FindID = () => {
   const findIDSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("https://localhost:3000/find/id", {
+      .post("http://43.200.36.126:8080/find/id", {
         name: name,
         email: email,
       })

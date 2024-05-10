@@ -13,7 +13,7 @@ const ResetPW = () => {
   // const resetPWSubmit = (e) => {
   //   e.preventDefault();
   //   instance
-  //     .patch("https://localhost:3000/user/edit/pw", {
+  //     .patch("http://43.200.36.126:8080/user/edit/pw", {
   //       password: checkPw
   //     })
   //     .then((res) => {
@@ -50,9 +50,7 @@ const ResetPW = () => {
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,}$/;
     if (newPw !== checkPw) {
       alert("변경할 비밀번호가 맞지 않습니다.");
-    }
-    
-    else if (!DoubleCheckPW.test(checkPw)) {
+    } else if (!DoubleCheckPW.test(checkPw)) {
       Swal.fire({
         icon: "warning",
         title: "경고",
@@ -62,13 +60,11 @@ const ResetPW = () => {
         width: 800,
         height: 100,
       });
-    }
-    
-    else {
+    } else {
       instance
-        .patch(`http://localhost:3000/reset/pw`, {
+        .patch(`http://43.200.36.126:8080/reset/pw`, {
           password: checkPw,
-          tempPW: tempPw
+          tempPW: tempPw,
         })
         .then((res) => {
           console.log("비밀번호 재설정 성공:", res);

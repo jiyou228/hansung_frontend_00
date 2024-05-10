@@ -9,7 +9,7 @@ const NaverLogin = () => {
   const { naver } = window;
   const [, setCookie] = useCookies();
   const NAVER_CLIENT_ID = 'JpTJiIlCSBmFu0fI3oft';
-  const NAVER_CALLBACK_URL = 'https://localhost:3000/login/naver';
+  const NAVER_CALLBACK_URL = 'http://43.200.36.126:8080/login/naver';
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -47,7 +47,7 @@ const NaverLogin = () => {
   const getToken = () =>{
     const token = window.location.href.split('=')[1].split('&')[0];
     localStorage.setItem("naverToken", token);
-    instance.post('https://localhost:3000/login/naver',{
+    instance.post('http://43.200.36.126:8080/login/naver',{
       loginId: id,
       name: name,
       nickname: nickname,
@@ -115,11 +115,11 @@ const { useEffect } = require("react");
 
 //   useEffect(() => {
 //     if (!location.search.includes("code=")) {
-//       window.location.href = "https://nid.naver.com/oauth2.0/authorize?client_id=JpTJiIlCSBmFu0fI3oft&response_type=code&redirect_uri=https://localhost:3000/login/naver";
+//       window.location.href = "https://nid.naver.com/oauth2.0/authorize?client_id=JpTJiIlCSBmFu0fI3oft&response_type=code&redirect_uri=http://43.200.36.126:8080/login/naver";
 //     } else {
 //       const urlParams = new URLSearchParams(location.search);
 //       const code = urlParams.get("code");
-//       instance.post('https://localhost:3000/login/naver',{
+//       instance.post('http://43.200.36.126:8080/login/naver',{
 //         accessCode: code
 //     })
 //     .then((res) =>{
@@ -162,7 +162,7 @@ const { useEffect } = require("react");
 const NaverLogin = () => {
   useEffect(() => {
     const STATE_STRING = "jobhak_naverLogin";
-    window.location.href = `http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/redirectNaver&mode=login`;
+    window.location.href = `http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://43.200.36.126:8080/redirectNaver&mode=login`;
   }, []);
 };
 export default NaverLogin;

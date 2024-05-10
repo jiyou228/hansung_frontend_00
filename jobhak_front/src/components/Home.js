@@ -27,7 +27,7 @@ const Home = () => {
 
   useEffect(() => {
     instance
-      .get("https://localhost:3000/user/image/show")
+      .get("http://43.200.36.126:8080/user/image/show")
       .then((res) => {
         if (res.data.result) {
           const imageUrl = res.data.result; // 이미지 URL 가져오기
@@ -41,7 +41,7 @@ const Home = () => {
         console.error(err);
       });
     instance
-      .get("https://localhost:3000/home")
+      .get("http://43.200.36.126:8080/home")
       .then((profile) => {
         setUserProfile(profile.data.result.nickname);
         //console.log(JSON.stringify(profile.data));
@@ -58,7 +58,7 @@ const Home = () => {
       });
 
     instance
-      .get("https://localhost:3000/home/saramin")
+      .get("http://43.200.36.126:8080/home/saramin")
       .then((saramin) => {
         setJobList(saramin.data);
       })
@@ -67,7 +67,7 @@ const Home = () => {
       });
 
     instance
-      .get("https://localhost:3000/home/saramin/href")
+      .get("http://43.200.36.126:8080/home/saramin/href")
       .then((image) => {
         setImageList(image.data);
       })

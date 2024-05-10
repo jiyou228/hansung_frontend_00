@@ -26,12 +26,10 @@
     "swiper": "^11.0.5",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://localhost:3000",
-  "proxy": "http://localhost:8080",
+  "homepage": "http://43.200.36.126:8080/",
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
-    "start:mac": "HTTPS=true SSL_CRT_FILE=./cert/cert.pem SSL_KEY_FILE=./cert/key.pem npm run start",
-    "start:windows": "set HTTPS=true&&set SSL_CRT_FILE=cert/localhost.pem&&set SSL_KEY_FILE=cert/localhost-key.pem&&npm run start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

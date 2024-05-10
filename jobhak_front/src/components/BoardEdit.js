@@ -48,7 +48,7 @@ function BoardEdit() {
 
   const handleEditClick = () => {
     instance
-      .patch(`https://localhost:3000/boardlist/edit/${postId}`, {
+      .patch(`http://43.200.36.126:8080/boardlist/edit/${postId}`, {
         post_id: postId,
         title: title,
         content: content,

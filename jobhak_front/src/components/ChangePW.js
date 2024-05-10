@@ -7,12 +7,12 @@ import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import instance from "../axiosConfig";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import ProfileImage from "./ProfileImage";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement('#root'); // 모달 바깥의 요소를 설정
+Modal.setAppElement("#root"); // 모달 바깥의 요소를 설정
 
 function ChangePW() {
   const navigate = useNavigate();
@@ -25,17 +25,15 @@ function ChangePW() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-
-  const openUploadModal = () =>{
+  const openUploadModal = () => {
     setIsUploadOpen(true);
-  }
-  const closeUploadModal = () =>{
+  };
+  const closeUploadModal = () => {
     setIsUploadOpen(false);
-  }
-  const openDeleteModal = () =>{
+  };
+  const openDeleteModal = () => {
     setIsDeleteOpen(true);
-  }
-
+  };
 
   const PWHandler = (e) => {
     setUserPW(e.target.value);
@@ -77,7 +75,7 @@ function ChangePW() {
       });
     } else {
       instance
-        .patch(`https://localhost:3000/user/edit/pw`, {
+        .patch(`http://43.200.36.126:8080/user/edit/pw`, {
           password: checkpw,
         })
         .then((res) => {
@@ -116,7 +114,10 @@ function ChangePW() {
             <div className="mypage_profile_name">
               {decodeURIComponent(encodedNickname)}님
             </div>
-            <HandleProfile openUploadModal={openUploadModal} openDeleteModal={openDeleteModal}/>
+            <HandleProfile
+              openUploadModal={openUploadModal}
+              openDeleteModal={openDeleteModal}
+            />
           </div>
           <div
             className="mypage_count_div"
@@ -229,35 +230,38 @@ function ChangePW() {
           </div>
         </div>
       </div>
-      <Modal isOpen={isUploadOpen} onRequestClose={closeUploadModal}
-      style={{
-        overlay: {
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.75)'
-        },
-        content: {
-          position: 'absolute',
-          top: '10vh',
-          left: '10vw',
-          right: '10vw',
-          bottom: '10vh',
-          border: '1px solid #ccc',
-          background: '#fff',
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          borderRadius: '4px',
-          outline: 'none',
-          padding: '20px'
-        }
-      }}> 
-        <ProfileImage onSuccess={(closeUploadModal)}/>
+      <Modal
+        isOpen={isUploadOpen}
+        onRequestClose={closeUploadModal}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          },
+          content: {
+            position: "absolute",
+            top: "10vh",
+            left: "10vw",
+            right: "10vw",
+            bottom: "10vh",
+            border: "1px solid #ccc",
+            background: "#fff",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            borderRadius: "4px",
+            outline: "none",
+            padding: "20px",
+          },
+        }}
+      >
+        <ProfileImage onSuccess={closeUploadModal} />
       </Modal>
       {isDeleteOpen && (
-        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)}/>
+        <DelProfileImage onSuccess={() => setIsDeleteOpen(false)} />
       )}
     </div>
   );

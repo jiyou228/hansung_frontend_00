@@ -59,7 +59,7 @@ function BoardDetail() {
   const handleBookmarkClick = () => {
     if (isBookmarked === false) {
       instance
-        .post(`https://localhost:3000/boardlist/${postId}/bookmark`, {
+        .post(`http://43.200.36.126:8080/boardlist/${postId}/bookmark`, {
           post_id: postId,
           user_id: user_id,
         })
@@ -71,7 +71,7 @@ function BoardDetail() {
         });
     } else if (isBookmarked === true) {
       instance
-        .delete("https://localhost:3000/user/bookmark/delete", {
+        .delete("http://43.200.36.126:8080/user/bookmark/delete", {
           data: {
             bookmarkId: bookmarkId,
           },
@@ -140,7 +140,7 @@ function BoardDetail() {
 
   const handleReplyEdit = (replyId) => {
     instance
-      .patch(`https://localhost:3000/boardlist/detail/${postId}/reply`, {
+      .patch(`http://43.200.36.126:8080/boardlist/detail/${postId}/reply`, {
         replyId: replyId,
         replyContent: editContent,
       })
@@ -178,7 +178,7 @@ function BoardDetail() {
         if (result.isConfirmed) {
           if (!option) {
             instance
-              .delete(`https://localhost:3000/boardlist/delete/${postId}`, {
+              .delete(`http://43.200.36.126:8080/boardlist/delete/${postId}`, {
                 data: {
                   post_id: postId,
                 },
@@ -192,7 +192,7 @@ function BoardDetail() {
           } else if (option) {
             instance
               .delete(
-                `https://localhost:3000/boardlist/${postId}/reply/delete/${option}`,
+                `http://43.200.36.126:8080/boardlist/${postId}/reply/delete/${option}`,
                 {
                   data: {
                     replyId: option,
@@ -221,7 +221,7 @@ function BoardDetail() {
     getData();
     //console.log(fileNameKey);
     instance
-      .get(`https://localhost:3000/boardlist/detail/${postId}/count`)
+      .get(`http://43.200.36.126:8080/boardlist/detail/${postId}/count`)
       .then((res) => {
         //console.log(JSON.stringify(res.data));
         setCommentCount(res.data.result.replyNum);
@@ -250,9 +250,9 @@ function BoardDetail() {
   const getData = () => {
     axios
       .all([
-        instance.get("https://localhost:3000/user/bookmark"),
+        instance.get("http://43.200.36.126:8080/user/bookmark"),
 
-        instance.get(`https://localhost:3000/boardlist/detail/${postId}`),
+        instance.get(`http://43.200.36.126:8080/boardlist/detail/${postId}`),
       ])
       .then(
         axios.spread((bookmark, detail) => {
@@ -307,7 +307,7 @@ function BoardDetail() {
   };
   const handleReply = () => {
     instance
-      .post(`https://localhost:3000/boardlist/detail/${postId}/reply`, {
+      .post(`http://43.200.36.126:8080/boardlist/detail/${postId}/reply`, {
         postId: postId,
         replyContent: replyContent,
       })
@@ -325,7 +325,7 @@ function BoardDetail() {
 
   const handlereReply = (parentReplyId) => {
     instance
-      .post(`https://localhost:3000/boardlist/detail/${postId}/reply`, {
+      .post(`http://43.200.36.126:8080/boardlist/detail/${postId}/reply`, {
         postId: postId,
         replyContent: reReplyContent,
         parentReplyId: parentReplyId,
@@ -365,7 +365,12 @@ function BoardDetail() {
       <div className="board_div">
         <div className="board_top">
           <div className="board_left">
-            <img className="profile_img" src={writerProfile} alt="프사" width={60} />
+            <img
+              className="profile_img"
+              src={writerProfile}
+              alt="프사"
+              width={60}
+            />
             <div className="post_nickname">{nickname}</div>
           </div>
           <div className="title">
@@ -464,7 +469,10 @@ function BoardDetail() {
               <div className="reply_layout">
                 <div className="reply_reply">
                   <div className="reply_profile">
-                    <img src={Object.values(reply.replierProfile)[0]} alt="프사" />
+                    <img
+                      src={Object.values(reply.replierProfile)[0]}
+                      alt="프사"
+                    />
                   </div>
                   <div className="reply_content">
                     <label>{reply.nickname}</label>
@@ -555,7 +563,10 @@ function BoardDetail() {
                   <div className="rereply_box">
                     <div className="rereply_layout">
                       <div className="rereply_profile">
-                        <img src={Object.values(subReply.replierProfile)[0]} alt="프사" />
+                        <img
+                          src={Object.values(subReply.replierProfile)[0]}
+                          alt="프사"
+                        />
                       </div>
                       <div className="rereply_content">
                         <label>{subReply.nickname}</label>

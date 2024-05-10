@@ -35,7 +35,7 @@ function MyPage() {
 
   const onSaveHandler = () => {
     instance
-      .patch("https://localhost:3000/user/edit", {
+      .patch("http://43.200.36.126:8080/user/edit", {
         userid: userid,
         nickname: usernickname,
       })
@@ -67,7 +67,7 @@ function MyPage() {
 
   useEffect(() => {
     setLoginType(cookie.get("provider"));
-    let url = "https://localhost:3000/user/myInfo";
+    let url = "http://43.200.36.126:8080/user/myInfo";
     instance
       .get(url)
       .then((res) => {
