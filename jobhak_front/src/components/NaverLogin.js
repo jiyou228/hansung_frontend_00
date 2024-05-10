@@ -162,7 +162,7 @@ const { useEffect } = require("react");
 const NaverLogin = () => {
   useEffect(() => {
     const STATE_STRING = "jobhak_naverLogin";
-    window.location.href = `http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://d3d59x2as7ue00.cloudfront.net/login/callback&mode=login`;
+    window.location.href = `https://jobhakdasik.site/oauth2/authorization/naver?redirect_uri=http://localhost:3000/redirectNaver&mode=login`;
   }, []);
 };
 export default NaverLogin;
