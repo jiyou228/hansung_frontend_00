@@ -13,7 +13,7 @@ const FindPW = () => {
   const findPWSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("https://jobhakdasik.site/find/pw", {
+      .post("https://api.jobhakdasik.site/find/pw", {
         loginId: id,
         name: name,
         email: email,

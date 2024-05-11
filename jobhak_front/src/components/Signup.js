@@ -51,7 +51,7 @@ function Signup() {
   const EmailConfirm = () => {
     setButtonConfirm(true);
     axios
-      .post("https://jobhakdasik.site/confirm/email", {
+      .post("https://api.jobhakdasik.site/confirm/email", {
         email: useremail,
       })
       .then((response) => {
@@ -94,7 +94,7 @@ function Signup() {
 
   const idValidation = () => {
     axios
-      .post("https://jobhakdasik.site/verify/id", {
+      .post("https://api.jobhakdasik.site/verify/id", {
         loginId: loginid,
       })
       .then((response) => {
@@ -167,7 +167,7 @@ function Signup() {
       });
     } else {
       await axios
-        .post(`https://jobhakdasik.site/join`, {
+        .post(`https://api.jobhakdasik.site/join`, {
           loginId: loginid,
           password: loginpw,
           name: username,

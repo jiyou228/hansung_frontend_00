@@ -34,7 +34,7 @@ function Bookmark() {
   useEffect(() => {
     setLoginType(cookie.get("provider"));
     instance
-      .get(`https://jobhakdasik.site/user/bookmark`)
+      .get(`https://api.jobhakdasik.site/user/bookmark`)
       .then((res) => {
         console.log(JSON.stringify(res.data));
         const bookmark_arr = res.data.result || [];
@@ -50,7 +50,7 @@ function Bookmark() {
 
   const DeleteBookmark = () => {
     instance
-      .delete(`https://jobhakdasik.site/user/bookmark/delete`, {
+      .delete(`https://api.jobhakdasik.site/user/bookmark/delete`, {
         data: {
           bookmarkId: bookmark_id,
         },

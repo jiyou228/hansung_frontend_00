@@ -6,7 +6,7 @@ const HandleProfile = ({ openUploadModal, openDeleteModal }) => {
     const [imageUrl,setImageUrl] = useState(null);
 
     useEffect(() => {
-        instance.get('https://jobhakdasik.site/user/image/show')
+        instance.get('https://api.jobhakdasik.site/user/image/show')
                 .then((res) =>{
                 if(res.data.result){
                     cookie.set("MyIMG", res.data.result);

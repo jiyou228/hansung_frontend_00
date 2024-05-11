@@ -9,7 +9,7 @@ const Logout = () => {
 
   useEffect(() => {
     instance
-      .get("https://jobhakdasik.site/logout")
+      .get("https://api.jobhakdasik.site/logout")
       .then((res) => {
         console.log(res);
         // 쿠키 삭제

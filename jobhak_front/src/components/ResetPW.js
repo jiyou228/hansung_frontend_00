@@ -13,7 +13,7 @@ const ResetPW = () => {
   // const resetPWSubmit = (e) => {
   //   e.preventDefault();
   //   instance
-  //     .patch("https://jobhakdasik.site/user/edit/pw", {
+  //     .patch("https://api.jobhakdasik.site/user/edit/pw", {
   //       password: checkPw
   //     })
   //     .then((res) => {
@@ -66,7 +66,7 @@ const ResetPW = () => {
     
     else {
       instance
-        .patch(`https://jobhakdasik.site/reset/pw`, {
+        .patch(`https://api.jobhakdasik.site/reset/pw`, {
           password: checkPw,
           tempPW: tempPw
         })

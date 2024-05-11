@@ -57,7 +57,7 @@ function Delete() {
       if (result.isConfirmed) {
         console.log(id);
         instance
-          .delete(`https://jobhakdasik.site/user/delete`, {
+          .delete(`https://api.jobhakdasik.site/user/delete`, {
             data: { password: userpw, loginId: id },
           })
           .then((res) => {
