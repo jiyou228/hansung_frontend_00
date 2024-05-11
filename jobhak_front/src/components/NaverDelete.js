@@ -51,7 +51,7 @@ function NaverDelete() {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = `https://api.jobhakdasik.site/oauth2/authorization/naver?redirect_uri=https://api.jobhakdasik.site/&mode=unlink`;
+        window.location.href = `https://api.jobhakdasik.site/oauth2/authorization/naver?redirect_uri=https://jobhakdasik.site/&mode=unlink`;
         console.log("회원 탈퇴 성공:");
         Swal.fire({
           icon: "success",
