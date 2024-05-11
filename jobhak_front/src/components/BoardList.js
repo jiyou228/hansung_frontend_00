@@ -45,7 +45,7 @@ const BoardList = () => {
   const submitSearch = () => {
     if (searchTitle) {
       instance
-        .post(`https://jobhakdasik.site/boardlist/search/${searchTitle}`)
+        .post(`https://api.jobhakdasik.site/boardlist/search/${searchTitle}`)
         .then((res) => {
           if (res.data.result.length > 0) {
             setBoardList(res.data.result);
@@ -96,13 +96,13 @@ const BoardList = () => {
     axios
       .all([
         instance.get(
-          `https://jobhakdasik.site/boardlist?page=${
+          `https://api.jobhakdasik.site/boardlist?page=${
             page - 1
           }&sort=${sortOption}&category=${selectedCategory}`
         ),
-        instance.get("https://jobhakdasik.site/boardlist/best"),
-        instance.get("https://jobhakdasik.site/user/bookmark"),
-        instance.get("https://jobhakdasik.site/boardlist/user"),
+        instance.get("https://api.jobhakdasik.site/boardlist/best"),
+        instance.get("https://api.jobhakdasik.site/user/bookmark"),
+        instance.get("https://api.jobhakdasik.site/boardlist/user"),
       ])
       .then(
         axios.spread((res1, res2, res3, res4) => {

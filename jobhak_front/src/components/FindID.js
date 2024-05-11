@@ -12,7 +12,7 @@ const FindID = () => {
   const findIDSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("https://jobhakdasik.site/find/id", {
+      .post("https://api.jobhakdasik.site/find/id", {
         name: name,
         email: email,
       })

@@ -37,7 +37,7 @@ function MyPage() {
 
   const onSaveHandler = () => {
     instance
-      .patch("https://jobhakdasik.site/user/edit", {
+      .patch("https://api.jobhakdasik.site/user/edit", {
         userid: userid,
         nickname: usernickname,
       })
@@ -69,7 +69,7 @@ function MyPage() {
 
   useEffect(() => {
     setLoginType(cookie.get("provider"));
-    let url = "https://jobhakdasik.site/user/myInfo";
+    let url = "https://api.jobhakdasik.site/user/myInfo";
     instance
       .get(url)
       .then((res) => {

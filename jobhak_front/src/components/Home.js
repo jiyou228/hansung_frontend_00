@@ -34,7 +34,7 @@ const Home = () => {
 
   useEffect(() => {
     instance
-      .get("https://jobhakdasik.site/user/image/show")
+      .get("https://api.jobhakdasik.site/user/image/show")
       .then((res) => {
         if (res.data.result) {
           const imageUrl = res.data.result; // 이미지 URL 가져오기
@@ -48,7 +48,7 @@ const Home = () => {
         console.error(err);
       });
     instance
-      .get("https://jobhakdasik.site/home")
+      .get("https://api.jobhakdasik.site/home")
       .then((profile) => {
         setUserProfile(profile.data.result.nickname);
         //console.log(JSON.stringify(profile.data));
@@ -65,7 +65,7 @@ const Home = () => {
       });
 
     instance
-      .get("https://jobhakdasik.site/home/saramin")
+      .get("https://api.jobhakdasik.site/home/saramin")
       .then((saramin) => {
         setJobList(saramin.data);
       })
@@ -74,7 +74,7 @@ const Home = () => {
       });
 
     instance
-      .get("https://jobhakdasik.site/home/saramin/href")
+      .get("https://api.jobhakdasik.site/home/saramin/href")
       .then((image) => {
         setImageList(image.data);
       })

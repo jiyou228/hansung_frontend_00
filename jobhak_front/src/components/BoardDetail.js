@@ -59,7 +59,7 @@ function BoardDetail() {
   const handleBookmarkClick = () => {
     if (isBookmarked === false) {
       instance
-        .post(`https://jobhakdasik.site/boardlist/${postId}/bookmark`, {
+        .post(`https://api.jobhakdasik.site/boardlist/${postId}/bookmark`, {
           post_id: postId,
           user_id: user_id,
         })
@@ -71,7 +71,7 @@ function BoardDetail() {
         });
     } else if (isBookmarked === true) {
       instance
-        .delete("https://jobhakdasik.site/user/bookmark/delete", {
+        .delete("https://api.jobhakdasik.site/user/bookmark/delete", {
           data: {
             bookmarkId: bookmarkId,
           },
@@ -140,7 +140,7 @@ function BoardDetail() {
 
   const handleReplyEdit = (replyId) => {
     instance
-      .patch(`https://jobhakdasik.site/boardlist/detail/${postId}/reply`, {
+      .patch(`https://api.jobhakdasik.site/boardlist/detail/${postId}/reply`, {
         replyId: replyId,
         replyContent: editContent,
       })
@@ -178,7 +178,7 @@ function BoardDetail() {
         if (result.isConfirmed) {
           if (!option) {
             instance
-              .delete(`https://jobhakdasik.site/boardlist/delete/${postId}`, {
+              .delete(`https://api.jobhakdasik.site/boardlist/delete/${postId}`, {
                 data: {
                   post_id: postId,
                 },
@@ -192,7 +192,7 @@ function BoardDetail() {
           } else if (option) {
             instance
               .delete(
-                `https://jobhakdasik.site/boardlist/${postId}/reply/delete/${option}`,
+                `https://api.jobhakdasik.site/boardlist/${postId}/reply/delete/${option}`,
                 {
                   data: {
                     replyId: option,
@@ -221,7 +221,7 @@ function BoardDetail() {
     getData();
     //console.log(fileNameKey);
     instance
-      .get(`https://jobhakdasik.site/boardlist/detail/${postId}/count`)
+      .get(`https://api.jobhakdasik.site/boardlist/detail/${postId}/count`)
       .then((res) => {
         //console.log(JSON.stringify(res.data));
         setCommentCount(res.data.result.replyNum);
@@ -250,9 +250,9 @@ function BoardDetail() {
   const getData = () => {
     axios
       .all([
-        instance.get("https://jobhakdasik.site/user/bookmark"),
+        instance.get("https://api.jobhakdasik.site/user/bookmark"),
 
-        instance.get(`https://jobhakdasik.site/boardlist/detail/${postId}`),
+        instance.get(`https://api.jobhakdasik.site/boardlist/detail/${postId}`),
       ])
       .then(
         axios.spread((bookmark, detail) => {
@@ -307,7 +307,7 @@ function BoardDetail() {
   };
   const handleReply = () => {
     instance
-      .post(`https://jobhakdasik.site/boardlist/detail/${postId}/reply`, {
+      .post(`https://api.jobhakdasik.site/boardlist/detail/${postId}/reply`, {
         postId: postId,
         replyContent: replyContent,
       })
@@ -325,7 +325,7 @@ function BoardDetail() {
 
   const handlereReply = (parentReplyId) => {
     instance
-      .post(`https://jobhakdasik.site/boardlist/detail/${postId}/reply`, {
+      .post(`https://api.jobhakdasik.site/boardlist/detail/${postId}/reply`, {
         postId: postId,
         replyContent: reReplyContent,
         parentReplyId: parentReplyId,

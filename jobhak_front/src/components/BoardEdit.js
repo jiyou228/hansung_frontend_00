@@ -48,7 +48,7 @@ function BoardEdit() {
 
   const handleEditClick = () => {
     instance
-      .patch(`https://jobhakdasik.site/boardlist/edit/${postId}`, {
+      .patch(`https://api.jobhakdasik.site/boardlist/edit/${postId}`, {
         post_id: postId,
         title: title,
         content: content,

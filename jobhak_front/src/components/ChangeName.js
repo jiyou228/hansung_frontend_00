@@ -14,7 +14,7 @@ const ChangeName = () => {
   const changeNameSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("https://jobhakdasik.site/login/kakao/changeName", {
+      .post("https://api.jobhakdasik.site/login/kakao/changeName", {
         name: name,
       })
       .then((res) => {

@@ -77,7 +77,7 @@ function ChangePW() {
       });
     } else {
       instance
-        .patch(`https://jobhakdasik.site/user/edit/pw`, {
+        .patch(`https://api.jobhakdasik.site/user/edit/pw`, {
           password: checkpw,
         })
         .then((res) => {

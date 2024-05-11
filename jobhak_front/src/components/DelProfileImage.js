@@ -21,13 +21,13 @@ const DelProfileImage = ({onSuccess}) =>{
           })
           .then((result) => {
             if (result.isConfirmed) {
-                instance.get('https://jobhakdasik.site/user/image/show')
+                instance.get('https://api.jobhakdasik.site/user/image/show')
                 .then((res) =>{
                     if (res.data.result !== defaultImageUrl) {
-                        instance.delete('https://jobhakdasik.site/user/image/delete')
+                        instance.delete('https://api.jobhakdasik.site/user/image/delete')
                         .then((res) =>{
                             console.log("프로필 사진 삭제 성공!", res.data);
-                            instance.get('https://jobhakdasik.site/user/image/show')
+                            instance.get('https://api.jobhakdasik.site/user/image/show')
                             .then((res) =>{
                                 if(res.data.result){
                                     setCookie("MyIMG", res.data.result);

@@ -101,7 +101,7 @@ export default function ProfileImage({ onSuccess }) {
     });
 
     instance
-      .get("https://jobhakdasik.site/user/image/show")
+      .get("https://api.jobhakdasik.site/user/image/show")
       .then((res) => {
         if (res.data.result.length > 0) {
           const imageUrl = res.data.result;
@@ -116,7 +116,7 @@ export default function ProfileImage({ onSuccess }) {
     formData.append("files", blob, "crop.png");
     if (patchURL === null) {
       instance
-        .post("https://jobhakdasik.site/user/image/save", formData, {
+        .post("https://api.jobhakdasik.site/user/image/save", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -124,7 +124,7 @@ export default function ProfileImage({ onSuccess }) {
         .then((res) => {
           if (res) {
             console.log("프로필 등록 성공");
-            instance.get('https://jobhakdasik.site/user/image/show')
+            instance.get('https://api.jobhakdasik.site/user/image/show')
             .then((res) =>{
                 if(res.data.result){
                   Cookies.set("MyIMG", res.data.result);
@@ -141,7 +141,7 @@ export default function ProfileImage({ onSuccess }) {
         });
     } else {
       instance
-        .patch("https://jobhakdasik.site/user/image/update", formData, {
+        .patch("https://api.jobhakdasik.site/user/image/update", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -149,7 +149,7 @@ export default function ProfileImage({ onSuccess }) {
         .then((res) => {
           if (res) {
             console.log("프로필 등록 성공");
-            instance.get('https://jobhakdasik.site/user/image/show')
+            instance.get('https://api.jobhakdasik.site/user/image/show')
                             .then((res) =>{
                                 if(res.data.result){
                                     Cookies.set("MyIMG", res.data.result);
