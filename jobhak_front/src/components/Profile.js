@@ -204,7 +204,9 @@ const Profile = () => {
                 </div>
                 <div>
                   <h2>상체가 다 나온 사진으로 PICK 해주세요!</h2>
-                  <img src={Slide3} alt="Slide 3" className="Slide3" />
+                  <div className="modal_content">
+                    <img src={Slide3} alt="Slide 3" className="Slide3" />
+                  </div>
                 </div>
               </Slider>
             </Modal>
