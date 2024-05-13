@@ -17,7 +17,7 @@ const WriteResume = () => {
   const [text, setText] = useState("");
 
   const apiKey = process.env.REACT_APP_JOBHAK_KEY;
-  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+  const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
   const pasteClipboard = async () => {
