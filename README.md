@@ -19,6 +19,9 @@
 
 # Social Login
 <img src ="https://oauth.net/images/oauth-2-sm.png"/>
+<label>OAuth2를 사용한 소셜 로그인</label>
+
+
 # IDLE
 <img src="https://img.shields.io/badge/intellij%20idea-%23000000.svg?&style=for-the-badge&logo=intellij%20idea&logoColor=white" />
 <img src="https://img.shields.io/badge/visual%20studio%20code-%23007ACC.svg?&style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
