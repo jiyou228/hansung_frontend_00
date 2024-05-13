@@ -21,7 +21,7 @@ const Login = () => {
   const submitLogin = (e) => {
     e.preventDefault();
     axios
-      .post("http://43.200.36.126:8080/", {
+      .post("https://api.jobhakdasik.site/", {
         loginId: id,
         password: pw,
       })

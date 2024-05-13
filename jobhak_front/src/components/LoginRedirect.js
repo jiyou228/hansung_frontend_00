@@ -18,6 +18,7 @@ const LoginRedirect =() =>{
             alert("토큰을 받아올 수 없습니다. 새로고침 해주세요.")
         }
         else if(error){
+            console.error(error);
             navigate('/');
         }
     }, [setCookie, window.location.search]);

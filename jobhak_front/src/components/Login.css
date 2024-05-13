@@ -1,7 +1,7 @@
 .login_app{
     text-align: center;
     font-family: 'NanumSquare';
-    font-weight: 800;
+    font-weight: 700;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +14,7 @@
     white-space: nowrap;
 }
 .login_app .logo_full{
-    width: 20em;
+    width: 22em;
 }
 .login_form{
     margin-top: 3em;
@@ -22,7 +22,7 @@
 .login_input{
     padding-left: 1em;
     background-color: #FCEDE8;
-    width: 20em;
+    width: 22em;
     font-size: 1.1em;
     height: 3em;
     border: none;
@@ -34,8 +34,8 @@
     position: relative;
 }
 .login_submit{
-    font-weight: 800;
-    width: 20em;
+    font-weight: 700;
+    width: 22em;
     height: 3em;
     font-size: 1.1em;
     margin-top: 2.5em;
@@ -47,7 +47,7 @@
 .login_move{
     margin-top: 1em;
     font-size: medium;
-    width: 20em;
+    width: 22em;
     display: flex;
     font-size: 1em;
     justify-content: space-between;
@@ -71,7 +71,7 @@
 .login_line{
     margin-top: 0.7em;
     border-top: 0.1em solid black;
-    width: 8.5em;
+    width: 9.5em;
     
 }
 .login_or{
@@ -83,7 +83,7 @@
     margin-top: 2em;
 }
 .login_app .login_logo{
-    width: 22em;
+    width: 24em;
     margin: 0;
 }
 .login_kakao_container{
@@ -105,15 +105,15 @@
 .login_input, .login_submit, .login_logo{
     box-sizing: border-box;
 }
-@media screen and (min-width: 1800px){
+@media (min-width:376px) {
     .login{
-        font-size: 24px;
+        font-size: 20px;
     }
     .login_form{
-        font-size: 24px;
+        font-size: 20px;
     }
+    
 }
-
 @media (max-width: 375px) {
     .login{
         font-size: 14px;

@@ -23,15 +23,16 @@
     "sass": "^1.70.0",
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.10.5",
-    "swiper": "^11.0.5",
+    "swiper": "^6.8.4",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "http://43.200.36.126:8080/",
-  "proxy": "http://localhost:5000",
-  "scripts": {
-    "start": "react-scripts start",
+  "homepage": "https://jobhakdasik.site",
+    "scripts": {
+    "start": "set PORT=80 && react-scripts start",
+    "start:mac": "HTTPS=true SSL_CRT_FILE=./cert/cert.pem SSL_KEY_FILE=./cert/key.pem npm run start",
+    "start:windows": "set HTTPS=true&&set SSL_CRT_FILE=cert/localhost.pem&&set SSL_KEY_FILE=cert/localhost-key.pem&&npm run start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios|swiper)/\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

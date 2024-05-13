@@ -13,7 +13,6 @@ import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement("#root"); // 모달 바깥의 요소를 설정
 
 function Bookmark() {
   const cookie = new Cookies();
@@ -28,10 +27,14 @@ function Bookmark() {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [loginType, setLoginType] = useState(cookie.get("provider"));
 
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
+  
   useEffect(() => {
     setLoginType(cookie.get("provider"));
     instance
-      .get(`http://43.200.36.126:8080/user/bookmark`)
+      .get(`https://api.jobhakdasik.site/user/bookmark`)
       .then((res) => {
         console.log(JSON.stringify(res.data));
         const bookmark_arr = res.data.result || [];
@@ -47,7 +50,7 @@ function Bookmark() {
 
   const DeleteBookmark = () => {
     instance
-      .delete(`http://43.200.36.126:8080/user/bookmark/delete`, {
+      .delete(`https://api.jobhakdasik.site/user/bookmark/delete`, {
         data: {
           bookmarkId: bookmark_id,
         },

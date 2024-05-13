@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 const reIssue = async () => {
   try {
-    const response = await axios.post("http://43.200.36.126:8080/reissue");
+    const response = await axios.post("https://api.jobhakdasik.site/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
@@ -15,7 +15,7 @@ const reIssue = async () => {
 
 // Axios 인스턴스 생성
 const instance = axios.create({
-  baseURL: "localhost:5000",
+  baseURL: "https://api.jobhakdasik.site/",
   withCredentials: true,
 });
 
@@ -73,7 +73,10 @@ instance.interceptors.response.use(
           Cookies.set("loggedIn", true);
         }
       }
-    }
+    } 
+    else if (status === 404) {
+      window.location.href = "/notfound";
+    }   
     return Promise.reject(error);
   }
 );

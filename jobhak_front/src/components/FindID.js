@@ -12,7 +12,7 @@ const FindID = () => {
   const findIDSubmit = (e) => {
     e.preventDefault();
     instance
-      .post("http://43.200.36.126:8080/find/id", {
+      .post("https://api.jobhakdasik.site/find/id", {
         name: name,
         email: email,
       })

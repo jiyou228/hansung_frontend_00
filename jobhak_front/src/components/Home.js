@@ -1,18 +1,15 @@
 import Nav from "./Nav";
 import "./Home.css";
 import Swipe from "./swipe";
-import profile from "../assets/profile.png";
 import { useCookies } from "react-cookie";
-import logo from "../assets/black_jobhak_full.svg";
 import { useEffect, useState } from "react";
-import job from "../assets/공고.png";
-import axios from "axios";
 import svg from "../assets/black_jobhak_full.svg";
-import no1 from "../assets/카드뉴스_취업사진.svg";
-import no2 from "../assets/카드뉴스_작성.svg";
-import no3 from "../assets/카드뉴스_자소서.svg";
+import no1 from "../assets/카드뉴스_취업사진.png";
+import no2 from "../assets/카드뉴스_작성.png";
+import no3 from "../assets/카드뉴스_자소서.png";
 import instance from "../axiosConfig";
 import building from "../assets/building.png";
+import aboutus from '../assets/aboutus.png';
 import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
   const [, setCookie] = useCookies();
@@ -25,9 +22,19 @@ const Home = () => {
   const navgigate = useNavigate();
   const [imageURL, setImageUrl] = useState(null);
 
+
+  // useEffect(() => {
+  //   const changeImage = setInterval(() => {
+  //     setIndex((i) => (i === image.length - 1 ? 0 : i + 1));
+  //   }, 3500);
+  //   return () => {
+  //     clearInterval(changeImage);
+  //   };
+  // }, [index]);
+
   useEffect(() => {
     instance
-      .get("http://43.200.36.126:8080/user/image/show")
+      .get("https://api.jobhakdasik.site/user/image/show")
       .then((res) => {
         if (res.data.result) {
           const imageUrl = res.data.result; // 이미지 URL 가져오기
@@ -41,7 +48,7 @@ const Home = () => {
         console.error(err);
       });
     instance
-      .get("http://43.200.36.126:8080/home")
+      .get("https://api.jobhakdasik.site/home")
       .then((profile) => {
         setUserProfile(profile.data.result.nickname);
         //console.log(JSON.stringify(profile.data));
@@ -58,7 +65,7 @@ const Home = () => {
       });
 
     instance
-      .get("http://43.200.36.126:8080/home/saramin")
+      .get("https://api.jobhakdasik.site/home/saramin")
       .then((saramin) => {
         setJobList(saramin.data);
       })
@@ -67,7 +74,7 @@ const Home = () => {
       });
 
     instance
-      .get("http://43.200.36.126:8080/home/saramin/href")
+      .get("https://api.jobhakdasik.site/home/saramin/href")
       .then((image) => {
         setImageList(image.data);
       })
@@ -191,6 +198,11 @@ const Home = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="aboutUs">
+        <Link to = '/aboutUs'>
+          <img src = {aboutus} alt="aboutUs"/>
+        </Link>
         </div>
       </div>
     </>

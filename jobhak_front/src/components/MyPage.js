@@ -13,8 +13,6 @@ import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import DelProfileImage from "./DelProfileImage";
 
-Modal.setAppElement("#root"); // 모달 바깥의 요소를 설정
-
 function MyPage() {
   const navigate = useNavigate();
   const [userid, setUserID] = useState("");
@@ -32,10 +30,14 @@ function MyPage() {
   const NickNameHandler = (e) => {
     setUserNickname(e.target.value);
   };
+  
+  const root = document.createElement('div');
+  root.id = 'root';
+  document.body.appendChild(root);
 
   const onSaveHandler = () => {
     instance
-      .patch("http://43.200.36.126:8080/user/edit", {
+      .patch("https://api.jobhakdasik.site/user/edit", {
         userid: userid,
         nickname: usernickname,
       })
@@ -67,7 +69,7 @@ function MyPage() {
 
   useEffect(() => {
     setLoginType(cookie.get("provider"));
-    let url = "http://43.200.36.126:8080/user/myInfo";
+    let url = "https://api.jobhakdasik.site/user/myInfo";
     instance
       .get(url)
       .then((res) => {

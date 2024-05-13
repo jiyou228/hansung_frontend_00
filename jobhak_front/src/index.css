@@ -51,3 +51,12 @@ html{
   font-family: "binggrae";
   src: url("./fonts/Binggrae2.ttf");
 }
+
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('./fonts/NanumSquareNeo-Variable.ttf');
+}
+
+* {
+font-family: 'NanumSquare';
+}

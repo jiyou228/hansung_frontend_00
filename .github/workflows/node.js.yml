@@ -1,43 +1,49 @@
-name: Node.js CI/CD to AWS S3
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: http://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [21.7.3]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-
-    - name: Install Dependencies
-      working-directory: ./jobhak_front
+        cache-dependency-path: jobhak_front/package-lock.json 
+    - name: Install dependencies
       run: npm ci
+      working-directory: jobhak_front
 
     - name: Build
-      working-directory: ./jobhak_front
-      run: npm run build
+      run: CI=false npm run build
+      working-directory: jobhak_front
 
-    # AWS S3에 빌드된 파일 업로드
-    - name: Deploy to AWS S3
-      uses: jakejarvis/s3-sync-action@master
+    - name: Test
+      run: npm test
+      working-directory: jobhak_front
+
+    - uses: awact/s3-action@master
       with:
         args: --acl public-read --follow-symlinks --delete
       env:
-        AWS_S3_BUCKET: react-jobhak-bucket # S3 버킷 이름으로 변경하세요.
+        SOURCE_DIR: './jobhak_front/build'
+        AWS_REGION: 'ap-northeast-2'
+        AWS_S3_BUCKET: jobhakfront
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_REGION: 'your-aws-region' # 예: us-east-1
-        SOURCE_DIR: 'jobhak_front/build' # 빌드된 파일이 위치한 디렉토리 경로

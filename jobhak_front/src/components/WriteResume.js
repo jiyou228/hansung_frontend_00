@@ -17,7 +17,7 @@ const WriteResume = () => {
   const [text, setText] = useState("");
 
   const apiKey = process.env.REACT_APP_JOBHAK_KEY;
-  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+  const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
   const pasteClipboard = async () => {
@@ -163,12 +163,11 @@ const WriteResume = () => {
     console.log(JSON.stringify(experiences));
 
     if (!isTextMode) {
-      instance
-        .post("http://43.200.36.126:8080/resume/post/myList", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data", // form-data로 요청을 보내야 함
-          },
-        })
+      instance.post("https://api.jobhakdasik.site/resume/post/myList", formData,{
+        headers: {
+          'Content-Type': "multipart/form-data" // form-data로 요청을 보내야 함
+        }
+      })
         .then((res) => {
           if (res) {
             Swal.fire({
@@ -181,23 +180,23 @@ const WriteResume = () => {
         .catch((err) => {
           console.error("에러 발생", err);
         });
-    } else {
-      instance
-        .post("http://43.200.36.126:8080/resume/post/myText", {
-          content: text,
-        })
-        .then((res) => {
-          if (res) {
-            Swal.fire({
-              title: "저장 완료!",
-              text: "AI 작성 자소서의 '나의 경험/경력 불러오기' 버튼에서 불러올 수 있습니다.",
-              icon: "success",
-            });
-          }
-        })
-        .catch((err) => {
-          console.error("에러 발생", err);
+    } 
+    else {
+    instance.post("https://api.jobhakdasik.site/resume/post/myText", {
+      content: text
+    })
+    .then((res) => {
+      if(res){
+        Swal.fire({
+          title: "저장 완료!",
+          text: "AI 작성 자소서의 '나의 경험/경력 불러오기' 버튼에서 불러올 수 있습니다.",
+          icon: "success"
         });
+        }
+      })
+    .catch((err) => {
+      console.error('에러 발생', err);
+      });
     }
   };
 
@@ -219,11 +218,14 @@ const WriteResume = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          html:
-            '<div class  = "loader"></div>' +
-            "<h3>로딩 중..</h3>" +
-            "<h5>자기소개서를 작성하고 있습니다.</h5>",
-          showConfirmButton: false,
+          icon: "success",
+          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+          text: "첨삭된 자기소개서를 불러오고 있습니다.",
+          width: 800,
+          height: 100,
+          didOpen: () =>{
+            Swal.showLoading();
+          }
         });
         handleSave();
       } else {
@@ -237,11 +239,14 @@ const WriteResume = () => {
         //   height: 100,
         // });
         Swal.fire({
-          html:
-            '<div class  = "loader"></div>' +
-            "<h3>로딩 중..</h3>" +
-            "<h5>자기소개서를 작성하고 있습니다.</h5>",
-          showConfirmButton: false,
+          icon: "success",
+          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+          text: "첨삭된 자기소개서를 불러오고 있습니다.",
+          width: 800,
+          height: 100,
+          didOpen: () =>{
+            Swal.showLoading();
+          }
         });
       }
     });
@@ -290,7 +295,7 @@ const WriteResume = () => {
               {
                 role: "user",
                 content:
-                  "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: https://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
+                  "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
               },
               {
                 role: "assistant",
@@ -345,7 +350,7 @@ const WriteResume = () => {
                 {
                   role: "user",
                   content:
-                    "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: https://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
+                    "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
                 },
                 {
                   role: "assistant",
@@ -382,56 +387,51 @@ const WriteResume = () => {
   };
 
   const getMyInfo = () => {
-    instance
-      .get("http://43.200.36.126:8080/resume/get/IsText")
-      .then((res) => {
-        if (res.data.result == false) {
-          instance
-            .get("http://43.200.36.126:8080/resume/get/myList")
-            .then((res) => {
-              if (res.data) {
-                if (
-                  res.data.result.careerToFront.length > 0 ||
-                  res.data.result.expToFront.length > 0
-                ) {
-                  if (res.data.result.careerToFront.length > 0) {
-                    setCareers(res.data.result.careerToFront);
-                  }
-                  if (res.data.result.expToFront.length > 0) {
-                    setExperiences(res.data.result.expToFront);
-                  }
-                } else {
-                  alert("불러올 경험/경력이 없습니다.");
-                }
+    instance.get('https://api.jobhakdasik.site/resume/get/IsText')
+    .then((res) =>{
+      if(res.data.result == false){
+        instance.get("https://api.jobhakdasik.site/resume/get/myList")
+        .then((res)=>{
+          if(res.data){
+            if (res.data.result.careerToFront.length > 0 || res.data.result.expToFront.length > 0) {
+              if (res.data.result.careerToFront.length > 0) {
+                  setCareers(res.data.result.careerToFront);
               }
-              console.log(careers, experiences);
-            })
-            .catch((err) => {
-              console.error("에러 발생", err);
-            });
-        } else if (res.data.result == true) {
-          instance
-            .get("http://43.200.36.126:8080/resume/get/myText")
-            .then((res) => {
-              if (res.data.result.content.length > 0) {
-                const { content } = res.data.result;
-                // "content" 속성의 값을 JSON으로 파싱
-                const parsedContent = JSON.parse(content);
-                // "text" 속성의 값을 추출
-                const text = parsedContent.content;
-                // 추출한 값 사용
-                setIsTextMode(true);
-                setText(text);
+              if (res.data.result.expToFront.length > 0) {
+                  setExperiences(res.data.result.expToFront);
               }
-            })
-            .catch((err) => {
-              console.error("에러발생:", err);
-            });
-        }
-      })
-      .catch((err) => {
-        console.error("에러 발생:", err);
-      });
+          } else {
+              alert('불러올 경험/경력이 없습니다.');
+            }          
+          }
+          console.log(careers, experiences);
+         })
+         .catch((err)=>{
+          console.error('에러 발생', err);
+         })
+      }
+      else if(res.data.result == true){
+        instance.get("https://api.jobhakdasik.site/resume/get/myText")
+        .then((res) =>{
+          if(res.data.result.content.length > 0){
+            const { content } = res.data.result;
+            // "content" 속성의 값을 JSON으로 파싱
+            const parsedContent = JSON.parse(content);
+            // "text" 속성의 값을 추출
+            const text = parsedContent.content;
+            // 추출한 값 사용
+            setIsTextMode(true);
+            setText(text);
+          }
+        })
+        .catch((err)=>{
+          console.error("에러발생:", err);
+        })
+      }
+    })
+    .catch((err)=>{
+      console.error('에러 발생:', err);
+    })
   };
 
   return (

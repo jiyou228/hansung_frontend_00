@@ -60,7 +60,7 @@
 
 .posttitle_lb {
   font-size: 2.2rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .file-output-label {
@@ -132,7 +132,7 @@
 .postedit_btn:hover,
 .postdelete_btn:hover {
   background-color: #d9d9d9;
-  font-weight: 800;
+  font-weight: 700;
 }
 .board_middle {
   width: 60vw;
@@ -438,7 +438,7 @@
   padding: 0.5vh 1vw;
   border: 1px solid #efefef;
   border-radius: 1vh;
-  font-weight: 800;
+  font-weight: 700;
 }
 @media (max-width: 768px){
   .board_div{

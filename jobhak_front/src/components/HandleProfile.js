@@ -5,19 +5,18 @@ const HandleProfile = ({ openUploadModal, openDeleteModal }) => {
   const cookie = new Cookies();
   const [imageUrl, setImageUrl] = useState(null);
 
-  useEffect(() => {
-    instance
-      .get("http://43.200.36.126:8080/user/image/show")
-      .then((res) => {
-        if (res.data.result) {
-          cookie.set("MyIMG", res.data.result);
-          setImageUrl(res.data.result);
-        }
-      })
-      .catch((err) => {
-        console.error("에러발생: ", err);
-      });
-  });
+    useEffect(() => {
+        instance.get('https://api.jobhakdasik.site/user/image/show')
+                .then((res) =>{
+                if(res.data.result){
+                    cookie.set("MyIMG", res.data.result);
+                    setImageUrl(res.data.result);
+                }
+            })
+                .catch((err) =>{
+                    console.error('에러발생: ', err);
+                })
+    });
 
   return (
     <>

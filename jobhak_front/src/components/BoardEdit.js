@@ -48,7 +48,7 @@ function BoardEdit() {
 
   const handleEditClick = () => {
     instance
-      .patch(`http://43.200.36.126:8080/boardlist/edit/${postId}`, {
+      .patch(`https://api.jobhakdasik.site/boardlist/edit/${postId}`, {
         post_id: postId,
         title: title,
         content: content,

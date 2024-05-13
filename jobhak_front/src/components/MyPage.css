@@ -52,17 +52,20 @@
   cursor: pointer;
   border-radius: 0.3rem;
   font-size: 1rem;
-  font-weight: 700;
-  background-color: #cdddf7;
   border: none;
+  font-weight: 600;
+  background-color:   #D8D8D8;
 }
-
+.mypage_profile_btn2{
+  background-color: #cdddf7;
+  font-weight: 700;
+}
 .mypage_profile_button {
   display: flex;
   gap: 20px;
 }
 .mypage_profile_button button:hover {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .mypage_count_div {
@@ -112,7 +115,7 @@
   height: 3rem;
   width: 10rem;
   font-size: 1.3rem;
-  font-weight: 800;
+  font-weight: 700;
   float: right;
   margin-top: 3vh;
 }

@@ -9,7 +9,7 @@ const Logout = () => {
 
   useEffect(() => {
     instance
-      .get("http://43.200.36.126:8080/logout")
+      .get("https://api.jobhakdasik.site/logout")
       .then((res) => {
         console.log(res);
         // 쿠키 삭제
