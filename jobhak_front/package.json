@@ -26,7 +26,7 @@
     "swiper": "^6.8.4",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://api.jobhakdasik.site",
+  "homepage": "https://jobhakdasik.site",
   "scripts": {
     "start": "react-scripts start",
     "start:mac": "http=true SSL_CRT_FILE=./cert/cert.pem SSL_KEY_FILE=./cert/key.pem npm run start",
