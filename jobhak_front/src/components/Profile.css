@@ -27,7 +27,9 @@
 #file {
   display: none;
 }
-
+.blur_bar{
+  width: 20em;
+}
 .img_preview {
   width: 9rem;
   height: 12rem;
