@@ -21,7 +21,7 @@
 <img src="https://img.shields.io/badge/python-%233776AB.svg?&style=for-the-badge&logo=python&logoColor=white" />
 <img src="https://img.shields.io/badge/flask-%23000000.svg?&style=for-the-badge&logo=flask&logoColor=white" />
 
-
+<br>
 
 # Social Login
 <img src ="https://oauth.net/images/oauth-2-sm.png"/>
