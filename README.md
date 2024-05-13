@@ -29,13 +29,18 @@
 ### OAuth2를 사용한 소셜 로그인
 <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlC_kMLlL1cuwqSiYidzQkcko84d8WX-UQuw&s"/>
 
+<br>
 
 # IDLE
 <img src="https://img.shields.io/badge/intellij%20idea-%23000000.svg?&style=for-the-badge&logo=intellij%20idea&logoColor=white" />
 <img src="https://img.shields.io/badge/visual%20studio%20code-%23007ACC.svg?&style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
 
+<br>
+
 # System
 ![image](https://github.com/JinjinBread/CAPSTONE_04_1/assets/108333554/f48f0042-accb-4fa3-aa76-20a36d93e282)
+
+<br>
 
 # Function
 <label for="name" style="color: #0099ff; font-size: 22px; text-align: center; display: block;">Chat GPT를 이용한 자기소개서 생성 및 첨삭</label><br>
