@@ -11,7 +11,7 @@ const Resume = () => {
   const [revision, setRevision] = useState("");
 
   const apiKey = process.env.REACT_APP_API_KEY;
-  const apiEndpoint = "http://api.openai.com/v1/chat/completions";
+  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
 
   const onReset = (e) => {
     e.preventDefault();

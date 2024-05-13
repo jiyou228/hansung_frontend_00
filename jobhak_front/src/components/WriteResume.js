@@ -17,7 +17,7 @@ const WriteResume = () => {
   const [text, setText] = useState("");
 
   const apiKey = process.env.REACT_APP_JOBHAK_KEY;
-  const apiEndpoint = "http://api.openai.com/v1/chat/completions";
+  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
   const pasteClipboard = async () => {
@@ -163,11 +163,12 @@ const WriteResume = () => {
     console.log(JSON.stringify(experiences));
 
     if (!isTextMode) {
-      instance.post("https://api.jobhakdasik.site/resume/post/myList", formData,{
-        headers: {
-          'Content-Type': "multipart/form-data" // form-data로 요청을 보내야 함
-        }
-      })
+      instance
+        .post("https://api.jobhakdasik.site/resume/post/myList", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data", // form-data로 요청을 보내야 함
+          },
+        })
         .then((res) => {
           if (res) {
             Swal.fire({
@@ -180,23 +181,23 @@ const WriteResume = () => {
         .catch((err) => {
           console.error("에러 발생", err);
         });
-    } 
-    else {
-    instance.post("https://api.jobhakdasik.site/resume/post/myText", {
-      content: text
-    })
-    .then((res) => {
-      if(res){
-        Swal.fire({
-          title: "저장 완료!",
-          text: "AI 작성 자소서의 '나의 경험/경력 불러오기' 버튼에서 불러올 수 있습니다.",
-          icon: "success"
+    } else {
+      instance
+        .post("https://api.jobhakdasik.site/resume/post/myText", {
+          content: text,
+        })
+        .then((res) => {
+          if (res) {
+            Swal.fire({
+              title: "저장 완료!",
+              text: "AI 작성 자소서의 '나의 경험/경력 불러오기' 버튼에서 불러올 수 있습니다.",
+              icon: "success",
+            });
+          }
+        })
+        .catch((err) => {
+          console.error("에러 발생", err);
         });
-        }
-      })
-    .catch((err) => {
-      console.error('에러 발생', err);
-      });
     }
   };
 
@@ -223,9 +224,9 @@ const WriteResume = () => {
           text: "첨삭된 자기소개서를 불러오고 있습니다.",
           width: 800,
           height: 100,
-          didOpen: () =>{
+          didOpen: () => {
             Swal.showLoading();
-          }
+          },
         });
         handleSave();
       } else {
@@ -244,9 +245,9 @@ const WriteResume = () => {
           text: "첨삭된 자기소개서를 불러오고 있습니다.",
           width: 800,
           height: 100,
-          didOpen: () =>{
+          didOpen: () => {
             Swal.showLoading();
-          }
+          },
         });
       }
     });
@@ -387,51 +388,56 @@ const WriteResume = () => {
   };
 
   const getMyInfo = () => {
-    instance.get('https://api.jobhakdasik.site/resume/get/IsText')
-    .then((res) =>{
-      if(res.data.result == false){
-        instance.get("https://api.jobhakdasik.site/resume/get/myList")
-        .then((res)=>{
-          if(res.data){
-            if (res.data.result.careerToFront.length > 0 || res.data.result.expToFront.length > 0) {
-              if (res.data.result.careerToFront.length > 0) {
-                  setCareers(res.data.result.careerToFront);
+    instance
+      .get("https://api.jobhakdasik.site/resume/get/IsText")
+      .then((res) => {
+        if (res.data.result == false) {
+          instance
+            .get("https://api.jobhakdasik.site/resume/get/myList")
+            .then((res) => {
+              if (res.data) {
+                if (
+                  res.data.result.careerToFront.length > 0 ||
+                  res.data.result.expToFront.length > 0
+                ) {
+                  if (res.data.result.careerToFront.length > 0) {
+                    setCareers(res.data.result.careerToFront);
+                  }
+                  if (res.data.result.expToFront.length > 0) {
+                    setExperiences(res.data.result.expToFront);
+                  }
+                } else {
+                  alert("불러올 경험/경력이 없습니다.");
+                }
               }
-              if (res.data.result.expToFront.length > 0) {
-                  setExperiences(res.data.result.expToFront);
+              console.log(careers, experiences);
+            })
+            .catch((err) => {
+              console.error("에러 발생", err);
+            });
+        } else if (res.data.result == true) {
+          instance
+            .get("https://api.jobhakdasik.site/resume/get/myText")
+            .then((res) => {
+              if (res.data.result.content.length > 0) {
+                const { content } = res.data.result;
+                // "content" 속성의 값을 JSON으로 파싱
+                const parsedContent = JSON.parse(content);
+                // "text" 속성의 값을 추출
+                const text = parsedContent.content;
+                // 추출한 값 사용
+                setIsTextMode(true);
+                setText(text);
               }
-          } else {
-              alert('불러올 경험/경력이 없습니다.');
-            }          
-          }
-          console.log(careers, experiences);
-         })
-         .catch((err)=>{
-          console.error('에러 발생', err);
-         })
-      }
-      else if(res.data.result == true){
-        instance.get("https://api.jobhakdasik.site/resume/get/myText")
-        .then((res) =>{
-          if(res.data.result.content.length > 0){
-            const { content } = res.data.result;
-            // "content" 속성의 값을 JSON으로 파싱
-            const parsedContent = JSON.parse(content);
-            // "text" 속성의 값을 추출
-            const text = parsedContent.content;
-            // 추출한 값 사용
-            setIsTextMode(true);
-            setText(text);
-          }
-        })
-        .catch((err)=>{
-          console.error("에러발생:", err);
-        })
-      }
-    })
-    .catch((err)=>{
-      console.error('에러 발생:', err);
-    })
+            })
+            .catch((err) => {
+              console.error("에러발생:", err);
+            });
+        }
+      })
+      .catch((err) => {
+        console.error("에러 발생:", err);
+      });
   };
 
   return (
