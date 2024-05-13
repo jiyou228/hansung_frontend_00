@@ -15,7 +15,6 @@ import WriteResume from "./components/WriteResume";
 import Home from "./components/Home";
 import ReviseResume from "./components/ReviseResume";
 import Logout from "./components/Logout";
-import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
 import ChangePW from "./components/ChangePW";
 import Delete from "./components/Delete";
@@ -76,7 +75,6 @@ function App() {
             path="/resume/revise"
             element={<PrivateRoute element={ReviseResume} />}
           ></Route>
-          <Route path="/guide" element={<PrivateRoute element={Guide} />} />
           <Route
             path="/countchar"
             element={<PrivateRoute element={CountChar} />}
