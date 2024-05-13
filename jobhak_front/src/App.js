@@ -32,10 +32,12 @@ import ChangeName from "./components/ChangeName";
 import LoginRedirect from "./components/LoginRedirect";
 import KakaoDelete from "./components/KakaoDelete";
 import NaverDelete from "./components/NaverDelete";
+import AboutUs from "./components/AboutUs";
 
 function App() {
   return (
     <CookiesProvider>
+            <h1 style={{display:'none'}}>login</h1>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<PrivateRoute element={Home} />} />
@@ -48,6 +50,7 @@ function App() {
           <Route path="/login/callback" element={<LoginRedirect />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
+          <Route path="/aboutUs" element = {<AboutUs/>}/>
           <Route
             path="/login/kakao/changeName"
             element={<ChangeName />}
@@ -129,7 +132,6 @@ function App() {
           />
         </Routes>
       </BrowserRouter>
-      <h1 style={{display:'none'}}>login</h1>
     </CookiesProvider>
   );
 }

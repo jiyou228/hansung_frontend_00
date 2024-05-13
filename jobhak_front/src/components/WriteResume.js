@@ -17,7 +17,7 @@ const WriteResume = () => {
   const [text, setText] = useState("");
 
   const apiKey = process.env.REACT_APP_JOBHAK_KEY;
-  const apiEndpoint = "https://api.openai.com/v1/chat/completions";
+  const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
   const pasteClipboard = async () => {
@@ -292,7 +292,7 @@ const WriteResume = () => {
               {
                 role: "user",
                 content:
-                  "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: https://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
+                  "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
               },
               {
                 role: "assistant",
@@ -347,7 +347,7 @@ const WriteResume = () => {
                 {
                   role: "user",
                   content:
-                    "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: https://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
+                    "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
                 },
                 {
                   role: "assistant",

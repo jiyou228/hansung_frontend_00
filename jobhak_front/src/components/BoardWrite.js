@@ -144,7 +144,7 @@ function BoardWrite() {
               type="file"
               name="fileName"
               onChange={onSelectFile}
-              accept=".png, .jpg, .pdf"
+              accept=".png, .jpg, .jpeg, .pdf, .docx, .hwp"
               multiple
             />
           </form>

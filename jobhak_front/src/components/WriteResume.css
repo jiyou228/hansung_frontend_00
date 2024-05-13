@@ -11,7 +11,7 @@
   height: 3rem;
 }
 .add_title {
-  font-weight: 800;
+  font-weight: 700;
 }
 .write_link {
   text-decoration: none;
@@ -47,7 +47,7 @@
 }
 .write_title {
   text-align: center;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.8rem;
   padding-bottom: 1vh;
 }
@@ -188,7 +188,7 @@
   box-sizing: border-box;
 }
 .write_delete:hover{
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .write_textarea {
@@ -343,7 +343,7 @@
   cursor: pointer;
 }
 .write_getMyInfo:hover{
-  font-weight: 800;
+  font-weight: 700;
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { useCookies } from "react-cookie";
 
 
-const defaultImageUrl = "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/default/default.png";
+const defaultImageUrl = "http://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/default/default.png";
 const DelProfileImage = ({onSuccess}) =>{
     const [,setCookie] = useCookies();
     useEffect(() =>{

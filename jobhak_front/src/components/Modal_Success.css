@@ -36,7 +36,7 @@
 }
 .success_title{
     font-size: 2vw;
-    font-weight: 800;
+    font-weight: 700;
     text-align: center;
     margin-top: 4vh;
 }
@@ -48,7 +48,7 @@
     padding-bottom: 4vh ;
 }
 .success_message strong{
-    font-weight: 800;
+    font-weight: 700;
 }
 @media(max-width: 768px) {
     .success_container{
