@@ -20,8 +20,7 @@
 # Social Login
 <img src ="https://oauth.net/images/oauth-2-sm.png"/>
 
-
-######OAuth2를 사용한 소셜 로그인
+###### OAuth2를 사용한 소셜 로그인
 
 
 # IDLE
