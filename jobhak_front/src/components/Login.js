@@ -39,7 +39,7 @@ const Login = () => {
           if (res.data) {
             const { accessToken, refreshToken } = res.data;
             localStorage.setItem("accessToken", accessToken);
-            setCookie("refreshToken", refreshToken, { path: "/" });
+            setCookie("refreshToken", refreshToken, { path: "/" , domain: '.jobhakdasik.site'});
           }
           setCookie("loggedIn", true);
           navigate("/home");

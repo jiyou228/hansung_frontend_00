@@ -28,7 +28,7 @@ const Profile = () => {
   const [selectedSuit, setSelectedSuit] = useState(null);
   const [selectedHair, setSelectedHair] = useState(null);
   const [selectedBackGround, setSelectedBackGround] = useState(null);
-  const [selectedBulr, setSelectedBulr] = useState("");
+  const [selectedBlur, setSelectedBlur] = useState("");
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -74,9 +74,9 @@ const Profile = () => {
     }
   };
 
-  const handleOptionBulr = (e) => {
+  const handleOptionBlur = (e) => {
     console.log(e.target.value);
-    setSelectedBulr(e.target.value);
+    setSelectedBlur(e.target.value);
   };
 
   const handleLipOptionChange = (e) => {
@@ -105,7 +105,7 @@ const Profile = () => {
     formData.append("suitstyle", selectedSuitStyle);
     formData.append("hairstyle", selectedHairstyle);
     formData.append("background", selectedBackGroundstyle);
-    formData.append("blurstyle", selectedBulr);
+    formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
     for (const pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
@@ -280,13 +280,20 @@ const Profile = () => {
           <label className="choose_option_lb">얼굴 효과</label>
           <div className="choose_option_div">
             <label className="blur_option_lb">블러 효과</label>
-
-            <label className="blur_option_lb">
+            <input
+            type="range"
+            min="0"
+            max = "100"
+            step="10"
+            value={selectedBlur}
+            className="blur_bar"
+            onChange={handleOptionBlur}/>
+            {/* <label className="blur_option_lb">
               <input
                 type="radio"
                 name="blurStatus"
                 value="weak"
-                onClick={handleOptionBulr}
+                onClick={handleOptionBlur}
               />
               약
             </label>
@@ -295,7 +302,7 @@ const Profile = () => {
                 type="radio"
                 name="blurStatus"
                 value="mid"
-                onClick={handleOptionBulr}
+                onClick={handleOptionBlur}
               />
               중
             </label>
@@ -304,10 +311,10 @@ const Profile = () => {
                 type="radio"
                 name="blurStatus"
                 value="strong"
-                onClick={handleOptionBulr}
+                onClick={handleOptionBlur}
               />
               강
-            </label>
+            </label> */}
             <br />
             <label className="lip_option_lb">입술 생기</label>
 
