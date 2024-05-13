@@ -102,24 +102,11 @@
   border: 4px solid #4566dd;
 }
 
-.Slide1 {
-  align-items: center;
-}
-
-.modal_div {
+.modal_content {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-}
-
-.modal_content {
-  text-align: center;
-}
-
-.modal_div img {
-  max-width: 100%;
-  height: auto;
 }
 
 .female_suit_btn,
@@ -145,7 +132,8 @@
   .female_guide_container {
     margin-left: 10rem;
   }
-  .Slide1 {
-    width: 50vw;
+  .Slide1,
+  .Slide2 {
+    width: 100%;
   }
 }

@@ -7,7 +7,13 @@ import femalehair12 from "../assets/femalehair12.png";
 import femalehair13 from "../assets/femalehair13.png";
 import femalehair14 from "../assets/femalehair14.png";
 import Slide1 from "../assets/slide1.png";
-import leftarrow from "../assets/left-arrow.png";
+import Slide2 from "../assets/slide2.png";
+import background1 from "../assets/background1.png";
+import background2 from "../assets/background2.png";
+import background3 from "../assets/background3.png";
+import background4 from "../assets/background4.png";
+import background5 from "../assets/background5.png";
+import background6 from "../assets/background6.png";
 import defaultimg from "../assets/취뽀윙크.png";
 import React, { useState } from "react";
 import axios from "axios";
@@ -20,6 +26,7 @@ const Profile = () => {
   const [imageSrc, setImageSrc] = useState("");
   const [selectedSuit, setSelectedSuit] = useState(null);
   const [selectedHair, setSelectedHair] = useState(null);
+  const [selectedBackGround, setSelectedBackGround] = useState(null);
   const [selectedBulr, setSelectedBulr] = useState("");
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
@@ -39,6 +46,7 @@ const Profile = () => {
     speed: 100,
     slidesToShow: 1,
     slidesToScroll: 1,
+    responsive: [],
   };
 
   const handleOptionSuit = (option) => {
@@ -54,6 +62,14 @@ const Profile = () => {
       setSelectedHair(null);
     } else {
       setSelectedHair(option);
+    }
+  };
+
+  const handleOptionBackGround = (option) => {
+    if (option === selectedBackGround) {
+      setSelectedBackGround(null);
+    } else {
+      setSelectedBackGround(option);
     }
   };
 
@@ -74,6 +90,7 @@ const Profile = () => {
 
     const selectedSuitStyle = selectedSuit;
     const selectedHairstyle = selectedHair;
+    const selectedBackGroundstyle = selectedBackGround;
 
     const currentPath = window.location.pathname;
     const sex = currentPath.split("/").pop();
@@ -86,6 +103,7 @@ const Profile = () => {
     formData.append("sex", sex);
     formData.append("suitstyle", selectedSuitStyle);
     formData.append("hairstyle", selectedHairstyle);
+    formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBulr);
     formData.append("lipoption", lipOption);
     for (const pair of formData.entries()) {
@@ -131,12 +149,12 @@ const Profile = () => {
       position: "fixed",
       top: "20vh",
       left: "25vw",
-      width: "50vw", // 모달의 너비를 조정할 수 있습니다.
-      height: "50vh", // 모달의 높이를 조정할 수 있습니다.
+      width: "50vw",
+      height: "50vh",
       overflow: "hidden",
     },
     overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.5)", // 배경 오버레이 색상을 조정할 수 있습니다.
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
     },
   };
 
@@ -169,22 +187,24 @@ const Profile = () => {
               onRequestClose={closeGuide}
               style={customStyles}
             >
-              <div className="modal_content">
-                <Slider {...settings}>
-                  <div>
-                    <h2>정면을 보는 사진</h2>
+              <Slider {...settings}>
+                <div>
+                  <h2>정면을 보는 사진</h2>
+                  <div className="modal_content">
                     <img src={Slide1} alt="Slide 1" className="Slide1" />
                   </div>
-                  <div>
-                    <h2>슬라이드 2</h2>
-                    <img src="slide2.jpg" alt="Slide 2" />
+                </div>
+                <div>
+                  <h2>큰 액서사리 금지</h2>
+                  <div className="modal_content">
+                    <img src={Slide2} alt="Slide 2" className="Slide2" />
                   </div>
-                  <div>
-                    <h2>슬라이드 3</h2>
-                    <img src="slide3.jpg" alt="Slide 3" />
-                  </div>
-                </Slider>
-              </div>
+                </div>
+                <div>
+                  <h2>슬라이드 3</h2>
+                  <img src="slide3.jpg" alt="Slide 3" />
+                </div>
+              </Slider>
             </Modal>
           </div>
           <button className="img_gan_btn" onClick={(e) => GanPicture(e)}>
@@ -299,7 +319,86 @@ const Profile = () => {
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>
-          <div></div>
+          <div>
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background1" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background1")}
+            >
+              <img
+                src={background1}
+                className="background_color"
+                alt="background1"
+              />
+            </button>
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background2" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background2")}
+            >
+              <img
+                src={background2}
+                className="background_color"
+                alt="background2"
+              />
+            </button>
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background3" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background3")}
+            >
+              <img
+                src={background3}
+                className="background_color"
+                alt="background3"
+              />
+            </button>
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background4" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background4")}
+            >
+              <img
+                src={background4}
+                className="background_color"
+                alt="background4"
+              />
+            </button>
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background5" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background5")}
+            >
+              <img
+                src={background5}
+                className="background_color"
+                alt="background5"
+              />
+            </button>
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background6" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background6")}
+            >
+              <img
+                src={background6}
+                className="background_color"
+                alt="background6"
+              />
+            </button>
+          </div>
         </div>
       </div>
     </div>
