@@ -115,7 +115,7 @@ const { useEffect } = require("react");
 
 //   useEffect(() => {
 //     if (!location.search.includes("code=")) {
-//       window.location.href = "https://nid.naver.com/oauth2.0/authorize?client_id=JpTJiIlCSBmFu0fI3oft&response_type=code&redirect_uri=https://localhost:3000/login/naver";
+//       window.location.href = "https://nid.naver.com/oauth2.0/authorize?client_id=JpTJiIlCSBmFu0fI3oft&response_type=code&redirect_uri=https://api.jobhakdasik.site/login/naver";
 //     } else {
 //       const urlParams = new URLSearchParams(location.search);
 //       const code = urlParams.get("code");
@@ -162,7 +162,7 @@ const { useEffect } = require("react");
 const NaverLogin = () => {
   useEffect(() => {
     const STATE_STRING = "jobhak_naverLogin";
-    window.location.href = `http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/redirectNaver&mode=login`;
+    window.location.href = `https://api.jobhakdasik.site/oauth2/authorization/naver?redirect_uri=https://jobhakdasik.site/login/callback&mode=login`;
   }, []);
 };
 export default NaverLogin;
