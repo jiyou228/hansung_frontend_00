@@ -19,6 +19,7 @@ function Signup() {
   const [confirmcode, setConfirmCode] = useState("");
   const [confrimemail, setConfirmEmail] = useState(null);
   const [buttonconfirm, setButtonConfirm] = useState(false);
+  const [showPw, setShowPw] = useState(false);
   const [LastCheck, setLastCheck] = useState(false);
   const HandleInputID = (e) => {
     setLoginID(e.target.value);
@@ -56,7 +57,7 @@ function Signup() {
       })
       .then((response) => {
         console.log(response);
-
+        
         setInputCode(response.data.toString());
         console.log(response.data.toString());
         alert("인증 코드가 이메일로 전송되었습니다.");
@@ -267,16 +268,19 @@ function Signup() {
           <label className="joinform_lb">비밀번호</label>
           <input
             className="joinform_ip"
-            type="password"
+            type={showPw ? "text" : "password"}
             value={loginpw}
             placeholder="대소문자, 숫자, 특수문자 포함 10자 이상"
             onChange={HandleInputPW}
           />
+            <button value={showPw} className = "joinform_visible" onClick= {() => setShowPw(!showPw)}>
+              {showPw ? '숨기기' : '보기'}
+            </button>
           <br />
           <label className="joinform_lb">비밀번호 재확인</label>
           <input
             className="joinform_ip"
-            type="password"
+            type={showPw ? "text" : "password"}
             value={checkpw}
             onChange={HandleCheckPW}
           />

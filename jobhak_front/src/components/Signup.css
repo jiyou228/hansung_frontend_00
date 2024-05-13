@@ -93,7 +93,6 @@
 
 .joinform2_btn {
   font-weight: 700;
-
   margin-left: 1.5rem;
   width: 5rem;
   height: 2rem;
@@ -125,7 +124,22 @@
 .login_logo {
   margin-top: 10px;
 }
-
+.joinform_pwBtn{
+  cursor: pointer;
+  position: absolute;
+  width: 2.8em;
+  margin-left: -3.5em;
+}
+.joinform_visible{
+  font-weight: 800;
+  margin-left: 1.5rem;
+  width: 5rem;
+  height: 2rem;
+  background-color: #cde0ff;
+  color: #252525;
+  border: 0rem;
+  border-radius: 0.5rem;
+}
 @media (max-width: 768px) {
   .signup {
     padding: 10px;
