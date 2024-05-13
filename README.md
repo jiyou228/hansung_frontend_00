@@ -21,7 +21,7 @@
 <img src ="https://oauth.net/images/oauth-2-sm.png"/>
 
 ##### OAuth2를 사용한 소셜 로그인
-<img src = "https://www.google.com/imgres?q=%EB%84%A4%EC%9D%B4%EB%B2%84%EB%A1%9C%EA%B7%B8%EC%9D%B8&imgurl=http%3A%2F%2Fshop1.jessicablanc1.cafe24.com%2Fweb%2Fupload%2FNNEditor%2F20180102%2Fttt.jpg&imgrefurl=https%3A%2F%2Fmamaison.co.kr%2Farticle%2F%25EA%25B3%25B5%25EC%25A7%2580%25EC%2582%25AC%25ED%2595%25AD%2F1%2F1276%2F&docid=CDc4m5fS4DlGRM&tbnid=2uMXmf9i-zLIKM&vet=12ahUKEwi91cyiqIqGAxUvH0QIHSYeCKsQM3oECBUQAA..i&w=500&h=204&hcb=2&ved=2ahUKEwi91cyiqIqGAxUvH0QIHSYeCKsQM3oECBUQAA"/>
+<img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlC_kMLlL1cuwqSiYidzQkcko84d8WX-UQuw&s"/>
 
 
 # IDLE
