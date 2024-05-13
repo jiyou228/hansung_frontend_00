@@ -8,6 +8,7 @@ import femalehair13 from "../assets/femalehair13.png";
 import femalehair14 from "../assets/femalehair14.png";
 import Slide1 from "../assets/slide1.png";
 import Slide2 from "../assets/slide2.png";
+import background0 from "../assets/background.png";
 import background1 from "../assets/background1.png";
 import background2 from "../assets/background2.png";
 import background3 from "../assets/background3.png";
@@ -319,7 +320,20 @@ const Profile = () => {
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>
-          <div>
+          <div className="choose_option_div">
+            <button
+              type="button"
+              className={`background_btn ${
+                selectedBackGround === "background0" ? "selected" : ""
+              }`}
+              onClick={() => handleOptionBackGround("background0")}
+            >
+              <img
+                src={background0}
+                className="background_color"
+                alt="background0"
+              />
+            </button>
             <button
               type="button"
               className={`background_btn ${

@@ -15,7 +15,6 @@ import WriteResume from "./components/WriteResume";
 import Home from "./components/Home";
 import ReviseResume from "./components/ReviseResume";
 import Logout from "./components/Logout";
-import Guide from "./components/Guide";
 import CountChar from "./components/CountChar";
 import ChangePW from "./components/ChangePW";
 import Delete from "./components/Delete";
@@ -37,7 +36,7 @@ import AboutUs from "./components/AboutUs";
 function App() {
   return (
     <CookiesProvider>
-            <h1 style={{display:'none'}}>login</h1>
+      <h1 style={{ display: "none" }}>login</h1>
       <BrowserRouter>
         <Routes>
           <Route path="/home" element={<PrivateRoute element={Home} />} />
@@ -50,7 +49,7 @@ function App() {
           <Route path="/login/callback" element={<LoginRedirect />}></Route>
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
-          <Route path="/aboutUs" element = {<AboutUs/>}/>
+          <Route path="/aboutUs" element={<AboutUs />} />
           <Route
             path="/login/kakao/changeName"
             element={<ChangeName />}
@@ -76,7 +75,7 @@ function App() {
             path="/resume/revise"
             element={<PrivateRoute element={ReviseResume} />}
           ></Route>
-          <Route path="/guide" element={<PrivateRoute element={Guide} />} />
+
           <Route
             path="/countchar"
             element={<PrivateRoute element={CountChar} />}
