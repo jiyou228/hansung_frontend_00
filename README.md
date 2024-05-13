@@ -2,7 +2,6 @@
 ![Group 159](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/79d08b7d-93e9-483a-be9f-25e5c014da03)
 
 
-
 # Languages and Platforms
 <img src="https://img.shields.io/badge/java-%23007396.svg?&style=for-the-badge&logo=java&logoColor=white" />
 <img src="https://img.shields.io/badge/spring-%236DB33F.svg?&style=for-the-badge&logo=spring&logoColor=white" /> <br>
@@ -18,6 +17,8 @@
 <img src="https://img.shields.io/badge/react-%2361DAFB.svg?&style=for-the-badge&logo=react&logoColor=black" />
 <img src="https://img.shields.io/badge/javascript-%23F7DF1E.svg?&style=for-the-badge&logo=javascript&logoColor=black"/>
 
+# Social Login
+<img src ="https://oauth.net/images/oauth-2-sm.png"/>
 # IDLE
 <img src="https://img.shields.io/badge/intellij%20idea-%23000000.svg?&style=for-the-badge&logo=intellij%20idea&logoColor=white" />
 <img src="https://img.shields.io/badge/visual%20studio%20code-%23007ACC.svg?&style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
