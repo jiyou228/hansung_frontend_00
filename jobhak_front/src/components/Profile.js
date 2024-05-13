@@ -8,6 +8,7 @@ import femalehair13 from "../assets/femalehair13.png";
 import femalehair14 from "../assets/femalehair14.png";
 import Slide1 from "../assets/slide1.png";
 import Slide2 from "../assets/slide2.png";
+import Slide3 from "../assets/slide3.png";
 import background0 from "../assets/background.png";
 import background1 from "../assets/background1.png";
 import background2 from "../assets/background2.png";
@@ -202,8 +203,8 @@ const Profile = () => {
                   </div>
                 </div>
                 <div>
-                  <h2>슬라이드 3</h2>
-                  <img src="slide3.jpg" alt="Slide 3" />
+                  <h2>상체가 다 나온 사진으로 PICK 해주세요!</h2>
+                  <img src={Slide3} alt="Slide 3" className="Slide3" />
                 </div>
               </Slider>
             </Modal>
