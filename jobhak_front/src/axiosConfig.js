@@ -1,6 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-const reIssue = async () => {
+const refreshToken = async () => {
   try {
     const response = await axios.post("https://api.jobhakdasik.site/reissue");
     const { accessToken } = response.data;
@@ -24,12 +24,10 @@ instance.interceptors.request.use(
   (config) => {
     // 토큰을 로컬 스토리지 또는 다른 곳에서 가져와서 설정
     const accessToken = localStorage.getItem("accessToken");
-    const refreshToken = Cookies.get("refreshToken");
 
     // 가져온 토큰이 있을 경우 요청 헤더에 설정
-    if (accessToken && refreshToken) {
+    if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
-      config.headers.Refresh = `Bearer ${refreshToken}`;
     }
     return config;
   },
@@ -54,10 +52,9 @@ instance.interceptors.response.use(
         if (error.response.data.code === 999) {
           //accessToken 만료시?
           try {
-            const { accessToken, refreshToken } = await reIssue(); // refreshToken 함수가 새로운 accessToken과 refreshToken을 반환하도록 가정합니다.
+            const accessToken = await refreshToken();
             // 새로 발급받은 토큰으로 기존 요청 재시도
             error.config.headers.Authorization = `Bearer ${accessToken}`;
-            error.config.headers.Refresh = `Bearer ${refreshToken}`; // 새로운 refreshToken을 설정합니다.
             return axios.request(error.config);
           } catch (refreshError) {
             // 토큰 재발급 실패시 로그아웃 처리
