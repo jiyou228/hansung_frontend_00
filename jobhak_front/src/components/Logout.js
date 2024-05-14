@@ -18,7 +18,6 @@ const Logout = () => {
         removeCookie("loginModal", { path: "/" });
         removeCookie("user_id", { path: "/" });
         removeCookie("nickname", { path: "/" });
-        removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
         removeCookie("MyIMG", { path: "/" });
         removeCookie("provider", { path: "/" });
         localStorage.removeItem("accessToken");
@@ -34,6 +33,7 @@ const Logout = () => {
         alert("로그아웃 도중 에러가 발생했습니다. 새로고침");
         window.location.reload();
       });
+      removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
   }, [removeCookie, navigate]);
 
   return null; // 렌더링할 내용이 없으므로 null을 반환합니다.
