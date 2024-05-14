@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import instance from "../axiosConfig";
 
 const Logout = () => {
-  const [, , removeCookie] = useCookies();
+  const [cookie, , removeCookie] = useCookies();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -12,6 +12,7 @@ const Logout = () => {
       .get("https://api.jobhakdasik.site/logout")
       .then((res) => {
         console.log(res);
+        console.log(cookie('refreshToken'));
         // 쿠키 삭제
         removeCookie("loggedIn", { path: "/" });
         removeCookie("loginModal", { path: "/" });
