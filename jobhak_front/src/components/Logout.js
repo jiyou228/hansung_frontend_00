@@ -18,7 +18,7 @@ const Logout = () => {
         removeCookie("loginModal", { path: "/" });
         removeCookie("user_id", { path: "/" });
         removeCookie("nickname", { path: "/" });
-        removeCookie("refreshToken");
+        removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
         removeCookie("MyIMG", { path: "/" });
         removeCookie("provider", { path: "/" });
         localStorage.removeItem("accessToken");
