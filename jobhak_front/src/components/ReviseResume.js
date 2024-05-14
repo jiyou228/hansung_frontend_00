@@ -9,7 +9,6 @@ const Resume = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [apiKey, setApiKey] = useState("");
   const [revision, setRevision] = useState("");
 
   const apiKey = process.env.REACT_APP_API_KEY;
