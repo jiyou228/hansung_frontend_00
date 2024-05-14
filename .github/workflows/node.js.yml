@@ -31,10 +31,6 @@ jobs:
         echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> .env
         echo "REACT_APP_JOBHAK_KEY=${{ secrets.REACT_APP_JOBHAK_KEY }}" >> .env
         
-    - name: Run React App
-      run: |
-        npm start -- --env DANGEROUSLY_DISABLE_HOST_CHECK=true
-        
     - name: cat .env
       run : cat .env
     
