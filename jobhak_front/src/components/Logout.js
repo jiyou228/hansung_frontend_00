@@ -17,7 +17,7 @@ const Logout = () => {
         removeCookie("loginModal", { path: "/" });
         removeCookie("user_id", { path: "/" });
         removeCookie("nickname", { path: "/" });
-        removeCookie("refreshToken", { path: "/" });
+        removeCookie("refreshToken");
         removeCookie("MyIMG", { path: "/" });
         removeCookie("provider", { path: "/" });
         localStorage.removeItem("accessToken");
