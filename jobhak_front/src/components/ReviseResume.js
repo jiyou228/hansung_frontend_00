@@ -10,7 +10,7 @@ const Resume = () => {
   const [loading, setLoading] = useState(false);
   const [revision, setRevision] = useState("");
 
-  const apiKey = "sk-proj-UOlMdRpiCigJTGzmgtZeT3BlbkFJ2seRGodtBTNFCNpar7mI";
+  const apiKey = process.env.REACT_APP_API_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
 
   const onReset = (e) => {
