@@ -1,17 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "./Nav";
 import "./ReviseResume.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Resume = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [apiKey , setApiKey] = useState("");
   const [revision, setRevision] = useState("");
 
-  const apiKey = "sk-proj-UOlMdRpiCigJTGzmgtZeT3BlbkFJ2seRGodtBTNFCNpar7mI";
+  // const apiKey = "sk-proj-UOlMdRpiCigJTGzmgtZeT3BlbkFJ2seRGodtBTNFCNpar7mI";
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
+
+  useEffect(() =>{
+    fetch('/config.json')
+    .then(response => response.json())
+    .then(data => setApiKey(data.REACT_APP_API_KEY))
+    .catch(error => console.error('fetch apiKey error', error));
+  },[]);
 
   const onReset = (e) => {
     e.preventDefault();
