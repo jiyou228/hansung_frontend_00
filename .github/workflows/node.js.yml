@@ -26,10 +26,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: jobhak_front/package.json
-    - name: Setting .env
+    - name: Add API keys to .env file
       run: |
-        echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> .env
-        echo "REACT_APP_JOBHAK_KEY=${{ secrets.REACT_APP_JOBHAK_KEY }}" >> .env
+        if ! grep -q '^REACT_APP_API_KEY=' .env; then
+          echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> .env
+        fi
+        if ! grep -q '^REACT_APP_JOBHAK_KEY=' .env; then
+          echo "REACT_APP_JOBHAK_KEY=${{ secrets.REACT_APP_JOBHAK_KEY }}" >> .env
+        fi
+      shell: bash
+
         
     - name: cat .env
       run : cat .env
