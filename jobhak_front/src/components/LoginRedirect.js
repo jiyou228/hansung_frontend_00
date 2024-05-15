@@ -12,7 +12,8 @@ const LoginRedirect =() =>{
         const error = urlParams.get('error');
         if (accessToken !== null && refreshToken !== null) {
             localStorage.setItem("accessToken", accessToken);
-            setCookie("refreshToken", refreshToken, { path: "/" });
+            setCookie("loggedIn", true, {path: "/"});
+            setCookie("refreshToken", refreshToken, { path: "/" , domain: '.jobhakdasik.site'});
             navigate('/home');
         } else if(!error) {
             alert("토큰을 받아올 수 없습니다. 새로고침 해주세요.")

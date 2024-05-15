@@ -19,8 +19,7 @@ function NaverDelete() {
   const cookie = new Cookies();
   const encodedNickname = cookie.get("nickname");
   cookie.get("nickname", decodeURIComponent(encodedNickname));
-  const id = cookie.get("user_id");
-  cookie.get("user_id", id);
+  const id = cookie.get("loginId");
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [loginType, setLoginType] = useState(cookie.get("loginType"));

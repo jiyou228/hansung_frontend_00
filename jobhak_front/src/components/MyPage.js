@@ -81,6 +81,7 @@ function MyPage() {
         setUserNickname(userData.nickname);
         setUserName(userData.name);
         setUserEmail(userData.email);
+        cookie.set("loginId", userData.loginId);
       })
 
       .catch((err) => {
