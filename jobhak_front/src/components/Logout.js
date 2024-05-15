@@ -12,7 +12,7 @@ const Logout = () => {
       .get("https://api.jobhakdasik.site/logout")
       .then((res) => {
         console.log(res);
-        console.log(cookie('refreshToken'));
+        console.log(cookie.refreshToken);
         // 쿠키 삭제
         removeCookie("loggedIn", { path: "/" });
         removeCookie("loginModal", { path: "/" });
@@ -21,7 +21,7 @@ const Logout = () => {
         removeCookie("MyIMG", { path: "/" });
         removeCookie("provider", { path: "/" });
         localStorage.removeItem("accessToken");
-
+        removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
         alert("로그아웃이 완료되었습니다.");
 
         console.log("쿠키 삭제 완료");
@@ -33,7 +33,6 @@ const Logout = () => {
         alert("로그아웃 도중 에러가 발생했습니다. 새로고침");
         window.location.reload();
       });
-      removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
   }, [removeCookie, navigate]);
 
   return null; // 렌더링할 내용이 없으므로 null을 반환합니다.
