@@ -33,7 +33,7 @@ jobs:
 
         
     - name: cat .env
-      run : cat .env
+      run : cat jobhak_front/.env
     
     - name: Install dependencies
       run: npm install
