@@ -187,7 +187,7 @@
   white-space: nowrap;
   box-sizing: border-box;
 }
-.write_delete:hover{
+.write_delete:hover {
   font-weight: 700;
 }
 
@@ -268,42 +268,42 @@
   flex-direction: column;
 }
 
-#experience_name{
+#experience_name {
   flex: 1;
 }
 .experience_three {
   display: flex;
   align-items: center;
-  width: 100%;  
+  width: 100%;
   box-sizing: border-box;
 }
-.experience_long{
+.experience_long {
   display: flex;
   align-items: center;
   margin-top: 1vh;
   box-sizing: border-box;
   width: 100%;
 }
-.experience_long input{
+.experience_long input {
   width: 100%;
 }
-#company_name{
+#company_name {
   flex: 1;
 }
 .career_three {
   display: flex;
   align-items: center;
-  width: 100%;  
+  width: 100%;
   box-sizing: border-box;
 }
-.career_long{
+.career_long {
   display: flex;
   align-items: center;
   margin-top: 1vh;
   box-sizing: border-box;
   width: 100%;
 }
-.career_long input{
+.career_long input {
   width: 100%;
 }
 .write_career_container input {
@@ -327,22 +327,23 @@
 .write_experience_container label:first-child {
   margin-left: 0;
 }
-.write_delete.active{
+.write_delete.active {
   display: none;
 }
-.write_getMyInfo{
-  border:none;
+.write_getMyInfo {
+  border: none;
   padding: 0.5em 1.2em;
   border-radius: 1em;
   margin-top: 2vh;
   font-weight: 600;
   font-size: 1em;
   color: #104085;
-  background-color: #EFEFEF;
+  background-color: #efefef;
   width: fit-content;
   cursor: pointer;
+  margin-left: 1rem;
 }
-.write_getMyInfo:hover{
+.write_getMyInfo:hover {
   font-weight: 700;
 }
 
@@ -431,14 +432,14 @@
     align-items: center;
   }
 
-  .experience_long{
+  .experience_long {
     display: grid;
     row-gap: 1vh;
     align-items: center;
     margin-top: 1vh;
     width: 95vw;
   }
-  .experience_long input{
+  .experience_long input {
     width: 95vw;
     box-sizing: border-box;
   }
@@ -448,20 +449,20 @@
     width: 95vw;
     align-items: center;
   }
-  .write_delete.active{
+  .write_delete.active {
     display: block;
   }
-  .write_delete{
+  .write_delete {
     display: none;
   }
-  .career_long{
+  .career_long {
     display: grid;
     row-gap: 1vh;
     align-items: center;
     margin-top: 1vh;
     width: 95vw;
   }
-  .career_long input{
+  .career_long input {
     width: 95vw;
     box-sizing: border-box;
   }

@@ -3,24 +3,21 @@ import Nav from "./Nav";
 import "./ReviseResume.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 const Resume = () => {
   const [messages, setMessages] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [revision, setRevision] = useState("");
+  const [nowrevision, setNowRevision] = useState(""); //지금 받아오는 revision
+  const location = useLocation();
+  const {
+    state: { revision },
+  } = location; //AI 생성에서 넘어온 revision
 
   const apiKey = process.env.REACT_APP_API_KEY;
-  console.log(apiKey);
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
-
-  // useEffect(() => {
-  //   fetch("/config.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setApiKey(data.REACT_APP_API_KEY))
-  //     .catch((error) => console.error("fetch apiKey error", error));
-  // }, []);
 
   const onReset = (e) => {
     e.preventDefault();
@@ -104,7 +101,7 @@ const Resume = () => {
       setUserInput(message);
       const data = await response.json();
       const aiResponse = data.choices?.[0]?.message?.content || "No response";
-      setRevision(aiResponse);
+      setNowRevision(aiResponse);
       console.log(data);
       console.log(typeof data);
     } catch (error) {
@@ -141,6 +138,7 @@ const Resume = () => {
         <div className="revise_content">
           <div className="revise_inputarea">
             <h3>나의 자기소개서</h3>
+            코드 복사
             <textarea
               maxLength="1000"
               placeholder="자기소개서를 작성해보세요. (최대 1000자)"
@@ -153,7 +151,7 @@ const Resume = () => {
           </div>
           <div className="revise_outputarea">
             <h3>AI 피드백</h3>
-            <div className="revise_output">{revision}</div>
+            <div className="revise_output">{nowrevision}</div>
           </div>
         </div>
         <div className="revise_button_container">
