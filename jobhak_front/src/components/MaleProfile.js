@@ -29,7 +29,7 @@ const MaleProfile = () => {
   const [selectedSuit, setSelectedSuit] = useState(null);
   const [selectedHair, setSelectedHair] = useState(null);
   const [selectedBackGround, setSelectedBackGround] = useState(null);
-  const [selectedBlur, setSelectedBlur] = useState("");
+  const [selectedBlur, setSelectedBlur] = useState(50);
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
