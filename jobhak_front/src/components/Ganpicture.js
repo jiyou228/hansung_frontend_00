@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Ganpicture.css";
 import download from "../assets/download.gif";
@@ -9,8 +8,12 @@ function Ganpicture() {
   const [imageLink, setImageLink] = useState(""); // 이미지 링크 상태
 
   useEffect(() => {
-    // 서버에서 이미지 경로를 가져오는 함수
-    fetchImageData();
+    // localStorage에서 uploadFile 값을 가져오는 함수
+    const uploadFile = localStorage.getItem("uploadFile");
+    if (uploadFile) {
+      // 가져온 uploadFile 값으로 이미지 경로를 설정합니다.
+      setImageLink(uploadFile);
+    }
   }, []);
 
   // 이미지 다운로드 함수
@@ -52,4 +55,5 @@ function Ganpicture() {
     </div>
   );
 }
+
 export default Ganpicture;
