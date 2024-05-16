@@ -72,7 +72,7 @@ const Profile = () => {
 
   const handleOptionBackGround = (option) => {
     if (option === selectedBackGround) {
-      setSelectedBackGround(null);
+      setSelectedBackGround("none");
     } else {
       setSelectedBackGround(option);
     }

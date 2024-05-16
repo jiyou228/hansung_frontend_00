@@ -70,7 +70,7 @@ const MaleProfile = () => {
 
   const handleOptionBackGround = (option) => {
     if (option === selectedBackGround) {
-      setSelectedBackGround(null);
+      setSelectedBackGround("none");
     } else {
       setSelectedBackGround(option);
     }
@@ -119,7 +119,8 @@ const MaleProfile = () => {
       })
       .then((res) => {
         console.log(res);
-        <MemoryGame />;
+        console.log(res.data[0].UploadedFilePath);
+        localStorage.setItem("uploadFile", res.data[0].UploadedFilePath);
         navigate("/profile/save");
       })
       .catch((err) => {
