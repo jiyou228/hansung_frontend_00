@@ -47,6 +47,9 @@ function Ganpicture() {
             className="ganimg_download"
           />
         )}
+        <label className="download_lb">
+          버튼을 누르면 사진을 저장할 수 있습니다.
+        </label>
       </div>
     </div>
   );

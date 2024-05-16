@@ -11,6 +11,7 @@ import KakaoLogin from "./components/KakaoLogin";
 import BoardList from "./components/BoardList";
 import MyPage from "./components/MyPage";
 import Profile from "./components/Profile";
+import MaleProfile from "./components/MaleProfile";
 import WriteResume from "./components/WriteResume";
 import Home from "./components/Home";
 import ReviseResume from "./components/ReviseResume";
@@ -68,6 +69,11 @@ function App() {
           <Route
             path="/profile/female"
             element={<PrivateRoute element={Profile} />}
+          ></Route>
+
+          <Route
+            path="/profile/male"
+            element={<PrivateRoute element={MaleProfile} />}
           ></Route>
 
           <Route

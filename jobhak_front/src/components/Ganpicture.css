@@ -1,5 +1,5 @@
 .picture_h2 {
-  margin-top: 3rem;
+  margin-top: 7rem;
   margin-bottom: 3rem;
 }
 .GAN_container {
@@ -12,4 +12,9 @@
 .ganimg_download {
   margin-top: 3rem;
   height: 5rem;
+}
+.download_lb {
+  margin-top: 2rem;
+  font-size: larger;
+  font-weight: 700;
 }
