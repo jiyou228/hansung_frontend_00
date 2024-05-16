@@ -11,12 +11,6 @@ const Resume = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [nowrevision, setNowRevision] = useState(""); //지금 받아오는 revision
-  // const location = useLocation();
-  // const {
-  //   state: { revision },
-  // } = location; //AI 생성에서 넘어온 revision
-
-  // const revision = location?.state?.revision;
 
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";

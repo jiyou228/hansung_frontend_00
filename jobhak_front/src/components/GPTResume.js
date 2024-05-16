@@ -12,6 +12,7 @@ const GPTResume = () => {
   const {
     state: { revision },
   } = location;
+  const navigate = useNavigate();
 
   const copyToClipboard = async () => {
     try {
@@ -23,15 +24,7 @@ const GPTResume = () => {
   };
   const revise = () => {
     setReadOnly(false);
-    const Toast = Swal.mixin({
-      toast: true,
-      iconColor: "white",
-      customClass: {
-        popup: "colored-toast",
-      },
-      showConfirmButton: false,
-      timer: 1500,
-    });
+    navigate("/resume/revise");
   };
 
   useEffect(() => {
