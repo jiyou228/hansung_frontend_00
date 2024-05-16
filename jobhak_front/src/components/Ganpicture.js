@@ -9,11 +9,22 @@ function Ganpicture() {
   const [imageLink, setImageLink] = useState(""); // 이미지 링크 상태
 
   useEffect(() => {
-    // 이미지 링크를 설정하는 함수
-    setImageLink(
-      "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/profile/e6247512-357a-4437-bf7f-aa06dc964c10crop.png"
-    );
-  }, []); // 컴포넌트가 마운트될 때 한 번만 실행
+    // 서버에서 이미지 경로를 가져오는 함수
+    fetchImageData();
+  }, []);
+
+  // 서버에서 이미지 경로를 가져오는 함수
+  const fetchImageData = () => {
+    axios
+      .get("API에서 이미지 경로를 가져오는 엔드포인트")
+      .then((response) => {
+        // 서버 응답에서 이미지 경로를 추출하여 이미지 링크 상태를 설정합니다.
+        setImageLink(response.data[0].UploadedFilePath);
+      })
+      .catch((error) => {
+        console.error("Error fetching image data: ", error);
+      });
+  };
 
   // 이미지 다운로드 함수
   const handleDownload = () => {
