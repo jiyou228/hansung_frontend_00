@@ -32,6 +32,8 @@ import LoginRedirect from "./components/LoginRedirect";
 import KakaoDelete from "./components/KakaoDelete";
 import NaverDelete from "./components/NaverDelete";
 import AboutUs from "./components/AboutUs";
+import Ganpicture from "./components/Ganpicture";
+import MemoryGame from "./components/MemoryGame";
 
 function App() {
   return (
@@ -67,6 +69,12 @@ function App() {
             path="/profile/female"
             element={<PrivateRoute element={Profile} />}
           ></Route>
+
+          <Route
+            path="/profile/save"
+            element={<PrivateRoute element={Ganpicture} />}
+          ></Route>
+
           <Route
             path="/resume/write"
             element={<PrivateRoute element={WriteResume} />}
@@ -79,6 +87,11 @@ function App() {
           <Route
             path="/countchar"
             element={<PrivateRoute element={CountChar} />}
+          />
+
+          <Route
+            path="/memorygame"
+            element={<PrivateRoute element={MemoryGame} />}
           />
           <Route
             path="/user/edit/pw"

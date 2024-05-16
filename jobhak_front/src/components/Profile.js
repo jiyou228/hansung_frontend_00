@@ -18,9 +18,11 @@ import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
 import defaultimg from "../assets/취뽀윙크.png";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 import Slider from "react-slick";
+import MemoryGame from "./MemoryGame";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -33,6 +35,7 @@ const Profile = () => {
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const showGuide = () => {
     setIsOpen(true);
@@ -113,8 +116,14 @@ const Profile = () => {
     }
 
     axios
-      .post("http://localhost:12300/profile/edit", formData, { withCredentials: true })
-      .then((res) => {})
+      .post("http://localhost:12300/profile/edit", formData, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        <MemoryGame />;
+        navigate("/profile/save");
+      })
       .catch((err) => {
         console.error(err);
       });
@@ -284,13 +293,14 @@ const Profile = () => {
           <div className="choose_option_div">
             <label className="blur_option_lb">블러 효과</label>
             <input
-            type="range"
-            min="0"
-            max = "100"
-            step="10"
-            value={selectedBlur}
-            className="blur_bar"
-            onChange={handleOptionBlur}/>
+              type="range"
+              min="0"
+              max="100"
+              step="10"
+              value={selectedBlur}
+              className="blur_bar"
+              onChange={handleOptionBlur}
+            />
             {/* <label className="blur_option_lb">
               <input
                 type="radio"
