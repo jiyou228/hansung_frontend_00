@@ -10,39 +10,6 @@ const ResetPW = () => {
   const [newPw, setNewPw] = useState("");
   const [checkPw, setCheckPw] = useState("");
 
-  // const resetPWSubmit = (e) => {
-  //   e.preventDefault();
-  //   instance
-  //     .patch("https://api.jobhakdasik.site/user/edit/pw", {
-  //       password: checkPw
-  //     })
-  //     .then((res) => {
-  //       Swal.fire({
-  //         icon: "success",
-  //         title: "비밀번호 재설정",
-  //         text: `성공!`,
-  //         showCancelButton: false,
-  //         confirmButtonText: "확인",
-  //         width: 800,
-  //         height: 100,
-  //       });
-  //       window.location.href = '/';
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error: ", err);
-
-  //       Swal.fire({
-  //         icon: "warning",
-  //         title: "경고",
-  //         text: "비밀번호 재설정 중 오류가 발생했습니다.",
-  //         showCancelButton: false,
-  //         confirmButtonText: "확인",
-  //         width: 800,
-  //         height: 100,
-  //       });
-  //       window.location.reload();
-  //     });
-  // };
   const resetPWSubmit = (e) => {
     // 기존 비밀번호 확인하는 로직 필요
     e.preventDefault();
@@ -136,7 +103,7 @@ const ResetPW = () => {
           확인
         </button>
       </form>
-      <Link to="/login" className="resetPW_link">
+      <Link to="/" className="resetPW_link">
         <p className="resetPW_login">로그인 바로가기</p>
       </Link>
     </div>
