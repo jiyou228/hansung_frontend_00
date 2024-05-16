@@ -63,9 +63,11 @@
 .mypage_profile_button {
   display: flex;
   gap: 20px;
+  color: #252525;
+  white-space: nowrap;
 }
 .mypage_profile_button button:hover {
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .mypage_count_div {

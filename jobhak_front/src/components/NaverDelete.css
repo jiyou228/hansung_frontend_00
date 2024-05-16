@@ -108,7 +108,6 @@
 @media only screen and (max-width: 768px) {
   .mypage_privacy_div {
     width: 90vw;
-    white-space: nowrap;
   }
 }
 
