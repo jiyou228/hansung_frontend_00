@@ -210,9 +210,11 @@ function Delete() {
         </div>
         <div className="mypage_privacy_div">
           <div className="mypage_privacy_move">
+            <div className="delete_title">
             <label className="delete_lb">현재 비밀번호</label>
+            <label className="delete_info">계정을 삭제하려면 현재 사용하시는 비밀번호를 입력하세요.</label>
+            </div>
             <input
-              placeholder="계정을 삭제하려면 현재 사용하시는 비밀번호를 입력하세요."
               className="delete_ip"
               type="text"
               value={userpw}

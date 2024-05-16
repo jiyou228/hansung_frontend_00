@@ -343,7 +343,8 @@
   }
 
   .job_title .image {
-    min-width: 30vw;
+    width: 30vw;
+    height: fit-content;
     margin-top: 0;
   }
 
