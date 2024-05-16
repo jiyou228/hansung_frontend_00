@@ -113,7 +113,7 @@ const Profile = () => {
     }
 
     axios
-      .post("http://localhost:12300/profile/edit", formData)
+      .post("http://localhost:12300/profile/edit", formData, { withCredentials: true })
       .then((res) => {})
       .catch((err) => {
         console.error(err);
