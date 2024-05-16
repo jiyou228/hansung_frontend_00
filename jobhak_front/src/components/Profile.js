@@ -121,8 +121,8 @@ const Profile = () => {
       })
       .then((res) => {
         console.log(res);
-        console.log(res.data[0].UploadedFilePath + "1");
-        console.log(res.data[0]["UploadedFilePath"] + "2");
+        // console.log(res.data[0].UploadedFilePath + "1");
+        // console.log(res.data[0]["UploadedFilePath"] + "2");
         navigate("/profile/save");
       })
       .catch((err) => {
