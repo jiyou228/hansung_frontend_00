@@ -95,7 +95,7 @@ const Profile = () => {
 
     const selectedSuitStyle = selectedSuit;
     const selectedHairstyle = selectedHair;
-    const selectedBackGroundstyle = selectedBackGround;
+    const selectedBackGroundstyle = selectedBackGround || "none";
 
     const currentPath = window.location.pathname;
     const sex = currentPath.split("/").pop();

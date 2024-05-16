@@ -68,19 +68,9 @@ const MaleProfile = () => {
     }
   };
 
-  // const handleOptionBackGround = (option) => {
-  //   if (option === selectedBackGround) {
-  //     setSelectedBackGround("none");
-  //   } else {
-  //     setSelectedBackGround(option);
-  //   }
-  // };
-
   const handleOptionBackGround = (option) => {
     if (option === selectedBackGround) {
       setSelectedBackGround(null);
-    } else if (selectedBackGround === null) {
-      setSelectedBackGround("none");
     } else {
       setSelectedBackGround(option);
     }
@@ -103,7 +93,7 @@ const MaleProfile = () => {
 
     const selectedSuitStyle = selectedSuit;
     const selectedHairstyle = selectedHair;
-    const selectedBackGroundstyle = selectedBackGround;
+    const selectedBackGroundstyle = selectedBackGround || "none";
 
     const currentPath = window.location.pathname;
     const sex = currentPath.split("/").pop();
