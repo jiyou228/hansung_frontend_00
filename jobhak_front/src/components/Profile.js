@@ -3,9 +3,9 @@ import "../components/Profile.css";
 import suit9 from "../assets/suit9.png";
 import suit10 from "../assets/suit10.png";
 import suit11 from "../assets/suit11.png";
-import femalehair12 from "../assets/femalehair12.png";
-import femalehair13 from "../assets/femalehair13.png";
-import femalehair14 from "../assets/femalehair14.png";
+import shorthair from '../assets/shorthair.png';
+import longhair from '../assets/longhair.png';
+import uphair from '../assets/uphair.png';
 import Slide1 from "../assets/slide1.png";
 import Slide2 from "../assets/slide2.png";
 import Slide3 from "../assets/slide3.png";
@@ -254,29 +254,29 @@ const Profile = () => {
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "femalehair1" ? "selected" : ""
+                selectedHair === "uphair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("femalehair1")}
+              onClick={() => handleOptionHair("uphair")}
             >
-              <img src={femalehair12} className="female_hair" alt="Hair12" />
+              <img src={uphair} className="female_hair" alt="어피헤어" />
             </button>
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "femalehair2" ? "selected" : ""
+                selectedHair === "shorthair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("femalehair2")}
+              onClick={() => handleOptionHair("shorthair")}
             >
-              <img src={femalehair13} className="female_hair" alt="Hair12" />
+              <img src={shorthair} className="female_hair" alt="단발" />
             </button>
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "femalehair3" ? "selected" : ""
+                selectedHair === "longhair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("femalehair3")}
+              onClick={() => handleOptionHair("longhair")}
             >
-              <img src={femalehair14} className="female_hair" alt="Hair12" />
+              <img src={longhair} className="female_hair" alt="긴머리" />
             </button>
           </div>
           <hr style={{ marginBottom: "1rem" }} />
