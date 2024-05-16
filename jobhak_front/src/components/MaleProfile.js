@@ -68,8 +68,18 @@ const MaleProfile = () => {
     }
   };
 
+  // const handleOptionBackGround = (option) => {
+  //   if (option === selectedBackGround) {
+  //     setSelectedBackGround("none");
+  //   } else {
+  //     setSelectedBackGround(option);
+  //   }
+  // };
+
   const handleOptionBackGround = (option) => {
     if (option === selectedBackGround) {
+      setSelectedBackGround(null);
+    } else if (selectedBackGround === null) {
       setSelectedBackGround("none");
     } else {
       setSelectedBackGround(option);
