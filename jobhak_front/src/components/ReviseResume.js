@@ -44,7 +44,8 @@ const Resume = () => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);
   };
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
     const message = userInput.trim();
     if (message.length === 0) return;
 
@@ -140,7 +141,6 @@ const Resume = () => {
         <div className="revise_content">
           <div className="revise_inputarea">
             <h3>나의 자기소개서</h3>
-            코드 복사
             <textarea
               maxLength="1000"
               placeholder="자기소개서를 작성해보세요. (최대 1000자)"

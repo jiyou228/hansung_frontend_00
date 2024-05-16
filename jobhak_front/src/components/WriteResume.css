@@ -341,7 +341,7 @@
   background-color: #efefef;
   width: fit-content;
   cursor: pointer;
-  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .write_getMyInfo:hover {
   font-weight: 700;
