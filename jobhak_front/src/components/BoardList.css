@@ -273,11 +273,11 @@ a {
   }
   .boardlist_bookmark{
     width: 9vw;
-    height: fit-content;
+    height: auto;
   }
   .boardlist_comment img{
     width: 7vw;
-    height: fit-content;
+    height: auto;
   }
   .boardlist_search .img .search{
     margin-right: 2vw;
