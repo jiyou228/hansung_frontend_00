@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 const refreshToken = async () => {
   try {
-    const response = await axios.post("https://api.jobhakdasik.site/reissue");
+    const response = await instance.post("https://api.jobhakdasik.site/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
