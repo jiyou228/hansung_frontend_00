@@ -28,8 +28,8 @@ jobs:
         cache-dependency-path: jobhak_front/package.json
     - name: Setting .env
       run: |
-        echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> .env
-        echo "REACT_APP_JOBHAK_KEY=${{ secrets.REACT_APP_JOBHAK_KEY }}" >> .env
+        echo "REACT_APP_API_KEY=${{ secrets.REACT_APP_API_KEY }}" >> jobhak_front/.env
+        echo "REACT_APP_JOBHAK_KEY=${{ secrets.REACT_APP_JOBHAK_KEY }}" >> jobhak_front/.env
 
         
     - name: cat .env
