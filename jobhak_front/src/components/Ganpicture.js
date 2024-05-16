@@ -6,6 +6,7 @@ import download from "../assets/download.gif";
 
 function Ganpicture() {
   const [imageLink, setImageLink] = useState(""); // 이미지 링크 상태
+  const navigate = useNavigate();
 
   useEffect(() => {
     // localStorage에서 uploadFile 값을 가져오는 함수
@@ -15,6 +16,11 @@ function Ganpicture() {
       setImageLink(uploadFile);
     }
   }, []);
+
+  const deleteitem = () => {
+    localStorage.removeItem("uploadFile");
+    navigate("/profile/male");
+  };
 
   // 이미지 다운로드 함수
   const handleDownload = () => {
@@ -51,6 +57,9 @@ function Ganpicture() {
         <label className="download_lb">
           버튼을 누르면 사진을 저장할 수 있습니다.
         </label>
+        <button className="back_btn" onClick={deleteitem}>
+          돌아가기
+        </button>
       </div>
     </div>
   );
