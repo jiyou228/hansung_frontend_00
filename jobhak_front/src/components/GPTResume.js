@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./GPTResume.css";
 import Nav from "./Nav";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import instance from "../axiosConfig";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 const GPTResume = () => {
   const [readOnly, setReadOnly] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
   const {
     state: { revision },
   } = location;
@@ -22,6 +23,7 @@ const GPTResume = () => {
     }
   };
   const revise = () => {
+    navigate("/resume/revise", { state: { revision: revision } });
     setReadOnly(false);
     const Toast = Swal.mixin({
       toast: true,
@@ -37,17 +39,6 @@ const GPTResume = () => {
       title: "글 상자에서 수정이 가능합니다!",
     });
   };
-
-  //   Swal.fire({
-  //     icon: "success",
-  //     title: "복사 중...",
-  //     text: "복사가 완료되었습니다!",
-  //     showCancelButton: false,
-  //     confirmButtonText: "확인",
-  //     width: 800,
-  //     height: 100,
-  //   });
-  // };
 
   useEffect(() => {
     Swal.close();
