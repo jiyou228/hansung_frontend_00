@@ -2,9 +2,8 @@ import Nav from "./Nav";
 import "../components/MaleProfile.css";
 import suit9 from "../assets/suit9.png";
 import suit10 from "../assets/suit10.png";
-import shorthair from "../assets/shorthair.png";
-import longhair from "../assets/longhair.png";
-import uphair from "../assets/uphair.png";
+import downhair from "../assets/male_downhair.png";
+import uphair from "../assets/male_uphair.png";
 import Slide1 from "../assets/slide1.png";
 import Slide2 from "../assets/slide2.png";
 import Slide3 from "../assets/slide3.png";
@@ -257,25 +256,16 @@ const MaleProfile = () => {
               }`}
               onClick={() => handleOptionHair("uphair")}
             >
-              <img src={uphair} className="female_hair" alt="어피헤어" />
+              <img src={uphair} className="female_hair" alt="올림머리" />
             </button>
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "shorthair" ? "selected" : ""
+                selectedHair === "downhair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("shorthair")}
+              onClick={() => handleOptionHair("downhair")}
             >
-              <img src={shorthair} className="female_hair" alt="단발" />
-            </button>
-            <button
-              type="button"
-              className={`female_hair_btn ${
-                selectedHair === "longhair" ? "selected" : ""
-              }`}
-              onClick={() => handleOptionHair("longhair")}
-            >
-              <img src={longhair} className="female_hair" alt="긴머리" />
+              <img src={downhair} className="female_hair" alt="내림머리" />
             </button>
           </div>
           <hr style={{ marginBottom: "1rem" }} />
