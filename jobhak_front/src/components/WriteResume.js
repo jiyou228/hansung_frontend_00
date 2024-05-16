@@ -205,42 +205,18 @@ const WriteResume = () => {
     if (e) {
       e.preventDefault();
     }
+
     Swal.fire({
-      title: "저장하시겠습니까?",
-      text: "나의 경험/경력을 저장하시겠습니까?",
-      icon: "question",
-      showCancelButton: true,
-      showCloseButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "저장",
-      cancelButtonText: "안함",
-      reverseButtons: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          icon: "success",
-          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
-          text: "첨삭된 자기소개서를 불러오고 있습니다.",
-          width: 800,
-          height: 100,
-          didOpen: () => {
-            Swal.showLoading();
-          },
-        });
-      } else {
-        Swal.fire({
-          icon: "success",
-          title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
-          text: "첨삭된 자기소개서를 불러오고 있습니다.",
-          width: 800,
-          height: 100,
-          didOpen: () => {
-            Swal.showLoading();
-          },
-        });
-      }
+      icon: "success",
+      title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+      text: "첨삭된 자기소개서를 불러오고 있습니다.",
+      width: 800,
+      height: 100,
+      didOpen: () => {
+        Swal.showLoading();
+      },
     });
+
     const hasCompanyName =
       experiences.some((experience) => experience.careerName) ||
       careers.some((career) => career.careerName);
@@ -486,11 +462,13 @@ const WriteResume = () => {
               </div>
             </div>
             <br />
-            <div onClick={getMyInfo} className="write_getMyInfo">
-              나의 경험/경력 불러오기
-            </div>
-            <div onClick={handleSave} className="write_getMyInfo">
-              나의 경험/경력 저장하기
+            <div>
+              <button onClick={getMyInfo} className="write_getMyInfo">
+                나의 경험/경력 불러오기
+              </button>
+              <button onClick={handleSave} className="write_getMyInfo">
+                나의 경험/경력 저장하기
+              </button>
             </div>
             {isTextMode ? (
               <textarea

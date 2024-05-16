@@ -34,10 +34,6 @@ const GPTResume = () => {
       showConfirmButton: false,
       timer: 1500,
     });
-    Toast.fire({
-      icon: "success",
-      title: "글 상자에서 수정이 가능합니다!",
-    });
   };
 
   useEffect(() => {
