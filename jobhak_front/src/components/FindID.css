@@ -68,17 +68,25 @@
     }
 }
 
-@media screen and (min-width: 376px){
-    .findID_app{
+@media(min-width: 1440px){
+    .findID{
         font-size: 20px;
     }
     .findID_form{
         font-size: 20px;
     }
 }
-
-@media (max-width: 375px) {
-    .findID_app{
+@media (max-width: 1440px) {
+    .findID{
+        font-size: 18px;
+    }
+    .findID_form{
+        font-size: 18px;
+    }
+    
+}
+@media (max-width: 768px) {
+    .findID{
         font-size: 14px;
     }
     .findID_form{
