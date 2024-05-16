@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 const GPTResume = () => {
   const [readOnly, setReadOnly] = useState(true);
   const location = useLocation();
-  const navigate = useNavigate();
   const {
     state: { revision },
   } = location;
@@ -23,7 +22,6 @@ const GPTResume = () => {
     }
   };
   const revise = () => {
-    navigate("/resume/revise", { state: { revision: revision } });
     setReadOnly(false);
     const Toast = Swal.mixin({
       toast: true,
@@ -37,8 +35,11 @@ const GPTResume = () => {
   };
 
   useEffect(() => {
+    // 페이지 로드될 때 revision 값을 로컬 스토리지에 저장
+    localStorage.setItem("revision", revision);
     Swal.close();
   }, []);
+
   return (
     <div className="gpt_app">
       <Nav />

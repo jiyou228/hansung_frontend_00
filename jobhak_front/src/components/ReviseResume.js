@@ -11,15 +11,23 @@ const Resume = () => {
   const [userInput, setUserInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [nowrevision, setNowRevision] = useState(""); //지금 받아오는 revision
-  const location = useLocation();
+  // const location = useLocation();
   // const {
   //   state: { revision },
   // } = location; //AI 생성에서 넘어온 revision
 
-  const revision = location?.state?.revision;
+  // const revision = location?.state?.revision;
 
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
+
+  useEffect(() => {
+    // 페이지 로드 시 localStorage에서 revision 값을 가져와 userInput에 설정
+    const savedRevision = localStorage.getItem("revision");
+    if (savedRevision) {
+      setUserInput(savedRevision);
+    }
+  }, []);
 
   const onReset = (e) => {
     e.preventDefault();
@@ -35,6 +43,7 @@ const Resume = () => {
       cancelButtonText: "취소",
     }).then((result) => {
       if (result.isConfirmed) {
+        localStorage.removeItem("revision");
         window.location.reload();
       }
     });
@@ -146,7 +155,8 @@ const Resume = () => {
               placeholder="자기소개서를 작성해보세요. (최대 1000자)"
               className="revise_input"
               // value={revision ? revision : userInput}
-              value={revision !== null ? revision : userInput}
+              // value={revision !== null ? revision : userInput}
+              value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               onKeyDown={handleKeyDown}
               required
