@@ -132,6 +132,9 @@ a {
   font-weight: 700;
   font-size: medium;
 }
+.boardlist_filter button:hover{
+  font-weight: 800;
+}
 .boardlist_sort ul {
   list-style: none;
   padding: 0;

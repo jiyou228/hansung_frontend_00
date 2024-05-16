@@ -22,6 +22,7 @@
   width: 13rem;
   height: 2.2rem;
   text-align: center;
+  cursor: pointer;
 }
 #file {
   display: none;
@@ -85,15 +86,12 @@
 .female_suit,
 .female_hair {
   width: 8rem;
+  
 }
 
 .background_color {
   width: 6em;
   height: 5em;
-}
-
-.female_hair {
-  height: 20vh;
 }
 
 .choose_option_div {

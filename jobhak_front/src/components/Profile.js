@@ -16,7 +16,7 @@ import background3 from "../assets/background3.png";
 import background4 from "../assets/background4.png";
 import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
-import defaultimg from "../assets/취뽀윙크.png";
+import defaultimg from "../assets/profileExample.png";
 import React, { useState } from "react";
 import axios from "axios";
 import Modal from "react-modal";
