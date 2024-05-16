@@ -23,8 +23,9 @@
   display: flex;
 }
 
-@media only screen and (max-width: 768px) {
+@media(max-width: 768px) {
   .changepw_div {
-    width: 78vw;
+    width: 85vw;
+    box-sizing: border-box;
   }
 }

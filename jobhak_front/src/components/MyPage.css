@@ -46,8 +46,7 @@
 
 .mypage_profile_btn1,
 .mypage_profile_btn2 {
-  width: 5rem;
-  height: 2rem;
+
   margin-top: 10px;
   cursor: pointer;
   border-radius: 0.3rem;
@@ -55,6 +54,9 @@
   border: none;
   font-weight: 600;
   background-color:   #D8D8D8;
+  flex: 1;
+  padding: 0.3em 0;
+  color: #252525;
 }
 .mypage_profile_btn2{
   background-color: #cdddf7;
@@ -64,6 +66,7 @@
   display: flex;
   gap: 20px;
   color: #252525;
+  width: 12vw;
   white-space: nowrap;
 }
 .mypage_profile_button button:hover {
@@ -156,7 +159,9 @@
     height: 11rem;
   }
   .mypage_profile_button {
-    gap: 1vw;
+    width: 25vw;
+    gap:1vw;
+
   }
   .mypage_navbarMenu {
     display: flex;
@@ -184,10 +189,6 @@
   .profile_image{
     width: 25vw;
     height: 25vw;
-  }
-  .mypage_profile_button button{
-    font-size: medium;
-    width: 4rem;
   }
   .mypage_profile_container{
     margin: 0;
