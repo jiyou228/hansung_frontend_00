@@ -12,9 +12,11 @@ const Resume = () => {
   const [loading, setLoading] = useState(false);
   const [nowrevision, setNowRevision] = useState(""); //지금 받아오는 revision
   const location = useLocation();
-  const {
-    state: { revision },
-  } = location; //AI 생성에서 넘어온 revision
+  // const {
+  //   state: { revision },
+  // } = location; //AI 생성에서 넘어온 revision
+
+  const revision = location?.state?.revision;
 
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
@@ -143,7 +145,8 @@ const Resume = () => {
               maxLength="1000"
               placeholder="자기소개서를 작성해보세요. (최대 1000자)"
               className="revise_input"
-              value={revision ? revision : userInput}
+              // value={revision ? revision : userInput}
+              value={revision !== null ? revision : userInput}
               onChange={(e) => setUserInput(e.target.value)}
               onKeyDown={handleKeyDown}
               required
