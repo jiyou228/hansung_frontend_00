@@ -3,9 +3,9 @@ import "../components/Profile.css";
 import suit9 from "../assets/suit9.png";
 import suit10 from "../assets/suit10.png";
 import suit11 from "../assets/suit11.png";
-import shorthair from '../assets/shorthair.png';
-import longhair from '../assets/longhair.png';
-import uphair from '../assets/uphair.png';
+import shorthair from "../assets/shorthair.png";
+import longhair from "../assets/longhair.png";
+import uphair from "../assets/uphair.png";
 import Slide1 from "../assets/slide1.png";
 import Slide2 from "../assets/slide2.png";
 import Slide3 from "../assets/slide3.png";
@@ -121,7 +121,8 @@ const Profile = () => {
       })
       .then((res) => {
         console.log(res);
-        <MemoryGame />;
+        console.log(res.data[0].UploadedFilePath + "1");
+        console.log(res.data[0]["UploadedFilePath"] + "2");
         navigate("/profile/save");
       })
       .catch((err) => {
