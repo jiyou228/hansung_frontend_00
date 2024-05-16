@@ -16,10 +16,11 @@ function Ganpicture() {
   // 서버에서 이미지 경로를 가져오는 함수
   const fetchImageData = () => {
     axios
-      .get("API에서 이미지 경로를 가져오는 엔드포인트")
+      .get("http://localhost:12300/profile/edit")
       .then((response) => {
-        // 서버 응답에서 이미지 경로를 추출하여 이미지 링크 상태를 설정합니다.
-        setImageLink(response.data[0].UploadedFilePath);
+        setImageLink(response.data[0]["UploadedFilePath"]);
+        console.log(response.data[0].UploadedFilePath);
+        console.log(response.data[0]["UploadedFilePath"]);
       })
       .catch((error) => {
         console.error("Error fetching image data: ", error);
