@@ -344,7 +344,7 @@
 
   .job_title .image {
     width: 30vw;
-    height: fit-content;
+    height: auto;
     margin-top: 0;
   }
 
