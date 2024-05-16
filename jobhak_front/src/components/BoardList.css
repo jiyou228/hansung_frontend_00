@@ -75,7 +75,7 @@ a {
 .boardlist_list ul {
   list-style: none;
 }
-.boardlist_list img {
+.boardlist_comment img {
   height: 4vh;
   width: fit-content;
 }
@@ -91,7 +91,7 @@ a {
   justify-content: space-between;
   font-size: 1.2rem;
 }
-.boardlist_title img {
+.boardlist_bookmark {
   margin-top: -2vh;
   height: 5vh;
   width: fit-content;
@@ -271,4 +271,16 @@ a {
   .boardlist_top{
     margin-top: 0;
   }
+  .boardlist_bookmark{
+    width: 9vw;
+    height: fit-content;
+  }
+  .boardlist_comment img{
+    width: 7vw;
+    height: fit-content;
+  }
+  .boardlist_search .img .search{
+    margin-right: 2vw;
+  }
+
 }

@@ -257,9 +257,9 @@ const BoardList = () => {
                     {board.title}
                   </Link>
                   {bookmarks.includes(board.postId) ? (
-                    <img src={on_bookmark} alt="북마크됨" />
+                    <img src={on_bookmark} alt="북마크됨" className="boardlist_bookmark" />
                   ) : (
-                    <img src={off_bookmark} alt="북마크안됨" />
+                    <img src={off_bookmark} alt="북마크안됨" className="boardlist_bookmark"/>
                   )}
                 </div>
                 <div className="boardlist_content">
