@@ -108,9 +108,6 @@ const MaleProfile = () => {
     formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
-    for (const pair of formData.entries()) {
-      console.log(pair[0] + ", " + pair[1]);
-    }
 
     axios
       .post("http://localhost:12300/profile/edit", formData, {
@@ -118,8 +115,10 @@ const MaleProfile = () => {
       })
       .then((res) => {
         console.log(res);
-        console.log(res.data[0].UploadedFilePath);
-        localStorage.setItem("uploadFile", res.data[0].UploadedFilePath);
+        for (let i = 0; i < 5; i++) {
+          console.log(res.data[i].UploadedFilePath);
+          localStorage.setItem(`uploadFile${i}`, res.data[i].UploadedFilePath);
+        }
         navigate("/profile/save");
       })
       .catch((err) => {
@@ -246,7 +245,7 @@ const MaleProfile = () => {
               <img src={suit2} className="female_suit" alt="Suit 10" />
             </button>
           </div>
-          <hr/>
+          <hr />
           <label className="choose_option_lb">머리 스타일</label>
           <div className="choose_option_div">
             <button
@@ -272,26 +271,26 @@ const MaleProfile = () => {
           <label className="choose_option_lb">얼굴 효과</label>
           <div className="choose_option_div2">
             <div>
-            <label className="blur_option_lb">블러 효과</label>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value={selectedBlur}
-              className="blur_bar"
-              onChange={handleOptionBlur}
-            />
+              <label className="blur_option_lb">블러 효과</label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                value={selectedBlur}
+                className="blur_bar"
+                onChange={handleOptionBlur}
+              />
             </div>
-            <div style={{alignItems: 'center', display: 'flex'}}>
-            <label className="lip_option_lb">입술 생기</label>
+            <div style={{ alignItems: "center", display: "flex" }}>
+              <label className="lip_option_lb">입술 생기</label>
 
-            <input
-              style={{ zoom: "1.5" }}
-              type="checkbox"
-              className="lip_check"
-              onChange={handleLipOptionChange}
-            />
+              <input
+                style={{ zoom: "1.5" }}
+                type="checkbox"
+                className="lip_check"
+                onChange={handleLipOptionChange}
+              />
             </div>
           </div>
           <hr />
