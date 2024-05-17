@@ -262,9 +262,9 @@ const MaleProfile = () => {
               className={`female_hair_btn ${
                 selectedHair === "male_downhair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("downhair")}
+              onClick={() => handleOptionHair("male_downhair")}
             >
-              <img src={downhair} className="male_downhair" alt="내림머리" />
+              <img src={downhair} className="female_hair" alt="내림머리" />
             </button>
           </div>
           <hr />
