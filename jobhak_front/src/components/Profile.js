@@ -1,8 +1,8 @@
 import Nav from "./Nav";
-import "../components/Profile.css";
-import suit9 from "../assets/suit9.png";
-import suit10 from "../assets/suit10.png";
-import suit11 from "../assets/suit11.png";
+import "../components/MaleProfile.css";
+import suit1 from "../assets/femaleSuit1.png";
+import suit2 from "../assets/femaleSuit2.png";
+import suit3 from "../assets/femaleSuit3.png";
 import shorthair from "../assets/shorthair.png";
 import longhair from "../assets/longhair.png";
 import uphair from "../assets/uphair.png";
@@ -237,7 +237,7 @@ const Profile = () => {
               }`}
               onClick={() => handleOptionSuit("suit1")}
             >
-              <img src={suit9} className="female_suit" alt="Suit 9" />
+              <img src={suit1} className="female_suit" alt="Suit 9" />
             </button>
             <button
               type="button"
@@ -246,7 +246,7 @@ const Profile = () => {
               }`}
               onClick={() => handleOptionSuit("suit2")}
             >
-              <img src={suit10} className="female_suit" alt="Suit 10" />
+              <img src={suit2} className="female_suit" alt="Suit 10" />
             </button>
             <button
               type="button"
@@ -255,7 +255,7 @@ const Profile = () => {
               }`}
               onClick={() => handleOptionSuit("suit3")}
             >
-              <img src={suit11} className="female_suit" alt="Suit 11" />
+              <img src={suit3} className="female_suit" alt="Suit 11" />
             </button>
           </div>
           <hr style={{ marginBottom: "1rem" }} />
@@ -291,7 +291,8 @@ const Profile = () => {
           </div>
           <hr style={{ marginBottom: "1rem" }} />
           <label className="choose_option_lb">얼굴 효과</label>
-          <div className="choose_option_div">
+          <div className="choose_option_div2">
+            <div>
             <label className="blur_option_lb">블러 효과</label>
             <input
               type="range"
@@ -302,6 +303,7 @@ const Profile = () => {
               className="blur_bar"
               onChange={handleOptionBlur}
             />
+            </div>
             {/* <label className="blur_option_lb">
               <input
                 type="radio"
@@ -329,15 +331,15 @@ const Profile = () => {
               />
               강
             </label> */}
-            <br />
+            <div style={{alignItems: 'center', display: 'flex'}}>
             <label className="lip_option_lb">입술 생기</label>
-
             <input
               style={{ zoom: "1.5" }}
               type="checkbox"
               className="lip_check"
               onChange={handleLipOptionChange}
             />
+          </div>
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>

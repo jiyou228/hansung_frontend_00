@@ -118,12 +118,6 @@ const Resume = () => {
     }
   };
 
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      handleSendMessage();
-    }
-  };
-
   return (
     <>
       <Nav />
@@ -152,7 +146,6 @@ const Resume = () => {
               // value={revision !== null ? revision : userInput}
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
-              onKeyDown={handleKeyDown}
               required
             />
           </div>

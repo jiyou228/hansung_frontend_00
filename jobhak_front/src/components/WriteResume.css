@@ -87,11 +87,11 @@
   width: 100%;
   border: 1.5px solid black;
   border-radius: 10px;
-  padding: 1rem 1rem;
+  padding: 0.7rem 1rem;
   box-sizing: border-box;
   margin-top: 0.5rem;
   font-family: NanumSquare;
-  font-size: medium;
+  font-size: 1.15rem;
 }
 
 .toggle_container {
@@ -195,6 +195,8 @@
   height: 60vh;
   resize: none;
   margin-top: 1rem;
+  font-size: 1.1rem;
+  line-height: 150%;
 }
 .write_button_container {
   margin: 0;
@@ -308,6 +310,8 @@
 }
 .write_career_container input {
   margin-left: 1rem;
+  font-size: 1rem;
+  padding: 0.2rem 0;
 }
 .write_career_container label {
   margin-left: 1rem;
@@ -319,6 +323,8 @@
 
 .write_experience_container input {
   margin-left: 1rem;
+  font-size: 1rem;
+  padding: 0.2rem 0;
 }
 .write_experience_container label {
   margin-left: 1rem;
@@ -329,6 +335,11 @@
 }
 .write_delete.active {
   display: none;
+}
+.write_InfoBox{
+  display: flex;
+  white-space: nowrap;
+  gap: 1vw;
 }
 .write_getMyInfo {
   border: none;
@@ -341,10 +352,25 @@
   background-color: #efefef;
   width: fit-content;
   cursor: pointer;
-  margin-right: 1rem;
 }
-.write_getMyInfo:hover {
-  font-weight: 700;
+.write_saveMyInfo:hover{
+  font-weight: 800;
+}
+.write_getMyInfo:hover{
+  font-weight: 800;
+}
+
+.write_saveMyInfo {
+  border: none;
+  padding: 0.5em 1.2em;
+  border-radius: 1em;
+  margin-top: 2vh;
+  font-weight: 600;
+  font-size: 1em;
+  background-color: #104085;
+  color: #efefef;
+  width: fit-content;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -373,7 +399,7 @@
   }
   .write_input,
   .write_textarea {
-    font-size: medium;
+    font-size: 1rem;
   }
   .write_input {
     padding: 0.5rem;
@@ -485,4 +511,13 @@
   .write_button_reset {
     font-size: large;
   }
+  .write_InfoBox{
+    display: flex;
+    white-space: nowrap;
+  }
+  .write_getMyInfo, .write_saveMyInfo{
+    padding: 0.5em 0;
+    flex: 1;
+    text-align: center ;
+}
 }

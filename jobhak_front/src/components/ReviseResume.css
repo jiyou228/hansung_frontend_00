@@ -55,6 +55,7 @@
   display: flex;
   padding: 0;
   margin-top: 0;
+  letter-spacing: 1;
 }
 .revise_content h3 {
   margin-top: 0;
@@ -85,6 +86,7 @@
 .revise_output {
   display: inline-block;
   color: #104085;
+  line-height: 160%;
   background-color: #dae8ff;
   display: inline-block;
   overflow: auto;

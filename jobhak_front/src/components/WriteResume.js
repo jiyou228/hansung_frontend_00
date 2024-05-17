@@ -462,13 +462,13 @@ const WriteResume = () => {
               </div>
             </div>
             <br />
-            <div>
-              <button onClick={getMyInfo} className="write_getMyInfo">
+            <div className="write_InfoBox">
+              <div onClick={getMyInfo} className="write_getMyInfo">
                 나의 경험/경력 불러오기
-              </button>
-              <button onClick={handleSave} className="write_getMyInfo">
+              </div>
+              <div onClick={handleSave} className="write_saveMyInfo">
                 나의 경험/경력 저장하기
-              </button>
+              </div>
             </div>
             {isTextMode ? (
               <textarea

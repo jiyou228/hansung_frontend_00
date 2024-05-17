@@ -59,7 +59,7 @@
 }
 
 .posttitle_lb {
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
@@ -521,7 +521,7 @@
     font-size: medium;
   }
   .posttitle_lb{
-    font-size: x-large;
+    font-size: 1.2em;
   }
   .board_bottom img{
     height: 4vh;

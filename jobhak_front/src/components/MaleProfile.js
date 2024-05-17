@@ -247,7 +247,7 @@ const MaleProfile = () => {
               <img src={suit2} className="female_suit" alt="Suit 10" />
             </button>
           </div>
-          <hr style={{ marginBottom: "1rem" }} />
+          <hr/>
           <label className="choose_option_lb">머리 스타일</label>
           <div className="choose_option_div">
             <button
@@ -269,9 +269,10 @@ const MaleProfile = () => {
               <img src={downhair} className="female_hair" alt="내림머리" />
             </button>
           </div>
-          <hr style={{ marginBottom: "1rem" }} />
+          <hr />
           <label className="choose_option_lb">얼굴 효과</label>
-          <div className="choose_option_div">
+          <div className="choose_option_div2">
+            <div>
             <label className="blur_option_lb">블러 효과</label>
             <input
               type="range"
@@ -282,8 +283,8 @@ const MaleProfile = () => {
               className="blur_bar"
               onChange={handleOptionBlur}
             />
-
-            <br />
+            </div>
+            <div style={{alignItems: 'center', display: 'flex'}}>
             <label className="lip_option_lb">입술 생기</label>
 
             <input
@@ -292,6 +293,7 @@ const MaleProfile = () => {
               className="lip_check"
               onChange={handleLipOptionChange}
             />
+            </div>
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>

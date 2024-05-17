@@ -38,7 +38,9 @@
 .img_choice_btn {
   line-height: 35px;
 }
-
+.female_choose_option hr{
+  margin-bottom: 3vh;
+}
 .img_choice_btn,
 .img_guide_btn {
   background-color: #104085;
@@ -64,7 +66,8 @@
 }
 
 .female_choose_option {
-  margin-top: 5rem;
+  margin-top: 2vh;
+  padding-bottom: 2vh;
 }
 
 .choose_option_lb {
@@ -94,14 +97,20 @@
 }
 
 .choose_option_div {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: 1rem;
-  display: block;
-  margin-bottom: 2rem;
+  display: flex;
   width: fit-content;
-}
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  margin-top: 2vh;
 
+}
+.choose_option_div2{
+  margin-top: 2vh;
+  flex-direction: column;
+  gap: 1.2vh;
+  display: flex;
+}
 .modal_content {
   display: flex;
   justify-content: center;
@@ -136,10 +145,24 @@
     margin-top: 3rem;
   }
   .female_guide_container {
-    margin-left: 10rem;
+    margin: auto;
   }
   .Slide1,
   .Slide2 {
     width: 100%;
+  }
+  .choose_option_div{
+    display: block;
+    padding: 0 1vw;
+  }
+  .choose_option_div2{
+    padding: 0 1vw;
+  }
+  .choose_option_lb{
+    padding: 0 1vw;
+  }
+  .female_choose_option hr{
+    margin-bottom: 3vh;
+    width: 97vw;
   }
 }
