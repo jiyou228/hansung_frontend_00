@@ -4,6 +4,10 @@ import Nav from "./Nav.js";
 import { Link, useNavigate } from "react-router-dom";
 import instance from "../axiosConfig.js";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
+import GPTResume from "./GPTResume.js";
+
+Modal.setAppElement("#root");
 
 const WriteResume = () => {
   const [clipboardValue, setClipboardValue] = useState("");
@@ -15,6 +19,7 @@ const WriteResume = () => {
   const [revision, setRevision] = useState("");
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   const apiKey = process.env.REACT_APP_JOBHAK_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
@@ -143,6 +148,37 @@ const WriteResume = () => {
     }
   };
 
+  const showGPTResume = () => {
+    setIsOpen(true);
+  };
+
+  const closeGPTResume = () => {
+    setIsOpen(false);
+  };
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 100,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    responsive: [],
+  };
+
+  const customStyles = {
+    content: {
+      position: "fixed",
+      top: "20vh",
+      left: "25vw",
+      width: "50vw",
+      height: "50vh",
+      overflow: "hidden",
+    },
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+    },
+  };
+
   const addMessage = (sender, message) => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);
   };
@@ -206,16 +242,16 @@ const WriteResume = () => {
       e.preventDefault();
     }
 
-    Swal.fire({
-      icon: "success",
-      title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
-      text: "첨삭된 자기소개서를 불러오고 있습니다.",
-      width: 800,
-      height: 100,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
+    // Swal.fire({
+    //   icon: "success",
+    //   title: "로딩 중.. 기다려주십시오. 조금 시간이 걸립니다.",
+    //   text: "첨삭된 자기소개서를 불러오고 있습니다.",
+    //   width: 800,
+    //   height: 100,
+    //   didOpen: () => {
+    //     Swal.showLoading();
+    //   },
+    // });
 
     const hasCompanyName =
       experiences.some((experience) => experience.careerName) ||
@@ -252,7 +288,7 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: "gpt-4",
+            model: "gpt-3.5-turbo",
             messages: [
               {
                 role: "system",
@@ -286,7 +322,8 @@ const WriteResume = () => {
         Swal.close();
         const aiResponse = data.choices?.[0]?.message?.content || "No response";
         setRevision(aiResponse);
-        navigate("/resume/write/gpt", { state: { revision: aiResponse } });
+        //navigate("/resume/write/gpt", { state: { revision: aiResponse } });
+        console.log(aiResponse);
       } catch (error) {
         console.error("ChatGPT API 호출 중 오류 발생:", error);
         alert("ChatGPT API 호출 중 오류 발생");
@@ -307,7 +344,7 @@ const WriteResume = () => {
               Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-              model: "gpt-4",
+              model: "gpt-3.5-turbo",
               messages: [
                 {
                   role: "system",
@@ -341,7 +378,8 @@ const WriteResume = () => {
           const aiResponse =
             data.choices?.[0]?.message?.content || "No response";
           setRevision(aiResponse);
-          navigate("/resume/write/gpt", { state: { revision: aiResponse } });
+          //navigate("/resume/write/gpt", { state: { revision: aiResponse } });
+          console.log(aiResponse);
         } catch (error) {
           console.error("ChatGPT API 호출 중 오류 발생:", error);
           alert("ChatGPT API 호출 중 오류 발생");
@@ -465,8 +503,8 @@ const WriteResume = () => {
             <div className="write_InfoBox">
               <div onClick={getMyInfo} className="write_getMyInfo">
                 나의 경험/경력 불러오기
-              </div>
-              <div onClick={handleSave} className="write_saveMyInfo">
+              </button>
+              <button onClick={handleSave} className="save_getMyInfo">
                 나의 경험/경력 저장하기
               </div>
             </div>
@@ -644,9 +682,29 @@ const WriteResume = () => {
           >
             초기화
           </button>
-          <button type="submit" className="write_button_next">
+          <button
+            type="submit"
+            onClick={showGPTResume}
+            className="write_button_next"
+          >
             다음
           </button>
+          <Modal
+            isOpen={isOpen}
+            onRequestClose={closeGPTResume}
+            contentLabel="Generated Resume"
+            className="modal"
+            overlayClassName="overlay"
+          >
+            {/* <GPTResume revision={revision} /> */}
+            {revision ? (
+              <GPTResume revision={revision} />
+            ) : (
+              <div className="loading_div">
+                자기소개서를 작성 중 입니다. 조금만 기다려주세요!
+              </div>
+            )}
+          </Modal>
         </div>
       </form>
     </div>

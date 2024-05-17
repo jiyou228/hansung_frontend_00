@@ -35,6 +35,7 @@ import NaverDelete from "./components/NaverDelete";
 import AboutUs from "./components/AboutUs";
 import Ganpicture from "./components/Ganpicture";
 import MemoryGame from "./components/MemoryGame";
+import Dalle from "./components/dalle";
 
 function App() {
   return (
@@ -94,6 +95,7 @@ function App() {
             path="/countchar"
             element={<PrivateRoute element={CountChar} />}
           />
+          <Route path="/dalle" element={<PrivateRoute element={Dalle} />} />
 
           <Route
             path="/memorygame"

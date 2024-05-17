@@ -20,7 +20,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 import Slider from "react-slick";
-import MemoryGame from "./MemoryGame";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
