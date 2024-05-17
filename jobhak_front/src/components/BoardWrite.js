@@ -149,7 +149,6 @@ function BoardWrite() {
             />
           </form>
         </label>
-        <span className="file-name">{fileName}</span>
       </div>
       <div className="boardwrite_button">
         <button className="Bcancel_btn" onClick={handleCancel}>
