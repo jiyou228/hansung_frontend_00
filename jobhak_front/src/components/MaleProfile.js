@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 import "../components/MaleProfile.css";
-import suit9 from "../assets/suit9.png";
-import suit10 from "../assets/suit10.png";
+import suit1 from "../assets/suit1.PNG";
+import suit2 from "../assets/suit2.PNG";
 import downhair from "../assets/male_downhair.png";
 import uphair from "../assets/male_uphair.png";
 import Slide1 from "../assets/slide1.png";
@@ -235,7 +235,7 @@ const MaleProfile = () => {
               }`}
               onClick={() => handleOptionSuit("suit1")}
             >
-              <img src={suit9} className="female_suit" alt="Suit 9" />
+              <img src={suit1} className="female_suit" alt="Suit 9" />
             </button>
             <button
               type="button"
@@ -244,7 +244,7 @@ const MaleProfile = () => {
               }`}
               onClick={() => handleOptionSuit("suit2")}
             >
-              <img src={suit10} className="female_suit" alt="Suit 10" />
+              <img src={suit2} className="female_suit" alt="Suit 10" />
             </button>
           </div>
           <hr style={{ marginBottom: "1rem" }} />
