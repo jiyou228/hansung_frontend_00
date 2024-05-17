@@ -8,41 +8,40 @@ function Ganpicture() {
   const [imageLinks, setImageLinks] = useState([]); // 이미지 링크 배열 상태
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   // localStorage에서 uploadFile 값들을 가져오는 함수
-  //   // const imageLinksFromLocalStorage = [];
-  //   // for (let i = 0; i < 5; i++) {
-  //   //   const uploadFile = localStorage.getItem(`uploadFile${i}`);
-  //   //   if (uploadFile) {
-  //   //     imageLinksFromLocalStorage.push(uploadFile);
-  //   //   }
-  //   // }
-  //   // // 가져온 uploadFile 값들로 이미지 경로 배열을 설정합니다.
-  //   // setImageLinks(imageLinksFromLocalStorage);
-  //   const uploadFile = localStorage.getItem(`uploadFile`);
-  // }, []);
-
-  // const deleteItems = () => {
-  //   // localStorage에서 uploadFile 값들을 삭제하는 함수
-  //   for (let i = 0; i < 5; i++) {
-  //     localStorage.removeItem(`uploadFile${i}`);
-  //   }
-  //   navigate("/profile/male");
-  // };
-
   useEffect(() => {
-    // localStorage에서 uploadFile 값을 가져오는 함수
-    const uploadFile = localStorage.getItem("uploadFile");
-    if (uploadFile) {
-      // 가져온 uploadFile 값으로 이미지 경로를 설정합니다.
-      setImageLinks(uploadFile);
+    // localStorage에서 uploadFile 값들을 가져오는 함수
+    const imageLinksFromLocalStorage = [];
+    for (let i = 0; i < 5; i++) {
+      const uploadFile = localStorage.getItem(`uploadFile${i}`);
+      if (uploadFile) {
+        imageLinksFromLocalStorage.push(uploadFile);
+      }
     }
+    // // 가져온 uploadFile 값들로 이미지 경로 배열을 설정합니다.
+    setImageLinks(imageLinksFromLocalStorage);
   }, []);
 
-  const deleteitem = () => {
-    localStorage.removeItem("uploadFile");
+  const deleteItems = () => {
+    // localStorage에서 uploadFile 값들을 삭제하는 함수
+    for (let i = 0; i < 5; i++) {
+      localStorage.removeItem(`uploadFile${i}`);
+    }
     navigate("/profile/male");
   };
+
+  // useEffect(() => {
+  //   // localStorage에서 uploadFile 값을 가져오는 함수
+  //   const uploadFile = localStorage.getItem("uploadFile");
+  //   if (uploadFile) {
+  //     // 가져온 uploadFile 값으로 이미지 경로를 설정합니다.
+  //     setImageLinks(uploadFile);
+  //   }
+  // }, []);
+
+  // const deleteitem = () => {
+  //   localStorage.removeItem("uploadFile");
+  //   navigate("/profile/male");
+  // };
 
   // 이미지 다운로드 함수
   const handleDownload = (imageLinks) => {
@@ -83,7 +82,7 @@ function Ganpicture() {
         <label className="download_lb">
           버튼을 누르면 사진을 저장할 수 있습니다.
         </label>
-        <button className="back_btn" onClick={deleteitem}>
+        <button className="back_btn" onClick={deleteItems}>
           돌아가기
         </button>
       </div>

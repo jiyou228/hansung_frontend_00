@@ -115,10 +115,10 @@ const MaleProfile = () => {
       })
       .then((res) => {
         console.log(res);
-        // for (let i = 0; i < 5; i++) {
-        //   console.log(res.data[i].UploadedFilePath);
-        //   localStorage.setItem(`uploadFile${i}`, res.data[i].UploadedFilePath);
-        // }
+        for (let i = 0; i < 5; i++) {
+          console.log(res.data[i].UploadedFilePath);
+          localStorage.setItem(`uploadFile${i}`, res.data[i].UploadedFilePath);
+        }
         navigate("/profile/save");
       })
       .catch((err) => {

@@ -121,8 +121,10 @@ const Profile = () => {
       })
       .then((res) => {
         console.log(res);
-        console.log(res.data[0].UploadedFilePath);
-        localStorage.setItem("uploadFile", res.data[0].UploadedFilePath);
+        for (let i = 0; i < 5; i++) {
+          console.log(res.data[i].UploadedFilePath);
+          localStorage.setItem(`uploadFile${i}`, res.data[i].UploadedFilePath);
+        }
         navigate("/profile/save");
       })
       .catch((err) => {
@@ -304,33 +306,7 @@ const Profile = () => {
                 onChange={handleOptionBlur}
               />
             </div>
-            {/* <label className="blur_option_lb">
-              <input
-                type="radio"
-                name="blurStatus"
-                value="weak"
-                onClick={handleOptionBlur}
-              />
-              약
-            </label>
-            <label className="blur_option_lb">
-              <input
-                type="radio"
-                name="blurStatus"
-                value="mid"
-                onClick={handleOptionBlur}
-              />
-              중
-            </label>
-            <label className="blur_option_lb">
-              <input
-                type="radio"
-                name="blurStatus"
-                value="strong"
-                onClick={handleOptionBlur}
-              />
-              강
-            </label> */}
+
             <div style={{ alignItems: "center", display: "flex" }}>
               <label className="lip_option_lb">입술 생기</label>
               <input
