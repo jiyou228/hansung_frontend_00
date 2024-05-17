@@ -29,20 +29,6 @@ function Ganpicture() {
     navigate("/profile/male");
   };
 
-  // useEffect(() => {
-  //   // localStorage에서 uploadFile 값을 가져오는 함수
-  //   const uploadFile = localStorage.getItem("uploadFile");
-  //   if (uploadFile) {
-  //     // 가져온 uploadFile 값으로 이미지 경로를 설정합니다.
-  //     setImageLinks(uploadFile);
-  //   }
-  // }, []);
-
-  // const deleteitem = () => {
-  //   localStorage.removeItem("uploadFile");
-  //   navigate("/profile/male");
-  // };
-
   // 이미지 다운로드 함수
   const handleDownload = (imageLinks) => {
     fetch(imageLinks)
@@ -61,24 +47,28 @@ function Ganpicture() {
   return (
     <div>
       <Nav />
-      <div className="GAN_container">
+      <div className="GAN">
         <h1 className="picture_h2">사진 합성 완료!</h1>
-        {imageLinks.map((link, index) => (
-          <div key={index}>
-            <img
-              src={link}
-              alt={`사진 미리보기 ${index}`}
-              className="ganimg_preview"
-            />
-            <img
-              src={download}
-              alt={`사진 다운로드 ${index}`}
-              style={{ cursor: "pointer" }}
-              onClick={() => handleDownload(link)}
-              className="ganimg_download"
-            />
-          </div>
-        ))}
+        <div className="GAN_container">
+          {imageLinks.map((link, index) => (
+            <div className="image_container" key={index}>
+              <img
+                src={link}
+                alt={`사진 미리보기 ${index}`}
+                className="ganimg_preview"
+              />
+              <div className="download_container">
+                <img
+                  src={download}
+                  alt={`사진 다운로드 ${index}`}
+                  style={{ cursor: "pointer" }}
+                  onClick={() => handleDownload(link)}
+                  className="ganimg_download"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
         <label className="download_lb">
           버튼을 누르면 사진을 저장할 수 있습니다.
         </label>
