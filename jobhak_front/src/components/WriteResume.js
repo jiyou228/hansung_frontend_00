@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 import Modal from "react-modal";
 import GPTResume from "./GPTResume.js";
 
-Modal.setAppElement("#root");
+// Modal.setAppElement("#root");
 
 const WriteResume = () => {
   const [clipboardValue, setClipboardValue] = useState("");
