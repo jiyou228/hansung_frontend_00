@@ -35,6 +35,7 @@ import NaverDelete from "./components/NaverDelete";
 import AboutUs from "./components/AboutUs";
 import Ganpicture from "./components/Ganpicture";
 import MemoryGame from "./components/MemoryGame";
+import ImageEditor from "./components/ImageEditor";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
           <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/ImageEditor" element={<ImageEditor/>}/>
           <Route
             path="/login/kakao/changeName"
             element={<ChangeName />}
