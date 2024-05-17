@@ -500,13 +500,13 @@ const WriteResume = () => {
               </div>
             </div>
             <br />
-            <div className="write_InfoBox">
-              <div onClick={getMyInfo} className="write_getMyInfo">
+            <div>
+              <button onClick={getMyInfo} className="write_getMyInfo">
                 나의 경험/경력 불러오기
               </button>
               <button onClick={handleSave} className="save_getMyInfo">
                 나의 경험/경력 저장하기
-              </div>
+              </button>
             </div>
             {isTextMode ? (
               <textarea
@@ -700,9 +700,7 @@ const WriteResume = () => {
             {revision ? (
               <GPTResume revision={revision} />
             ) : (
-              <div className="loading_div">
-                자기소개서를 작성 중 입니다. 조금만 기다려주세요!
-              </div>
+              <div className="loading_div">자기소개서를 작성 중 입니다. ~</div>
             )}
           </Modal>
         </div>
