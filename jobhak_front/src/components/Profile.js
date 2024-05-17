@@ -264,27 +264,27 @@ const Profile = () => {
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "uphair" ? "selected" : ""
+                selectedHair === "female_uphair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("uphair")}
+              onClick={() => handleOptionHair("female_uphair")}
             >
               <img src={uphair} className="female_hair" alt="어피헤어" />
             </button>
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "shorthair" ? "selected" : ""
+                selectedHair === "female_shorthair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("shorthair")}
+              onClick={() => handleOptionHair("female_shorthair")}
             >
               <img src={shorthair} className="female_hair" alt="단발" />
             </button>
             <button
               type="button"
               className={`female_hair_btn ${
-                selectedHair === "longhair" ? "selected" : ""
+                selectedHair === "female_longhair" ? "selected" : ""
               }`}
-              onClick={() => handleOptionHair("longhair")}
+              onClick={() => handleOptionHair("female_longhair")}
             >
               <img src={longhair} className="female_hair" alt="긴머리" />
             </button>
@@ -293,16 +293,16 @@ const Profile = () => {
           <label className="choose_option_lb">얼굴 효과</label>
           <div className="choose_option_div2">
             <div>
-            <label className="blur_option_lb">블러 효과</label>
-            <input
-              type="range"
-              min="0"
-              max="100"
-              step="10"
-              value={selectedBlur}
-              className="blur_bar"
-              onChange={handleOptionBlur}
-            />
+              <label className="blur_option_lb">블러 효과</label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                value={selectedBlur}
+                className="blur_bar"
+                onChange={handleOptionBlur}
+              />
             </div>
             {/* <label className="blur_option_lb">
               <input
@@ -331,15 +331,15 @@ const Profile = () => {
               />
               강
             </label> */}
-            <div style={{alignItems: 'center', display: 'flex'}}>
-            <label className="lip_option_lb">입술 생기</label>
-            <input
-              style={{ zoom: "1.5" }}
-              type="checkbox"
-              className="lip_check"
-              onChange={handleLipOptionChange}
-            />
-          </div>
+            <div style={{ alignItems: "center", display: "flex" }}>
+              <label className="lip_option_lb">입술 생기</label>
+              <input
+                style={{ zoom: "1.5" }}
+                type="checkbox"
+                className="lip_check"
+                onChange={handleLipOptionChange}
+              />
+            </div>
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>
