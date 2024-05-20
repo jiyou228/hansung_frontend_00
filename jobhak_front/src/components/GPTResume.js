@@ -8,8 +8,13 @@ import Swal from "sweetalert2";
 
 const GPTResume = ({ revision }) => {
   const [readOnly, setReadOnly] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const revise = () => {
     setReadOnly(false);
@@ -45,7 +50,7 @@ const GPTResume = ({ revision }) => {
         </textarea>
       </div>
       <div className="gpt_button_container">
-        <button type="button" className="gpt_button_copy">
+        <button type="button" className="gpt_button_copy" onClick={closeModal}>
           닫기
         </button>
         <button type="button" className="gpt_button_save" onClick={revise}>
