@@ -1,6 +1,7 @@
 import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import instance from "../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import "./Bookmark.css";
 import { NavLink } from "react-router-dom";
@@ -19,7 +20,7 @@ function Mypicture() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [loginType, setLoginType] = useState(cookie.get("provider"));
-  const [userpicture, setUserPicture] = useState("");
+  const [userpicture, setUserPicture] = useState([]);
 
   const root = document.createElement("div");
   root.id = "root";
@@ -31,12 +32,11 @@ function Mypicture() {
     instance
       .get(url)
       .then((res) => {
+        console.log(JSON.stringify(res.data.result));
         console.log(JSON.stringify(res.data));
         const userData = res.data.result;
         cookie.set("loginId", userData.loginId);
-        const picturesArray = userData.picture.map(
-          (picture, index) => `picture${index}: ${picture}`
-        );
+        const picturesArray = userData.map((item) => item.UploadedFilePath);
         setUserPicture(picturesArray);
       })
 
@@ -180,7 +180,13 @@ function Mypicture() {
         <div className="changepw_div">
           <ul>
             {userpicture.map((picture, index) => (
-              <li key={index}>{picture}</li>
+              <li key={index}>
+                <img
+                  src={picture}
+                  alt={`User Picture ${index + 1}`}
+                  style={{ width: "100px", height: "100px" }}
+                />
+              </li>
             ))}
           </ul>
         </div>
