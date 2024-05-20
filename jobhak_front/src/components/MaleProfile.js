@@ -229,7 +229,7 @@ const MaleProfile = () => {
             <button
               type="button"
               className={`female_suit_btn ${
-                selectedSuit === "suit1" ? "selected" : ""
+                selectedSuit === "male_suit1" ? "selected" : ""
               }`}
               onClick={() => handleOptionSuit("male_suit1")}
             >
@@ -238,7 +238,7 @@ const MaleProfile = () => {
             <button
               type="button"
               className={`female_suit_btn ${
-                selectedSuit === "suit2" ? "selected" : ""
+                selectedSuit === "male_suit2" ? "selected" : ""
               }`}
               onClick={() => handleOptionSuit("male_suit2")}
             >
