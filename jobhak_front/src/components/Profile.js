@@ -243,7 +243,7 @@ const Profile = () => {
             <button
               type="button"
               className={`female_suit_btn ${
-                selectedSuit === "suit1" ? "selected" : ""
+                selectedSuit === "female_suit1" ? "selected" : ""
               }`}
               onClick={() => handleOptionSuit("female_suit1")}
             >
@@ -252,7 +252,7 @@ const Profile = () => {
             <button
               type="button"
               className={`female_suit_btn ${
-                selectedSuit === "suit2" ? "selected" : ""
+                selectedSuit === "female_suit2" ? "selected" : ""
               }`}
               onClick={() => handleOptionSuit("female_suit2")}
             >
@@ -261,7 +261,7 @@ const Profile = () => {
             <button
               type="button"
               className={`female_suit_btn ${
-                selectedSuit === "suit3" ? "selected" : ""
+                selectedSuit === "female_suit3" ? "selected" : ""
               }`}
               onClick={() => handleOptionSuit("female_suit3")}
             >

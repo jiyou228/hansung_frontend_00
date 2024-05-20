@@ -50,7 +50,7 @@ const Home = () => {
       .get("https://api.jobhakdasik.site/home")
       .then((profile) => {
         setUserProfile(profile.data.result.nickname);
-        console.log(JSON.stringify(profile.data));
+        //console.log(JSON.stringify(profile.data));
         setCookie("provider", decodeURIComponent(profile.data.result.provider));
         setCookie("nickname", decodeURIComponent(profile.data.result.nickname));
         setCookie("user_id", profile.data.result.id);
