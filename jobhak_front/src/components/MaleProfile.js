@@ -15,13 +15,14 @@ import background4 from "../assets/background4.png";
 import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
 import defaultimg from "../assets/profileExample.png";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Cookies } from "react-cookie";
 
 const MaleProfile = () => {
   const [imageSrc, setImageSrc] = useState("");
@@ -32,7 +33,9 @@ const MaleProfile = () => {
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [userid, setUserId] = useState("");
   const navigate = useNavigate();
+  const cookie = new Cookies();
 
   const showGuide = () => {
     setIsOpen(true);
@@ -84,6 +87,10 @@ const MaleProfile = () => {
     setLipOption(e.target.checked); // 입술 생기 옵션 상태 업데이트
   };
 
+  useEffect(() => {
+    setUserId(cookie.get("user_id"));
+  });
+
   const GanPicture = () => {
     if (!file) {
       console.error("No file selected");
@@ -108,6 +115,10 @@ const MaleProfile = () => {
     formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
+    formData.append("userid", userid);
+    for (const pair of formData.entries()) {
+      console.log(pair[0] + ", " + pair[1]);
+    }
 
     axios
       .post("http://localhost:12300/profile/edit", formData, {

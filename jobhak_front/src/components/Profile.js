@@ -17,7 +17,7 @@ import background4 from "../assets/background4.png";
 import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
 import defaultimg from "../assets/profileExample.png";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
@@ -25,6 +25,7 @@ import Slider from "react-slick";
 import MemoryGame from "./MemoryGame";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Cookies } from "react-cookie";
 
 const Profile = () => {
   const [imageSrc, setImageSrc] = useState("");
@@ -35,7 +36,9 @@ const Profile = () => {
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [userid, setUserId] = useState("");
   const navigate = useNavigate();
+  const cookie = new Cookies();
 
   const showGuide = () => {
     setIsOpen(true);
@@ -44,6 +47,10 @@ const Profile = () => {
   const closeGuide = () => {
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    setUserId(cookie.get("user_id"));
+  });
 
   const settings = {
     dots: true,
@@ -111,6 +118,7 @@ const Profile = () => {
     formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
+    formData.append("userid", userid);
     for (const pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }
