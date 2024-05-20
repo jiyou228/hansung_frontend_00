@@ -115,7 +115,7 @@ const MaleProfile = () => {
     formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
-    formData.append("userid", loginId);
+    formData.append("loginId", loginId);
     for (const pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }
