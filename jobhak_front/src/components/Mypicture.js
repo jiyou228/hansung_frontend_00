@@ -19,14 +19,32 @@ function Mypicture() {
   const [isUploadOpen, setIsUploadOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
   const [loginType, setLoginType] = useState(cookie.get("provider"));
+  const [userpicture, setUserPicture] = useState("");
 
-  const root = document.createElement('div');
-  root.id = 'root';
+  const root = document.createElement("div");
+  root.id = "root";
   document.body.appendChild(root);
-  
+
   useEffect(() => {
     setLoginType(cookie.get("provider"));
+    let url = "https://api.jobhakdasik.site/user/picture";
+    instance
+      .get(url)
+      .then((res) => {
+        console.log(JSON.stringify(res.data));
+        const userData = res.data.result;
+        cookie.set("loginId", userData.loginId);
+        const picturesArray = userData.picture.map(
+          (picture, index) => `picture${index}: ${picture}`
+        );
+        setUserPicture(picturesArray);
+      })
+
+      .catch((err) => {
+        console.log(err + "::err");
+      });
   }, []);
+
   const openUploadModal = () => {
     setIsUploadOpen(true);
   };
@@ -159,7 +177,13 @@ function Mypicture() {
           </div>
         </div>
 
-        <div className="changepw_div"></div>
+        <div className="changepw_div">
+          <ul>
+            {userpicture.map((picture, index) => (
+              <li key={index}>{picture}</li>
+            ))}
+          </ul>
+        </div>
       </div>
       <Modal
         isOpen={isUploadOpen}
