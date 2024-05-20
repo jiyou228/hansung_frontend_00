@@ -237,7 +237,7 @@ const Profile = () => {
               className={`female_suit_btn ${
                 selectedSuit === "suit1" ? "selected" : ""
               }`}
-              onClick={() => handleOptionSuit("suit1")}
+              onClick={() => handleOptionSuit("female_suit1")}
             >
               <img src={suit1} className="female_suit" alt="Suit 9" />
             </button>
@@ -246,7 +246,7 @@ const Profile = () => {
               className={`female_suit_btn ${
                 selectedSuit === "suit2" ? "selected" : ""
               }`}
-              onClick={() => handleOptionSuit("suit2")}
+              onClick={() => handleOptionSuit("female_suit2")}
             >
               <img src={suit2} className="female_suit" alt="Suit 10" />
             </button>
@@ -255,7 +255,7 @@ const Profile = () => {
               className={`female_suit_btn ${
                 selectedSuit === "suit3" ? "selected" : ""
               }`}
-              onClick={() => handleOptionSuit("suit3")}
+              onClick={() => handleOptionSuit("female_suit3")}
             >
               <img src={suit3} className="female_suit" alt="Suit 11" />
             </button>
