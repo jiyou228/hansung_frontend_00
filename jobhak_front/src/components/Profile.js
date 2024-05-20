@@ -36,7 +36,7 @@ const Profile = () => {
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [userid, setUserId] = useState("");
+  const [loginid, setLoginId] = useState("");
   const navigate = useNavigate();
   const cookie = new Cookies();
 
@@ -49,7 +49,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    setUserId(cookie.get("user_id"));
+    setLoginId(cookie.get("loginId"));
   });
 
   const settings = {
@@ -118,7 +118,7 @@ const Profile = () => {
     formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
-    formData.append("userid", userid);
+    formData.append("loginId", loginid);
     for (const pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }

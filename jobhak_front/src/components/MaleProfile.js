@@ -33,7 +33,7 @@ const MaleProfile = () => {
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [userid, setUserId] = useState("");
+  const [loginId, setLoginId] = useState("");
   const navigate = useNavigate();
   const cookie = new Cookies();
 
@@ -88,7 +88,7 @@ const MaleProfile = () => {
   };
 
   useEffect(() => {
-    setUserId(cookie.get("user_id"));
+    setLoginId(cookie.get("loginId"));
   });
 
   const GanPicture = () => {
@@ -115,7 +115,7 @@ const MaleProfile = () => {
     formData.append("background", selectedBackGroundstyle);
     formData.append("blurstyle", selectedBlur);
     formData.append("lipoption", lipOption);
-    formData.append("userid", userid);
+    formData.append("userid", loginId);
     for (const pair of formData.entries()) {
       console.log(pair[0] + ", " + pair[1]);
     }
