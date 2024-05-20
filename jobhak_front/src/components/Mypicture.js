@@ -2,7 +2,7 @@ import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
 import instance from "../axiosConfig";
 import { useNavigate } from "react-router-dom";
-import "./Bookmark.css";
+import "./Mypicture.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
@@ -176,12 +176,20 @@ function Mypicture() {
           </div>
         </div>
 
-        <div className="changepw_div">
-          {userpicture.map((picture, index) => (
-            <div key={index}>
-              <img src={picture} alt={`User Picture ${index + 1}`} />
-            </div>
-          ))}
+        <div className="savepicture_container">
+          <div className="savepicture_div">
+            {userpicture.map((picture, index) => (
+              <div className="save_index" key={index}>
+                <a href={picture} download={`User_Picture_${index + 1}`}>
+                  <img
+                    className="save_picture"
+                    src={picture}
+                    alt={`User Picture ${index + 1}`}
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Modal
