@@ -37,6 +37,7 @@ function Mypicture() {
         cookie.set("loginId", userData.loginId);
         const picturesArray = userData.map((item) => item.UploadedFilePath);
         setUserPicture(picturesArray);
+        console.log(picturesArray + "picturesArray");
       })
 
       .catch((err) => {
