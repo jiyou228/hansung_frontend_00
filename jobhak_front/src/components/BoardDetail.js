@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
 import { Link } from "react-router-dom";
 import instance from "../axiosConfig";
+import axios from "axios";
 
 function BoardDetail() {
   const [replyContent, setReplyContent] = useState("");
