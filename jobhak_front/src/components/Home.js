@@ -9,7 +9,7 @@ import no2 from "../assets/카드뉴스_작성.png";
 import no3 from "../assets/카드뉴스_자소서.png";
 import instance from "../axiosConfig";
 import building from "../assets/building.png";
-import aboutus from '../assets/aboutus.png';
+import aboutus from "../assets/aboutus.png";
 import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
   const [, setCookie] = useCookies();
@@ -21,7 +21,6 @@ const Home = () => {
   const [imageList, setImageList] = useState([]);
   const navgigate = useNavigate();
   const [imageURL, setImageUrl] = useState(null);
-
 
   // useEffect(() => {
   //   const changeImage = setInterval(() => {
@@ -51,10 +50,11 @@ const Home = () => {
       .get("https://api.jobhakdasik.site/home")
       .then((profile) => {
         setUserProfile(profile.data.result.nickname);
-        //console.log(JSON.stringify(profile.data));
+        console.log(JSON.stringify(profile.data));
         setCookie("provider", decodeURIComponent(profile.data.result.provider));
         setCookie("nickname", decodeURIComponent(profile.data.result.nickname));
         setCookie("user_id", profile.data.result.id);
+        setCookie("loginId", profile.data.result.loginId);
         if (!profile.data.result.name) {
           navgigate("/login/kakao/changeName");
         }
@@ -200,9 +200,9 @@ const Home = () => {
           </div>
         </div>
         <div className="aboutUs">
-        <Link to = '/aboutUs'>
-          <img src = {aboutus} alt="aboutUs"/>
-        </Link>
+          <Link to="/aboutUs">
+            <img src={aboutus} alt="aboutUs" />
+          </Link>
         </div>
       </div>
     </>
