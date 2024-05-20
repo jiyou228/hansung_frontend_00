@@ -1,11 +1,11 @@
 import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./ChangePW.css";
 import { NavLink } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Cookies } from "react-cookie";
-import instance from "../axiosConfig";
 import Modal from "react-modal";
 import HandleProfile from "./HandleProfile";
 import ProfileImage from "./ProfileImage";
@@ -74,7 +74,7 @@ function ChangePW() {
         height: 100,
       });
     } else {
-      instance
+      axios
         .patch(`https://api.jobhakdasik.site/user/edit/pw`, {
           password: checkpw,
         })

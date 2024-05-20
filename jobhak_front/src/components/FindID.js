@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/FindID.css";
 import Swal from "sweetalert2";
-import instance from "../axiosConfig";
 
 const FindID = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const findIDSubmit = (e) => {
     e.preventDefault();
-    instance
+    axios
       .post("https://api.jobhakdasik.site/find/id", {
         name: name,
         email: email,

@@ -3,7 +3,7 @@ import Nav from "./Nav";
 import "./ReviseResume.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+
 
 const Resume = () => {
   const [messages, setMessages] = useState([]);

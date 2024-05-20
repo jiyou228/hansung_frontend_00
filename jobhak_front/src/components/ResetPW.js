@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/ResetPW.css";
 import Swal from "sweetalert2";
-import instance from "../axiosConfig";
 const ResetPW = () => {
   const [tempPw, setTempPw] = useState("");
   const [newPw, setNewPw] = useState("");
@@ -27,7 +27,7 @@ const ResetPW = () => {
         height: 100,
       });
     } else {
-      instance
+      axios
         .patch(`https://api.jobhakdasik.site/reset/pw`, {
           password: checkPw,
           tempPW: tempPw,
