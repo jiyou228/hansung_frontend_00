@@ -177,17 +177,11 @@ function Mypicture() {
         </div>
 
         <div className="changepw_div">
-          <ul>
-            {userpicture.map((picture, index) => (
-              <li key={index}>
-                <img
-                  src={picture}
-                  alt={`User Picture ${index + 1}`}
-                  style={{ width: "100px", height: "100px" }}
-                />
-              </li>
-            ))}
-          </ul>
+          {userpicture.map((picture, index) => (
+            <div key={index}>
+              <img src={picture} alt={`User Picture ${index + 1}`} />
+            </div>
+          ))}
         </div>
       </div>
       <Modal
