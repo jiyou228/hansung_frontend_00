@@ -700,7 +700,9 @@ const WriteResume = () => {
             {revision ? (
               <GPTResume revision={revision} />
             ) : (
-              <div className="loading_div">자기소개서를 작성 중 입니다. ~</div>
+              <div className="loading_div">
+                자기소개서를 작성 중 입니다. 조금만 기다려주세요!
+              </div>
             )}
           </Modal>
         </div>

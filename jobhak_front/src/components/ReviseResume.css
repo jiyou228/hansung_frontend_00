@@ -72,6 +72,7 @@
 .revise_input {
   display: inline-block;
   overflow: auto;
+  font-size: 20px;
   height: 58vh;
   width: 32vw;
   word-break: break-all;
@@ -88,6 +89,7 @@
   color: #104085;
   line-height: 160%;
   background-color: #dae8ff;
+  font-size: 20px;
   display: inline-block;
   overflow: auto;
   height: 58vh;
