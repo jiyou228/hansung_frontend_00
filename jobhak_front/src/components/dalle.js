@@ -1,6 +1,5 @@
 // import React, { useState } from "react";
-// import axios from "axios";
-
+// 
 // function Dalle() {
 //   const [selectedImage, setSelectedImage] = useState(null);
 //   const [generatedImage, setGeneratedImage] = useState(null);
@@ -66,7 +65,6 @@
 
 // export default Dalle;
 import React, { useState } from "react";
-import axios from "axios";
 
 function Dalle() {
   const [prompt, setPrompt] = useState("");

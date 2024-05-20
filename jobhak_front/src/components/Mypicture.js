@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import instance from "../axiosConfig";
 import { useNavigate } from "react-router-dom";
 import "./Bookmark.css";

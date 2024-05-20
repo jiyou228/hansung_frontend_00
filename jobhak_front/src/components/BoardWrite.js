@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import React, { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./BoardWrite.css";
 import Swal from "sweetalert2";

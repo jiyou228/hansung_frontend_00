@@ -1,7 +1,6 @@
 import Nav from "./Nav";
 import React, { useState } from "react";
 import "./BoardEdit.css";
-import axios from "axios";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";

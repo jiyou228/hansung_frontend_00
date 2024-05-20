@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./NaverDelete.css";
 import { NavLink } from "react-router-dom";

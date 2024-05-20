@@ -4,7 +4,6 @@ import "./ReviseResume.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
 
 const Resume = () => {
   const [messages, setMessages] = useState([]);

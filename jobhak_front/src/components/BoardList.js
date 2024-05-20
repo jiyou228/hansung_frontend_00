@@ -13,7 +13,6 @@ import erase from "../assets/delete.png";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./BoardList.css";
-import axios from "axios";
 import { useCookies } from "react-cookie";
 import instance from "../axiosConfig";
 const BoardList = () => {

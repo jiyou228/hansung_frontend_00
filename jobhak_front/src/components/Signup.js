@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Jobhak from "../assets/jobhak_full.png";
 import kakao_circle from "../assets/kakao_circle.png";
 import naver_circle from "../assets/naver_circle.png";

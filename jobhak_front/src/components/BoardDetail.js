@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import React, { useState, useEffect, useRef, useCallback } from "react";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./BoardDetail.css";
 import profile from "../assets/profile.png";

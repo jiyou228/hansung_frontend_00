@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/FindID.css";
 import Swal from "sweetalert2";
