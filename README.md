@@ -32,7 +32,8 @@
 ### OAuth2를 사용한 소셜 로그인
 <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlC_kMLlL1cuwqSiYidzQkcko84d8WX-UQuw&s"/>
 
-![Uploading 화면 기록 2024-05-21 오후 1.48.12.gif…]()
+![화면 기록 2024-05-21 오후 1 48 12](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/bd6c6990-828f-406d-a674-b877662abeee)
+
 
 
 <br>
