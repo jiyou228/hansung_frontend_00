@@ -41,7 +41,7 @@
 <br>
 
 # System
-![image](https://github.com/JinjinBread/CAPSTONE_04_1/assets/108333554/f48f0042-accb-4fa3-aa76-20a36d93e282)
+![아키텍처0](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/6d19255c-9471-4817-8967-e9df66134827)
 
 <br>
 
