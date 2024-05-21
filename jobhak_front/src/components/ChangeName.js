@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import full_logo from "../assets/jobhak_full.png";
 import "../components/ChangeName.css";
 import Swal from "sweetalert2";
 import { useCookies } from "react-cookie";
+import instance from "../axiosConfig";
 
 const ChangeName = () => {
   const [name, setName] = useState("");
@@ -12,7 +12,7 @@ const ChangeName = () => {
 
   const changeNameSubmit = (e) => {
     e.preventDefault();
-    axios
+    instance
       .post("https://api.jobhakdasik.site/login/kakao/changeName", {
         name: name,
       })

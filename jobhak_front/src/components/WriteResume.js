@@ -331,7 +331,7 @@ const WriteResume = () => {
       }
     } else {
       if (!hasCompanyName) {
-        const message = `나의 자기소개서를 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 관련 경험 및 대외활동:${text}, 채용공고URL:${clipboardValue}`;
+        const message = `나의 자기소개서를 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 관련 경력 및 경험:${text}, 채용공고URL:${clipboardValue}`;
         if (message.length === 0) return;
         addMessage("user", message);
         console.log(message);
