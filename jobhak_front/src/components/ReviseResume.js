@@ -99,7 +99,7 @@ const Resume = () => {
           // frequency_penalty: 0.5, // 전문적 단어의 빈도, 낮을수록 전문적 (0~1)
           // presence_penalty: 0.5, // 반복되는 구문 억제, 낮을수록 억제하지 않음 (0~1)
           temperature: 1,
-          max_tokens: 256,
+          max_tokens: 2048,
           top_p: 0.5,
           frequency_penalty: 0,
           presence_penalty: 0.5,

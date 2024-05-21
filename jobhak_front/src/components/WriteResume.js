@@ -303,7 +303,8 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: gptModel,
+            // model: gptModel,
+            model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
             messages: [
               {
                 role: "system",
@@ -326,10 +327,10 @@ const WriteResume = () => {
               },
             ],
             max_tokens: 2048,
-            // temperature: 1,
-            // top_p: 1,
-            // frequency_penalty: 1,
-            // presence_penalty: 0.5,
+            temperature: 1,
+            top_p: 0.5,
+            frequency_penalty: 0,
+            presence_penalty: 0.5,
             stop: "stop",
           }),
         });
