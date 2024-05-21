@@ -102,8 +102,8 @@ const Home = () => {
       <div className="home">
         <div className="home_head">
           <div className="home_headTitle">
-            가장 혁신적인 <br />
-            취업툴
+            최고의 서포터, <br />
+            AI와 함께하는 취업준비!
             <br />
             <img src={svg} alt="logo"></img>
             <button onClick={goBottom}>시작하기</button>

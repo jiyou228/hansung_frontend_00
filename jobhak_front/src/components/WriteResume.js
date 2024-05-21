@@ -20,6 +20,8 @@ const WriteResume = () => {
   const [messages, setMessages] = useState([]);
   const [text, setText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [major, setMajor] = useState("");
+  const [gptModel, setGptModel] = useState("");
 
   const apiKey = process.env.REACT_APP_JOBHAK_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
@@ -192,6 +194,7 @@ const WriteResume = () => {
     });
 
     const formData = new FormData();
+    formData.append("major", major);
     formData.append("careerSaveDto", careersBlob, "careerSaveDto");
     formData.append("expSaveDto", experiencesBlob, "expSaveDto");
 
@@ -253,6 +256,18 @@ const WriteResume = () => {
     //   },
     // });
 
+    if (clipboardValue) {
+      try {
+        new URL(clipboardValue);
+        setGptModel("gpt-4");
+      } catch (e) {
+        setGptModel("ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL");
+      }
+    }
+    else {
+      setGptModel("ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL");
+    }
+
     const hasCompanyName =
       experiences.some((experience) => experience.careerName) ||
       careers.some((career) => career.careerName);
@@ -273,7 +288,7 @@ const WriteResume = () => {
         )
         .join("\n");
 
-      const message = `나의 자기소개서를 작성해줘.\n지원하는 회사명: ${companyName} 직무: ${jobPosition}\n경력:\n${formattedCareerText}\n관련 경험 및 대외활동${formattedExperienceText}\n채용공고URL: ${clipboardValue}`;
+      const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. \n지원하는 회사명: ${companyName} 직무: ${jobPosition}\n 전공: \n${major}\n경력:\n${formattedCareerText}\n관련 경험 및 대외활동${formattedExperienceText}\n채용공고URL: ${clipboardValue}`;
       if (message.length === 0) return;
 
       addMessage("user", message);
@@ -288,33 +303,33 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: "gpt-3.5-turbo",
+            model: gptModel,
             messages: [
               {
                 role: "system",
                 content:
                   "당신은 전문 취업용 자소서 컨설턴트입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
               },
-              {
-                role: "user",
-                content:
-                  "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
-              },
-              {
-                role: "assistant",
-                content:
-                  "안녕하십니까, 토스에서 새로운 마케팅 전력을 만들려고 노력하는지금에 지원하게된 지원자입니다. 마케팅 전문가로서의 커리어를 애플 코리아에서 시작해 이제는 토스의 마케팅팀에서 멀티태스킹과 혁신을 중심으로 회사 고유의 가치를 창출하고자 합니다. 애플 코리아에서 행동기반 마케팅 전략을 담당했습니다. 특히, Apple Store 앱의 고객행동 데이터 분석을 담당하였고, 고객 행동 패턴에 따른 개인화된 프로모션 전략을 책임지는 역할을 수행하였습니다. 이 과정에서 수백만명의 사용자 데이터를 분석하고, 개인화된 프로모션 전략을 통해 전환율을 30% 향상시키는 성과를 이뤄냈습니다.학생시절, 제가 주도하여 대외활동을 진행하였습니다. '청년 마케터'라는 프로젝트 팀을 기획하여, 학내 청년 창업자 대상으로 소셜 미디어 기반 마케팅 전략 수립을 도와주는 활동을 하였습니다. 이 활동을 통해 마케팅 전략 수립뿐만 아니라, 협업, 리더십 등의 중요한 역량을 키울 수 있었습니다. 토스의 핵심 가치는 '일상의 변화를 만든다'라고 생각합니다. 사람들이 더욱 편리하게 금융 서비스를 이용할 수 있도록 지속적인 혁신과 변화를 지향하는 토스에 감명을 받아 지원하게 되었습니다. 애플 코리아에서의 행동기반 마케팅 경험을 바탕으로 토스의 고객들에게 최적화된 경험을 제공하기 위해 노력하겠습니다. 또한, 대외활동을 통해 키운 협업 및 리더십 역량을 토스의 마케팅팀에서 발휘하고, 팀의 성장과 회사의 발전에 이바지하겠습니다. 읽어주셔서 감사드리며, 저와 함께 자라고 싶은 토스에 합류하는 기회를 갖기를 바랍니다.",
-              },
+              // {
+              //   role: "user",
+              //   content:
+              //     "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
+              // },
+              // {
+              //   role: "assistant",
+              //   content:
+              //     "안녕하십니까, 토스에서 새로운 마케팅 전력을 만들려고 노력하는지금에 지원하게된 지원자입니다. 마케팅 전문가로서의 커리어를 애플 코리아에서 시작해 이제는 토스의 마케팅팀에서 멀티태스킹과 혁신을 중심으로 회사 고유의 가치를 창출하고자 합니다. 애플 코리아에서 행동기반 마케팅 전략을 담당했습니다. 특히, Apple Store 앱의 고객행동 데이터 분석을 담당하였고, 고객 행동 패턴에 따른 개인화된 프로모션 전략을 책임지는 역할을 수행하였습니다. 이 과정에서 수백만명의 사용자 데이터를 분석하고, 개인화된 프로모션 전략을 통해 전환율을 30% 향상시키는 성과를 이뤄냈습니다.학생시절, 제가 주도하여 대외활동을 진행하였습니다. '청년 마케터'라는 프로젝트 팀을 기획하여, 학내 청년 창업자 대상으로 소셜 미디어 기반 마케팅 전략 수립을 도와주는 활동을 하였습니다. 이 활동을 통해 마케팅 전략 수립뿐만 아니라, 협업, 리더십 등의 중요한 역량을 키울 수 있었습니다. 토스의 핵심 가치는 '일상의 변화를 만든다'라고 생각합니다. 사람들이 더욱 편리하게 금융 서비스를 이용할 수 있도록 지속적인 혁신과 변화를 지향하는 토스에 감명을 받아 지원하게 되었습니다. 애플 코리아에서의 행동기반 마케팅 경험을 바탕으로 토스의 고객들에게 최적화된 경험을 제공하기 위해 노력하겠습니다. 또한, 대외활동을 통해 키운 협업 및 리더십 역량을 토스의 마케팅팀에서 발휘하고, 팀의 성장과 회사의 발전에 이바지하겠습니다. 읽어주셔서 감사드리며, 저와 함께 자라고 싶은 토스에 합류하는 기회를 갖기를 바랍니다.",
+              // },
               {
                 role: "user",
                 content: message,
               },
             ],
             max_tokens: 2048,
-            temperature: 1,
-            top_p: 1,
-            frequency_penalty: 1,
-            presence_penalty: 0.5,
+            // temperature: 1,
+            // top_p: 1,
+            // frequency_penalty: 1,
+            // presence_penalty: 0.5,
             stop: "stop",
           }),
         });
@@ -331,7 +346,7 @@ const WriteResume = () => {
       }
     } else {
       if (!hasCompanyName) {
-        const message = `나의 자기소개서를 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 관련 경력 및 경험:${text}, 채용공고URL:${clipboardValue}`;
+        const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 전공: ${major}, 관련 경력 및 경험:${text}, 채용공고URL:${clipboardValue}`;
         if (message.length === 0) return;
         addMessage("user", message);
         console.log(message);
@@ -344,23 +359,23 @@ const WriteResume = () => {
               Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-              model: "gpt-3.5-turbo",
+              // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+              model: gptModel,
               messages: [
                 {
                   role: "system",
-                  content:
-                    "당신은 전문 취업용 자소서 컨설턴트입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
+                  content: "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한글 기준 공백 포함 900~1000자 정도로 작성해주세요."
                 },
-                {
-                  role: "user",
-                  content:
-                    "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
-                },
-                {
-                  role: "assistant",
-                  content:
-                    "안녕하십니까, 토스에서 새로운 마케팅 전력을 만들려고 노력하는지금에 지원하게된 지원자입니다. 마케팅 전문가로서의 커리어를 애플 코리아에서 시작해 이제는 토스의 마케팅팀에서 멀티태스킹과 혁신을 중심으로 회사 고유의 가치를 창출하고자 합니다. 애플 코리아에서 행동기반 마케팅 전략을 담당했습니다. 특히, Apple Store 앱의 고객행동 데이터 분석을 담당하였고, 고객 행동 패턴에 따른 개인화된 프로모션 전략을 책임지는 역할을 수행하였습니다. 이 과정에서 수백만명의 사용자 데이터를 분석하고, 개인화된 프로모션 전략을 통해 전환율을 30% 향상시키는 성과를 이뤄냈습니다.학생시절, 제가 주도하여 대외활동을 진행하였습니다. '청년 마케터'라는 프로젝트 팀을 기획하여, 학내 청년 창업자 대상으로 소셜 미디어 기반 마케팅 전략 수립을 도와주는 활동을 하였습니다. 이 활동을 통해 마케팅 전략 수립뿐만 아니라, 협업, 리더십 등의 중요한 역량을 키울 수 있었습니다. 토스의 핵심 가치는 '일상의 변화를 만든다'라고 생각합니다. 사람들이 더욱 편리하게 금융 서비스를 이용할 수 있도록 지속적인 혁신과 변화를 지향하는 토스에 감명을 받아 지원하게 되었습니다. 애플 코리아에서의 행동기반 마케팅 경험을 바탕으로 토스의 고객들에게 최적화된 경험을 제공하기 위해 노력하겠습니다. 또한, 대외활동을 통해 키운 협업 및 리더십 역량을 토스의 마케팅팀에서 발휘하고, 팀의 성장과 회사의 발전에 이바지하겠습니다. 읽어주셔서 감사드리며, 저와 함께 자라고 싶은 토스에 합류하는 기회를 갖기를 바랍니다.",
-                },
+                // {
+                //   role: "user",
+                //   content:
+                //     "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
+                // },
+                // {
+                //   role: "assistant",
+                //   content:
+                //     "안녕하십니까, 토스에서 새로운 마케팅 전력을 만들려고 노력하는지금에 지원하게된 지원자입니다. 마케팅 전문가로서의 커리어를 애플 코리아에서 시작해 이제는 토스의 마케팅팀에서 멀티태스킹과 혁신을 중심으로 회사 고유의 가치를 창출하고자 합니다. 애플 코리아에서 행동기반 마케팅 전략을 담당했습니다. 특히, Apple Store 앱의 고객행동 데이터 분석을 담당하였고, 고객 행동 패턴에 따른 개인화된 프로모션 전략을 책임지는 역할을 수행하였습니다. 이 과정에서 수백만명의 사용자 데이터를 분석하고, 개인화된 프로모션 전략을 통해 전환율을 30% 향상시키는 성과를 이뤄냈습니다.학생시절, 제가 주도하여 대외활동을 진행하였습니다. '청년 마케터'라는 프로젝트 팀을 기획하여, 학내 청년 창업자 대상으로 소셜 미디어 기반 마케팅 전략 수립을 도와주는 활동을 하였습니다. 이 활동을 통해 마케팅 전략 수립뿐만 아니라, 협업, 리더십 등의 중요한 역량을 키울 수 있었습니다. 토스의 핵심 가치는 '일상의 변화를 만든다'라고 생각합니다. 사람들이 더욱 편리하게 금융 서비스를 이용할 수 있도록 지속적인 혁신과 변화를 지향하는 토스에 감명을 받아 지원하게 되었습니다. 애플 코리아에서의 행동기반 마케팅 경험을 바탕으로 토스의 고객들에게 최적화된 경험을 제공하기 위해 노력하겠습니다. 또한, 대외활동을 통해 키운 협업 및 리더십 역량을 토스의 마케팅팀에서 발휘하고, 팀의 성장과 회사의 발전에 이바지하겠습니다. 읽어주셔서 감사드리며, 저와 함께 자라고 싶은 토스에 합류하는 기회를 갖기를 바랍니다.",
+                // },
                 {
                   role: "user",
                   content: message,
@@ -483,6 +498,7 @@ const WriteResume = () => {
               placeholder="필수) 예시: 마케팅 (Customer Marketing CRM)"
             />
           </div>
+        
           <div className="write_input_container">
             <label className="write_label">관련 경험 또는 경력</label>
             <div className="toggle_container">
@@ -500,13 +516,13 @@ const WriteResume = () => {
               </div>
             </div>
             <br />
-            <div>
-              <button onClick={getMyInfo} className="write_getMyInfo">
+            <div className="write_InfoBox">
+              <div onClick={getMyInfo} className="write_getMyInfo">
                 나의 경험/경력 불러오기
-              </button>
-              <button onClick={handleSave} className="save_getMyInfo">
+              </div>
+              <div onClick={handleSave} className="write_saveMyInfo">
                 나의 경험/경력 저장하기
-              </button>
+              </div>
             </div>
             {isTextMode ? (
               <textarea
@@ -522,6 +538,18 @@ const WriteResume = () => {
                   className="write_career_container"
                   id="write_career_container"
                 >
+                  <div className="major_container">
+                  <h4 className="add_title">전공</h4>
+                  <label className="major_label">전공학과</label>
+                  <input
+                          type="text"
+                          id="careerName"
+                          onChange={(e) =>
+                            setMajor(e.target.value)
+                          }
+                          value={major}
+                        />
+                  </div>
                   <div className="write_add" onClick={addWriteCareer}>
                     +
                   </div>
