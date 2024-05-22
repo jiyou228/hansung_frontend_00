@@ -50,3 +50,22 @@
 .profileImage_upload{
     margin-top: 5vh;
 }
+.profileImage_radioBox{
+    display: flex; 
+    gap: 2vw;
+}
+
+@media(max-width: 768px){
+    .profileImage_radioBox{
+        flex-direction: column;
+    }
+    .Crop-Controls{
+        width: 70vw;
+    }
+    .profileImage_input{
+        width: 50vw;
+    }
+    .profileImage_crop{
+        margin-top: 10vh;
+    }
+}

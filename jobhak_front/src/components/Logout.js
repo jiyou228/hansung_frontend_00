@@ -21,6 +21,7 @@ const Logout = () => {
         removeCookie("MyIMG", { path: "/" });
         removeCookie("provider", { path: "/" });
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("revision");
         removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
         alert("로그아웃이 완료되었습니다.");
 

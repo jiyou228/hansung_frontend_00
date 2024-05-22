@@ -260,36 +260,14 @@ function MyPage() {
           </div>
         </div>
       </div>
-      <Modal
-        isOpen={isUploadOpen}
-        onRequestClose={closeUploadModal}
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(255, 255, 255, 0.75)",
-          },
-          content: {
-            position: "absolute",
-            top: "10vh",
-            left: "15vw",
-            right: "15vw",
-            bottom: "10vh",
-            border: "1px solid #ccc",
-            background: "#fff",
-            overflow: "auto",
-            WebkitOverflowScrolling: "touch",
-            borderRadius: "4px",
-            outline: "none",
-            padding: "20px",
-          },
-        }}
-      >
-        <ProfileImage onSuccess={closeUploadModal} />
-      </Modal>
+    <Modal
+    isOpen={isUploadOpen}
+    onRequestClose={closeUploadModal}
+    className="profileImage_Modal"
+    overlayClassName="profileImage_ModalOverlay"
+  >
+    <ProfileImage onSuccess={closeUploadModal} />
+  </Modal>
       {isDeleteOpen && (
         <DelProfileImage onSuccess={() => setIsDeleteOpen(false)} />
       )}

@@ -7,8 +7,6 @@ import Swal from "sweetalert2";
 import Modal from "react-modal";
 import GPTResume from "./GPTResume.js";
 
-// Modal.setAppElement("#root");
-
 const WriteResume = () => {
   const [clipboardValue, setClipboardValue] = useState("");
   const [isTextMode, setIsTextMode] = useState(false);
@@ -23,10 +21,12 @@ const WriteResume = () => {
   const [major, setMajor] = useState("");
   const [gptModel, setGptModel] = useState("");
 
-  const apiKey = process.env.REACT_APP_JOBHAK_KEY;
+  // const apiKey = process.env.REACT_APP_JOBHAK_KEY;
+  const apiKey = "sk-proj-UOlMdRpiCigJTGzmgtZeT3BlbkFJ2seRGodtBTNFCNpar7mI";
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
+  
   const pasteClipboard = async () => {
     try {
       const clipText = await navigator.clipboard.readText();
@@ -156,6 +156,7 @@ const WriteResume = () => {
 
   const closeGPTResume = () => {
     setIsOpen(false);
+    console.log(isOpen);
   };
 
   const settings = {
@@ -175,6 +176,9 @@ const WriteResume = () => {
       width: "50vw",
       height: "50vh",
       overflow: "hidden",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
     },
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -303,8 +307,8 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            // model: gptModel,
-            model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+            model: gptModel,
+            // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
             messages: [
               {
                 role: "system",
@@ -714,8 +718,7 @@ const WriteResume = () => {
           <button
             type="submit"
             onClick={showGPTResume}
-            className="write_button_next"
-          >
+            className="write_button_next">
             다음
           </button>
           <Modal
@@ -725,12 +728,12 @@ const WriteResume = () => {
             className="modal"
             overlayClassName="overlay"
           >
-            {/* <GPTResume revision={revision} /> */}
             {revision ? (
-              <GPTResume revision={revision} />
+              <GPTResume revision={revision} closeModal= {closeGPTResume}/>
             ) : (
               <div className="loading_div">
-                자기소개서를 작성 중 입니다. 조금만 기다려주세요!
+                <div className="loader"></div>
+                자기소개서를 작성 중 입니다.<br/>조금만 기다려주세요!
               </div>
             )}
           </Modal>

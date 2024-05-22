@@ -143,6 +143,40 @@
   border: 0.3vh solid #777777;
 }
 
+.profileImage_ModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.profileImage_Modal {
+  position: absolute;
+  top: 10vh;
+  left: 15vw;
+  right: 15vw;
+  bottom: 10vh;
+  border: 1px solid #ccc;
+  background: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .profileImage_Modal{
+    top: 5vh;
+    left: 5vw;
+    right: 5vw;
+    bottom: 5vh;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .mypage_main_container {
     flex-direction: column;
@@ -182,9 +216,8 @@
   .mypage_privacy_ip {
     width: 77vw;
   }
-  .ReactModal__Content--after-open{
-    inset: 5vh 10vw!important;
-    margin-top: 10vh;
+  .profileImage_ModalOverlay {
+    top: 10vh;
   }
   .profile_image{
     width: 25vw;

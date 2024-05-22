@@ -188,7 +188,7 @@ export default function ProfileImage({ onSuccess }) {
   return (
     <div className="profileImage_app">
       <h2>프로필 사진 업로드</h2>
-      <div style={{ display: "flex", gap: "2vw" }}>
+      <div className="profileImage_radioBox">
         <label>
           <input
             type="radio"
@@ -222,7 +222,7 @@ export default function ProfileImage({ onSuccess }) {
         ) : (
           <div>
             <label>파일 업로드</label>
-            <input type="file" accept="image/*" onChange={onSelectFile} />
+            <input className= "profileImage_input" type="file" accept="image/*" onChange={onSelectFile} />
           </div>
         )}
       </div>

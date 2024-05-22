@@ -140,6 +140,7 @@
   }
   .female_choose_option {
     margin-top: 3rem;
+    padding: 0 2vw;
   }
   .img_preview {
     margin-top: 3rem;
@@ -163,6 +164,10 @@
   }
   .female_choose_option hr{
     margin-bottom: 3vh;
-    width: 97vw;
+    width: 95vw;
   }
+  .blur_bar{
+    width: 60vw;
+  }
+
 }

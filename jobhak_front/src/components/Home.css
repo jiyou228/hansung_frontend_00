@@ -360,6 +360,9 @@
     font-weight: 600;
     padding-bottom: 1vh;
   }
+  .aboutUs{
+    padding-bottom: 5vh;
+  }
   .aboutUs img{
     width: 15vw;
   }

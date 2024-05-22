@@ -143,4 +143,7 @@
   .Slide2 {
     width: 100%;
   }
+  .blur_bar{
+    width: 30em!important;
+  }
 }
