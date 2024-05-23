@@ -349,7 +349,8 @@ const WriteResume = () => {
             .get("https://api.jobhakdasik.site/resume/get/myList")
             .then((res) => {
               if (res.data) {
-                setMajor(res.data.result.major);
+                if(res.data.result.major.length >0){
+                setMajor(res.data.result.major)}
                 if (
                   res.data.result.careerToFront.length > 0 ||
                   res.data.result.expToFront.length > 0
