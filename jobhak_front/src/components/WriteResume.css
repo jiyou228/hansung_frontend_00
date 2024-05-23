@@ -13,9 +13,10 @@
 .modal {
   position: relative;
   background: white;
-  padding: 0 5vw;
   border-radius: 4px;
-  padding-bottom: 5vh;
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+  width: 50vw;
 }
 
 .gpt_button_save {
@@ -346,13 +347,6 @@
   padding: 0.2rem 0;
 }
 
-.major_ip {
-  margin-left: 1rem;
-  font-size: 1rem;
-  padding: 0.2rem 0;
-  width: 15rem;
-}
-
 .write_career_container label {
   margin-left: 1rem;
   white-space: nowrap;
@@ -594,5 +588,8 @@
     display: flex;
     row-gap: 1vh;
     margin-bottom: 6vh;
+  }
+  .modal {
+    width: 20em;
   }
 }
