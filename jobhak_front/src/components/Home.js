@@ -3,7 +3,7 @@ import "./Home.css";
 import Swipe from "./swipe";
 import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
-import svg from "../assets/black_jobhak_full.svg";
+import video from '../assets/video.mp4';
 import no1 from "../assets/카드뉴스_취업사진.png";
 import no2 from "../assets/카드뉴스_작성.png";
 import no3 from "../assets/카드뉴스_자소서.png";
@@ -83,6 +83,10 @@ const Home = () => {
       });
   }, []);
 
+  useEffect(()=>{
+    const timer = setTimeout(goBottom, 4000);
+    return () => clearTimeout(timer);
+  },[]);
   const goBottom = () => {
     if (document.getElementById("home_content")) {
       document
@@ -102,14 +106,16 @@ const Home = () => {
       <div className="home">
         <div className="home_head">
           <div className="home_headTitle">
-            최고의 서포터, <br />
-            AI와 함께하는 취업준비!
-            <br />
-            <img src={svg} alt="logo"></img>
-            <button onClick={goBottom}>시작하기</button>
-          </div>
-          <div className="home_web_swipe">
-            <img src={image[index]} alt="swipe" />
+            <div style={{display:'flex', gap: '7vw', flex: '1'}}>
+            <p className="tracking-in-expand-fwd">최고의 서포터,<br />
+            AI와 함께하는<br/>취업준비!</p>
+            <div>
+            <video muted autoPlay loop>
+              <source src = {video} type="video/mp4" />
+            </video>
+            <h3>Job학다식의 StarGAN 훈련모델에 따른 스타일 변경</h3>
+            </div>
+            </div>
           </div>
         </div>
 

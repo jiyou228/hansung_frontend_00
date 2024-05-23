@@ -8,7 +8,6 @@ import Modal from "react-modal";
 import GPTResume from "./GPTResume.js";
 
 const WriteResume = () => {
-  const [clipboardValue, setClipboardValue] = useState("");
   const [isTextMode, setIsTextMode] = useState(false);
   const [careers, setCareers] = useState([]);
   const [experiences, setExperiences] = useState([]);
@@ -19,21 +18,12 @@ const WriteResume = () => {
   const [text, setText] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [major, setMajor] = useState("");
-  const [gptModel, setGptModel] = useState("");
 
-  // const apiKey = process.env.REACT_APP_JOBHAK_KEY;
-  const apiKey = "sk-proj-UOlMdRpiCigJTGzmgtZeT3BlbkFJ2seRGodtBTNFCNpar7mI";
+  const apiKey = process.env.REACT_APP_JOBHAK_KEY;
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
-  const pasteClipboard = async () => {
-    try {
-      const clipText = await navigator.clipboard.readText();
-      setClipboardValue(clipText);
-    } catch (error) {
-      console.error(`붙여넣기에 실패했습니다:\n ${error}`);
-    }
-  };
+  
 
   const toggleTextMode = () => {
     setIsTextMode((prevMode) => !prevMode);
@@ -158,31 +148,6 @@ const WriteResume = () => {
     console.log(isOpen);
   };
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 100,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [],
-  };
-
-  const customStyles = {
-    content: {
-      position: "fixed",
-      top: "20vh",
-      left: "25vw",
-      width: "50vw",
-      height: "50vh",
-      overflow: "hidden",
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-    },
-    overlay: {
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-    },
-  };
 
   const addMessage = (sender, message) => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);
@@ -259,17 +224,6 @@ const WriteResume = () => {
     //   },
     // });
 
-    if (clipboardValue) {
-      try {
-        new URL(clipboardValue);
-        setGptModel("gpt-4");
-      } catch (e) {
-        setGptModel("ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL");
-      }
-    } else {
-      setGptModel("ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL");
-    }
-
     const hasCompanyName =
       experiences.some((experience) => experience.careerName) ||
       careers.some((career) => career.careerName);
@@ -280,7 +234,7 @@ const WriteResume = () => {
       const formattedCareerText = careers
         .map(
           (career) =>
-            `- ${career.major} ${career.careerName}(${career.startDate} ~ ${career.endDate}): ${career.careerContent}`
+            `- ${career.careerName}(${career.startDate} ~ ${career.endDate}): ${career.careerContent}`
         )
         .join("\n");
       const formattedExperienceText = experiences
@@ -290,7 +244,7 @@ const WriteResume = () => {
         )
         .join("\n");
 
-      const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. \n지원하는 회사명: ${companyName} 직무: ${jobPosition}\n 전공: \n${major}\n경력:\n${formattedCareerText}\n관련 경험 및 대외활동${formattedExperienceText}\n채용공고URL: ${clipboardValue}`;
+      const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. \n지원하는 회사명: ${companyName} 직무: ${jobPosition}\n 전공: \n${major}\n경력:\n${formattedCareerText}\n관련 경험 및 대외활동${formattedExperienceText}`;
       if (message.length === 0) return;
 
       addMessage("user", message);
@@ -305,24 +259,12 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: gptModel,
-            // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+            model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
             messages: [
               {
                 role: "system",
                 content:
-                  "당신은 전문 취업용 자소서 컨설턴트입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
-              },
-              // {
-              //   role: "user",
-              //   content:
-              //     "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
-              // },
-              // {
-              //   role: "assistant",
-              //   content:
-              //     "안녕하십니까, 토스에서 새로운 마케팅 전력을 만들려고 노력하는지금에 지원하게된 지원자입니다. 마케팅 전문가로서의 커리어를 애플 코리아에서 시작해 이제는 토스의 마케팅팀에서 멀티태스킹과 혁신을 중심으로 회사 고유의 가치를 창출하고자 합니다. 애플 코리아에서 행동기반 마케팅 전략을 담당했습니다. 특히, Apple Store 앱의 고객행동 데이터 분석을 담당하였고, 고객 행동 패턴에 따른 개인화된 프로모션 전략을 책임지는 역할을 수행하였습니다. 이 과정에서 수백만명의 사용자 데이터를 분석하고, 개인화된 프로모션 전략을 통해 전환율을 30% 향상시키는 성과를 이뤄냈습니다.학생시절, 제가 주도하여 대외활동을 진행하였습니다. '청년 마케터'라는 프로젝트 팀을 기획하여, 학내 청년 창업자 대상으로 소셜 미디어 기반 마케팅 전략 수립을 도와주는 활동을 하였습니다. 이 활동을 통해 마케팅 전략 수립뿐만 아니라, 협업, 리더십 등의 중요한 역량을 키울 수 있었습니다. 토스의 핵심 가치는 '일상의 변화를 만든다'라고 생각합니다. 사람들이 더욱 편리하게 금융 서비스를 이용할 수 있도록 지속적인 혁신과 변화를 지향하는 토스에 감명을 받아 지원하게 되었습니다. 애플 코리아에서의 행동기반 마케팅 경험을 바탕으로 토스의 고객들에게 최적화된 경험을 제공하기 위해 노력하겠습니다. 또한, 대외활동을 통해 키운 협업 및 리더십 역량을 토스의 마케팅팀에서 발휘하고, 팀의 성장과 회사의 발전에 이바지하겠습니다. 읽어주셔서 감사드리며, 저와 함께 자라고 싶은 토스에 합류하는 기회를 갖기를 바랍니다.",
-              // },
+              "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한국어 기준 공백 포함 900~1000자 정도로 작성해주세요."},
               {
                 role: "user",
                 content: message,
@@ -349,7 +291,7 @@ const WriteResume = () => {
       }
     } else {
       if (!hasCompanyName) {
-        const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 전공: ${major}, 관련 경력 및 경험:${text}, 채용공고URL:${clipboardValue}`;
+        const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 전공: ${major}, 관련 경력 및 경험:${text}`;
         if (message.length === 0) return;
         addMessage("user", message);
         console.log(message);
@@ -362,24 +304,12 @@ const WriteResume = () => {
               Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-              // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
-              model: gptModel,
+              model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
               messages: [
                 {
                   role: "system",
-                  content:
-                    "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한글 기준 공백 포함 900~1000자 정도로 작성해주세요.",
+                  content: "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한글 기준 공백 포함 900~1000자 정도로 작성해주세요."
                 },
-                // {
-                //   role: "user",
-                //   content:
-                //     "나의 자기소개서를 작성해줘. 지원하는 회사명:토스, 직무:마케팅, 경력:애플 코리아 2024/1~2024/4, 관련 경험 및 대외활동: 2023/8~2023/12, 채용공고URL: http://www.saramin.co.kr/zf_user/jobs/relay/pop-view?rec_idx=47887527&t_ref=main&t_ref_content=platinum_fix_expand",
-                // },
-                // {
-                //   role: "assistant",
-                //   content:
-                //     "안녕하십니까, 토스에서 새로운 마케팅 전력을 만들려고 노력하는지금에 지원하게된 지원자입니다. 마케팅 전문가로서의 커리어를 애플 코리아에서 시작해 이제는 토스의 마케팅팀에서 멀티태스킹과 혁신을 중심으로 회사 고유의 가치를 창출하고자 합니다. 애플 코리아에서 행동기반 마케팅 전략을 담당했습니다. 특히, Apple Store 앱의 고객행동 데이터 분석을 담당하였고, 고객 행동 패턴에 따른 개인화된 프로모션 전략을 책임지는 역할을 수행하였습니다. 이 과정에서 수백만명의 사용자 데이터를 분석하고, 개인화된 프로모션 전략을 통해 전환율을 30% 향상시키는 성과를 이뤄냈습니다.학생시절, 제가 주도하여 대외활동을 진행하였습니다. '청년 마케터'라는 프로젝트 팀을 기획하여, 학내 청년 창업자 대상으로 소셜 미디어 기반 마케팅 전략 수립을 도와주는 활동을 하였습니다. 이 활동을 통해 마케팅 전략 수립뿐만 아니라, 협업, 리더십 등의 중요한 역량을 키울 수 있었습니다. 토스의 핵심 가치는 '일상의 변화를 만든다'라고 생각합니다. 사람들이 더욱 편리하게 금융 서비스를 이용할 수 있도록 지속적인 혁신과 변화를 지향하는 토스에 감명을 받아 지원하게 되었습니다. 애플 코리아에서의 행동기반 마케팅 경험을 바탕으로 토스의 고객들에게 최적화된 경험을 제공하기 위해 노력하겠습니다. 또한, 대외활동을 통해 키운 협업 및 리더십 역량을 토스의 마케팅팀에서 발휘하고, 팀의 성장과 회사의 발전에 이바지하겠습니다. 읽어주셔서 감사드리며, 저와 함께 자라고 싶은 토스에 합류하는 기회를 갖기를 바랍니다.",
-                // },
                 {
                   role: "user",
                   content: message,
@@ -419,6 +349,7 @@ const WriteResume = () => {
             .get("https://api.jobhakdasik.site/resume/get/myList")
             .then((res) => {
               if (res.data) {
+                setMajor(res.data.result.major);
                 if (
                   res.data.result.careerToFront.length > 0 ||
                   res.data.result.expToFront.length > 0
@@ -502,7 +433,7 @@ const WriteResume = () => {
               placeholder="필수) 예시: 마케팅 (Customer Marketing CRM)"
             />
           </div>
-
+        
           <div className="write_input_container">
             <label className="write_label">관련 경험 또는 경력</label>
             <div className="toggle_container">
@@ -543,14 +474,16 @@ const WriteResume = () => {
                   id="write_career_container"
                 >
                   <div className="major_container">
-                    <h4 className="add_title">전공</h4>
-                    <label className="major_label">전공학과</label>
-                    <input
-                      type="text"
-                      id="careerName"
-                      onChange={(e) => setMajor(e.target.value)}
-                      value={major}
-                    />
+                  <h4 className="add_title">전공</h4>
+                  <label className="major_label">전공학과</label>
+                  <input
+                          type="text"
+                          id="careerName"
+                          onChange={(e) =>
+                            setMajor(e.target.value)
+                          }
+                          value={major}
+                        />
                   </div>
                   <div className="write_add" onClick={addWriteCareer}>
                     +
@@ -686,23 +619,6 @@ const WriteResume = () => {
               </>
             )}
           </div>
-          <div className="write_input_container">
-            <label className="write_label">채용공고 링크</label>
-            <button
-              type="button"
-              className="write_button"
-              onClick={pasteClipboard}
-              onKeyDown={handleKeyDown}
-            >
-              붙여넣기
-            </button>
-            <input
-              className="write_input"
-              value={clipboardValue}
-              onChange={(e) => setClipboardValue(e.target.value)}
-              placeholder="채용공고의 URL(링크 주소)를 입력해주세요."
-            />
-          </div>
         </div>
         <div className="write_button_container last">
           <button
@@ -715,8 +631,7 @@ const WriteResume = () => {
           <button
             type="submit"
             onClick={showGPTResume}
-            className="write_button_next"
-          >
+            className="write_button_next">
             다음
           </button>
           <Modal
@@ -727,13 +642,11 @@ const WriteResume = () => {
             overlayClassName="overlay"
           >
             {revision ? (
-              <GPTResume revision={revision} closeModal={closeGPTResume} />
+              <GPTResume revision={revision} closeModal= {closeGPTResume}/>
             ) : (
               <div className="loading_div">
                 <div className="loader"></div>
-                자기소개서를 작성 중 입니다.
-                <br />
-                조금만 기다려주세요!
+                자기소개서를 작성 중 입니다.<br/>조금만 기다려주세요!
               </div>
             )}
           </Modal>
