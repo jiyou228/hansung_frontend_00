@@ -178,11 +178,14 @@ function BoardDetail() {
         if (result.isConfirmed) {
           if (!option) {
             instance
-              .delete(`https://api.jobhakdasik.site/boardlist/delete/${postId}`, {
-                data: {
-                  post_id: postId,
-                },
-              })
+              .delete(
+                `https://api.jobhakdasik.site/boardlist/delete/${postId}`,
+                {
+                  data: {
+                    post_id: postId,
+                  },
+                }
+              )
               .then((res) => {
                 window.location.href = "/boardlist";
               })
@@ -245,7 +248,7 @@ function BoardDetail() {
       document.removeEventListener("click", handleClickOutside);
       isOutsideClick.current = false; // cleanup 함수에서 외부 클릭 감지 해제
     };
-  }, [user_id, openDelReply, postId]);
+  }, [user_id, openDelReply, postId, reReplyContent, isreReply]);
 
   const getData = () => {
     axios
