@@ -4,6 +4,7 @@ import suit1 from "../assets/femaleSuit1.png";
 import suit2 from "../assets/femaleSuit2.png";
 import suit3 from "../assets/femaleSuit3.png";
 import shorthair from "../assets/shorthair.png";
+import video from '../assets/video.gif'
 import longhair from "../assets/longhair.png";
 import uphair from "../assets/uphair.png";
 import Slide1 from "../assets/slide1.png";
@@ -38,6 +39,7 @@ const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [loginId, setLoginId] = useState("");
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   const cookie = new Cookies();
 
   const showGuide = () => {
@@ -99,7 +101,7 @@ const Profile = () => {
       console.error("No file selected");
       return;
     }
-
+    setShow(!show);
     const selectedSuitStyle = selectedSuit;
     const selectedHairstyle = selectedHair;
     const selectedBackGroundstyle = selectedBackGround || "none";
@@ -238,8 +240,7 @@ const Profile = () => {
 
         <div className="female_choose_option">
           <label className="choose_option_lb">머리 스타일</label>
-          <br />
-          <label>※ 단순 스타일 참고용 입니다.</label>
+          <h4>※ 단순 스타일 참고용 입니다.</h4>
           <div className="choose_option_div">
             <div style={{ display: "flex", gap: "2vw" }}>
               <div className="female_hairBox">
@@ -402,6 +403,17 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      {show &&
+      (<div className="image_loadingBox">
+      <div className="image_loading">
+        <div className="loader"></div>
+        <div className="loading_text">
+          사진이 합성 중입니다. 잠시만 기다려주세요.
+        </div>
+        <img src={video}/>
+      </div>
+      </div>
+      )}
     </div>
   );
 };

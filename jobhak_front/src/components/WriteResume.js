@@ -256,13 +256,12 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
-            model: "gpt-3.5-turbo",
+            model: "ft:gpt-3.5-turbo-1106:personal:write:9S4Em7B4",
             messages: [
               {
                 role: "system",
                 content:
-                  "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
+                  "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한국어 기준 공백 포함 500자를 넘지 않도록 작성해주세요.",
               },
               {
                 role: "user",
@@ -303,13 +302,12 @@ const WriteResume = () => {
               Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-              // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
-              model: "gpt-3.5-turbo",
+              model: "ft:gpt-3.5-turbo-1106:personal:write:9S4Em7B4",
               messages: [
                 {
                   role: "system",
                   content:
-                    "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
+                    "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한국어 기준 공백 포함 500자를 넘지 않도록 작성해주세요.",
                 },
                 {
                   role: "user",

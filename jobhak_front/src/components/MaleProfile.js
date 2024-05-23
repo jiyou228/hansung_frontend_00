@@ -11,6 +11,7 @@ import background0 from "../assets/background.png";
 import background1 from "../assets/background1.png";
 import background2 from "../assets/background2.png";
 import background3 from "../assets/background3.png";
+import video from '../assets/video.gif'
 import background4 from "../assets/background4.png";
 import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
@@ -25,6 +26,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { Cookies } from "react-cookie";
 
 const MaleProfile = () => {
+  const [show, setShow] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
   const [selectedSuit, setSelectedSuit] = useState(null);
   const [selectedHair, setSelectedHair] = useState(null);
@@ -96,7 +98,7 @@ const MaleProfile = () => {
       console.error("No file selected");
       return;
     }
-
+    setShow(!show);
     const selectedSuitStyle = selectedSuit;
     const selectedHairstyle = selectedHair;
     const selectedBackGroundstyle = selectedBackGround || "none";
@@ -387,6 +389,17 @@ const MaleProfile = () => {
           </div>
         </div>
       </div>
+      {show &&
+      (<div className="image_loadingBox">
+      <div className="image_loading">
+        <div className="loader"></div>
+        <div className="loading_text">
+          사진이 합성 중입니다. 잠시만 기다려주세요.
+        </div>
+        <img src={video}/>
+      </div>
+      </div>
+      )}
     </div>
   );
 };
