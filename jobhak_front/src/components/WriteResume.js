@@ -62,6 +62,7 @@ const WriteResume = () => {
     setCareers([
       ...careers,
       {
+        major: "",
         careerName: "",
         startDate: "",
         endDate: "",
