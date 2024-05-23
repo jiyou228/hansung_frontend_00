@@ -559,6 +559,9 @@ const WriteResume = () => {
                             value={careers[index].major}
                           />
                         </label>
+                        <div className="write_add" onClick={addWriteCareer}>
+                          +
+                        </div>
                         <h4 className="add_title">경력</h4>
                         <div className="career_three">
                           <label>회사명</label>
