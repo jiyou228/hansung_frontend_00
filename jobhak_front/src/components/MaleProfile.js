@@ -235,52 +235,63 @@ const MaleProfile = () => {
 
         <div className="female_choose_option">
           <label className="choose_option_lb">머리 스타일</label>
+          <br />
+          <label>
+            ※ 스타일을 참고하여 만들어지는 것 뿐 100% 동일한 결과가 나오지는
+            않습니다.
+          </label>
           <div className="choose_option_div">
-          <div style={{display:'flex', gap: '2vw'}}>
-          <div className="female_hairBox">
-            <button
-              type="button"
-              className={`female_hair_btn ${
-                selectedHair === "male_uphair" ? "selected" : ""
-              }`}
-              onClick={() => handleOptionHair("male_uphair")}
-            >
-              <img src={uphair} className="female_hair" alt="올림머리" />
-            </button>
-            <div className="female_sub">올림머리</div>
-            </div>
-            <div className="female_hairBox">
-            <button
-              type="button"
-              className={`female_hair_btn ${
-                selectedHair === "male_downhair" ? "selected" : ""
-              }`}
-              onClick={() => handleOptionHair("male_downhair")}
-            >
-              <img src={downhair} className="female_hair" alt="내림머리" />
-            </button>
-            <div className="female_sub">내림머리</div>
-            </div>
+            <div style={{ display: "flex", gap: "2vw" }}>
+              <div className="female_hairBox">
+                <button
+                  type="button"
+                  className={`female_hair_btn ${
+                    selectedHair === "male_uphair" ? "selected" : ""
+                  }`}
+                  onClick={() => handleOptionHair("male_uphair")}
+                >
+                  <img src={uphair} className="female_hair" alt="올림머리" />
+                </button>
+                <div className="female_sub">올림머리</div>
+              </div>
+              <div className="female_hairBox">
+                <button
+                  type="button"
+                  className={`female_hair_btn ${
+                    selectedHair === "male_downhair" ? "selected" : ""
+                  }`}
+                  onClick={() => handleOptionHair("male_downhair")}
+                >
+                  <img src={downhair} className="female_hair" alt="내림머리" />
+                </button>
+                <div className="female_sub">내림머리</div>
+              </div>
             </div>
           </div>
           <hr />
           <div className="choose_option_div2">
             <div>
-            <div className="blur_option_lb">얼굴 효과</div>
-            <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1vw'}}>
-            <input
-                type="range"
-                min="0"
-                max="100"
-                step="10"
-                value={selectedBlur}
-                className="blur_bar"
-                onChange={handleOptionBlur}
-              />
-              <label>{selectedBlur}%</label>
+              <div className="blur_option_lb">얼굴 효과</div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "1vw",
+                }}
+              >
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  value={selectedBlur}
+                  className="blur_bar"
+                  onChange={handleOptionBlur}
+                />
+                <label>{selectedBlur}%</label>
+              </div>
             </div>
-            </div>
-
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>

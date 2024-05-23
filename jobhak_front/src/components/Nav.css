@@ -1,193 +1,193 @@
-.navbar_app{
-    display: block;
-    background-color: #104085;
-    width: 100%;
-    font-family: 'NanumSquare';
+.navbar_app {
+  display: block;
+  background-color: #104085;
+  width: 100%;
+  font-family: "NanumSquare";
+  font-weight: 700;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  color: white;
+  z-index: 2000;
+  white-space: nowrap;
+}
+.navbar_link {
+  text-decoration: none;
+  color: white;
+}
+.logo_half {
+  width: fit-content;
+  height: 6vh;
+  margin-left: 2vw;
+}
+.navbar_app .nav_mobile {
+  list-style: none;
+  display: flex;
+  font-size: 2.3vh;
+  margin-right: 2vw;
+  gap: 1.5vw;
+}
+.navbar_app li:hover {
+  background-color: white;
+  color: #104085;
+  font-weight: 700;
+}
+.navbar_app .navbar_logout {
+  font-weight: 700;
+  color: #b9cfff;
+  margin-left: 1vw;
+}
+.navbar_app .navbar_logout:hover {
+  background-color: #b9cfff;
+  color: #104085;
+  font-weight: 700;
+}
+.navbar_profile_name {
+  cursor: pointer;
+  position: relative;
+}
+.navbar_profile {
+  display: none;
+  list-style: none;
+  padding: 0;
+}
+.navbar_profile.clicked {
+  display: block;
+  position: absolute;
+  color: #252525;
+  top: 2.5vw;
+  width: 6vw;
+  text-align: center;
+  left: -1vw;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
+  padding: 1vh 0;
+  z-index: 1000;
+}
+.navbar_profile.clicked li {
+  color: #252525;
+  font-size: 1.2vw;
+  padding: 1vh 0;
+  font-weight: 700;
+}
+.navbar_profile.clicked li:hover {
+  background-color: #c1c1c180;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.burger {
+  display: none;
+}
+.mobile_logo {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .nav_mobile {
+    display: none !important;
+  }
+  .nav_mobile.open {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    list-style: none;
+    position: absolute;
+    background-color: #092958;
+    color: white;
+    width: 100vw;
+    top: 10vh;
+    padding: 0;
+    font-size: 3.5vw;
+    width: 100vw;
+    text-align: center;
+    padding-top: 2vh;
+    margin: 0;
+    padding-bottom: 1vh;
     font-weight: 700;
-    justify-content: space-between;
+    display: block !important;
+    box-sizing: border-box;
+  }
+  .navbar_app li {
+    padding: 2vh 0;
+  }
+  .navbar_app .navbar_mypage {
+    margin-bottom: 0;
+  }
+  .navbar_profile.clicked {
+    display: block;
+    position: relative;
+    color: white;
+    top: 0;
+    text-align: center;
+    left: 0;
+    border-radius: 0;
+    background-color: #092958;
+    box-shadow: none;
+    padding: 0;
+    margin-top: 1vh;
+    width: 100vw;
+  }
+  .navbar_profile.clicked:hover {
+    background-color: white;
+  }
+  .navbar_profile.clicked li {
+    color: white;
+    font-size: 2.8vw;
+    padding: 1vh 0;
+    font-weight: 700;
+  }
+  .navbar_profile.clicked:hover li:hover {
+    background-color: #b9cfff;
+    text-decoration: underline;
+    text-align: center;
+    font-weight: 700;
+  }
+  .navbar_app .navbar_logout {
+    padding-bottom: 3vh;
+  }
+  .navbar_app li:hover {
+    width: 100vw;
+    text-align: center;
+    text-decoration: none;
+  }
+  .navbar_app li:hover ul {
+    background-color: white;
+    color: #104085;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+  }
+  .navbar_app li:hover ul li {
+    color: #104085;
+  }
+  .burger {
+    height: 5vh;
+    display: block;
+    padding-left: 3vw;
+    cursor: pointer;
+  }
+  .logo_half {
+    display: none;
+  }
+  .navbar_app {
+    margin-top: 0;
     display: flex;
     align-items: center;
-    color: white;
-    z-index: 2000;
-    white-space: nowrap;
-}
-.navbar_link{
-    text-decoration: none;
-    color: white;
-}
-.logo_half{
-    width: fit-content;
-    height: 7vh;
-    margin-left: 2vw;
-}
-.navbar_app .nav_mobile{
-    list-style: none;
-    display:flex;
-    font-size: 2.3vh;
-    margin-right: 2vw;
-    gap: 1.5vw;
-}
-.navbar_app li:hover{
-    background-color:white;
-    color: #104085;
-    font-weight: 700;
-}
-.navbar_app .navbar_logout{
-    font-weight: 700;
-    color: #B9CFFF;
-    margin-left: 1vw;
-}
-.navbar_app .navbar_logout:hover{
-    background-color:#B9CFFF;
-    color: #104085;
-    font-weight: 700;
-}
-.navbar_profile_name{
-    cursor: pointer;
     position: relative;
-}
-.navbar_profile{
-    display: none;
-    list-style: none;
-    padding: 0;
-}
-.navbar_profile.clicked{
-    display: block;
-    position: absolute;
-    color: #252525;
-    top: 2.5vw;
-    width: 6vw;
-    text-align: center;
-    left: -1vw;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
-    padding: 1vh 0;
-    z-index: 1000;
-}
-.navbar_profile.clicked li{
-    color: #252525;
-    font-size: 1.2vw;
-    padding: 1vh 0;
-    font-weight: 700;
-}
-.navbar_profile.clicked li:hover{
-    background-color: #c1c1c180;
-    text-decoration: none;
-    font-weight: 700;
-}
-
-.burger{
-    display: none;
-}
-.mobile_logo{
-    display: none;
-}
-
-@media ( max-width: 768px ) {
-    .nav_mobile {
-        display: none!important;
-    }
-    .nav_mobile.open {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100vw;
-        list-style: none;
-        position: absolute;
-        background-color: #092958;
-        color: white;
-        width: 100vw;
-        top:10vh;
-        padding: 0;
-        font-size: 3.5vw;
-        width: 100vw;
-        text-align: center;
-        padding-top: 2vh;
-        margin: 0;
-        padding-bottom: 1vh;
-        font-weight: 700;
-        display: block!important;
-        box-sizing: border-box;
-    }
-    .navbar_app li{
-        padding: 2vh 0;
-    }
-    .navbar_app .navbar_mypage{
-        margin-bottom: 0;
-    }
-    .navbar_profile.clicked{
-        display: block;
-        position: relative;
-        color: white;
-        top: 0;
-        text-align: center;
-        left: 0;
-        border-radius: 0;
-        background-color: #092958;
-        box-shadow: none;
-        padding: 0;
-        margin-top: 1vh;
-        width: 100vw;;
-    }
-    .navbar_profile.clicked:hover{
-        background-color: white;
-    }
-    .navbar_profile.clicked li{
-        color: white;
-        font-size: 2.8vw;
-        padding: 1vh 0;
-        font-weight: 700;
-    }
-    .navbar_profile.clicked:hover li:hover{
-        background-color: #B9CFFF;
-        text-decoration: underline;
-        text-align: center;
-        font-weight: 700;
-    }
-    .navbar_app .navbar_logout{
-        padding-bottom: 3vh;
-    }
-    .navbar_app li:hover{
-        width: 100vw;
-        text-align: center;
-        text-decoration: none;
-    }
-    .navbar_app li:hover ul{
-        background-color:white;
-        color: #104085;
-        text-decoration: none;
-        font-weight: 700;
-        text-align: center;
-    }
-    .navbar_app li:hover ul li{
-        color: #104085;
-    }
-    .burger{
-        height: 5vh;
-        display: block;
-        padding-left: 3vw;
-        cursor: pointer;
-    }
-    .logo_half{
-        display: none;
-    }
-    .navbar_app{
-        margin-top: 0;
-        display: flex;
-        align-items: center;
-        position: relative;
-        padding: 3vh 0;
-    }
-    .mobile_logo{
-        display: block;
-        height: 7vh;
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        cursor: pointer;
-    }
-    .mobile_link{
-        cursor: pointer;
-    }
+    padding: 3vh 0;
   }
+  .mobile_logo {
+    display: block;
+    height: 7vh;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  .mobile_link {
+    cursor: pointer;
+  }
+}
