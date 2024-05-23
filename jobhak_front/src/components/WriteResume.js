@@ -23,8 +23,6 @@ const WriteResume = () => {
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
-  
-
   const toggleTextMode = () => {
     setIsTextMode((prevMode) => !prevMode);
   };
@@ -148,7 +146,6 @@ const WriteResume = () => {
     console.log(isOpen);
   };
 
-
   const addMessage = (sender, message) => {
     setMessages((prevMessages) => [...prevMessages, { sender, message }]);
   };
@@ -244,7 +241,7 @@ const WriteResume = () => {
         )
         .join("\n");
 
-      const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. \n지원하는 회사명: ${companyName} 직무: ${jobPosition}\n 전공: \n${major}\n경력:\n${formattedCareerText}\n관련 경험 및 대외활동${formattedExperienceText}`;
+      const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 1000자 이내로 작성해줘. \n지원하는 회사명: ${companyName} 직무: ${jobPosition}\n 전공: \n${major}\n경력:\n${formattedCareerText}\n관련 경험 및 대외활동${formattedExperienceText}`;
       if (message.length === 0) return;
 
       addMessage("user", message);
@@ -259,12 +256,14 @@ const WriteResume = () => {
             Authorization: `Bearer ${apiKey}`,
           },
           body: JSON.stringify({
-            model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+            // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+            model: "gpt-3.5-turbo",
             messages: [
               {
                 role: "system",
                 content:
-              "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한국어 기준 공백 포함 900~1000자 정도로 작성해주세요."},
+                  "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
+              },
               {
                 role: "user",
                 content: message,
@@ -291,7 +290,7 @@ const WriteResume = () => {
       }
     } else {
       if (!hasCompanyName) {
-        const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 한국어 기준 공백포함 900~1000자 정도로 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 전공: ${major}, 관련 경력 및 경험:${text}`;
+        const message = `취업하기 위한 이력서에 필요한 나의 자기소개서를 1000자 이내로 작성해줘. 지원하는 회사명: ${companyName}, 직무: ${jobPosition}, 전공: ${major}, 관련 경력 및 경험:${text}`;
         if (message.length === 0) return;
         addMessage("user", message);
         console.log(message);
@@ -304,11 +303,13 @@ const WriteResume = () => {
               Authorization: `Bearer ${apiKey}`,
             },
             body: JSON.stringify({
-              model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+              // model: "ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL",
+              model: "gpt-3.5-turbo",
               messages: [
                 {
                   role: "system",
-                  content: "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한글 기준 공백 포함 900~1000자 정도로 작성해주세요."
+                  content:
+                    "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 1000자 이내로 작성해주세요.",
                 },
                 {
                   role: "user",
@@ -349,8 +350,9 @@ const WriteResume = () => {
             .get("https://api.jobhakdasik.site/resume/get/myList")
             .then((res) => {
               if (res.data) {
-                if(res.data.result.major.length >0){
-                setMajor(res.data.result.major)}
+                if (res.data.result.major.length > 0) {
+                  setMajor(res.data.result.major);
+                }
                 if (
                   res.data.result.careerToFront.length > 0 ||
                   res.data.result.expToFront.length > 0
@@ -434,7 +436,7 @@ const WriteResume = () => {
               placeholder="필수) 예시: 마케팅 (Customer Marketing CRM)"
             />
           </div>
-        
+
           <div className="write_input_container">
             <label className="write_label">관련 경험 또는 경력</label>
             <div className="toggle_container">
@@ -475,16 +477,14 @@ const WriteResume = () => {
                   id="write_career_container"
                 >
                   <div className="major_container">
-                  <h4 className="add_title">전공</h4>
-                  <label className="major_label">전공학과</label>
-                  <input
-                          type="text"
-                          id="careerName"
-                          onChange={(e) =>
-                            setMajor(e.target.value)
-                          }
-                          value={major}
-                        />
+                    <h4 className="add_title">전공</h4>
+                    <label className="major_label">전공학과</label>
+                    <input
+                      type="text"
+                      id="careerName"
+                      onChange={(e) => setMajor(e.target.value)}
+                      value={major}
+                    />
                   </div>
                   <div className="write_add" onClick={addWriteCareer}>
                     +
@@ -632,7 +632,8 @@ const WriteResume = () => {
           <button
             type="submit"
             onClick={showGPTResume}
-            className="write_button_next">
+            className="write_button_next"
+          >
             다음
           </button>
           <Modal
@@ -643,11 +644,13 @@ const WriteResume = () => {
             overlayClassName="overlay"
           >
             {revision ? (
-              <GPTResume revision={revision} closeModal= {closeGPTResume}/>
+              <GPTResume revision={revision} closeModal={closeGPTResume} />
             ) : (
               <div className="loading_div">
                 <div className="loader"></div>
-                자기소개서를 작성 중 입니다.<br/>조금만 기다려주세요!
+                자기소개서를 작성 중 입니다.
+                <br />
+                조금만 기다려주세요!
               </div>
             )}
           </Modal>
