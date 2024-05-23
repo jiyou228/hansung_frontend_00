@@ -26,7 +26,6 @@ const WriteResume = () => {
   const apiEndpoint = "http://api.openai.com/v1/chat/completions";
   const navigate = useNavigate();
 
-  
   const pasteClipboard = async () => {
     try {
       const clipText = await navigator.clipboard.readText();
@@ -198,7 +197,6 @@ const WriteResume = () => {
     });
 
     const formData = new FormData();
-    formData.append("major", major);
     formData.append("careerSaveDto", careersBlob, "careerSaveDto");
     formData.append("expSaveDto", experiencesBlob, "expSaveDto");
 
@@ -267,8 +265,7 @@ const WriteResume = () => {
       } catch (e) {
         setGptModel("ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL");
       }
-    }
-    else {
+    } else {
       setGptModel("ft:gpt-3.5-turbo-1106:personal:writeresume:9RFHgltL");
     }
 
@@ -282,7 +279,7 @@ const WriteResume = () => {
       const formattedCareerText = careers
         .map(
           (career) =>
-            `- ${career.careerName}(${career.startDate} ~ ${career.endDate}): ${career.careerContent}`
+            `- ${career.major} ${career.careerName}(${career.startDate} ~ ${career.endDate}): ${career.careerContent}`
         )
         .join("\n");
       const formattedExperienceText = experiences
@@ -369,7 +366,8 @@ const WriteResume = () => {
               messages: [
                 {
                   role: "system",
-                  content: "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한글 기준 공백 포함 900~1000자 정도로 작성해주세요."
+                  content:
+                    "당신은 전문 취업용 이력서에 들어갈 글 형식의 자기소개서 작성기입니다. 많은 기업들의 자기소개서를 검토했고 취업준비생에게 첨삭을 해주며 더 좋은 자기소개서를 만들 수 있도록 도와줍니다. 명확하고 구체적으로 내용을 꾸며 자기소개서를 꾸며주세요. 한글 기준 공백 포함 900~1000자 정도로 작성해주세요.",
                 },
                 // {
                 //   role: "user",
@@ -503,7 +501,7 @@ const WriteResume = () => {
               placeholder="필수) 예시: 마케팅 (Customer Marketing CRM)"
             />
           </div>
-        
+
           <div className="write_input_container">
             <label className="write_label">관련 경험 또는 경력</label>
             <div className="toggle_container">
@@ -544,16 +542,14 @@ const WriteResume = () => {
                   id="write_career_container"
                 >
                   <div className="major_container">
-                  <h4 className="add_title">전공</h4>
-                  <label className="major_label">전공학과</label>
-                  <input
-                          type="text"
-                          id="careerName"
-                          onChange={(e) =>
-                            setMajor(e.target.value)
-                          }
-                          value={major}
-                        />
+                    <h4 className="add_title">전공</h4>
+                    <label className="major_label">전공학과</label>
+                    <input
+                      type="text"
+                      id="major"
+                      onChange={(e) => setMajor(e.target.value)}
+                      value={careers[index].major}
+                    />
                   </div>
                   <div className="write_add" onClick={addWriteCareer}>
                     +
@@ -718,7 +714,8 @@ const WriteResume = () => {
           <button
             type="submit"
             onClick={showGPTResume}
-            className="write_button_next">
+            className="write_button_next"
+          >
             다음
           </button>
           <Modal
@@ -729,11 +726,13 @@ const WriteResume = () => {
             overlayClassName="overlay"
           >
             {revision ? (
-              <GPTResume revision={revision} closeModal= {closeGPTResume}/>
+              <GPTResume revision={revision} closeModal={closeGPTResume} />
             ) : (
               <div className="loading_div">
                 <div className="loader"></div>
-                자기소개서를 작성 중 입니다.<br/>조금만 기다려주세요!
+                자기소개서를 작성 중 입니다.
+                <br />
+                조금만 기다려주세요!
               </div>
             )}
           </Modal>
