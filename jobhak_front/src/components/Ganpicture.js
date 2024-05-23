@@ -11,7 +11,7 @@ function Ganpicture() {
   useEffect(() => {
     // localStorage에서 uploadFile 값들을 가져오는 함수
     const imageLinksFromLocalStorage = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       const uploadFile = localStorage.getItem(`uploadFile${i}`);
       if (uploadFile) {
         imageLinksFromLocalStorage.push(uploadFile);
@@ -23,7 +23,7 @@ function Ganpicture() {
 
   const deleteItems = () => {
     // localStorage에서 uploadFile 값들을 삭제하는 함수
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       localStorage.removeItem(`uploadFile${i}`);
     }
     navigate("/profile/male");
