@@ -129,7 +129,7 @@ const Profile = () => {
       })
       .then((res) => {
         console.log(res);
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 4; i++) {
           console.log(res.data[i].UploadedFilePath);
           localStorage.setItem(`uploadFile${i}`, res.data[i].UploadedFilePath);
         }
