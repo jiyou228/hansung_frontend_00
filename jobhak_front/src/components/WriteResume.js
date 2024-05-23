@@ -85,6 +85,7 @@ const WriteResume = () => {
   useEffect(() => {
     setCareers([
       {
+        major: "",
         careerName: "",
         startDate: "",
         endDate: "",
@@ -542,22 +543,18 @@ const WriteResume = () => {
                   className="write_career_container"
                   id="write_career_container"
                 >
-                  <div className="major_container">
-                    <h4 className="add_title">전공</h4>
-                    <label className="major_label">전공학과</label>
-                    <input
-                      type="text"
-                      id="major"
-                      onChange={(e) => setMajor(e.target.value)}
-                      value={careers[index].major}
-                    />
-                  </div>
-                  <div className="write_add" onClick={addWriteCareer}>
-                    +
-                  </div>
-                  <h4 className="add_title">경력</h4>
                   {careers.map((_, index) => (
                     <div key={index} className="write_career">
+                      <label className="major_label">전공학과</label>
+                      <input
+                        type="text"
+                        id="major"
+                        onChange={(e) =>
+                          handleTextareaChange("careers", index, e)
+                        }
+                        value={careers[index].major}
+                      />
+                      <h4 className="add_title">경력</h4>
                       <div className="career_three">
                         <label>회사명</label>
                         <input
