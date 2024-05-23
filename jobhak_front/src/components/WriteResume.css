@@ -345,6 +345,14 @@
   font-size: 1rem;
   padding: 0.2rem 0;
 }
+
+.major_ip {
+  margin-left: 1rem;
+  font-size: 1rem;
+  padding: 0.2rem 0;
+  width: 15rem;
+}
+
 .write_career_container label {
   margin-left: 1rem;
   white-space: nowrap;
@@ -362,11 +370,11 @@
   margin-left: 1rem;
   white-space: nowrap;
 }
-.write_experience_container label:first-child{
+.write_experience_container label:first-child {
   margin-left: 0;
 }
-.major_label{
-  margin-left: 0!important;
+.major_label {
+  margin-left: 0 !important;
 }
 .write_delete.active {
   display: none;
@@ -389,7 +397,8 @@
   width: fit-content;
   cursor: pointer;
 }
-.write_getMyInfo:hover, .write_saveMyInfo:hover {
+.write_getMyInfo:hover,
+.write_saveMyInfo:hover {
   font-weight: 800;
 }
 
@@ -406,7 +415,6 @@
   cursor: pointer;
 }
 
-
 .loading_div {
   font-size: 2em;
   font-weight: 600;
@@ -417,7 +425,7 @@
   text-align: center;
 }
 
-.write_app{
+.write_app {
   font-size: 18px;
 }
 @media (max-width: 768px) {
@@ -468,7 +476,8 @@
   .write_career_container {
     margin-top: 5vh;
   }
-  .write_career_container label, .major_label {
+  .write_career_container label,
+  .major_label {
     margin: 0;
     font-weight: 600;
   }
@@ -570,8 +579,7 @@
   .write_InfoBox {
     display: flex;
     white-space: nowrap;
-    justify-content:center;
-
+    justify-content: center;
   }
   .write_getMyInfo,
   .write_saveMyInfo {
@@ -581,7 +589,7 @@
     font-size: 0.9em;
     box-sizing: border-box;
   }
-  .major_container{
+  .major_container {
     flex-direction: column;
     display: flex;
     row-gap: 1vh;

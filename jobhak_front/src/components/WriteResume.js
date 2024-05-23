@@ -547,15 +547,18 @@ const WriteResume = () => {
                     <h4 className="add_title">전공</h4>
                     {careers.map((_, index) => (
                       <div key={index} className="write_career">
-                        <label className="major_label">전공학과</label>
-                        <input
-                          type="text"
-                          id="major"
-                          onChange={(e) =>
-                            handleTextareaChange("careers", index, e)
-                          }
-                          value={careers[index].major}
-                        />
+                        <label className="major_label">
+                          전공학과
+                          <input
+                            className="major_ip"
+                            type="text"
+                            id="major"
+                            onChange={(e) =>
+                              handleTextareaChange("careers", index, e)
+                            }
+                            value={careers[index].major}
+                          />
+                        </label>
                         <h4 className="add_title">경력</h4>
                         <div className="career_three">
                           <label>회사명</label>
