@@ -236,10 +236,7 @@ const MaleProfile = () => {
         <div className="female_choose_option">
           <label className="choose_option_lb">머리 스타일</label>
           <br />
-          <label>
-            ※ 스타일을 참고하여 만들어지는 것 뿐 100% 동일한 결과가 나오지는
-            않습니다.
-          </label>
+          <label>※ 단순 스타일 참고용 입니다.</label>
           <div className="choose_option_div">
             <div style={{ display: "flex", gap: "2vw" }}>
               <div className="female_hairBox">
