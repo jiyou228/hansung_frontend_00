@@ -543,74 +543,77 @@ const WriteResume = () => {
                   className="write_career_container"
                   id="write_career_container"
                 >
-                  {careers.map((_, index) => (
-                    <div key={index} className="write_career">
-                      <label className="major_label">전공학과</label>
-                      <input
-                        type="text"
-                        id="major"
-                        onChange={(e) =>
-                          handleTextareaChange("careers", index, e)
-                        }
-                        value={careers[index].major}
-                      />
-                      <h4 className="add_title">경력</h4>
-                      <div className="career_three">
-                        <label>회사명</label>
+                  <div className="major_container">
+                    <h4 className="add_title">전공</h4>
+                    {careers.map((_, index) => (
+                      <div key={index} className="write_career">
+                        <label className="major_label">전공학과</label>
                         <input
                           type="text"
-                          id="careerName"
+                          id="major"
                           onChange={(e) =>
                             handleTextareaChange("careers", index, e)
                           }
-                          value={careers[index].careerName}
+                          value={careers[index].major}
                         />
-                        <label>입사</label>
-                        <input
-                          type="month"
-                          id="startDate"
-                          onChange={(e) =>
-                            handleTextareaChange("careers", index, e)
-                          }
-                          value={careers[index].startDate}
-                        />
-                        <label>퇴사</label>
-                        <input
-                          type="month"
-                          id="endDate"
-                          onChange={(e) =>
-                            handleTextareaChange("careers", index, e)
-                          }
-                          value={careers[index].endDate}
-                        />
+                        <h4 className="add_title">경력</h4>
+                        <div className="career_three">
+                          <label>회사명</label>
+                          <input
+                            type="text"
+                            id="careerName"
+                            onChange={(e) =>
+                              handleTextareaChange("careers", index, e)
+                            }
+                            value={careers[index].careerName}
+                          />
+                          <label>입사</label>
+                          <input
+                            type="month"
+                            id="startDate"
+                            onChange={(e) =>
+                              handleTextareaChange("careers", index, e)
+                            }
+                            value={careers[index].startDate}
+                          />
+                          <label>퇴사</label>
+                          <input
+                            type="month"
+                            id="endDate"
+                            onChange={(e) =>
+                              handleTextareaChange("careers", index, e)
+                            }
+                            value={careers[index].endDate}
+                          />
+                          <button
+                            type="button"
+                            className="write_delete"
+                            onClick={() => handleDeleteCareer(index)}
+                          >
+                            삭제
+                          </button>
+                        </div>
+                        <div className="career_long">
+                          <label>업무내용 및 성과</label>
+                          <input
+                            type="text"
+                            id="careerContent"
+                            onChange={(e) =>
+                              handleTextareaChange("careers", index, e)
+                            }
+                            value={careers[index].careerContent}
+                          />
+                        </div>
                         <button
                           type="button"
-                          className="write_delete"
+                          className="write_delete active"
                           onClick={() => handleDeleteCareer(index)}
                         >
                           삭제
                         </button>
                       </div>
-                      <div className="career_long">
-                        <label>업무내용 및 성과</label>
-                        <input
-                          type="text"
-                          id="careerContent"
-                          onChange={(e) =>
-                            handleTextareaChange("careers", index, e)
-                          }
-                          value={careers[index].careerContent}
-                        />
-                      </div>
-                      <button
-                        type="button"
-                        className="write_delete active"
-                        onClick={() => handleDeleteCareer(index)}
-                      >
-                        삭제
-                      </button>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
                 <div
