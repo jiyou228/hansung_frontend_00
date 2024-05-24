@@ -26,7 +26,7 @@ function Ganpicture() {
     for (let i = 0; i < 2; i++) {
       localStorage.removeItem(`uploadFile${i}`);
     }
-    navigate("/profile/male");
+    navigate("/profile/female");
   };
 
   // 이미지 다운로드 함수
