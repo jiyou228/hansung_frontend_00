@@ -238,7 +238,7 @@ const MaleProfile = () => {
         <div className="female_choose_option">
           <label className="choose_option_lb">머리 스타일</label>
           <br />
-          <label>※ 단순 스타일 참고용 입니다.</label>
+          <h4>※ 단순 스타일 참고용 입니다.</h4>
           <div className="choose_option_div">
             <div style={{ display: "flex", gap: "2vw" }}>
               <div className="female_hairBox">
@@ -270,7 +270,7 @@ const MaleProfile = () => {
           <hr />
           <div className="choose_option_div2">
             <div>
-              <div className="blur_option_lb">얼굴 효과</div>
+              <div className="blur_option_lb">블러 효과</div>
               <div
                 style={{
                   display: "flex",

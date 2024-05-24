@@ -84,7 +84,7 @@ const Home = () => {
   }, []);
 
   useEffect(()=>{
-    const timer = setTimeout(goBottom, 4000);
+    const timer = setTimeout(goBottom, 4500);
     return () => clearTimeout(timer);
   },[]);
   const goBottom = () => {

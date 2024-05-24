@@ -284,7 +284,7 @@ const Profile = () => {
           <hr style={{ marginBottom: "1rem" }} />
           <div className="choose_option_div2">
             <div>
-              <div className="blur_option_lb">얼굴 효과</div>
+              <div className="blur_option_lb">블러 효과</div>
               <div
                 style={{
                   display: "flex",
