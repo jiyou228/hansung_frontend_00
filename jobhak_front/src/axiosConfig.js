@@ -10,7 +10,7 @@ const instance = axios.create({
 // 토큰 재발급 함수
 const refreshToken = async () => {
   try {
-    const response = await axios.post("/reissue");
+    const response = await instance.post("https://api.jobhakdasik.site/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
