@@ -20,12 +20,13 @@ const Logout = () => {
         removeCookie("nickname", { path: "/" });
         removeCookie("MyIMG", { path: "/" });
         removeCookie("provider", { path: "/" });
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("revision");
+
         removeCookie("refreshToken", { path: "/" , domain: '.jobhakdasik.site'});
         alert("로그아웃이 완료되었습니다.");
-
         console.log("쿠키 삭제 완료");
+        
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("revision");
         // 로그아웃 후 홈페이지로 이동
         navigate("/");
       })
