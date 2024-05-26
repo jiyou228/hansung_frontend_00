@@ -10,7 +10,7 @@ const instance = axios.create({
 // 토큰 재발급 함수
 const refreshToken = async () => {
   try {
-    const response = await instance.post("/reissue");
+    const response = await instance.post("https://api.jobhakdasik.site/reissue");
     const { accessToken } = response.data;
     localStorage.setItem("accessToken", accessToken);
     console.log("토큰 재발급 성공");
@@ -51,7 +51,7 @@ instance.interceptors.response.use(
           try {
             const accessToken = await refreshToken();
             error.config.headers.Authorization = `Bearer ${accessToken}`;
-            return axios.request(error.config);
+            return instance.request(error.config);
           } catch (refreshError) {
             console.error("토큰 재발급 에러", refreshError);
             window.location.href = "/logout";

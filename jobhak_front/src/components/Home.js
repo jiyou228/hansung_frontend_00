@@ -83,10 +83,12 @@ const Home = () => {
       });
   }, []);
 
-  useEffect(()=>{
-    const timer = setTimeout(goBottom, 4500);
-    return () => clearTimeout(timer);
-  },[]);
+  useEffect(() => {
+    if (window.innerWidth >= 768) {
+      const timer = setTimeout(goBottom, 4500);
+      return () => clearTimeout(timer);
+    }
+  }, []);
   const goBottom = () => {
     if (document.getElementById("home_content")) {
       document

@@ -308,7 +308,7 @@ const Profile = () => {
           </div>
           <hr />
           <label className="choose_option_lb">배경 색상</label>
-          <div className="choose_option_div">
+          <div className="choose_background_div">
             <button
               type="button"
               className={`background_btn ${

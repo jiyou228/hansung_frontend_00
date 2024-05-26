@@ -137,6 +137,14 @@
   margin-top: 2vh;
 
 }
+.choose_background_div{
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  margin-top: 2vh;
+}
 .choose_option_div2{
   margin-top: 2vh;
   flex-direction: column;
@@ -234,6 +242,11 @@
   .image_loading img{
     width: 70vw;
     padding: 5vh 5vw;
+  }
+  .choose_background_div{
+    display: block;
+    padding: 0 1vw;
+    padding-bottom: 5vh;
   }
 
 }
