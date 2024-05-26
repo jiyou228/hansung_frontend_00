@@ -12,6 +12,7 @@ const AboutGAN = () =>{
         <>
             <Nav/>
             <div className="aboutGAN_app">
+                <h2>GAN이란?</h2>
             <Swiper
                 navigation ={true}
                 slidesPerView={1}
