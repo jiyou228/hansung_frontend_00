@@ -1,4 +1,4 @@
-.swiper-slide-img{
+.swiper-container .swiper-slide-img{
     width: 30vw;
     border-radius: 10px;
     border: 1px solid #0000001a;
@@ -8,6 +8,6 @@
     background-color: white;
 }
 
-.swiper-scrollbar-drag{
+.swiper-container .swiper-scrollbar-drag{
     background-color: #2B64B5!important;
 }

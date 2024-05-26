@@ -37,6 +37,7 @@ import AboutUs from "./components/AboutUs";
 import Ganpicture from "./components/Ganpicture";
 import MemoryGame from "./components/MemoryGame";
 import Dalle from "./components/dalle";
+import AboutGAN from "./components/AboutGAN";
 
 function App() {
   return (
@@ -55,6 +56,8 @@ function App() {
           <Route path="/find/id" element={<FindID />}></Route>
           <Route path="/find/pw" element={<FindPW />}></Route>
           <Route path="/aboutUs" element={<AboutUs />} />
+          <Route path="/aboutGAN" element={<AboutGAN />} />
+
           <Route
             path="/login/kakao/changeName"
             element={<ChangeName />}
