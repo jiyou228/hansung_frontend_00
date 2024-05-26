@@ -21,6 +21,7 @@ import ChangePW from "./components/ChangePW";
 import Delete from "./components/Delete";
 import Grammar from "./components/Grammar";
 import BoardWrite from "./components/BoardWrite";
+import BoardEdit from "./components/BoardEdit";
 import Mypicture from "./components/Mypicture";
 import Bookmark from "./components/Bookmark";
 import BoardDetail from "./components/BoardDetail";
@@ -134,7 +135,7 @@ function App() {
 
           <Route
             path="/boardlist/edit/:postId"
-            element={<PrivateRoute element={BoardDetail} />}
+            element={<PrivateRoute element={BoardEdit} />}
           />
           <Route
             path="/boardlist/detail/:postId"
