@@ -339,6 +339,9 @@
   .home_head {
     display: none;
   }
+  .home_headTitle{
+    display: none;
+  }
   .home .swiper-slide-img {
     width: 30vw;
     margin-top: 2vh;
