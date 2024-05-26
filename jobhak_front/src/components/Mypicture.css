@@ -23,7 +23,8 @@
 
 @media only screen and (max-width: 768px) {
   .savepicture_container {
-    width: 21.5rem;
+    box-sizing: border-box;
+    width: 85vw;
   }
   .save_picture {
     width: 5rem;

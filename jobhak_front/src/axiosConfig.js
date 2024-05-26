@@ -59,6 +59,7 @@ instance.interceptors.response.use(
           }
         } else if (data.code === 1004) {
           window.location.href = "/logout";
+          console.error("1004!!!");
         }
       } else {
         if (data.code !== 1004) {
