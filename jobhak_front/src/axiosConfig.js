@@ -51,7 +51,7 @@ instance.interceptors.response.use(
           try {
             const accessToken = await refreshToken();
             error.config.headers.Authorization = `Bearer ${accessToken}`;
-            return axios.request(error.config);
+            return instance.request(error.config);
           } catch (refreshError) {
             console.error("토큰 재발급 에러", refreshError);
             window.location.href = "/logout";
