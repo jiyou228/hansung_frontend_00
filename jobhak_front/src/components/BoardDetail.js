@@ -88,21 +88,21 @@ function BoardDetail() {
   };
 
   const handleEditClick = (replyId, parentReplyId) => {
-    var title = "";
+    var swaltitle = "";
     var message = "";
     if (replyId === undefined && parentReplyId === undefined) {
-      title = "게시물 수정";
+      swaltitle = "게시물 수정";
       message = "게시물을 수정하시겠습니까?";
     } else if (parentReplyId === undefined) {
-      title = "댓글 수정";
+      swaltitle = "댓글 수정";
       message = "댓글을 수정하시겠습니까?";
     } else {
-      title = "답글 수정";
+      swaltitle = "답글 수정";
       message = "답글을 수정하시겠습니까?";
     }
     Swal.fire({
       icon: "question",
-      title: title,
+      title: swaltitle,
       text: message,
       width: 800,
       height: 100,

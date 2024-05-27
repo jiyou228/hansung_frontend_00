@@ -1,6 +1,6 @@
 import Nav from "./Nav";
 import React, { useState } from "react";
-import "./BoardWrite.css";
+import "./BoardEdit.css";
 import Swal from "sweetalert2";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -122,14 +122,12 @@ function BoardEdit() {
           <input type="file" name="image" accept="image/*" multiple />
         </label>
       </div>
-      <div className="boardwrite_button">
-        <button className="Bcancel_btn" onClick={handleCancel}>
-          취소
-        </button>
-        <button className="Bsave_btn" onClick={handleEditClick}>
-          수정
-        </button>
-      </div>
+      <button className="Bcancel_btn" onClick={handleCancel}>
+        취소
+      </button>
+      <button className="Bsave_btn" onClick={handleEditClick}>
+        수정
+      </button>
     </div>
   );
 }
