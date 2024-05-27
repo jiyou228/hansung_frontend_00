@@ -1,0 +1,17 @@
+.stargan_app{
+    text-align: center;
+}
+.stargan_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stargan_app h1{
+    font-size: 3vw;
+    margin-top: 5vh;
+    margin-bottom: 0;
+    font-weight: 700;
+}
+.stargan_app img{
+    max-width: 90vw;
+}
