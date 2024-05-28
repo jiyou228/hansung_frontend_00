@@ -32,7 +32,8 @@
 ### OAuth2를 사용한 소셜 로그인
 <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlC_kMLlL1cuwqSiYidzQkcko84d8WX-UQuw&s"/>
 
-![화면 기록 2024-05-21 오후 1 48 12](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/bd6c6990-828f-406d-a674-b877662abeee)
+![social](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/ffd533a6-65cb-4992-8880-07d65d0b25b6)
+
 
 
 
@@ -51,10 +52,16 @@
 
 # Function
 <label for="name" style="color: #0099ff; font-size: 22px; text-align: center; display: block;"> **Chat GPT를 이용한 자기소개서 생성 및 첨삭** </label><br>
-![화면 기록 2024-05-21 오후 12 (1)](https://github.com/jiyou228/hansung_frontend_00/assets/92305322/91818adb-b50f-48cc-be0c-d8e930f54b0a)
+
+![자기소개서](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/db65cf90-8b55-466d-b986-32f5856402fd)
+
 
 <label for="name" style="color: #0099ff; font-size: 22px; text-align: center; display: block;"> **Star GAN을 이용한 사진 합성** </label><br>
-![image](https://github.com/JinjinBread/CAPSTONE_04_1/assets/108333554/9c806f63-3d21-4912-9d42-bf09e90cb4b9)<br>
+
+![gan](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/59aa35c0-33a7-4ff9-b420-de4cbc2eab87)
+
+![minji](https://github.com/jiyou228/hansung_frontend_00/assets/143888533/26c0bb03-a357-4325-9a99-ed24482fd0bf)
+
 
 ## Dependencies
 * [Python 3.5+](https://www.continuum.io/downloads)
