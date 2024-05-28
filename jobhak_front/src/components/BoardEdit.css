@@ -1,0 +1,19 @@
+.Bcancel_btn,
+.Bsave_btn {
+  border: none;
+  padding: 1vh 3vw;
+  font-size: large;
+  border-radius: 5px;
+  font-weight: 700;
+}
+.Bcancel_btn:hover {
+  color: #777a7f;
+}
+
+.Bsave_btn {
+  background-color: #104085;
+  color: white;
+}
+.Bsave_btn:hover {
+  color: #c0d8ff;
+}

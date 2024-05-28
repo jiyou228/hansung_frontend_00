@@ -122,12 +122,14 @@ function BoardEdit() {
           <input type="file" name="image" accept="image/*" multiple />
         </label>
       </div>
-      <button className="Bcancel_btn" onClick={handleCancel}>
-        취소
-      </button>
-      <button className="Bsave_btn" onClick={handleEditClick}>
-        수정
-      </button>
+      <div className="boardwrite_button">
+        <button className="Bcancel_btn" onClick={handleCancel}>
+          취소
+        </button>
+        <button className="Bsave_btn" onClick={handleEditClick}>
+          수정
+        </button>
+      </div>
     </div>
   );
 }
