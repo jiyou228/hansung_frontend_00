@@ -389,7 +389,7 @@ const MaleProfile = () => {
           </div>
         </div>
       </div>
-      {!show &&
+      {show &&
       (<div className="image_loadingBox">
       <div className="image_loading">
         <div className="loader"></div>
