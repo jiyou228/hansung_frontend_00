@@ -69,6 +69,12 @@ const Nav = () => {
             <Link to="/profile/male" className="navbar_link">
               <li>남성</li>
             </Link>
+            <Link to ='/aboutGAN' className="navbar_link">
+              <li>GAN</li>
+            </Link>
+            <Link to ='/aboutStarGAN' className="navbar_link">
+              <li>StarGAN</li>
+            </Link>
           </ul>
         </li>
 

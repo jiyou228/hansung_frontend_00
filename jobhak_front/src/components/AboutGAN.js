@@ -6,13 +6,16 @@ import gan3 from '../assets/gan3.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './AboutGAN.css';
 import 'swiper/swiper-bundle.css';
+import { useNavigate } from "react-router-dom";
 SwiperCore.use([Navigation]);
 const AboutGAN = () =>{
+    const navigate = useNavigate();
     return(
         <>
             <Nav/>
             <div className="aboutGAN_app">
                 <h2>GAN이란?</h2>
+                <div className="aboutGAN_link" onClick={() => navigate('/aboutStarGAN')}>StarGAN으로 이동</div>
             <Swiper
                 navigation ={true}
                 slidesPerView={1}

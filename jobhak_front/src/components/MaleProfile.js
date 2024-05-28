@@ -17,7 +17,7 @@ import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
 import defaultimg from "../assets/profileExample.png";
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 import Slider from "react-slick";
@@ -389,7 +389,7 @@ const MaleProfile = () => {
           </div>
         </div>
       </div>
-      {show &&
+      {!show &&
       (<div className="image_loadingBox">
       <div className="image_loading">
         <div className="loader"></div>
@@ -397,6 +397,11 @@ const MaleProfile = () => {
           사진이 합성 중입니다. 잠시만 기다려주세요.
         </div>
         <img src={video}/>
+        <div className="profile_button">
+        <Link to = '/aboutGAN' target="_blank">
+          GAN이란?
+          </Link>
+        </div>
       </div>
       </div>
       )}

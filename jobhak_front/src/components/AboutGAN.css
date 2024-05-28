@@ -11,3 +11,14 @@
     font-size: 3vw;
     margin-bottom: 0;
 }
+.aboutGAN_link{
+    text-align: center;
+    margin-top: 3vh;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 5vh;
+}
+.aboutGAN_link:hover{
+    font-weight: 800;
+}
