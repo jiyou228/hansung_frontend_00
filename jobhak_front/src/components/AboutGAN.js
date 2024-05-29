@@ -1,7 +1,7 @@
 import Nav from "./Nav";
 import SwiperCore, {Navigation } from 'swiper';
-import gan1 from '../assets/gan1.png';
-import gan2 from '../assets/gan2.png';
+import gan1 from '../assets/gan2.png';
+import gan2 from '../assets/gan1.png';
 import gan3 from '../assets/gan3.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import './AboutGAN.css';
