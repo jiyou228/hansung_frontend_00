@@ -46,13 +46,16 @@
 .female_choose_option hr{
   margin-bottom: 3vh;
 }
-.img_choice_btn,
-.img_guide_btn {
+.img_choice_btn{
   background-color: #104085;
 }
-
+.img_guide_btn{
+  background-color: #cce0fc;
+  font-weight: 800;
+  color: #104085;
+}
 .img_gan_btn {
-  background-color: #4566dd;
+  background-color: #73a1e1;
 }
 
 .female_guide_container {
