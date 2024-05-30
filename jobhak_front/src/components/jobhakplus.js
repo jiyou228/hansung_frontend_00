@@ -175,11 +175,20 @@ const Jobhakplus = () => {
       };
       reader.readAsDataURL(droppedFile);
       setFile(droppedFile);
+      setCanvasBackgroundImageSrc("");
+      clearCanvas();
+      setResultImg("");
     }
   };
 
   const handleDragOver = (event) => {
     event.preventDefault();
+  };
+
+  const clearCanvas = () => {
+    setPaths([]);
+    setCurrentPath([]);
+    setResultImg("");
   };
 
   const startDrawing = ({ nativeEvent }) => {
@@ -203,12 +212,6 @@ const Jobhakplus = () => {
     const newPaths = [...paths, { color: lineColor, points: currentPath }];
     setPaths(newPaths);
     setCurrentPath([]);
-  };
-
-  const clearCanvas = () => {
-    setPaths([]);
-    setCurrentPath([]);
-    setResultImg("");
   };
 
   const fillCanvas = () => {
