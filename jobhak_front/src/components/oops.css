@@ -1,0 +1,35 @@
+.oops_app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+}
+
+.oops_app img{
+    width: 15em;
+    margin-top: 3em;
+    margin-bottom: 5vh;
+}
+.oops_app h1{
+    font-weight: 800;
+}
+.oops_app button{
+    border: none;
+    background-color: #104085;
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-size: 1.2em;
+    margin-top: 5vh;
+    font-weight: 700;
+}
+.oops_app button:hover{
+    font-weight: 800;
+}
+@media(max-width: 768px){
+    .oops_app{
+        font-size: 14px;
+    }
+}

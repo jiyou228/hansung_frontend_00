@@ -136,6 +136,7 @@ const MaleProfile = () => {
       })
       .catch((err) => {
         console.error(err);
+        navigate('/oops');
       });
   };
 
