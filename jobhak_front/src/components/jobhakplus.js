@@ -326,39 +326,60 @@ const Jobhakplus = () => {
           />
 
           <div className="color-buttons">
-            <button
-              className="color-button"
-              onClick={() => setLineColor("#000000")}
-            >
-              <img src={blackpaint} className="black_paint" alt="검정" />
-            </button>
-
-            <button
-              className="color-button"
-              onClick={() => setLineColor("#0000CC")}
-            >
-              <img src={bluepaint} className="blue_paint" alt="파랑" />
-            </button>
-
-            <button
-              className="color-button"
-              onClick={() => setLineColor("#CC0000")}
-            >
-              <img src={redpaint} className="red_paint" alt="빨강" />
-            </button>
-
-            <button
-              className="color-button"
-              onClick={() => setLineColor("#00CC00")}
-            >
-              <img src={greenpaint} className="green_paint" alt="초록" />
-            </button>
-            <button className="clear-button" onClick={clearCanvas}>
-              <img src={clearpaints} className="clear_paint" alt="초기화" />
-            </button>
-            <button className="fill-button" onClick={fillCanvas}>
-              <img src={fillpaint} className="fill_paint" alt="채우기" />
-            </button>
+            <div>
+              <button
+                className="color-button"
+                onClick={() => setLineColor("#000000")}
+              >
+                <img src={blackpaint} className="black_paint" alt="검정" />
+              </button>
+              <br />
+              <label>배경</label>
+            </div>
+            <div>
+              <button
+                className="color-button"
+                onClick={() => setLineColor("#0000CC")}
+              >
+                <img src={bluepaint} className="blue_paint" alt="파랑" />
+              </button>
+              <br />
+              <label>머리</label>
+            </div>
+            <div>
+              <button
+                className="color-button"
+                onClick={() => setLineColor("#CC0000")}
+              >
+                <img src={redpaint} className="red_paint" alt="빨강" />
+              </button>
+              <br />
+              <label>피부</label>
+            </div>
+            <div>
+              <button
+                className="color-button"
+                onClick={() => setLineColor("#00CC00")}
+              >
+                <img src={greenpaint} className="green_paint" alt="초록" />
+              </button>
+              <br />
+              <label>의상</label>
+            </div>
+            <div>
+              <button className="clear-button" onClick={clearCanvas}>
+                <img src={clearpaints} className="clear_paint" alt="초기화" />
+              </button>
+              <br />
+              <label>초기화</label>
+            </div>
+            <div>
+              <button className="fill-button" onClick={fillCanvas}>
+                <img src={fillpaint} className="fill_paint" alt="채우기" />
+              </button>
+              <br />
+              <label>채우기</label>
+            </div>
           </div>
         </div>
 
