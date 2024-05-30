@@ -162,6 +162,7 @@ const Jobhakplus = () => {
       setCanvasBackgroundImageSrc("");
       clearCanvas();
       setResultImg("");
+      setPreviewImageSrc("");
     }
   };
 
