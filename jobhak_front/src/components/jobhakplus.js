@@ -111,7 +111,7 @@ const Jobhakplus = () => {
     console.log(fileExtension);
 
     axios
-      .post("http://localhost:123000/plus/image", formData, {
+      .post("http://localhost:12300/plus/image", formData, {
         responseType: "blob",
       })
       .then((res) => {
@@ -139,7 +139,7 @@ const Jobhakplus = () => {
       formData.append("extension", fileExtension);
 
       axios
-        .post("http://localhost:123000/plus/generate", formData, {
+        .post("http://localhost:12300/plus/generate", formData, {
           responseType: "blob",
         })
         .then((res) => {
@@ -165,22 +165,22 @@ const Jobhakplus = () => {
     }
   };
 
-  // const handleDrop = (event) => {
-  //   event.preventDefault();
-  //   const droppedFile = event.dataTransfer.files[0];
-  //   if (droppedFile) {
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       setPreviewImageSrc(e.target.result);
-  //     };
-  //     reader.readAsDataURL(droppedFile);
-  //     setFile(droppedFile);
-  //   }
-  // };
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const droppedFile = event.dataTransfer.files[0];
+    if (droppedFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setPreviewImageSrc(e.target.result);
+      };
+      reader.readAsDataURL(droppedFile);
+      setFile(droppedFile);
+    }
+  };
 
-  // const handleDragOver = (event) => {
-  //   event.preventDefault();
-  // };
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
