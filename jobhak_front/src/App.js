@@ -40,6 +40,7 @@ import Dalle from "./components/dalle";
 import AboutGAN from "./components/AboutGAN";
 import AboutStarGAN from "./components/AboutStarGAN";
 import Jobhakplus from "./components/jobhakplus";
+import Oops from "./components/oops";
 
 function App() {
   return (
@@ -60,7 +61,7 @@ function App() {
           <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/aboutGAN" element={<AboutGAN />} />
           <Route path="/aboutStarGAN" element={<AboutStarGAN />} />
-
+          <Route path="/oops" element={<Oops/>}/>
           <Route
             path="/login/kakao/changeName"
             element={<ChangeName />}
