@@ -5,7 +5,7 @@ import logo from "../assets/white_logo.png";
 import burger from "../assets/햄버거.png";
 import close from "../assets/close.png";
 import login from "../assets/login_icon.png";
-import mobile from '../assets/mobile_logo.png';
+import mobile from "../assets/mobile_logo.png";
 
 const Nav = () => {
   const [isNavOpen, setNavOpen] = useState(false);
@@ -39,8 +39,8 @@ const Nav = () => {
     };
   }, [isProfile]);
   const goHome = () => {
-    navigate('/home');
-  }
+    navigate("/home");
+  };
 
   return (
     <header className="navbar_app">
@@ -50,11 +50,17 @@ const Nav = () => {
         className="burger"
         onClick={openNav}
       />
-      <img src={mobile} className="mobile_logo" alt="모바일 로고" onClick={goHome}/>
+      <img
+        src={mobile}
+        className="mobile_logo"
+        alt="모바일 로고"
+        onClick={goHome}
+      />
 
       <Link to="/home" className="navbar_link">
         <img src={logo} alt="jobhakdasik_logo" className="logo_half" />
       </Link>
+
       <ul className={`nav_mobile ${isNavOpen ? "open" : ""}`}>
         <li
           className="navbar_profile_name"
@@ -69,15 +75,17 @@ const Nav = () => {
             <Link to="/profile/male" className="navbar_link">
               <li>남성</li>
             </Link>
-            <Link to ='/aboutGAN' className="navbar_link">
+            <Link to="/aboutGAN" className="navbar_link">
               <li>GAN</li>
             </Link>
-            <Link to ='/aboutStarGAN' className="navbar_link">
+            <Link to="/aboutStarGAN" className="navbar_link">
               <li>StarGAN</li>
             </Link>
           </ul>
         </li>
-
+        <Link to="/jobhak/plus" className="navbar_link">
+          <li>잡학다식+</li>
+        </Link>
         <Link to="/resume/write" className="navbar_link">
           <li>자기소개서</li>
         </Link>
@@ -91,7 +99,6 @@ const Nav = () => {
           <li className="navbar_logout">로그아웃</li>
         </Link>
       </ul>
-      
     </header>
   );
 };

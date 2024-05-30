@@ -39,6 +39,7 @@ import MemoryGame from "./components/MemoryGame";
 import Dalle from "./components/dalle";
 import AboutGAN from "./components/AboutGAN";
 import AboutStarGAN from "./components/AboutStarGAN";
+import Jobhakplus from "./components/jobhakplus";
 
 function App() {
   return (
@@ -82,7 +83,10 @@ function App() {
             path="/profile/male"
             element={<PrivateRoute element={MaleProfile} />}
           ></Route>
-
+          <Route
+            path="/jobhak/plus"
+            element={<PrivateRoute element={Jobhakplus} />}
+          ></Route>
           <Route
             path="/profile/save"
             element={<PrivateRoute element={Ganpicture} />}
