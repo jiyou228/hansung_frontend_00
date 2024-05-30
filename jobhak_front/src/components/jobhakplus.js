@@ -208,6 +208,7 @@ const Jobhakplus = () => {
   const clearCanvas = () => {
     setPaths([]);
     setCurrentPath([]);
+    setResultImg("");
   };
 
   const fillCanvas = () => {
