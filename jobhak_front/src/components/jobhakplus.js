@@ -165,22 +165,22 @@ const Jobhakplus = () => {
     }
   };
 
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const droppedFile = event.dataTransfer.files[0];
-    if (droppedFile) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setPreviewImageSrc(e.target.result);
-      };
-      reader.readAsDataURL(droppedFile);
-      setFile(droppedFile);
-    }
-  };
+  // const handleDrop = (event) => {
+  //   event.preventDefault();
+  //   const droppedFile = event.dataTransfer.files[0];
+  //   if (droppedFile) {
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       setPreviewImageSrc(e.target.result);
+  //     };
+  //     reader.readAsDataURL(droppedFile);
+  //     setFile(droppedFile);
+  //   }
+  // };
 
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
+  // const handleDragOver = (event) => {
+  //   event.preventDefault();
+  // };
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
