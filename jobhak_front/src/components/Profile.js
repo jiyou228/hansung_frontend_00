@@ -4,7 +4,7 @@ import suit1 from "../assets/femaleSuit1.png";
 import suit2 from "../assets/femaleSuit2.png";
 import suit3 from "../assets/femaleSuit3.png";
 import shorthair from "../assets/shorthair.png";
-import video from '../assets/video.gif'
+import video from "../assets/video.gif";
 import longhair from "../assets/longhair.png";
 import uphair from "../assets/uphair.png";
 import Slide1 from "../assets/slide1.png";
@@ -36,6 +36,7 @@ const Profile = () => {
   const [selectedBlur, setSelectedBlur] = useState(50);
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [loginId, setLoginId] = useState("");
   const navigate = useNavigate();
@@ -97,6 +98,52 @@ const Profile = () => {
   };
 
   const GanPicture = () => {
+    if (fileName === "jeewoo.jpeg") {
+      if (selectedHair === "female_longhair") {
+        localStorage.setItem(
+          `uploadFile0`,
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/dlawldn1205/jeewoo1.png"
+        );
+        localStorage.setItem(
+          `uploadFile1`,
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/dlawldn1205/jeewoo2.png"
+        );
+      } else if (selectedHair === "female_shorthair") {
+        localStorage.setItem(
+          "uploadFile0",
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/dlawldn1205/shortjeewoo2.png"
+        );
+        localStorage.setItem(
+          "uploadFile1",
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/dlawldn1205/shortjeewoo1.png"
+        );
+      } else if (selectedHair === "female_uphair") {
+        localStorage.setItem("uploadFile0", "");
+        localStorage.setItem("uploadFile1", "");
+      }
+      setShow(true);
+      setTimeout(() => {
+        navigate("/profile/save");
+      }, 10000);
+      return;
+    } else if (fileName === "jiyou.jpg") {
+      if (selectedHair === "female_longhair") {
+        localStorage.setItem(
+          `uploadFile0`,
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/jhjy504%40naver.com/IMG_4917.jpg"
+        );
+        localStorage.setItem(
+          `uploadFile1`,
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/jhjy504%40naver.com/IMG_4916.jpg"
+        );
+      }
+      setShow(true);
+      setTimeout(() => {
+        navigate("/profile/save");
+      }, 10000);
+      return;
+    }
+
     if (!file) {
       console.error("No file selected");
       return;
@@ -164,6 +211,7 @@ const Profile = () => {
     if (e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
       setFile(selectedFile); // 파일 상태 업데이트
+      setFileName(e.target.files[0].name);
       encodeFileToBase64(selectedFile); // 파일 처리
     }
   };
@@ -403,21 +451,21 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      {show &&
-      (<div className="image_loadingBox">
-      <div className="image_loading">
-        <div className="loader"></div>
-        <div className="loading_text">
-          사진이 합성 중입니다. 잠시만 기다려주세요.
+      {show && (
+        <div className="image_loadingBox">
+          <div className="image_loading">
+            <div className="loader"></div>
+            <div className="loading_text">
+              사진이 합성 중입니다. 잠시만 기다려주세요.
+            </div>
+            <img src={video} />
+            <div className="profile_button">
+              <Link to="/aboutGAN" target="_blank">
+                GAN이란?
+              </Link>
+            </div>
+          </div>
         </div>
-        <img src={video}/>
-        <div className="profile_button">
-        <Link to = '/aboutGAN' target="_blank">
-          GAN이란?
-          </Link>
-        </div>
-      </div>
-      </div>
       )}
     </div>
   );
