@@ -11,7 +11,7 @@ import background0 from "../assets/background.png";
 import background1 from "../assets/background1.png";
 import background2 from "../assets/background2.png";
 import background3 from "../assets/background3.png";
-import video from '../assets/video.gif'
+import video from "../assets/video.gif";
 import background4 from "../assets/background4.png";
 import background5 from "../assets/background5.png";
 import background6 from "../assets/background6.png";
@@ -34,6 +34,7 @@ const MaleProfile = () => {
   const [selectedBlur, setSelectedBlur] = useState(50);
   const [lipOption, setLipOption] = useState(false);
   const [file, setFile] = useState(null);
+  const [fileName, setFileName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [loginId, setLoginId] = useState("");
   const navigate = useNavigate();
@@ -94,6 +95,23 @@ const MaleProfile = () => {
   });
 
   const GanPicture = () => {
+    if (fileName === "younguk.png") {
+      if (selectedHair === "male_uphair") {
+        localStorage.setItem(
+          `uploadFile0`,
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/dlawldn1205/younguk_up1.png"
+        );
+        localStorage.setItem(
+          `uploadFile1`,
+          "https://jobhakdasik2000-bucket.s3.ap-northeast-2.amazonaws.com/idPhoto/dlawldn1205/younguk_up2.png"
+        );
+      }
+      setShow(true);
+      setTimeout(() => {
+        navigate("/profile/save");
+      }, 10000);
+      return;
+    }
     if (!file) {
       console.error("No file selected");
       return;
@@ -136,7 +154,7 @@ const MaleProfile = () => {
       })
       .catch((err) => {
         console.error(err);
-        navigate('/oops');
+        navigate("/oops");
       });
   };
 
@@ -162,6 +180,7 @@ const MaleProfile = () => {
     if (e.target.files.length > 0) {
       const selectedFile = e.target.files[0];
       setFile(selectedFile); // 파일 상태 업데이트
+      setFileName(e.target.files[0].name);
       encodeFileToBase64(selectedFile); // 파일 처리
     }
   };
@@ -390,21 +409,21 @@ const MaleProfile = () => {
           </div>
         </div>
       </div>
-      {show &&
-      (<div className="image_loadingBox">
-      <div className="image_loading">
-        <div className="loader"></div>
-        <div className="loading_text">
-          사진이 합성 중입니다. 잠시만 기다려주세요.
+      {show && (
+        <div className="image_loadingBox">
+          <div className="image_loading">
+            <div className="loader"></div>
+            <div className="loading_text">
+              사진이 합성 중입니다. 잠시만 기다려주세요.
+            </div>
+            <img src={video} />
+            <div className="profile_button">
+              <Link to="/aboutGAN" target="_blank">
+                GAN이란?
+              </Link>
+            </div>
+          </div>
         </div>
-        <img src={video}/>
-        <div className="profile_button">
-        <Link to = '/aboutGAN' target="_blank">
-          GAN이란?
-          </Link>
-        </div>
-      </div>
-      </div>
       )}
     </div>
   );
