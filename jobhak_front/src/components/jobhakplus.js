@@ -9,8 +9,10 @@ import blackpaint from "../assets/blackpaint.png";
 import bluepaint from "../assets/bluepaint.png";
 import fillpaint from "../assets/fillpaint.png";
 import clearpaints from "../assets/clearpaints.png";
+import { useNavigate } from "react-router-dom";
 
 const Jobhakplus = () => {
+  const navigate = useNavigate();
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [paths, setPaths] = useState([]);
@@ -122,6 +124,7 @@ const Jobhakplus = () => {
       })
       .catch((err) => {
         console.error(err);
+        navigate('/oops');
       });
   };
 
@@ -150,6 +153,7 @@ const Jobhakplus = () => {
         })
         .catch((err) => {
           console.error(err);
+          navigate('/oops');
         });
     });
   };
