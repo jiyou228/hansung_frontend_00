@@ -389,8 +389,9 @@ const Jobhakplus = () => {
         </div>
 
         <div className="result_img_container">
-          <img src={resultimg} alt="result-img" className="result-img" />
-        </div>
+        {resultimg && (
+            <img src={resultimg} alt="result-img" className="result-img" />
+          )}        </div>
       </div>
     </div>
   );
